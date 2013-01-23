@@ -130,6 +130,7 @@ contents{text-align:center;
 	height:100%;
 }
 #post {
+	text-align:left;
 	display:inline-block;
 	margin:30px auto auto auto;
 	max-width: 400px;
