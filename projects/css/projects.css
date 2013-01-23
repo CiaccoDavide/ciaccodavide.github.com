@@ -76,9 +76,10 @@ small {
 	margin-top: 10px;
 	padding-top: 10px;
 	color: #ddd;
-	font-size: 0.85em;
+	font-size: 18px;
 	border-top: 1px dashed #ccc;
 	-webkit-text-size-adjust: none;
+	padding: 10px 0 33px 33px; /*top dx bottom sx*/
 	}
 	img {
 	/*border: 1px dashed #aaa;
