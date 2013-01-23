@@ -51,7 +51,7 @@ h2 {
 	border-top: 1px dashed #aaa;
 	-webkit-text-size-adjust: none;
 }
-header {
+header {display: block;
 	padding:10px 30px 10px 30px; /*top dx bottom sx*/
 	text-align:left;
 }
