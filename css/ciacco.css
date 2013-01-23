@@ -58,7 +58,7 @@ header {display: block;
 #menu {
 	position:absolute;
 	font-size: 26px;
-	width:auto;
+	width:500px;
 	left:525px;
 	top:0;
 }
