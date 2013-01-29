@@ -175,7 +175,14 @@ footer foot{
 	color: #999;
 	-webkit-text-size-adjust: none;
 }
+photo{float:left;
+	display:inline-block;
+	margin:30px auto auto auto;
+	max-width: 400px;
+	padding: 16px;
+	/*box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1), 3px 3px 10px rgba(0,0,0, 0.1);*/
+	margin: 10px 10px 10px 10px;
+	box-shadow:0 -10px 30px -10px #333;}
 
 
-
-
+iframe {display: block; width: 100%; border: none; overflow-y: auto; overflow-x: hidden;} 
