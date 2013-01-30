@@ -173,7 +173,10 @@ photo{float:left;
 	margin: 10px 10px 10px 10px;
 	box-shadow:0 -10px 30px -10px #333;}
 img {
-	border: 3px double #0080C6;
+	border: 3px double #aaa;
+}
+img:hover {
+	border: 3px double #00B2C6;
 }
 
 iframe {position:fixed;top:130px;bottom:60px;display: block; width: 100%; border: none; overflow-y: auto; overflow-x: hidden;} 
