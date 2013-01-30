@@ -169,11 +169,11 @@ footer foot{
 photo{float:left;
 	width: auto;
 	height: auto;
-	padding: 16px;
+	padding: 9px;
 	margin: 10px 10px 10px 10px;
 	box-shadow:0 -10px 30px -10px #333;}
-img {padding: 10px;
-	border: 3px double #aaa;
+img {
+	border: 3px double #0080C6;
 }
 
 iframe {position:fixed;top:100px;bottom:60px;display: block; width: 100%; border: none; overflow-y: auto; overflow-x: hidden;} 
