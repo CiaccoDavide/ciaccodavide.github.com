@@ -180,4 +180,16 @@ img:hover {
 	border: 3px double #00B2C6;
 }
 
-iframe {position:fixed;top:130px;display: block; width: 100%; border: none; overflow-y: auto; overflow-x: hidden;} 
+iframe {position:fixed;top:130px;bottom:130px;display: block; width: 100%; border: none; overflow-y: auto; overflow-x: hidden;} 
+workinprogress{text-align:left;z-index:100;
+	left:0;
+	position:fixed;
+	top:40%;
+	width: 1600px;
+	height:60px;
+	border: none;
+	background:rgba(0,30,60,0.1);
+	font-size: 64px;
+	padding:20px 20px 40px 20px;
+	box-shadow:0 0px 30px  #333;
+	}
