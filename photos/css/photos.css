@@ -180,7 +180,7 @@ img:hover {
 	border: 3px double #00B2C6;
 }
 
-iframe {position:fixed;top:130px;bottom:130px;display: block; width: 100%; height:1000px; border: none; overflow-y: auto; overflow-x: hidden;} 
+iframe {position:relative;top:130px;bottom:130px;display: block; width: 100%; height:1000px; border: none; overflow-y: auto; overflow-x: hidden;} 
 workinprogress{text-align:left;z-index:100;
 	left:0;
 	position:fixed;
