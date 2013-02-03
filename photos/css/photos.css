@@ -4,7 +4,7 @@
 }
 
 html, 
-body {
+body {overflow:hidden;
 	font-family:QuicksandBook, Helvetica, Arial, sans-serif;
 	text-shadow:#efefef 1px 1px 0px;
 	font-size: 22px;
