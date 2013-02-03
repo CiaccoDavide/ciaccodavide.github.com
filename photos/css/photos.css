@@ -186,7 +186,7 @@ workinprogress{text-align:left;z-index:100;
 	width: 1600px;
 	height:60px;
 	border: none;
-	background:rgba(0,30,60,0.1);
+	background:rgba(255,255,255,0.3);
 	font-size: 64px;
 	padding:20px 20px 40px 20px;
 	box-shadow:0 0px 30px  #333;
