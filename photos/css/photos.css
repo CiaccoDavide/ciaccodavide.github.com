@@ -41,7 +41,7 @@ h1 {
 	width:auto;
 	float:left;
 }
-h2 {position:fixed;
+h2 {
 	font-size: 14px;
 	font-family: QuicksandBold, Helvetica, Arial, sans-serif;
 	padding: 8px 0 0 18px;
@@ -51,7 +51,7 @@ h2 {position:fixed;
 	border-top: 1px dashed #aaa;
 	-webkit-text-size-adjust: none;
 }
-header {position:fixed;display: block;
+header {display: block;
 	padding:10px 30px 10px 30px; /*top dx bottom sx*/
 	text-align:left;
 }
