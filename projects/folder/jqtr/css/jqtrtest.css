@@ -188,8 +188,8 @@ sq:hover{
 	z-index:2;
 	position:relative;
 	float:left;
-	height:30px;
-	width:30px;
+	height:15px;
+	width:15px;
 	background:rgba(255, 128, 198, 0.6);
 	transform:rotateY(90deg);
 -webkit-transform:rotateY(90deg); /* Safari and Chrome */
