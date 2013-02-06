@@ -22,13 +22,22 @@
 			<?php
 			
 				$id = 0;
+				$idd = 0;
 				
-				
-				while($id<=400){
+				while($id<=1600){
 					
-					$content="<sqb id=\"$id\"></sqb>";
+					$content="<sq15 id=\"$id\"></sq15>";
 					echo $content;
 					$id++;
+				}
+				
+				echo "--------";
+				
+				while($idd<=1600){
+					
+					$content="<sq15 id=\"$idd\"></sq15>";
+					echo $content;
+					$idd++;
 				}
 				?>
 			
