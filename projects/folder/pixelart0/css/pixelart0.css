@@ -185,3 +185,5 @@ sq1{z-index:3;position:relative;
 sq1:hover{
 	background:rgba(255, 128, 198, 0.3);
 }
+button{height:auto;
+	width:auto;padding:3px;position:absolute;right:10px;top:10px;}
