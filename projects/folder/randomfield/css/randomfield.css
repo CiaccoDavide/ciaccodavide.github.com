@@ -123,7 +123,7 @@ p {
 	color:#000;	
 }
 
-.sharing {
+.sharing {z-index:100;
 	position: fixed;
 	top: 10px;
 	right: 10px;
