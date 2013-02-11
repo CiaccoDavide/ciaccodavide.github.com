@@ -42,14 +42,19 @@ h1 {
 	float:left;
 }
 h2 {
-	font-size: 14px;
+	color: #222;
+	font-size: 46px;
+	line-height: 1;
 	font-family: QuicksandBold, Helvetica, Arial, sans-serif;
-	padding: 8px 0 0 18px;
-	display: block;
-	margin-top: 10px;
-	color: #999;
-	border-top: 1px dashed #aaa;
-	-webkit-text-size-adjust: none;
+	font-weight: bold;
+	letter-spacing: 3px;
+	text-decoration: none;
+	text-shadow:#ddd 1px 1px 0px, #999 0px 0px 10px, #999 0px 0px 10px;
+	padding:10px 20px 0 0; /*top dx bottom sx*/
+	width:800px;
+	position:fixed;
+	bottom:50%;
+	left:30px;
 }
 h4 {
 	font-size: 20px;
@@ -118,13 +123,6 @@ p {
 	color:#000;	
 }
 
-
-/**
- * Main contents area
- */
-
-
-
 .sharing {
 	position: fixed;
 	top: 10px;
@@ -134,29 +132,11 @@ p {
 del {
 	opacity: 0.6;
 }
-contents{
-	position:absolute;
-	text-align:center;
-	padding:30px 30px 30px 30px;
+contents{z-index:0;
+	position:fixed;
+	top:0;
 } 
 /*top dx bottom sx*/
-#post {
-	position: absolute;
-	height: 648px;
-	width: 600px;
-	padding: 16px 0 0 0;
-	margin: 10px 10px 50px 60px;
-	box-shadow:0 -10px 30px -10px #333;
-	border: 3px double #aaa;
-}
-a #post{font-size: 16px; /*SHOW CODE*/
-	border: 3px double #aaa;
-	border-color: #0080C6;
-	box-shadow:inset 0 0 30px -10px #069, 0 -10px 30px -10px #333;
-}
-a #post:hover{
-	box-shadow:inset 0 0 60px -20px #069, 0 -10px 30px -10px #333;
-}
 
 footer{
 	border-top: 1px dashed #aaa;
@@ -178,8 +158,8 @@ footer foot{
 
 sq0{z-index:3;position:relative;
 	float:left;
-	height:30px;
-	width:30px;
+	height:60px;
+	width:60px;
 	background:rgba(0, 128, 198, 0.6);
 }
 sq0:hover{
@@ -187,22 +167,69 @@ sq0:hover{
 }
 sq1{z-index:3;position:relative;
 	float:left;
-	height:30px;
-	width:30px;
+	height:60px;
+	width:60px;
 	background:rgba(255, 111, 111, 0.6);
 }
 sq1:hover{
 	background:rgba(255, 128, 198, 0.3);
 }
-button{height:auto;
-	width:auto;padding:3px;position:absolute;right:10px;top:10px;}
-	
-sq2{z-index:3;position:relative;
+buttons{height:auto;width:auto;padding:3px;position:fixed;left:10px;top:80px;z-index:20;}
+button{height:auto;width:auto;padding:3px;position:relative;}
+
+sq0m{z-index:3;position:relative;
 	float:left;
 	height:30px;
 	width:30px;
-	background:rgba(130, 160, 60, 0.6);
+	background:rgba(0, 128, 198, 0.6);
 }
-sq2:hover{
-	background:rgba(60, 200, 60, 0.3);
+sq0m:hover{
+	background:rgba(0, 128, 198, 0.3);
+}
+sq1m{z-index:3;position:relative;
+	float:left;
+	height:30px;
+	width:30px;
+	background:rgba(255, 111, 111, 0.6);
+}
+sq1m:hover{
+	background:rgba(255, 128, 198, 0.3);
+}
+
+sq0s{z-index:3;position:relative;
+	float:left;
+	height:15px;
+	width:15px;
+	background:rgba(0, 128, 198, 0.6);
+}
+sq0s:hover{
+	background:rgba(0, 128, 198, 0.3);
+}
+sq1s{z-index:3;position:relative;
+	float:left;
+	height:15px;
+	width:15px;
+	background:rgba(255, 111, 111, 0.6);
+}
+sq1s:hover{
+	background:rgba(255, 128, 198, 0.3);
+}
+
+sq0ds{z-index:3;position:relative;
+	float:left;
+	height:1px;
+	width:1px;
+	background:rgba(0, 128, 198, 0.6);
+}
+sq0ds:hover{
+	background:rgba(0, 128, 198, 0.3);
+}
+sq1ds{z-index:3;position:relative;
+	float:left;
+	height:1px;
+	width:1px;
+	background:rgba(255, 111, 111, 0.6);
+}
+sq1ds:hover{
+	background:rgba(255, 128, 198, 0.3);
 }
