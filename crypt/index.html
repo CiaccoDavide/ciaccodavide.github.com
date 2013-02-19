@@ -1,0 +1,119 @@
+<!doctype html>  
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ciacco Davide</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/crypt.css">
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+		<link rel="stylesheet" href="fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+	
+	<body>
+		<header>
+			<h1>Crypt</h1>
+		</header>
+		<contents>
+		<post>
+			<form>
+				<INPUT TYPE="text" NAME="inputbox" VALUE="" placeholder="input"><P>
+				<INPUT TYPE="text" NAME="keylockbox" VALUE="" placeholder="keylock"><P>
+				<INPUT TYPE="button" NAME="button" Value="Crypt" onClick="crypt(this.form)"><P>
+				<span id="0"></span><br>
+				<h2></h2><span id="3"></span><br>
+				<h2></h2><span id="2"></span><br>
+				
+			</form>
+		</post>	
+			
+		<post>
+			<form>
+				<span id="crypted"></span><br>
+				<h2></h2>
+				<INPUT TYPE="text" NAME="crypted" VALUE="" placeholder="crypted text"><P>
+				<INPUT TYPE="text" NAME="unlockbox" VALUE="" placeholder="unlock key"><P>
+				<INPUT TYPE="button" NAME="button" Value="deCrypt" onClick="decrypt(this.form)"><P>
+				<h2></h2>
+				<span id="decrypted"></span><br>
+			</form>
+		</post>	
+			
+		</contents>
+		<footer>
+			<foot>Created by <a>Davide Ciacco</a></foot>
+		</footer>
+		
+		<div class="sharing">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-text="Work in progress #CiaccoDavide" data-url="http://ciaccodavi.de" data-count="small"></a>
+		</div>
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		
+		<script type="text/javascript">
+		
+		function crypt(form) {
+			document.getElementById('0').innerHTML = "Input: ";
+			document.getElementById('2').innerHTML = "Crypted: ";
+			document.getElementById('3').innerHTML = "Kn: ";
+			
+			input = form.inputbox.value;
+			keylock = form.keylockbox.value;
+			
+				keyarray = keylock.split("");
+				var kn = new Number();
+				for(i = 0; i < keyarray.length; i++){
+					kn += keyarray[i].charCodeAt(0);
+				}
+				document.getElementById('3').innerHTML += kn;
+			
+			document.getElementById('0').innerHTML += input;
+			
+			var array0 = input.split("");
+			var array1 = new Array();
+			for(i = 0; i < array0.length; i++){
+				array1[i] = array0[i].charCodeAt(0)*(kn);
+			}
+			
+			var crypted = new String();
+			for(i = 0; i < array0.length; i++){
+				document.getElementById('2').innerHTML += String.fromCharCode(array1[i]);
+				crypted += String.fromCharCode(array1[i]);
+			}
+			
+			//to SECOND POST
+			/*document.getElementById('title').innerHTML = "Crypted: ";
+			document.getElementById('crypted').value = crypted;*/
+			
+			
+		}
+		
+		function decrypt(form) {
+
+			document.getElementById('crypted').innerHTML = "Crypted: ";
+			document.getElementById('decrypted').innerHTML = "Decrypted: ";
+			
+			crptd = form.crypted.value;
+			document.getElementById('crypted').innerHTML += crptd;
+			
+			unlocker = form.unlockbox.value;
+			unlockkeyarray = unlocker.split("");
+			var ukn = new Number();
+			for(i = 0; i < unlockkeyarray.length; i++){
+				ukn += unlockkeyarray[i].charCodeAt(0);
+			}
+			
+			var arraycrypted = crptd.split("");
+			var arraydecrypted = new Array();
+			for(i = 0; i < arraycrypted.length; i++){
+				arraydecrypted[i] = String.fromCharCode(arraycrypted[i].charCodeAt(0)/ukn);
+				document.getElementById('decrypted').innerHTML += arraydecrypted[i];
+			}
+			
+		}
+
+		</script>
+		
+	</body>
+</html>
