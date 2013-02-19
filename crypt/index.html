@@ -64,7 +64,9 @@
 				keyarray = keylock.split("");
 				var kn = new Number();
 				for(i = 0; i < keyarray.length; i++){
-					kn += keyarray[i].charCodeAt(0);
+					kn += ((i+1)*keyarray[i].charCodeAt(0))-keyarray[i].charCodeAt(0);
+					if(kn > 1000)
+						kn = keyarray[i].charCodeAt(0);
 				}
 				document.getElementById('3').innerHTML += kn;
 			
@@ -101,7 +103,9 @@
 			unlockkeyarray = unlocker.split("");
 			var ukn = new Number();
 			for(i = 0; i < unlockkeyarray.length; i++){
-				ukn += unlockkeyarray[i].charCodeAt(0);
+				ukn += ((i+1)*keyarray[i].charCodeAt(0))-keyarray[i].charCodeAt(0);
+					if(ukn > 1000)
+						ukn = keyarray[i].charCodeAt(0);
 			}
 			
 			var arraycrypted = crptd.split("");
