@@ -159,7 +159,7 @@ a #post:hover{
 footer{
 	border-top: 1px dashed #aaa;
 	border-bottom:0;
-	position:absolute;
+	position:fixed;
 	bottom:0;
 	padding:0 0 10px 0; /*top dx bottom sx*/
 	text-align:center;
