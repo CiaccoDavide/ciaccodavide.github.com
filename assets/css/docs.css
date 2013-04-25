@@ -10,12 +10,12 @@ workinprogress{
 	left:0;
 	position:fixed;
 	top:40%;
-	width: 1600px;
+	width: 100%;
 	height:60px;
 	border: none;
 	background:rgba(255,255,255,0.6);
-	font-size: 64px;
-	padding:60px;
+	font-size: 32px;
+	padding:10px;
 	box-shadow:0 0px 30px  #333;
 }
 
