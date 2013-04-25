@@ -4,8 +4,20 @@
   Bootstrap's documentation styles
   Special styles for presenting Bootstrap's documentation and examples
 */
-
-
+/*WORK IN PROGRESS!*/
+workinprogress{
+	z-index:100;
+	left:0;
+	position:fixed;
+	top:40%;
+	width: 1600px;
+	height:60px;
+	border: none;
+	background:rgba(255,255,255,0.6);
+	font-size: 64px;
+	padding:60px;
+	box-shadow:0 0px 30px  #333;
+}
 
 /* Body and structure
 -------------------------------------------------- */
