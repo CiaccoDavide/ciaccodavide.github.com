@@ -1,0 +1,186 @@
+<!doctype html>  
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ciacco Davide - Experiment #3</title>
+		<meta property="og:image" content="http://ciaccodavi.de/projects/folder/pixelart0/pixelart0.png" />
+		<meta name="description" content="Experiments!">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/pixelart0.css">
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+		<link rel="stylesheet" href="../../../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+		
+		<script src="jquery.transit.js" type="text/javascript"></script>
+	</head>
+	
+	<body>
+		<header>
+			<h1>Experiment #3</h1><br>
+		<div id="menu">
+			<a href="./"><li>Home</li></a>
+			<a href="../../../projects"><li>Projects</li></a>
+			<a href="../../../photos"><li>Photos</li></a>
+			<a href="../../../about"><li>About</li></a>
+		</div><br><br>
+		<h2>Random Generated Javascript Art</h2>
+		</header>
+		<contents>
+		<div id="post">
+			<h3>Two Colors</h3><button  onClick="window.location.reload()">ReGenerate!</button><br>
+			<span id="gen0"></span>
+		</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		
+		<div id="post">
+			<h3>Push!</h3><br>
+			<span id="gen1"></span>
+			
+			
+		</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
+		</contents>
+		<footer><h4>...This is a work in progress: more is incoming!...</h4>
+			<foot>Created by <a>Davide Ciacco</a></foot>
+		</footer>
+		
+		<div class="sharing">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-text="Random Generated Javascript Art #CiaccoDavide" data-url="http://ciaccodavi.de/projects/folder/pixelart0" data-count="small"></a>
+		</div>
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		
+		<script type="text/javascript">//POST#0
+		var i=0, z="", random;
+		while(i<400){
+			random=Math.floor((Math.random()*2)+1);
+			if(random==1)
+				z +='<sq0 id="' + i + '"></sq0>';
+			if(random==2)
+				z +='<sq1 id="' + i + '"></sq1>';
+			i++;
+		}
+		document.getElementById('gen0').innerHTML = z;
+		</script>
+		<script type="text/javascript">
+		$('sq0[id]').mouseover(
+			function(){var id = $(this).attr('id');
+			$('sq0[id=' + id + ']').transition({
+				perspective: '80px',
+				rotateY: '180deg',
+				rotateX: '180deg',
+				duration: '2000ms'
+		});});
+		$('sq0[id]').mouseleave(
+			function(){var id = $(this).attr('id');
+			$('sq0[id=' + id + ']').transition({
+				perspective: '80px',
+				rotateY: '-180deg',
+				rotateX: '-180deg',
+				duration: '200ms'
+		});});
+		$('sq1[id]').mouseover(
+			function(){var id = $(this).attr('id');
+			$('sq1[id=' + id + ']').transition({
+				perspective: '80px',
+				rotateY: '180deg',
+				rotateX: '180deg',
+				duration: '2000ms'
+		});});
+		$('sq1[id]').mouseleave(
+			function(){var id = $(this).attr('id');
+			$('sq1[id=' + id + ']').transition({
+				perspective: '80px',
+				rotateY: '-180deg',
+				rotateX: '-180deg',
+				duration: '200ms'
+		});});
+	</script>
+	
+	<script type="text/javascript">//POST#1
+		var x=1, y=0, z=0, o="";
+		while(x<21){
+			
+			while(y<2){
+				
+				while(z<10){
+					o +='<sq2 id="' + x+y+z + '"></sq2>';
+					z++;
+				}
+				z=0;
+				y++;
+			}
+			y=0;
+			x++;
+		}
+		document.getElementById('gen1').innerHTML = o;
+		</script>
+		<script type="text/javascript">
+		$('sq2[id]').mouseover(//center
+			function(){var id = $(this).attr('id');
+			$('sq2[id=' + id +']').transition({
+				perspective: '80px',
+				rotateY: '0'
+		});});
+		$('sq2[id]').mouseover(//est
+			function(){var id = $(this).attr('id'),id0=++id;
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateY: '-30deg'
+		});});
+		$('sq2[id]').mouseover(//ovest
+			function(){var id = $(this).attr('id'),id0=--id;
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateY: '30deg'
+		});});
+		$('sq2[id]').mouseover(//sud
+			function(){var id = $(this).attr('id'),gap=100;id0=gap+parseInt(id);
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateX: '30deg'
+		});});
+		$('sq2[id]').mouseover(//nord
+			function(){var id = $(this).attr('id'),gap=-100;id0=gap+parseInt(id);
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateX: '-30deg'
+		});});
+		
+		$('sq2[id]').mouseleave(//center
+			function(){var id = $(this).attr('id');
+			$('sq2[id=' + id +']').transition({
+				perspective: '80px',
+				rotateY: '0',
+				duration: '10ms'
+		});});
+		$('sq2[id]').mouseleave(//est
+			function(){var id = $(this).attr('id'),id0=++id;
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateY: '0',
+				duration: '10ms'
+		});});
+		$('sq2[id]').mouseleave(//ovest
+			function(){var id = $(this).attr('id'),id0=--id;
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateY: '0',
+				duration: '10ms'
+		});});
+		$('sq2[id]').mouseleave(//sud
+			function(){var id = $(this).attr('id'),gap=100;id0=gap+parseInt(id);
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateX: '0',
+				duration: '10ms'
+		});});
+		$('sq2[id]').mouseleave(//nord
+			function(){var id = $(this).attr('id'),gap=-100;id0=gap+parseInt(id);
+			$('sq2[id=' + id0 +']').transition({
+				perspective: '80px',
+				rotateX: '0',
+				duration: '0ms'
+		});});
+	</script>
+	</body>
+</html>
