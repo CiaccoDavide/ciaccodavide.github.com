@@ -6,7 +6,7 @@ body {
 	background: #3d3d3d;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
 	background-attachment:fixed;
-	background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackgroundshaded.php?altezza=300&larghezza=300&pixelsize=30&ygap=0&ystart=0&xstart=0&colore=074056&sfondo=042532&probvuoto=50&probpieno=50&counter=rand()');
+	background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackgroundshaded.php?altezza=40&larghezza=40&pixelsize=4&ygap=0&ystart=0&xstart=0&colore=074056&sfondo=042532&probvuoto=50&probpieno=50&counter=rand()');
 	/*background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackground.php?altezza=20&larghezza=20&pixelsize=2&ygap=0&ystart=0&xstart=0&colore=3d3d3d&sfondo=666666&probvuoto=50&probpieno=50&counter=rand()');
 */
 }
