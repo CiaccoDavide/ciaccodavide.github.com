@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ciacco Davide</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Quicksand:400' rel='stylesheet' type='text/css'>
+		
+		
+	</head>
+	<body>
+		<header>
+			<ul>
+				<a href="#"><li>Home</li></a>
+				<a href="#"><li>Photos</li></a>
+				<a href="#"><li>Coding</li></a>
+				<a href="#"><li>Relax</li></a>
+				<a href="#"><li>Games</li></a>
+				<a href="#"><li>Projects</li></a>
+			</ul>
+		</header>
+		<div class="sigma-expand" id="sigma-1"></div>
+		<div class="sigma-parent" id="mouselayer-sigma-1"></div>
+		<h1>Ciacco Davide</h1>
+		<div id="container">
+			
+			<a href="pong/"><div class="item post">
+				<h2>Pong</h2>
+				<img src="pong/icon.png" height="130">
+				<p></p>
+			</div></a>
+			
+		</div>
+		<footer>	
+		</footer>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+		<script src="./js/jquery.masonry.min.js"></script>
+		<script src="./js/modernizr-transitions.js"></script>
+		<script src="./js/sigma.min.js"></script>
+		<script src="./js/sigma.fisheye.js"></script>
+		<script src="./js/sigmodi.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#container').masonry({
+					itemSelector: '.item',
+					columnWidth: 10,
+					isAnimated: !Modernizr.csstransitions,
+					animationOptions: {duration: 750,easing: 'linear',queue: false}
+				});});
+		</script>
+</body>
+</html>
