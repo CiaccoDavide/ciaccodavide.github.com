@@ -47,9 +47,12 @@ footer p{
 	text-shadow:none;
 }
 footer a{
-	color:#f69;
+	color:#E34234;
 	
 	text-decoration:none;
+}
+footer a:visited{
+	color:#E34234;
 }
 footer a:hover{
 	color:#69f;
