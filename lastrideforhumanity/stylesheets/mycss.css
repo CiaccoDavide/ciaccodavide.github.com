@@ -20,6 +20,10 @@ header a:hover{
 	color:#fff;
 	box-shadow:inset 0px -2px 0px #69f;
 }
+header a:visited{
+	color:#fff;
+	
+}
 header #active{
 	color:#fff;
 	box-shadow:inset 0px -2px 0px #69f;
