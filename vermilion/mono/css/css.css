@@ -7,6 +7,12 @@ body{
 	background:#E34234;
 	font-family: 'Monda', sans-serif;
 }
+/*
+transition:color 0.5s;
+    -moz-transition:color 0.5s;
+    -webkit-transition:color 0.5s;
+    -o-transition:color 0.5s; 
+*/
 h1,h2{
 	color:#c8291c;
 	line-height:1px;
@@ -22,8 +28,14 @@ menu a{
 	font-size:30px;
 	text-decoration:none;
 }
+a:hover{color:#ddd}
 menu a:hover{
-	font-color:#ef968e;
+	
+	color: #ffffff;
+	transition:color 0.5s;
+	-moz-transition:color 0.5s;
+	-webkit-transition:color 0.5s;
+	-o-transition:color 0.5s;
 }
 
 menu a:visited{
@@ -40,28 +52,6 @@ p{
 }
 menu{
 	padding:0 40px 0 40px;
-}
-header{
-	width:100%;
-	height:auto;
-	position:fixed;
-	top:0;
-	border:0;
-	background:rgba(30,30,30,0.8);
-	padding:10px;
-	z-index:1000;
-	box-shadow:inset 0px -2px 6px #222;
-	text-shadow:none;
-}
-header a{
-	color:#fff;
-	/*top,right,bottom,left*/
-	padding:0 10px 14px 10px;
-	text-decoration:none;
-}
-header a:hover{
-	color:#fff;
-	box-shadow:inset 0px -2px 0px #69f;
 }
 
 
