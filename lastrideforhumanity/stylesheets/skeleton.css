@@ -23,7 +23,7 @@
 
     .container                                  { position: relative; width: 960px; margin: 0 auto;  padding:30px;
 													background:rgba(30,30,30,0.8);
-													box-shadow:inset 0px 0px 3px #000;
+													box-shadow:inset 0px 0px 9px #000;
 												}
     .container .column,
     .container .columns                         { float: left; display: inline; margin:10px; 
