@@ -20,6 +20,21 @@ h1,h2{
 }
 h1{padding:30px 30px 0 30px;font-size:100px;}
 h2{padding:6px 0 6px 0;font-size:26px;}
+h1 a{text-decoration:none;}
+h1 l{
+	color:#c8291c;
+	-webkit-transition:color 0.5s;
+   	   -moz-transition:color 0.5s;
+		 -o-transition:color 0.5s;
+	        transition:color 0.5s;
+}
+h1 l:hover{
+	color:#ee968f;
+	-webkit-transition:color 0.5s;
+   	   -moz-transition:color 0.5s;
+		 -o-transition:color 0.5s;
+	        transition:color 0.5s;
+}
 menu a{
 	line-height:1px;
 	text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;
@@ -27,20 +42,23 @@ menu a{
 	padding:10px;
 	font-size:30px;
 	text-decoration:none;
-}
-a:hover{color:#ddd}
-menu a:hover{
-	
-	color: #ffffff;
-	transition:color 0.5s;
-	-moz-transition:color 0.5s;
 	-webkit-transition:color 0.5s;
-	-o-transition:color 0.5s;
+   	   -moz-transition:color 0.5s;
+		 -o-transition:color 0.5s;
+	        transition:color 0.5s;
 }
 
 menu a:visited{
 	color:#c8291c;
 }
+menu a:hover{
+	color:#ef968e;
+	-webkit-transition:color 0.5s;
+   	   -moz-transition:color 0.5s;
+		 -o-transition:color 0.5s;
+	        transition:color 0.5s;
+}
+
 m{font-size:40px; color:#c8291c;}
 m#active{font-size:40px; color:#ef968e;}
 p{
