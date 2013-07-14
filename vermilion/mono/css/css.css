@@ -7,17 +7,30 @@ body{
 	background:#E34234;
 	font-family: 'Monda', sans-serif;
 }
-h1,h2,m{
+h1,h2{
 	color:#c8291c;
 	line-height:1px;
 	text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;
 }
 h1{padding:30px 30px 0 30px;font-size:100px;}
 h2{padding:6px 0 6px 0;font-size:26px;}
-m{
+menu a{
+	line-height:1px;
+	text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;
+	color:#c8291c;
 	padding:10px;
 	font-size:30px;
+	text-decoration:none;
 }
+menu a:hover{
+	font-color:#ef968e;
+}
+
+menu a:visited{
+	color:#c8291c;
+}
+m{font-size:40px; color:#c8291c;}
+m#active{font-size:40px; color:#ef968e;}
 p{
 	padding:0 0 0 6px;
 	color:#b22519;
