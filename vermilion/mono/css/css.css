@@ -88,7 +88,7 @@ menu{
 /* #Base 960 Grid
 ================================================== */
 
-    .container                                  { position: relative; width: 960px; margin: 0 auto;  padding:30px;
+    .container                                  { position: relative; width: 960px; margin: 0 auto;  padding:10px;
 													background: #fff;
 													box-shadow:inset 1px 1px 1px #b12519,inset -1px -1px 1px #e96c61;
 												}
