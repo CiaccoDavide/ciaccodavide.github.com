@@ -76,7 +76,11 @@ menu{
 }
 
 
-
+.imageslider{
+	width: 100%; margin: 0;  padding:10px;
+		background: #E34234;
+	box-shadow:inset 1px 1px 1px #b12519,inset -1px -1px 1px #e96c61;
+}
 /* Table of Contents
 ==================================================
     #Base 960 Grid
