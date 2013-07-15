@@ -88,7 +88,7 @@ menu{
 ================================================== */
 
     .container                                  { position: relative; width: 960px; margin: 0 auto;  padding:30px;
-													background: #E34234;
+													background: #fff;
 													box-shadow:inset 1px 1px 1px #b12519,inset -1px -1px 1px #e96c61;
 												}
     .container .column,
