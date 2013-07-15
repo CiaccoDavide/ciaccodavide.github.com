@@ -111,8 +111,9 @@ menu{
 
 .imageslider{
 	width: 100%; height:300px; margin: 0;  padding:0 10px 0 10px;
-		background: #E34234;
+	background: #E34234;
 	text-align:center;
+	
 }
 .imageslider img{
 	width: auto; height:100%; margin: 0;
