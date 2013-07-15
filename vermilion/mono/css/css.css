@@ -29,9 +29,18 @@ body{
 	height:100%;
 	z-index:-10;
 	position:fixed;
+	text-align:right;
 	background-height:100%;
 	background-repeat:no-repeat;
-	background-image:url('http://i.imgur.com/j3I6MQk.png?1');
+}
+.subcover img{
+	top:0;
+	left:0;
+	margin:0;
+	padding:0 20px 0 20px;
+	width:100px;
+	height:auto;
+	position:fixed;
 }
 /*
 transition:color 0.5s;
@@ -42,9 +51,9 @@ transition:color 0.5s;
 h1{
 	color:#c8291c;
 	line-height:1px;
-	text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;
-}
-h1{padding:30px 30px 0 30px;font-size:100px;}
+	/*text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;*/
+}/*top dx bottom sx*/
+h1{padding:30px 30px 0 140px;font-size:100px;}
 h2{color:#fee;padding:6px 0 6px 0;font-size:26px;}
 h1 a{text-decoration:none;}
 h1 l{
@@ -54,9 +63,8 @@ h1 l{
 		 -o-transition:color 0.5s;
 	        transition:color 0.5s;
 }
-h1 l:hover{/*
-	color:#ee968f;*/
-	color:#347ee3;
+h1 l:hover{
+	color:#ee968f;
 	-webkit-transition:color 0.5s;
    	   -moz-transition:color 0.5s;
 		 -o-transition:color 0.5s;
@@ -64,7 +72,7 @@ h1 l:hover{/*
 }
 menu a{
 	line-height:1px;
-	text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;
+	/*text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;*/
 	color:#c8291c;
 	padding:10px;
 	font-size:30px;
@@ -78,9 +86,8 @@ menu a{
 menu a:visited{
 	color:#c8291c;
 }
-menu a:hover{/*
-	color:#ef968e;*/
-	color:#347ee3;
+menu a:hover{
+	color:#ef968e;
 	-webkit-transition:color 0.5s;
    	   -moz-transition:color 0.5s;
 		 -o-transition:color 0.5s;
@@ -98,7 +105,7 @@ p{
 	/*text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;*/
 }
 menu{
-	padding:0 40px 0 40px;
+	padding:0 40px 0 140px;
 }
 
 
