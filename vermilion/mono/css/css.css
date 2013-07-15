@@ -19,7 +19,7 @@ h1{
 	text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;
 }
 h1{padding:30px 30px 0 30px;font-size:100px;}
-h2{color:#c8291c;padding:6px 0 6px 0;font-size:26px;}
+h2{color:#fdd;padding:6px 0 6px 0;font-size:26px;}
 h1 a{text-decoration:none;}
 h1 l{
 	color:#c8291c;
@@ -64,7 +64,7 @@ m#active{font-size:40px; color:#ef968e;}
 p{
 	padding:0 0 0 6px;
 	/*color:#b22519;*/
-	color:#E34234;
+	color:#fdd;
 	font-size:16px;
 	line-height:1px;
 	/*text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;*/
@@ -89,10 +89,11 @@ menu{
 ================================================== */
 
     .container                                  { position: relative; width: 960px; margin: 0 auto;  padding:10px;
-													background: #fff;
+													background: #E34234;
 													box-shadow:inset 1px 1px 1px #b12519,inset -1px -1px 1px #e96c61;
 												}
-    .container .column,
+    
+	.container .column,
     .container .columns                         { float: left; display: inline; margin:10px; 
 	}
     .row                                        { margin-bottom: 20px; }
