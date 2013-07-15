@@ -28,8 +28,9 @@ h1 l{
 		 -o-transition:color 0.5s;
 	        transition:color 0.5s;
 }
-h1 l:hover{
-	color:#ee968f;
+h1 l:hover{/*
+	color:#ee968f;*/
+	color:#347ee3;
 	-webkit-transition:color 0.5s;
    	   -moz-transition:color 0.5s;
 		 -o-transition:color 0.5s;
@@ -51,8 +52,9 @@ menu a{
 menu a:visited{
 	color:#c8291c;
 }
-menu a:hover{
-	color:#ef968e;
+menu a:hover{/*
+	color:#ef968e;*/
+	color:#347ee3;
 	-webkit-transition:color 0.5s;
    	   -moz-transition:color 0.5s;
 		 -o-transition:color 0.5s;
