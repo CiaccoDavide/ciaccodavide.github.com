@@ -30,14 +30,9 @@ body{
 	z-index:-10;
 	position:fixed;
 	text-align:right;
-	background-height:100%;
-	background-repeat:no-repeat;
 }
 .subcover img{
-	top:0;
-	left:0;
-	margin:0;
-	padding:0 20px 0 20px;
+	padding:40px 20px 0 20px;
 	width:100px;
 	height:auto;
 	position:fixed;
