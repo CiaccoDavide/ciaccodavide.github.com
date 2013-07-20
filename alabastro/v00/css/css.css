@@ -14,23 +14,13 @@ transition:color 0.5s;
     -webkit-transition:color 0.5s;
     -o-transition:color 0.5s; 
 */
-h1{
-	font-size:120px;
-	line-height:10px;
-	color:#abf;
-	text-shadow: 0 1px 0 #ccc, 
-	               0 2px 0 #c9c9c9,
-	               0 3px 0 #bbb,
-	               0 4px 0 #b9b9b9,
-	               0 5px 0 #aaa;
-}
-h2{
-	color:#abf;
+h1,h2{
+	color:transparent;
 	line-height:1px;
 	text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
-	padding:6px 0 6px 0;
-	font-size:26px;
 }
+h1{padding:30px 30px 0 30px;font-size:100px;}
+h2{padding:6px 0 6px 0;font-size:26px;}
 h1 a{text-decoration:none;}
 h1 l{
 	color:transparent;
@@ -38,10 +28,6 @@ h1 l{
    	   -moz-transition:color 0.5s;
 		 -o-transition:color 0.5s;
 	        transition:color 0.5s;
-			-webkit-transition:text-shadow 0.5s;
-		   	   -moz-transition:text-shadow 0.5s;
-				 -o-transition:text-shadow 0.5s;
-			        transition:text-shadow 0.5s;
 }
 h1 l:hover{
 	color:#fff;
@@ -49,10 +35,6 @@ h1 l:hover{
    	   -moz-transition:color 0.5s;
 		 -o-transition:color 0.5s;
 	        transition:color 0.5s;
-			-webkit-transition:text-shadow 0.5s;
-		   	   -moz-transition:text-shadow 0.5s;
-				 -o-transition:text-shadow 0.5s;
-			        transition:text-shadow 0.5s;
 	text-shadow: 0 0 10px #fff;
 }
 menu a{
