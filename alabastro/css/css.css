@@ -49,7 +49,7 @@ transition:color 0.5s;
     -o-transition:color 0.5s; 
 */
 h1{
-	color:#E34234;
+	color:#1560BD;
 	line-height:1px;
 	/*text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;*/
 }/*top dx bottom sx*/
@@ -57,7 +57,7 @@ h1{padding:30px 30px 0 160px;font-size:100px;}
 h2{color:#fee;padding:6px 0 6px 0;font-size:26px;}
 h1 a{text-decoration:none;}
 h1 l{
-	color:#E34234;
+	color:#1560BD;
 	-webkit-transition:color 0.5s;
    	   -moz-transition:color 0.5s;
 		 -o-transition:color 0.5s;
@@ -73,7 +73,7 @@ h1 l:hover{
 menu a{
 	line-height:1px;
 	/*text-shadow: 1px 1px 1px #e96c61, -1px -1px 1px #b12519;*/
-	color:#E34234;
+	color:#1560BD;
 	padding:10px;
 	font-size:30px;
 	text-decoration:none;
@@ -94,7 +94,7 @@ menu a:hover{
 	        transition:color 0.5s;
 }
 
-m{font-size:40px; color:#c8291c;}
+m{font-size:40px; color:#1560BD;}
 m#active{font-size:40px; color:#ef968e;}
 p{
 	padding:0 0 0 6px;
@@ -111,7 +111,7 @@ menu{
 
 .imageslider{
 	width: 100%; height:300px; margin: 0;  padding:0 10px 0 10px;
-	background: #E34234;
+	background: #1560BD;
 	text-align:center;
 	
 }
@@ -135,7 +135,7 @@ menu{
 ================================================== */
 
     .container                                  { position: relative; width: 960px; margin: 0 auto;  padding:10px;
-													background: #E34234;
+													background: #1560BD;
 													box-shadow:inset 1px 1px 1px #b12519,inset -1px -1px 1px #e96c61;
 												}
     
