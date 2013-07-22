@@ -414,10 +414,10 @@ menu{
 		padding:16px 26px;
 		color:#fff;
 		font-family:'Helvetica Neue',sans-serif;
-		font-size:30px;
+		font-size:30px;/*
 		border-radius:4px;
 		-moz-border-radius:4px;
-		-webkit-border-radius:4px;
+		-webkit-border-radius:4px;*/
 		border:1px solid #1A87B9;
 		box-shadow:0 0 0 0 rgba(0,0,0,0.3);
 		-webkit-transition:box-shadow 1.5s;
@@ -427,7 +427,16 @@ menu{
 	}
 	button:hover{
 		cursor:pointer;
-		box-shadow:0 0 10px #333,0 0 1000px #25A6E1;
+		box-shadow:0 0 0 100px rgba(0,0,0,0.1),
+				0 0 0 200px rgba(0,0,0,0.1),
+				0 0 0 300px rgba(0,0,0,0.1),
+				0 0 0 400px rgba(0,0,0,0.1),
+				0 0 0 500px rgba(0,0,0,0.1),
+				0 0 0 600px rgba(0,0,0,0.1),
+				0 0 0 700px rgba(0,0,0,0.1),
+				0 0 0 800px rgba(0,0,0,0.1),
+				0 0 0 900px rgba(0,0,0,0.1),
+				0 0 0 1000px rgba(0,0,0,0.1);
 		-webkit-transition:box-shadow 1.5s;
 	   	   -moz-transition:box-shadow 1.5s;
 			 -o-transition:box-shadow 1.5s;
