@@ -140,7 +140,7 @@ p{
 menu{
 	padding:0 40px 0 40px;
 }
-menu#active{
+menu a#active{
 	    text-shadow: rgba(255,255,255,1) 0px 3px 1px;
 }
 
