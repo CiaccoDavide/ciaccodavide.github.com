@@ -436,3 +436,27 @@ menu a#active{
 			 -o-transition:box-shadow 1.5s;
 		        transition:box-shadow 1.5s;
 	}
+	
+	
+	
+.screenshots{
+	float:left;
+}
+.screenshots img{
+	float:left; /*fa sparire i margini*/
+	display:block; /*fa sparire i margini (anche sotto!)*/
+	opacity:0.6;
+	width:25%;
+}
+.screenshots img:hover{
+	opacity:1;
+	box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+
+
+
+
+
+
+
