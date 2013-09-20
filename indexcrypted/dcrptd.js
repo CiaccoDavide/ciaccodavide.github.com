@@ -1,9 +1,4 @@
-//load the crypted string into div
-/*$("#rs").load('http://www.mypage.com')
-$.get("http://www.mypage.com", function(stringa){
-    // my_var contains whatever that request returned
-});*/
-//un paio di dichiarazioni...
+//Web Decrypter
 document.getElementById('output').innerHTML=stringa;
 crptd = stringa;
 var arraycrypted = crptd.split("");
