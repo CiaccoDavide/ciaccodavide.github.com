@@ -15,7 +15,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-opacity:0.8;
+	/*opacity:0.8;*/
 
 }
 h1{
@@ -38,10 +38,6 @@ h1{
 	background:rgba(0,0,0,0);
 	/*
 	background:#e9eaee;*/
-	font: 60px 'Helvetica Neue', Arial, sans-serif;
-	font-weight: 100;
-	line-height: 1.2em;
-	margin-bottom: 0.6em;
 
 	width:90%;
 	margin:5%;
@@ -80,9 +76,10 @@ h1{
 	display: block;opacity:0.9;
 }
 #container .contenuti{
-	padding:0;border:none;margin:0;
+	border:none;margin:0;
 	position:relative;
-	width:100%;
+	width:90%;
 	height:auto;
 	background:#e9eaee;
+	padding:5%;
 }
