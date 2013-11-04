@@ -84,3 +84,11 @@ h2{
 .links a:hover t{
 	color:#38f;
 }
+
+
+img{
+	border:none;
+	margin:0;
+	padding:0;
+	display:block;
+}
