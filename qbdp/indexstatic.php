@@ -1,9 +1,9 @@
 <?php
-$altezza = $_GET['a'];
-$larghezza = $_GET['l'];
-$dim = $_GET['d'];
+$altezza = '90';
+$larghezza = '90';
+$dim = 3;
 $counter = $_GET['counter'];
-$colore = $_GET['c'];
+$colore = '333333';
 $sfondo = 'e3e3e3';
 
 	$colore = preg_replace(' /[^0-9A-Fa-f]/ ', '', $colore); // Gets a proper hex string
@@ -40,80 +40,39 @@ imagefilledrectangle($img, 0, 0, $larghezza, $altezza, $sfondo0);
 $colore0 = imagecolorallocate($img,$coloreR,$coloreG,$coloreB);
 
 
-$r=1;
-$g=1;
-$b=1;
-$rt=0;
-$gt=0;
-$bt=0;
-
 $xi=0;
-$xf=$altezza;
+$xf=$larghezza;
 $ry=0+($dim/2);
 $gy=$altezza/2;
 $by=$altezza-($dim/2);
 imagesetthickness($img, $dim);
 
-for($i=0;$i<floor($larghezza/$altezza)+1;$i++){
+$rnd=intval(mt_rand(1,3));
+if($rnd==1)
+	imageLine($img, $xi, $ry, $xf, $ry, $colore0);
+else if($rnd==2)
+	imageLine($img, $xi, $ry, $xf, $gy, $colore0);
+else if($rnd==3)
+	imageLine($img, $xi, $ry, $xf, $by, $colore0);
 
-	while($r>0){
-		$rnd=intval(mt_rand(1,3));
-		if($rnd==1){
-			imageLine($img, $xi+$altezza*$i, $ry, $xf+$altezza*$i, $ry, $colore0);
-			$rt++;
-		}
-		else if($rnd==2){
-			imageLine($img, $xi+$altezza*$i, $ry, $xf+$altezza*$i, $gy, $colore0);
-			$gt++;
-		}
-		else if($rnd==3){
-			imageLine($img, $xi+$altezza*$i, $ry, $xf+$altezza*$i, $by, $colore0);
-			$bt++;
-		}
-		$r--;
-	}
+$rnd=intval(mt_rand(1,3));
+if($rnd==1)
+	imageLine($img, $xi, $gy, $xf, $ry, $colore0);
+else if($rnd==2)
+	imageLine($img, $xi, $gy, $xf, $gy, $colore0);
+else if($rnd==3)
+	imageLine($img, $xi, $gy, $xf, $by, $colore0);
 	
-	while($g>0){
-		$rnd=intval(mt_rand(1,3));
-		if($rnd==1){
-			imageLine($img, $xi+$altezza*$i, $gy, $xf+$altezza*$i, $ry, $colore0);
-			$rt++;
-		}
-		else if($rnd==2){
-			imageLine($img, $xi+$altezza*$i, $gy, $xf+$altezza*$i, $gy, $colore0);
-			$gt++;
-		}
-		else if($rnd==3){
-			imageLine($img, $xi+$altezza*$i, $gy, $xf+$altezza*$i, $by, $colore0);
-			$bt++;
-		}
-		$g--;
-	}
-	while($b>0){
-		$rnd=intval(mt_rand(1,3));
-		if($rnd==1){
-			imageLine($img, $xi+$altezza*$i, $by, $xf+$altezza*$i, $ry, $colore0);
-			$rt++;
-		}
-		else if($rnd==2){
-			imageLine($img, $xi+$altezza*$i, $by, $xf+$altezza*$i, $gy, $colore0);
-			$gt++;
-		}
-		else if($rnd==3){
-			imageLine($img, $xi+$altezza*$i, $by, $xf+$altezza*$i, $by, $colore0);
-			$bt++;
-		}
-		$b--;
-	}
+$rnd=intval(mt_rand(1,3));
+if($rnd==1)
+	imageLine($img, $xi, $by, $xf, $ry, $colore0);
+else if($rnd==2)
+	imageLine($img, $xi, $by, $xf, $gy, $colore0);
+else if($rnd==3)
+	imageLine($img, $xi, $by, $xf, $by, $colore0);
 
-	$r=$rt;
-	$g=$gt;
-	$b=$bt;
-	$rt=0;
-	$gt=0;
-	$bt=0;
 
-}
+
 
 $counter=$counter;
 
