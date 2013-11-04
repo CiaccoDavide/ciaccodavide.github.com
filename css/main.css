@@ -12,7 +12,8 @@ body {
 }
 
 h1{
-	color:#696969;
+	color:rgba(0,0,0,0);
+	text-shadow:0 0 2px #696969;
 	background:#e3e3e3;
 	font: 50px 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 100;
@@ -20,14 +21,28 @@ h1{
 	margin-bottom: 0.6em;
 	text-align:left;
 	padding-left:30px;
-	border: 2px solid #ffffff;
-	box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	/*border: 2px solid #ffffff;*/
+	border-left:none;
+	box-shadow: inset 0 0 6px rgba(0,0,0, 0.5);
+	/*box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
 	-moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
-	-webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);*/
 	border-radius:0 100px 100px 0;
 	width:400px;
+	-webkit-transition:all 1s;
+   	   -moz-transition:all 1s;
+		 -o-transition:all 1s;
+	        transition:all 1s;
 }
-h1:hover{color:#38f;}
+h1:hover{color:#696969;
+	text-shadow:0 0 300px #696969;
+	box-shadow: inset 0 0 0px rgba(0,0,0, 0.5);
+	-webkit-transition:all 1s;
+   	   -moz-transition:all 1s;
+		 -o-transition:all 1s;
+	        transition:all 1s;
+	cursor:pointer;
+}
 h3{
 	color:#000;
 	background:#e9eaee;
