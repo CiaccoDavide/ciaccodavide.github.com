@@ -30,7 +30,7 @@ h1{
    	   -moz-transition:all 1s;
 		 -o-transition:all 1s;
 	        transition:all 1s;
-	background-image:url('http://ciaccodavide.altervista.org/patt/?l=6000&a=90&d=1&c=e6e6e6&s=aaaaaa');
+	background-image:url('http://ciaccodavide.altervista.org/patt/?l=3000&a=90&d=1&c=e6e6e6&s=aaaaaa');
 	background-size: cover;
 }
 h1:hover{
@@ -47,7 +47,7 @@ h1:hover{
 	margin:30px;
 }
 .links a{
-	color:#969696;
+	color:#888;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 26px;
 	font-weight: 100;
