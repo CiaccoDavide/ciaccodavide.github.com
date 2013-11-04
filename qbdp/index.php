@@ -2,9 +2,7 @@
 $altezza = '90';
 $larghezza = '90';
 $dim = 3;
-$ygap = $_GET['ygap'];
-$ystart = $_GET['ystart'];
-$xstart = $_GET['xstart'];
+$counter = $_GET['counter'];
 $colore = '333333';
 $sfondo = 'e3e3e3';
 
@@ -76,7 +74,7 @@ else if($rnd==3)
 
 
 
-
+$counter=$counter;
 
 header("Content-type: image/png");
 imagepng($img);
