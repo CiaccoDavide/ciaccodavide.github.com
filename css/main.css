@@ -3,20 +3,23 @@ body {
 	width:100%;margin:0;padding:0;
 	/*font: normal 14px Monaco, 'Courier New', monospace;
 	*/
-	background: #d3d3d3;
+	background: #eeeeee;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
 	background-attachment:fixed;
 	/*background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackgroundshaded.php?altezza=200&larghezza=200&pixelsize=8&ygap=0&ystart=0&xstart=0&colore=e3e3e3&sfondo=e3e3e3&probvuoto=50&probpieno=50&counter=rand()');
-	*/ background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackground.php?altezza=60&larghezza=60&pixelsize=6&ygap=0&ystart=0&xstart=0&colore=d6d6d6&sfondo=e3e3e3&probvuoto=50&probpieno=50&counter=rand()');
+	* background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackground.php?altezza=60&larghezza=60&pixelsize=6&ygap=0&ystart=0&xstart=0&colore=d6d6d6&sfondo=e3e3e3&probvuoto=50&probpieno=50&counter=rand()');
 */
+	
+background-image:url('http://ciaccodavide.altervista.org/patt/?l=3000&a=90&d=1&c=ccc&s=eeeeee');
+background-size: auto auto;
 }
 
 h1{
 	
 	padding:0;
 	margin:0;
-	color:#969696;
-	background:#e3e3e3;
+	color:#fff;
+	background:#aaaaaa;
 	font: 50px 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 100;
 	line-height: 1.2em;
@@ -27,17 +30,17 @@ h1{
    	   -moz-transition:all 1s;
 		 -o-transition:all 1s;
 	        transition:all 1s;
-	background-image:url('http://ciaccodavide.altervista.org/patt/?l=6000&a=90&d=1&c=969696');
+	background-image:url('http://ciaccodavide.altervista.org/patt/?l=6000&a=90&d=1&c=e6e6e6&s=aaaaaa');
 	background-size: cover;
 }
 h1:hover{
-	color:#38f;
+	color:#fff;
 	-webkit-transition:all 1s;
    	   -moz-transition:all 1s;
 		 -o-transition:all 1s;
 	        transition:all 1s;
 	cursor:pointer;
-	background-image:url('http://ciaccodavide.altervista.org/patt/?l=6000&a=90&d=1&c=9cf');
+	background-image:url('http://ciaccodavide.altervista.org/patt/?l=6000&a=90&d=1&c=fff&s=aaaaaa');
 	background-size: cover;
 }
 .links{

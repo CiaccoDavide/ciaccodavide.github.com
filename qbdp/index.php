@@ -4,7 +4,7 @@ $larghezza = $_GET['l'];
 $dim = $_GET['d'];
 $counter = $_GET['counter'];
 $colore = $_GET['c'];
-$sfondo = 'e3e3e3';
+$sfondo = $_GET['s'];
 
 	$colore = preg_replace(' /[^0-9A-Fa-f]/ ', '', $colore); // Gets a proper hex string
     if (strlen($colore) == 6) { //If a proper hex code, convert using bitwise operation. No overhead... faster
