@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ciacco Davide</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Quicksand:400' rel='stylesheet' type='text/css'>
+		
+		
+	</head>
+	<body>
+		<header>
+			<ul>
+				<a href="./"><li>Home</li></a>
+				<a href="./photos"><li>Photos</li></a>
+				<a href="#"><li>Coding</li></a>
+				<a href="#"><li>Relax</li></a>
+				<a href="creations/"><li>Games</li></a>
+				<a href="#"><li>Projects</li></a>
+			</ul>
+		</header>
+		<div class="sigma-expand" id="sigma-1"></div>
+		<div class="sigma-parent" id="mouselayer-sigma-1"></div>
+		<h1>Ciacco Davide</h1>
+		<div id="container">
+			
+			<div class="item post">
+				<h2>My profile</h2>
+				<img src="imgs/profilo.jpg" height="160">
+				<p>I'm Davide Ciacco, & this is still a WORK IN PROGRESS!. ............................. . .. ............... ........... ....... . .. ............. . .. ............... ........... ............................. . .. ............... ........... ............................... ........... ..................................... . .. ....... . .. ............... ........... ..................................... ........... ........................................... . .. ............... ........... ........................... .... .. ................. .. ..................... .. .. ..... .................. ............ .................. ............................................</p>
+			</div>
+			<div class="item post">
+				<h2>Last Projects</h2>
+				<p>- <a href="http://crypt.ciaccodavi.de">crypt.ciaccodavi.de</a></p>
+				<p>- <a href="http://ciaccodavi.de/qbdp">qbdp</a></p>
+			</div>	
+				
+				<a href="./projects/folder/ril"><div class="item post">
+					<h2>Experiment #4 - RIL</h2>
+					<img src="./projects/folder/ril/ril.png" height="90">
+					<p>RIL or Random Intermittent Lights. Random dynamic patterns constantly generated using jQuery.</p>
+				</div></a>
+				<a href="./projects/folder/glassfiber"><div class="item post">
+					<h2>Experiment #3 - GlassFiber</h2>
+					<img src="./projects/folder/glassfiber/glassfiber.png" height="90">
+					<p>Simple GlassFiber dynamic background!</p>
+				</div></a>
+				<a href="./projects/folder/randomfield"><div class="item post">
+					<h2>Experiment #2 - Random Field</h2>
+					<img src="./projects/folder/randomfield/randomfield.png" height="90">
+					<p>A whole webpage covered in a random generate pattern of blue and red pixels. Sizes from "normal" to "damn small"! Damn Small Mode will take its time to load because of its billions of permutations!</p>
+				</div></a>
+			<a href="./projects/folder/pixelart0"><div class="item post">
+					<h2>Project #3 - Random Generated Javascript Art</h2>
+					<img src="./projects/folder/pixelart0/pixelart0.png" height="90">
+					<p>A bi-coloured 20x20 square random generated with JS Math methods.</p>
+			</div></a>
+			<a href="./projects/folder/dsb"><div class="item post">
+					<h2>Project #2 - Dynamic Sqared Background</h2>
+					<img src="./projects/folder/dsb/dsb.png" height="90">
+					<p>Using JS to generate a dynamic background made of 'n' 30x30px sized pixels. ('n' is generated on every refresh to fit the whole window)</p>
+			</div></a>
+			<a href="./projects/folder/jqtr"><div class="item post">
+				<h2>Experiment #1 - JQuery Transitions</h2>
+				<img src="imgs/jqtr.png" height="130">
+				<p>Some experiments that i've made using </p>jQuery Transit<p>, a JS script that deals with CSS3 transitions.</p>
+			</div></a>
+			
+			<a href="http://floatingminds.altervista.org/davideciacco/rgb"><div class="item post">
+				<h2>Project #1 - Random Generated Background</h2>
+				<img src="imgs/rgb0.png" height="130">
+				<p>PHP, JS, HTML and CSS interacting together to create a "random" generated background that changes every session. "Randomization" depends on time and the entropy of number Pi.</p>
+			</div></a>
+			
+			
+			  <div class="item l140"><p>prova2</p></div>
+			  <div class="item l100"><p>prova2</p></div>
+			<div class="item l80"><p>prova2</p></div>
+			  <div class="item l140"><p>prova2</p></div>
+			  <div class="item l100"><p>prova2</p></div>
+			<div class="item l80"><h2>Prond</h2><p>prova2</p></div>
+			  <div class="item l140"><p>prova2</p></div>
+			  <div class="item l100"><p>prova2</p></div>
+		</div>
+		<footer>	
+		</footer>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+		<script src="./js/jquery.masonry.min.js"></script>
+		<script src="./js/modernizr-transitions.js"></script>
+		<script src="./js/sigma.min.js"></script>
+		<script src="./js/sigma.fisheye.js"></script>
+		<script src="./js/sigmodi.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#container').masonry({
+					itemSelector: '.item',
+					columnWidth: 10,
+					isAnimated: !Modernizr.csstransitions,
+					animationOptions: {duration: 750,easing: 'linear',queue: false}
+				});});
+		</script>
+</body>
+</html>
