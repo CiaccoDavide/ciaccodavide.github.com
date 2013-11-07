@@ -45,6 +45,8 @@ h1:hover{
 }
 .links{
 	margin:30px;
+	width:160px;
+	float:left;
 }
 .links a{
 	color:#888;
