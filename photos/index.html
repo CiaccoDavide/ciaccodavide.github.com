@@ -1,4 +1,4 @@
-<!doctype html>  
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -7,34 +7,69 @@
 		<meta name="author" content="Davide Ciacco">
 		<meta name="viewport" content="width=800, user-scalable=yes">
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="css/photos.css">
-		<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+		<link rel="stylesheet" href="./css/photos.css">
+		<script src="../js/jquery.min.js"></script>
 		<link rel="stylesheet" href="../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
 	</head>
 	
 	<body>
 		
-		<header>
-			<h1>Ciacco Davide</h1><br>
-		<div id="menu">
-			<a href="http://ciaccodavi.de/"><li>Home</li></a>
-			<a href="http://ciaccodavi.de/projects"><li>Projects</li></a>
-			<a href="http://ciaccodavi.de/photos"><li>Photos</li></a>
-			<a href="http://ciaccodavi.de/"><li>About</li></a>
+		<h1>Ciacco Davide</h1>
+		<div class="links">
+			<a href="./"><t>.</t>about</a><br>
+			<a href="./photos" id="active"><t>.</t>photos</a><br>
+			<a href="#"><t>.</t>coding</a><br>
+			<a href="#"><t>.</t>relax</a><br>
+			<a href="creations/"><t>.</t>games</a><br>
+			<a href="#"><t>.</t>projects</a><br>
 		</div>
-		<br><br>
-		<h2>Photos</h2>
-		</header>
-		<contents>
-			<iframe src="http://ciaccodavide.altervista.org/fotografia" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
-		</contents>
-		<footer>
-			<foot>Created by <a>Davide Ciacco</a></foot>
-		</footer>
+		<div id="container">
+			
+		</div>
 		
-		<div class="sharing">
-			<a href="http://twitter.com/share" class="twitter-share-button" data-text="Photos by #CiaccoDavide" data-url="http://ciaccodavi.de/photos" data-count="small"></a>
-		</div>
-		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<script>
+		$(document).ready(function(){
+			$( "body" ).load( "http://ciaccodavide.altervista.org/fotografia/index.php", function() {
+			  alert( "Load was performed." );
+			});/*
+			$("#container").load('http://ciaccodavide.altervista.org/fotografia/index.php');
+			/*
+			//dynamically generated stuff
+			
+			$(function() {
+			    $(document).on('click', '#pcb', function(e) {
+			       	$("curtain").slideToggle();
+					$("requests").slideToggle();
+			       e.preventDefault();
+			    });
+			});
+
+			$(function() {
+			    $(document).on('click', 'cont', function(e) {
+			       	$("contacts").slideToggle("slow");
+					$("footer").slideToggle("slow");
+					$("#snd").prop('disabled', false);
+					$("#sndb").prop('disabled', false);
+			       
+			    });
+			});
+			
+			$(function() {
+			    $(document).on('click', 'candidate', function(e) {
+					var candidato = $(this).attr('id');
+					$("#fatto").load('./add.php?cand=' + candidato);
+			       e.preventDefault();
+			    });
+			});
+		
+		
+			
+			$("h1").click(function(){
+				$("#container").load('http://ciaccodavide.altervista.org/fotografia/index.php');
+	 		});
+			*/
+		});
+		</script>
+		
 	</body>
 </html>
