@@ -72,3 +72,8 @@ h1:hover{
 .links a:hover t{
 	color:#38f;
 }
+* a:visited{
+	text-decoration:none;
+}* a{
+	text-decoration:none;
+}
