@@ -28,7 +28,8 @@ h1{
 	margin:0;
 	color:#fff;
 	background:#aaaaaa;
-	font: 50px 'Helvetica Neue', Arial, sans-serif;
+	font-family: 'Raleway', sans-serif;
+	font-size: 50px;
 	font-weight: 100;
 	line-height: 1.2em;
 	margin-bottom: 0.6em;
@@ -59,7 +60,8 @@ h1:hover{
 .links a{
 	color:rgba(0,0,0,0);
 	text-shadow:0 0 3px #aaa;
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing:1px;
 	font-size: 26px;
 	font-weight: 100;
 	text-decoration:none;
@@ -70,18 +72,21 @@ h1:hover{
 }
 .links a#active{
 	color:#888;
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing:1px;
 	font-size: 26px;
 	font-weight: 100;
 	text-decoration:none;
+	text-shadow:0 0 0px #aaa;
 }
 .links a t{
 	font: 30px 'Helvetica Neue', Arial, sans-serif;
 	line-height: 0;
+	letter-spacing:3px;
 }.links a#active t{color:#4af;}
 .links a:hover{
 	color:#696969;
-	text-shadow:0 0 0px #000;
+	text-shadow:0 0 0px #aaa;
 	-webkit-transition:all 0.6s;
    	   -moz-transition:all 0.6s;
 		 -o-transition:all 0.6s;
