@@ -1,0 +1,8 @@
+<!-- Tipo di codifica dei dati, DEVE essere specificato come segue -->
+<form enctype="multipart/form-data" action="./up.php" method="POST">
+    <!-- MAX_FILE_SIZE deve precedere campo di input del nome file -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+    <!-- Il nome dell'elemento di input determina il nome nell'array $_FILES -->
+    Send this file: <input name="userfile" type="file" />
+    <input type="submit" value="Send File" />
+</form>

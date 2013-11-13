@@ -24,7 +24,7 @@ $("#key").keyup(function () {
   	var unlocker = $(this).val();
 	
 	if(unlocker.length<1)
-		document.getElementById('output').innerHTML=stringa;//or document.getElementById('decrypted').innerHTML = "Decrypted: ";
+		document.getElementById('output').innerHTML=stringa;
 	else{
 		//svuoto la stringa che uscirà(altrimenti dalla seconda volta aggiunge sempre più dati...)
 		arraydecrypted="";

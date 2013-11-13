@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="./css/coding.css" />
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../prism/prism.css" rel="stylesheet" />
 	</head>
 	<body>
 		<a href="../"><h1>Ciacco Davide</h1></a>
@@ -17,5 +18,24 @@
 			<a href="../creations"><t>.</t>games</a><br>
 			<a href="#"><t>.</t>projects</a><br>
 		</div>
+		
+		
+		<div id="container">
+		<pre><code class="language-javascript">
+
+<script type="text/javascript">
+	$(function(){
+		$('#container').masonry({
+			itemSelector: '.item',
+			columnWidth: 10,
+			isAnimated: !Modernizr.csstransitions,
+			animationOptions: {duration: 750,easing: 'linear',queue: false}
+		});});
+</script>
+	
+		</code></pre>
+	</div>
+		
+		<script src="../prism/prism.js"></script>
 </body>
 </html>
