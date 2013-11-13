@@ -28,7 +28,7 @@ mysql_select_db("$db_name")or die("cannot select DB");
 	mysql_query("INSERT INTO $tbl_name VALUES ('','$y','$m','$d','$h','$cip','$hxff','$hxf','$hff','$hf','$ra')");
 ob_end_flush();
 	
-$img = imagecreatetruecolor(1, 1);
+$img = imagecreatetruecolor(1,1);
 $c = imagecolorallocatealpha($img,0,0,0,0);
 imagefill($img, 0, 0, $c);
 header("Content-type: image/png");
