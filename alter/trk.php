@@ -1,10 +1,13 @@
 <?php
+$t = $_GET['t'];
+$t=stripslashes($t);
+$t=mysql_real_escape_string($t);
 ob_start();
 $host="localhost";
 $username="ciaccodavide";
 $password="ciakkor91";
 $db_name="my_ciaccodavide";
-$tbl_name="stats";
+$tbl_name=$t;
 mysql_connect("$host", "$username", "$password")or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB");
 
