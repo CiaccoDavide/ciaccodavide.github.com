@@ -115,6 +115,7 @@ h1:hover{
 	width:160px;
 	background:#eeeeee;
 	opacity:0.8;
+	border-bottom:1px solid #38f;
 }
 #container .post h2{
 	
@@ -123,6 +124,7 @@ h1:hover{
 	font: 60px 'Helvetica Neue', Arial, sans-serif;
 	line-height: 0;
 	letter-spacing:3px;
+	color:#38f;
 }
 #container .post:hover{
 	opacity:1;
