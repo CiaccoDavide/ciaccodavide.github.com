@@ -108,30 +108,32 @@ h1:hover{
 	bottom:20px;
 	float:left;
 }
-#container .post{
+#container a .post{
 	float:left;
 	margin:10px;
 	padding:10px;
 	width:200px;height:200px;
 	background:#eeeeee;
+	color:#aaa;
+	text-decoration:none;
 	border-bottom:2px solid #38f;
 }
-#container .post:hover{
+#container a .post:hover{
 	cursor:pointer;
 	background:#f6f6f6;
 }
-#container .post h2{
+#container a .post h2{
 	font-family: 'Raleway', sans-serif;
 	font-size: 30px;display:inline;
 }
-#container .post t{display:inline;
+#container a .post t{display:inline;
 	font: 90px 'Helvetica Neue', Arial, sans-serif;
 	line-height: 0;
 	letter-spacing:3px;
 	color:#38f;
 	opacity:0.8;
 }
-#container .post desc{
+#container a .post desc{
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
 }
