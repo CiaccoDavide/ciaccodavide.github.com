@@ -99,7 +99,8 @@ h1:hover{
 #container{
 	position:fixed;
 	padding:20px;
-	overflow:scroll;
+	overflow-x:hidden;
+	overflow-y:scroll;
 	left:160px;
 	right:20px;
 	top:80px;
