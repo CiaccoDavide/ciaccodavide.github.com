@@ -112,9 +112,8 @@ h1:hover{
 	float:left;
 	margin:10px;
 	padding:10px;
-	width:160px;
+	width:200px;
 	background:#eeeeee;
-	opacity:0.8;
 	border-bottom:1px solid #38f;
 }
 #container .post h2{
@@ -126,12 +125,17 @@ h1:hover{
 	line-height: 0;
 	letter-spacing:3px;
 	color:#38f;
+	opacity:0.8;
 }
 #container .post desc{
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
 }
-#container .post:hover{
+#container .post:hover t{
+	font: 90px 'Helvetica Neue', Arial, sans-serif;
+	line-height: 0;
+	letter-spacing:3px;
+	color:#38f;
 	opacity:1;
 }
 a{text-decoration:none;}
