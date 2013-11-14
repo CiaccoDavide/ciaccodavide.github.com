@@ -114,9 +114,8 @@ h1:hover{
 	padding:10px;
 	width:200px;height:200px;
 	background:#eeeeee;
-	color:#aaa;
+	color:#666;
 	text-decoration:none;
-	border-bottom:2px solid #38f;
 }
 #container a .post:hover{
 	cursor:pointer;
@@ -130,11 +129,13 @@ h1:hover{
 	font: 90px 'Helvetica Neue', Arial, sans-serif;
 	line-height: 0;
 	letter-spacing:3px;
-	color:#38f;
 	opacity:0.8;
 }
 #container a .post desc{
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
 }
+#container a .post#red{border-bottom:2px solid #38f;}
+#container a .post#red t{color:#38f;}
+
 a{text-decoration:none;}
