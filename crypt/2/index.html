@@ -1,0 +1,74 @@
+<!doctype html>  
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ciacco Davide</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta property="og:image" content="http://floatingminds.altervista.org/davideciacco/crypt/cryptr.png" />
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/crypt.css">
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+		<link rel="stylesheet" href="fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+	
+	<body>
+		<header>
+			<h1>Crypt 4.0</h1>
+		</header>
+		<input id="ti1" value ="TEST"/><input id="ti3"/>
+		<input id="ti2"/>
+		<button onclick="convert();">Convert!</button>
+		
+		<br><input label="back" id="bac"/>
+		
+		<script type="text/javascript">
+
+			function convert() {
+			
+				
+				
+				var op=document.getElementById("ti3"); 
+				var output=document.getElementById("ti2");  
+				var input=document.getElementById("ti1").value;
+					op.value="";
+					output.value = "";
+				var s1="";
+				var s2="";
+				var dec=document.getElementById("bac");  
+				
+				
+				for (i=0; i < input.length-1; i++) {
+					op.value +=input[i].charCodeAt(0).toString(30)+'.';
+				}op.value +=input[input.length-1].charCodeAt(0).toString(30);
+				
+				
+				//genera stringa di hex-charcode + divisore '.'	
+				for (i=0; i < input.length-1; i++) {
+					s1 +=input[i].charCodeAt(0).toString(30)+'.';
+				}s1 +=input[input.length-1].charCodeAt(0).toString(30);
+				
+				for (i=0; i < s1.length; i++) {
+					output.value +=s1[i].charCodeAt(0).toString(20)+'-';
+					s2 +=s1[i].charCodeAt(0).toString(20)+'-';
+				}
+				
+				var res = s2.split("-");
+				for (i=0; i < s2.length; i++) {
+					dec.value += String.fromCharCode(res[i].toString(10));
+					
+				}
+				
+				String.fromCharCode(65);
+				
+				
+				op.value += String.fromCharCode(parseInt(bin, 2));
+			}
+			
+			
+		</script>
+		
+	</body>
+</html>
+
