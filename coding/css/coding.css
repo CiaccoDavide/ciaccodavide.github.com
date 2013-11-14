@@ -118,13 +118,18 @@ h1:hover{
 	border-bottom:1px solid #38f;
 }
 #container .post h2{
-	
+	font-family: 'Raleway', sans-serif;
+	font-size: 30px;
 }
 #container .post t{
-	font: 60px 'Helvetica Neue', Arial, sans-serif;
+	font: 90px 'Helvetica Neue', Arial, sans-serif;
 	line-height: 0;
 	letter-spacing:3px;
 	color:#38f;
+}
+#container .post desc{
+	font-family: 'Raleway', sans-serif;
+	font-size: 18px;
 }
 #container .post:hover{
 	opacity:1;
