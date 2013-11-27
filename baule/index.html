@@ -5,7 +5,8 @@
 		<title>Il Baule di Giulietta</title>  
 		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<script type='text/javascript' src='../js/jquery.transit.min.js'></script>
+		<script type='text/javascript' src='./js/jquery.min.js'></script>
+		<script type='text/javascript' src='./js/jquery.transit.min.js'></script>
 	</head>
 	<body>
 	
@@ -17,13 +18,16 @@
 		</div>
 		
 		
-		<script type="text/javascript">
+		
+	</body><script type="text/javascript">
+	
 			$( ".sensible" ).click(function() {
-				$(body).transition({ x: '400px' });
-				//$( "#br" ).animate({right: "100%"});
-				//$( "#l" ).animate({left: "30%"});
-				//$( "#r" ).animate({right: "100%"});
+				$("#l").transition({ x: '-400px' });
+				$('#r').transition({ x: '600px' });
+				$("#bl").transition({ x: '-400px' });
+				$('#br').transition({ x: '600px' });
 			});
+			
+
 		</script>
-	</body>
 </html>
