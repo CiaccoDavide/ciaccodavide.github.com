@@ -2,16 +2,18 @@
 html {}
 body {
 	width:100%;margin:0;padding:0;
-	background: #ffffdd;
+	background: #aaa;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	background-image:url('../img/bodybg.png');
+	background-attachment:fixed;
 }
-#main{
+#main{z-index:1000;
 	position:fixed;
 	top:0;
 	bottom:0;
 	width:100%;
 	height:100%;
-	background:#fff;/*nero va più che bene! brwn: #3D2D16*/
+	/*background:#fff;/*nero va più che bene! brwn: #3D2D16*/
 	/*
 	background-image:url('../img/bgbigsf2.png');
 	background-attachment:fixed;
@@ -63,3 +65,52 @@ body {
 }
 #main .logo .sensible{opacity:0.8;}
 #main .logo .sensible:hover{opacity:1;cursor:pointer;}
+
+
+
+header{
+	padding:10px;
+	width:100%;
+	height:120px;
+}
+header img{
+	float:left;
+	height:100%;
+	border:none;
+	margin:0;
+}
+header .hr{
+	float:left;
+	/*background:rgba(0,0,0,0.6);*/
+	width:60%;
+	height:100%;
+	background-image:url('../img/dot.png');
+	background-size: auto 100%;
+	background-repeat: repeat;
+	background-position:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

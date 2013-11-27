@@ -9,25 +9,34 @@
 		<script type='text/javascript' src='./js/jquery.transit.min.js'></script>
 	</head>
 	<body>
-	
 		<div id="main">
 			<div id="bl"></div><div id="br"></div>
 			<div class="logo">
 				<span class="sensible"><img id="l" src="./img/logol.png"/><img id="r" src="./img/logor.png"/></span>
 			</div>
 		</div>
-		
-		
-		
-	</body><script type="text/javascript">
-	
-			$( ".sensible" ).click(function() {
-				$("#l").transition({ x: '-400px' });
-				$('#r').transition({ x: '600px' });
-				$("#bl").transition({ x: '-400px' });
-				$('#br').transition({ x: '600px' });
-			});
+		<header>
+			<img src="./img/logo.png"/><div class="hr">&nbsp</div>
+		</header>
+		<div id="contents">
 			
-
-		</script>
+			
+		</div>
+	</body>
+	
+	
+	
+	
+	<script type="text/javascript">
+			$( ".sensible" ).click(
+				function() {
+					$("#l").transition({ x: '-600px' },1000,'linear');
+					$('#r').transition({ x: '900px' },1000,'linear');
+					$("#bl").transition({ x: '-600px' },1000,'linear');
+					$('#br').transition({ x: '900px' },1000,'linear');
+					$("#main").transition({opacity:1},1000,'linear');
+					$("#main").transition({opacity:0});
+				}
+			);
+	</script>
 </html>
