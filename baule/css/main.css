@@ -1,0 +1,65 @@
+*{margin:0;padding:0;}
+html {}
+body {
+	width:100%;margin:0;padding:0;
+	background: #ffffdd;
+	font: 14px 'Helvetica Neue', Arial, sans-serif;
+}
+#main{
+	position:fixed;
+	top:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	background:#fff;/*nero va più che bene! brwn: #3D2D16*/
+	/*
+	background-image:url('../img/bgbigsf2.png');
+	background-attachment:fixed;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position:right;
+	*/
+}
+#main #bl{
+	position:absolute;
+	right:60%;/*864px*/
+	width:40%;
+	height:100%;
+	background:#fafafa;
+	background-image:url('../img/bgbigsf2.png');
+	background-attachment:fixed;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position:right;
+}
+#main #br{
+	position:absolute;
+	left:40%;/*576px*/
+	width:60%;
+	height:100%;
+	background:#afafaf;
+	background-image:url('../img/bgbigsf2.png');
+	background-attachment:fixed;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position:left;
+}
+#main .logo{
+	position:absolute;
+	width:100%;
+	height:35%;
+	background:rgba(255,255,255,0);
+	top:5%;
+}
+#main .logo #l{
+	position:absolute;
+	height:100%;
+	right:60%;/*864px*/
+}
+#main .logo #r{
+	position:absolute;
+	height:100%;
+	left:40%;/*576px*/
+}
+#main .logo .sensible{opacity:0.8;}
+#main .logo .sensible:hover{opacity:1;cursor:pointer;}
