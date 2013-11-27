@@ -10,13 +10,13 @@
 	</head>
 	<body>
 		<div id="main">
-			<div id="bl"></div><div id="br"></div>
+			<div id="br"></div><div id="bl"></div>
 			<div class="logo">
 				<span class="sensible"><img id="l" src="./img/logol.png"/><img id="r" src="./img/logor.png"/></span>
 			</div>
 		</div>
 		<header>
-			<img src="./img/logo.png"/><div class="hr">&nbsp</div>
+			<img id="headlogo" src="./img/logo.png"/><div class="hr">&nbsp</div>
 		</header>
 		<div id="contents">
 			
@@ -30,12 +30,29 @@
 	<script type="text/javascript">
 			$( ".sensible" ).click(
 				function() {
-					$("#l").transition({ x: '-600px' },1000,'linear');
-					$('#r').transition({ x: '900px' },1000,'linear');
-					$("#bl").transition({ x: '-600px' },1000,'linear');
-					$('#br').transition({ x: '900px' },1000,'linear');
-					$("#main").transition({opacity:1},1000,'linear');
-					$("#main").transition({opacity:0});
+					$("#l").transition({ x: '-600px' },800,'linear');
+					$('#r').transition({ x: '900px' },800,'linear');
+					$("#bl").transition({ x: '-600px' },800,'linear');
+					$('#br').css( {'background-color': "rgba(0,0,0,0)"} );
+					$('#br').transition({ x: '900px' },800,'linear');
+					$("#main").transition({opacity:1},800,'linear');
+					$("#main").transition({ y: '-900px' },800,'linear');
+				}
+			);
+			$( "#headlogo" ).click(
+				function() {
+					$("#main").transition({ y: '0px' },800,'linear');
+					
+					$("#l").transition({opacity:1},800,'linear');
+					$('#r').transition({opacity:1},800,'linear');
+					$("#bl").transition({opacity:1},800,'linear');
+					$('#br').transition({opacity:1},800,'linear');
+					
+					$("#l").transition({ x: '0px' },800,'linear');
+					$('#r').transition({ x: '0px' },800,'linear');
+					$("#bl").transition({ x: '0px' },800,'linear');
+					$('#br').transition({ x: '0px' },800,'linear');
+					//$('#br').css( {'background-color': "#afafaf"},1800,'linear');
 				}
 			);
 	</script>
