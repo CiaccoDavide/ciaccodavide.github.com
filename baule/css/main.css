@@ -27,7 +27,7 @@ body {
 	right:60%;/*864px*/
 	width:40%;
 	height:100%;
-	background:#fafafa;
+	background:#E1D9D2;
 	background-image:url('../img/bgbigsf2.png');
 	background-attachment:fixed;
 	background-size: 100% auto;
@@ -39,7 +39,7 @@ body {
 	left:0;/*576px*/
 	width:100%;
 	height:100%;
-	background-color:#afafaf;
+	background-color:#E1D9D2;
 	background-image:url('../img/bgbigsf2rtr.png');
 	background-attachment:fixed;
 	background-size: 100% auto;
