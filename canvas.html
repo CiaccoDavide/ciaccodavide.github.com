@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ciacco Davide</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+	<body>
+
+		<canvas id="myCanvas"></canvas>
+	
+	
+		<script>
+			function writeMessage(canvas, message) {
+				var context = canvas.getContext('2d');
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				context.font = '18pt Calibri';
+				context.fillStyle = 'black';
+				context.fillText(message, 10, 25);
+			}
+			function getMousePos(canvas, evt) {
+				var rect = canvas.getBoundingClientRect();
+				return {
+					x: evt.clientX - rect.left,
+					y: evt.clientY - rect.top
+				};
+			}
+			var canvas = document.getElementById('myCanvas');
+			var context = canvas.getContext('2d');
+
+			canvas.addEventListener('mousemove', function(evt) {
+				var mousePos = getMousePos(canvas, evt);
+				var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+				var x = mousePos.x;var y = mousePos.y;
+				writeMessage(canvas, message);
+				disegna(canvas,x,y);
+			}, false);
+		  
+		  
+
+		function disegna(canvas,x,y) {
+			var context = canvas.getContext('2d');
+			context.beginPath();
+			      context.arc(x, y, 100, 0, 2 * Math.PI, false);
+			      context.fillStyle = 'green';
+			      context.fill();
+			      context.lineWidth = 5;
+			      context.strokeStyle = '#003300';
+			      context.stroke();
+		}
+
+		</script>
+	</body>
+</html>
