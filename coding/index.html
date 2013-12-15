@@ -37,6 +37,9 @@
 			//document.getElementById("asd").innerHTML = got;
 			var gotarray = got.split("#");
 			var got = gotarray[1];
+			var red = gotarray[2];
+			if(red=="1")
+				window.location = './#'+got;
 			if(got==null||got=='000')
 				$("#container").load('./page/000.html');
 			else
