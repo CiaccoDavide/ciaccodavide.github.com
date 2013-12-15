@@ -52,8 +52,9 @@
 				
 			$(function() {
 				$(document).on('click', '#linked', function(e) {
-					window.location = 'http://ciaccodavi.de/coding/#001';
-					//$("#container").load('./page/001.html');
+					var idto = $(this).attr('src');
+					window.location = '/#'+idto+'';
+					$("#container").load('./page/#'+idto+'.html');
 			       	e.preventDefault();
 			   	});
 			});
