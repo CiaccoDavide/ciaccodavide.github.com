@@ -69,9 +69,10 @@ body {
 
 
 header{
+	background:rgba(0,0,30,0.5);
 	margin:1%;
 	width:98%;
-	height:120px;
+	height:180px;
 }
 header img{
 	float:left;
@@ -91,7 +92,51 @@ header .hr{
 	background-repeat: repeat;
 	background-position:left;
 }
-
+#menu{
+	background:rgba(0,30,0,0.5);
+	position:fixed;
+	top:220px;
+	left:0;
+	width:180px;
+	bottom:0;
+	padding:10px;
+}
+#menu img{
+	padding: 10px 0 10px 0;
+	width:120px;
+	height:auto;
+}
+#menu a{
+	color:#333333;
+	display:block;
+	text-decoration:none;
+}
+#menu a:visited{
+	text-decoration:none;
+}
+#menu a:active{
+	text-decoration:none;
+}
+#menu a:hover{
+	color:#aaaaaa;
+	text-decoration:none;
+}
+#menu #toshop{
+	opacity:0.8;
+}
+#menu #toshop:hover{
+	opacity:1;
+}
+#contents{
+	position:fixed;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	top:220px;
+	left:180px;
+	bottom:0;
+	right:0;
+	background:rgba(30,0,0,0.5);
+}
 
 
 

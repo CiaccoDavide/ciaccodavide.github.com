@@ -7,6 +7,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="../prism/prism.css" rel="stylesheet" />
+		<script type='text/javascript' src='../js/jquery.min.js'></script>
 	</head>
 	<body>
 		<a href="../"><h1>Ciacco Davide</h1></a>
@@ -21,29 +22,25 @@
 		
 		
 		<div id="container">
-			<a href="#">
-			<div class="post" id="red">
-				<t>.</t><h2>Titolo</h2>
-				<div class="desc"> Qui ci sarà una breve descrizione...</div>
-			</div>
-			</a>
-			
-			<a href="#">
-			<div class="post" id="green">
-				<t>.</t><h2>Titolo</h2>
-				<div class="desc"> Qui ci sarà una breve descrizione...</div>
-			</div>
-			</a>
-			
-			<a href="#">
-			<div class="post" id="blue">
-				<t>.</t><h2>Titolo</h2>
-				<div class="desc"> Qui ci sarà una breve descrizione...</div>
-			</div>
-			</a>
-			
+			<br><br><br>
+			<div id="asd"><br><br><br>a<br><br><br>a<br><br><br>a</div>
 		</div>
 		
 		<script src="../prism/prism.js"></script>
+		<script type="text/javascript">
+		
+		$( document ).ready(function() {
+			var got = window.location.href;
+			//document.getElementById("asd").innerHTML = got;
+			var gotarray = got.split("#");
+			var got = gotarray[1];
+			//if(got=='000')
+			$("#asd").load('./page/a000.html');
+		});
+			
+			//else
+			//	$('#container').load('./000.html');
+				
+		</script>
 	</body>
 </html>
