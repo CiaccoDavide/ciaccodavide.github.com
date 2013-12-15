@@ -53,7 +53,7 @@
 			$(function() {
 				$(document).on('click', '.linked', function(e) {
 					var idto = $(this).attr('id');
-					window.location = '/#'+idto+'';
+					window.location = './#'+idto+'';
 					$("#container").load('./page/#'+idto+'.html');
 			       	e.preventDefault();
 			   	});
