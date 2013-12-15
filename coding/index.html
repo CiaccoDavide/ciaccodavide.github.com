@@ -22,8 +22,7 @@
 		
 		
 		<div id="container">
-			<br><br><br>
-			<div id="asd"><br><br><br>a<br><br><br>a<br><br><br>a</div>
+			
 		</div>
 		
 		<script src="../prism/prism.js"></script>
@@ -34,8 +33,10 @@
 			//document.getElementById("asd").innerHTML = got;
 			var gotarray = got.split("#");
 			var got = gotarray[1];
-			//if(got=='000')
-			$("#asd").load('./page/a000.html');
+			if(got==null||got=='000')
+				$("#container").load('./page/000.html');
+			else
+				$("#container").load('./page/'+got+'.html');
 		});
 			
 			//else
