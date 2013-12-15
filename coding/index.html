@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		
 		<meta charset="UTF-8">
 		<title>Ciacco Davide</title>  
 		<link rel="stylesheet" type="text/css" media="screen" href="./css/coding.css" />
@@ -8,10 +12,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="../prism/prism.css" rel="stylesheet" />
 		<script type='text/javascript' src='../js/jquery.min.js'></script>
-		
-		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-		<meta http-equiv="Pragma" content="no-cache" />
-		<meta http-equiv="Expires" content="0" />
 	</head>
 	<body>
 		<a href="../"><h1>Ciacco Davide</h1></a>
@@ -38,8 +38,8 @@
 			var gotarray = got.split("#");
 			var got = gotarray[1];
 			var red = gotarray[2];
-			if(red=="1")
-				window.location = './#'+got;
+			//if(red=="1")
+			//	window.location = './#'+got;
 			if(got==null||got=='000')
 				$("#container").load('./page/000.html');
 			else
