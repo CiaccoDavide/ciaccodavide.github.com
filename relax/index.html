@@ -19,9 +19,39 @@
 		</div>
 		
 		<div id="container">
-			<iframe src="http://ciaccodavide.altervista.org/ciaccodavide/relax"></iframe>
+			<a href="">Newer</a><br>
+			<div class="relaxed"></div>
+			<br><a href="">Older</a>
 		</div>
 		
+		<script type="text/javascript">
 		
+		$( document ).ready(function() {
+			var got = window.location.href;
+			//document.getElementById("asd").innerHTML = got;
+			var gotarray = got.split("#");
+			var got = gotarray[1];
+			var red = gotarray[2];
+			//if(red=="1")
+			//	window.location = './#'+got;
+			if(got==null||got=='000')
+				$("#container").load('./page/000.html');
+			else
+				$("#container").load('./page/'+got+'.html');
+		});
+			
+			//else
+			//	$('#container').load('./000.html');
+				
+				
+			$(function() {
+				$(document).on('click', '.linked', function(e) {
+					var idto = $(this).attr('id');
+					window.location = './#'+idto+'';
+					$("#container").load('./page/'+idto+'.html');
+			       	e.preventDefault();
+			   	});
+			});
+		</script>
 	</body>
 </html>

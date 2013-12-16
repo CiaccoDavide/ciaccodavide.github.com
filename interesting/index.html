@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ciacco Davide - Photos</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./css/main.css">
+		<script src="../js/jquery.min.js"></script>
+		<link rel="stylesheet" href="../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+	
+	<body>
+		
+		<a href="../"><h1>Ciacco Davide</h1></a>
+		<div class="links">
+			<a href="../about"><t>.</t>about</a><br>
+			<a href="../photos"><t>.</t>photos</a><br>
+			<a href="../coding"><t>.</t>coding</a><br>
+			<a href="#"><t>.</t>relax</a><br>
+			<a href="../creations/"><t>.</t>games</a><br>
+			<a href="#"><t>.</t>projects</a><br>
+			<a href="../interesting" id="active"><t>.</t>interesting stuff</a><br>
+		</div>
+		<div id="container">
+			<p>Links to some interesting stuff:</p><br>
+			<div id="lista">
+				
+			</div>
+			<div id="add">
+				<INPUT id="new" TYPE="text" NAME="unlockbox" VALUE="" placeholder="add a link"><button onclick="addlink()">Add</button>
+			</div>
+			<div id="unlockadd">
+				<INPUT id="key" TYPE="password" NAME="unlockbox" VALUE="">
+			</div>
+		</div>
+		
+		
+		<script>
+		$( document ).ready(function() {
+			$("#lista").load('./lista/lista.txt');
+		});
+		var stringa='ᒏ㙘ᓳ㫔ᐄ㭀ᒒ㘘ᕞ㤩ᐃ㩾ᓲ㯙ᐏ㡋ᖽ㠎ᐃ㠧ᓣ㯚ᐏ㢹ᖁ㙴ᕻ㢹ᖹ㗒ᔐ㩱ᔋ㯠ᐋ㗐ᖕ㕖ᕓ㩟ᖐ㗩ᕞ㠇ᐎ㣰ᕕ㗾ᐅ㘌ᖊ㱻ᒘ㥫ᖮ㤛ᖐ㚒ᖐ㛦ᖀ㰕ᕹ㦡ᕉ㩒ᖀ㰽ᕸ㣻ᐌ㨷ᕘ㨾ᑏ㦽ᖩ㡔ᖈ㤤';</script>
+		<script src="./dcrptd.js"></script>
+	</body>
+</html>
