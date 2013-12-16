@@ -107,27 +107,27 @@ h1:hover{
 	bottom:20px;
 	float:left;
 }
-lista a{
+#lista a{
 	text-decoration:none;
 	color:#888;
 	font: normal 18px Monaco, 'Courier New', monospace;
 }
-lista a:visited{
+#lista a:visited{
 	text-decoration:none;
 }
-lista a:hover{
+#lista a:hover{
 	text-decoration:none;
-}lista a t{
+}#lista a t{
 	font: 30px 'Helvetica Neue', Arial, sans-serif;
 	line-height: 0;
 	letter-spacing:3px;
-}lista a:hover t{color:#38f;}
-lista p{
+}#lista a:hover t{color:#38f;}
+#lista p{
 	font-size:20px;
 	font-family: 'Raleway', sans-serif;
 }
-lista a span{display:none;}
-lista a span{display:block;}
+#lista a span{display:none;}
+#lista a span{display:block;}
 
 
 
