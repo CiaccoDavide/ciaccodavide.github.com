@@ -126,7 +126,13 @@ p{
 	font-size:20px;
 	font-family: 'Raleway', sans-serif;
 }
-a span{visibility:hidden;}
+a span{
+	visibility:hidden;
+	font-size:16px;
+	color:#aaa;
+	padding-left:18px;
+	font-family: 'Raleway', sans-serif;
+}
 a:hover span{visibility:visible;}
 
 
