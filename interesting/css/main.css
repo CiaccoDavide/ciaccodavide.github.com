@@ -126,8 +126,8 @@ p{
 	font-size:20px;
 	font-family: 'Raleway', sans-serif;
 }
-a span{display:none;}
-a span{display:block;}
+a span{visibility:hidden;}
+a:hover span{visibility:visible;}
 
 
 
