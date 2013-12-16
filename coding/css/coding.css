@@ -146,6 +146,6 @@ h1:hover{
 #container a .post#blue t{color:#38f;}
 
 a{text-decoration:none;}
-code{
+pre{
 	overflow-x:scroll;
 }
