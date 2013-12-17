@@ -63,17 +63,17 @@
 			var x=0;
 			var img = document.getElementById("imgloop");
 	    
-				img.src = imgs[fn-1];
+			//	img.src = imgs[fn-1];
 			
-			/*function loopImage(){
+			function loopImage(){
     				x++;
-    				img.src = imgs[x];
+    				
+    				if(x%2==0)img.src = imgs[0];
+    				else img.src = imgs[1];
+    				
     				setTimeout("loopImage()", 1000);
-    			}*/
-    			for(var j=0;j<fn;j++){
-    				img.src = imgs[j];
     			}
-		//setTimeout("loopImage()", 1000);
+		setTimeout("loopImage()", 1000);
 		}
 		
     		
