@@ -37,6 +37,20 @@
 		
 		
 		<script>
+		function loopImage(){	
+				var img = document.getElementById("imgloop");
+	    
+				img.src = imgs[x];
+			    	x++;
+			
+				if(x >= fn){
+					x = 0;
+				} 
+			    
+	    
+	    		setTimeout("loopImage()", 1000);
+	    
+			}
 		function loadimg(){
 			var lnk = document.getElementById('link').value;
 			var fn = document.getElementById('fn').value;
@@ -48,20 +62,7 @@
 			}
 			var x=0;
 			
-			function loopImage(){	
-				var img = document.getElementById("imgloop");
-	    
-				img.src = imgs[x];
-			    	x++;
 			
-				if(x >= imgs.length){
-					x = 0;
-				} 
-			    
-	    
-	    		setTimeout("loopImage()", 1000);
-	    
-			}
 		setTimeout("loopImage()", 1000);
 		}
 		
