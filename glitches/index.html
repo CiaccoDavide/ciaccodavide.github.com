@@ -37,7 +37,7 @@
 		
 		
 		<script>
-		function loopImage(){	
+	/*	function loopImage(){	
 				var img = document.getElementById("imgloop");
 	    
 				img.src = imgs[x];
@@ -50,20 +50,22 @@
 	    
 	    		setTimeout("loopImage()", 1000);
 	    
-			}
+			}*/
 		function loadimg(){
 			var lnk = document.getElementById('link').value;
 			var fn = document.getElementById('fn').value;
-			document.getElementById('out').innerHTML=lnk + " | " + fn;
 			//load images links into array
 			var imgs = new Array();
 			for(var i=0;i<fn;i++){
 				imgs[i]='http://ciaccodavide.altervista.org/tests/phpstuff/elb/index.php?file='+lnk+'?n='+i;
 			}
+			document.getElementById('out').innerHTML=lnk + " | " + fn + " -> " + imgs[0];
 			var x=0;
+			var img = document.getElementById("imgloop");
+	    
+				img.src = imgs[x];
 			
-			
-		setTimeout("loopImage()", 1000);
+		//setTimeout("loopImage()", 1000);
 		}
 		
     
