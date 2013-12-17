@@ -44,10 +44,10 @@
 		function loopImage(){
     			x++;
     			
-    			if(x%2==0)img.src = imgs[0];
-    			else img.src = imgs[1];
+    			if(x>=imgs.length)x=0;
+    			img.src = imgs[x];
     			
-    			setTimeout("loopImage()", 1000);
+    			setTimeout("loopImage()", 100);
     		}
 		function loadimg(){
 			var lnk = document.getElementById('link').value;
@@ -62,7 +62,7 @@
 			//	img.src = imgs[fn-1];
 			
 			
-    			setTimeout("loopImage()", 1000);
+    			setTimeout("loopImage()", 100);
 		}
 		
 		
