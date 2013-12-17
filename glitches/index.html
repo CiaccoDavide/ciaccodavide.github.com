@@ -47,22 +47,24 @@
 				imgs[i]='http://ciaccodavide.altervista.org/tests/phpstuff/elb/index.php?file='+lnk+'?n='+i;
 			}
 			var x=0;
+			
+			function loopImage(){	
+				var img = document.getElementById("imgloop");
+	    
+				img.src = imgs[x];
+			    	x++;
+			
+				if(x >= imgs.length){
+					x = 0;
+				} 
+			    
+	    
+	    		setTimeout("loopImage()", 1000);
+	    
+			}
 		setTimeout("loopImage()", 1000);
 		}
-		function loopImage(){	
-			var img = document.getElementById("imgloop");
-    
-			img.src = imgs[x];
-		    	x++;
 		
-			if(x >= imgs.length){
-				x = 0;
-			} 
-		    
-    
-    		setTimeout("loopImage()", 1000);
-    
-		}
     
 
 		</script>
