@@ -64,15 +64,15 @@
 			var img = document.getElementById("imgloop");
 	    
 				img.src = imgs[x];
-			
-		setTimeout("loopImage()", 1000);
-		}
-		
-    		function loopImage(){
+			function loopImage(){
     			x++;
     			img.src = imgs[x];
     			setTimeout("loopImage()", 1000);
     		}
+		setTimeout("loopImage()", 1000);
+		}
+		
+    		
 
 		</script>
 	</body>
