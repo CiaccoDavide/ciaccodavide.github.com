@@ -32,6 +32,7 @@
 			</div>
 			
 			<div id="out"></div>
+			<img id="imgloop" src="">
 		</div>
 		
 		
@@ -40,12 +41,30 @@
 			var lnk = document.getElementById('link').value;
 			var fn = document.getElementById('fn').value;
 			document.getElementById('out').innerHTML=lnk + " - " + fn;
-			
+			//load images links into array
 			var imgs = new Array();
 			for(var i=0;i<fn;i++){
 				imgs[i]='http://ciaccodavide.altervista.org/tests/phpstuff/elb/index.php?file='+lnk+'?n='+i;
 			}
+			var x=0;
+		setTimeout("loopImage()", 1000);
 		}
+		function loopImage(){	
+			var img = document.getElementById("imgloop");
+    
+			img.src = imgs[x];
+		    	x++;
+		
+			if(x >= imgs.length){
+				x = 0;
+			} 
+		    
+    
+    		setTimeout("loopImage()", 1000);
+    
+		}
+    
+
 		</script>
 	</body>
 </html>
