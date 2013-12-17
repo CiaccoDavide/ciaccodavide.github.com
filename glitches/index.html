@@ -51,6 +51,16 @@
 	    		setTimeout("loopImage()", 1000);
 	    
 			}*/
+			
+			
+		function loopImage(){
+    			x++;
+    			
+    			if(x%2==0)img.src = imgs[0];
+    			else img.src = imgs[1];
+    			
+    			setTimeout("loopImage()", 1000);
+    		}
 		function loadimg(){
 			var lnk = document.getElementById('link').value;
 			var fn = document.getElementById('fn').value;
@@ -68,14 +78,7 @@
 			
 		loopImage();
 		}
-		function loopImage(){
-    				x++;
-    				
-    				if(x%2==0)img.src = imgs[0];
-    				else img.src = imgs[1];
-    				
-    				setTimeout("loopImage()", 1000);
-    			}
+		
 		
     		
 
