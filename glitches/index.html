@@ -65,7 +65,9 @@
 	    
 			//	img.src = imgs[fn-1];
 			
-			function loopImage(){
+			
+		setTimeout("loopImage()", 1000);
+		}function loopImage(){
     				x++;
     				
     				if(x%2==0)img.src = imgs[0];
@@ -73,8 +75,6 @@
     				
     				setTimeout("loopImage()", 1000);
     			}
-		setTimeout("loopImage()", 1000);
-		}
 		
     		
 
