@@ -39,13 +39,13 @@
 		$( document ).ready(function() {
 			$("#lista").load('./lista/lista.txt');
 		}
+		);
 		
-		loadimg(){
+		function loadimg(){
 			var lnk = document.getElementById('link').value;
 			var fn = document.getElementById('fn').value;
 			document.getElementById('out').innerHTML=lnk + " - " + fn;
 		}
-		);
 		</script>
 	</body>
 </html>
