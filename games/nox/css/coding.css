@@ -109,41 +109,44 @@ h1:hover{
 	float:left;
 }
 #container a:visited{decoration:none;}
-#container a .post{
+#container .post a{color:#888;padding:6px;line-height:30px;}
+#container .post a:hover{color:#333;}
+#container .post a:visited{color:#888;}
+#container .post{
 	float:left;
 	margin:10px;
 	padding:10px;
-	width:200px;height:200px;
+	width:80%;height:80%;
 	background:#eeeeee;
 	color:#666;
 	text-decoration:none;
 }
-#container a .post:hover{
+#container .post:hover{
 	cursor:pointer;
 	background:#f6f6f6;
 }
-#container a .post h2{
+#container .post h2{
 	font-family: 'Raleway', sans-serif;
 	font-weight:200;
 	font-size: 30px;display:inline;
 	color:#333;
 }
-#container a .post t{display:inline;
+#container .post t{display:inline;
 	font: 90px 'Helvetica Neue', Arial, sans-serif;
 	line-height: 0;
 	letter-spacing:0px;
 	opacity:0.8;
 }
-#container a .post desc{
+#container .post desc{
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
 }
-#container a .post#red{border-bottom:2px solid #f66;}
-#container a .post#red t{color:#f66;}
-#container a .post#green{border-bottom:2px solid #9e6;}
-#container a .post#green t{color:#9e6;}
-#container a .post#blue{border-bottom:2px solid #38f;}
-#container a .post#blue t{color:#38f;}
+#container .post#red{border-bottom:2px solid #f66;}
+#container .post#red t{color:#f66;}
+#container .post#green{border-bottom:2px solid #9e6;}
+#container .post#green t{color:#9e6;}
+#container .post#blue{border-bottom:2px solid #38f;}
+#container .post#blue t{color:#38f;}
 
 a{text-decoration:none;}
 pre{
