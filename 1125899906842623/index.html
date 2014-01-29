@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ciacco Davide</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script src="./jquery-1.11.0.min.js"></script>
+	</head>
+	<body>
+		<h1>1&thinsp;125&thinsp;899&thinsp;906&thinsp;842&thinsp;623 Avatars</h1>
+		
+		<a class="button" href="http://ciaccodavide.altervista.org/qbdp/perpets/?counter=random" download="cd_avatar">Download one random!</a><br><br><br><p> Or scroll down to generate more!</p>
+		
+		<div id="loader">
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+			var loader = $("#loader");
+			var i = 1;
+			
+			for(var x=0;x<100;x++){loader.append('<a src="http://ciaccodavide.altervista.org/qbdp/perpets/?counter='+i+'" download><img src="http://ciaccodavide.altervista.org/qbdp/perpets/?counter='+i+'"></a>'); i++;}
+			
+			var pos = loader.offset().top;  
+			
+					
+					
+				$(window).scroll(function() {
+					var windowpos = $(window).scrollTop() ;
+					
+					if(windowpos + $(window).height() == $(document).height()){//è in basso
+						for(var x=0;x<100;x++){loader.append('<img src="http://ciaccodavide.altervista.org/qbdp/perpets/?counter='+i+'">'); i++;}
+					}else if(windowpos >= pos){
+						//torna su
+					}else{
+						for(var x=0;x<100;x++){loader.append('<img src="http://ciaccodavide.altervista.org/qbdp/perpets/?counter='+i+'">'); i++;}
+					}
+				});
+			});   
+		</script>
+	</body>
+</html>
