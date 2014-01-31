@@ -13,6 +13,7 @@ font-family: 'Raleway', sans-serif; // - 100,200
 body #left a img{width:160px;opacity:0.8;}
 body #left a:hover img{opacity:1;}
 body #left{
+	box-shadow:1px 0 0 #ccc;
 	position:fixed;
 	left:0;
 	background:#eee;
@@ -29,7 +30,8 @@ body #right{
 	top:0px;
 	bottom:0px;
 }
-h1{ text-shadow:1px 1px 0px #eee;
+h1{
+	text-shadow:1px 1px 0px #eee;
 	text-align:center;
 	padding:10px 0 0 0; /*top right bottom left*/
 	margin:0;
