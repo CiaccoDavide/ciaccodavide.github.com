@@ -27,9 +27,7 @@
 			</div>
 		</div>
 		<div id="right">
-			
 		</div>
-		
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var loader = $("#right");
@@ -43,13 +41,13 @@
 			}
 			
 			var pos = loader.offset().top;
-			while(i<215){
+			
 			$(window).scroll(function() {
 				var windowpos = $(window).scrollTop() ;
 				
-				if(windowpos + $(window).height() == $(document).height()){//è in basso
+				if(i<215 && windowpos + $(window).height() == $(document).height()){//è in basso
 					for(var x=0;x<20;x++){
-						if(i<100)
+						if(i<215 && i<100)
 							loader.append('<a src="./stored/dl/cd_0_0'+i+'" download><img src="./stored/dl/cd_0_0'+i+'"></a>');
 						else if(i<215)
 							loader.append('<a src="./stored/dl/cd_0_'+i+'" download><img src="./stored/dl/cd_0_'+i+'"></a>');
@@ -63,8 +61,10 @@
 						i++;
 					}
 				}*/
+					
+					
 			});
-			}
+			
 		});   
 	</script>
 </body>
