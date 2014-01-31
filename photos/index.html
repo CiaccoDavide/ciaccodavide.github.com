@@ -1,291 +1,71 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 	<head>
-		<meta charset="utf-8">
-		<title>Ciacco Davide - Photos</title>
-		<meta name="description" content="Realized using css3, html5, JS and PHP">
-		<meta name="author" content="Davide Ciacco">
-		<meta name="viewport" content="width=800, user-scalable=yes">
+		<meta charset="UTF-8">
+		<title>Ciacco Davide</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/photos.css" />
+		<link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="./css/stretto.css" />
+		<link rel="stylesheet" type="text/css" media="screen and (min-width: 601px)" href="./css/largo.css" />
+		<link rel='stylesheet' type="text/css" media='screen and (max-height: 200px)' href='./css/mobile.css' />
+		<script src="./jquery-1.11.0.min.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="./css/photos.css">
-		<script src="../js/jquery.min.js"></script>
-		<link rel="stylesheet" href="../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	</head>
-	
 	<body>
-		
-		<a href="../"><h1>Ciacco Davide</h1></a>
-		<div class="links">
-			<a href="../about"><t>.</t>about</a><br>
-			<a href="../photos" id="active"><t>.</t>photos</a><br>
-			<a href="../coding"><t>.</t>coding</a><br>
-			<a href="#"><t>.</t>relax</a><br>
-			<a href="../games/"><t>.</t>games</a><br>
-			<a href="#"><t>.</t>projects</a><br>
-			<a href="../interesting"><t>.</t>interesting stuff</a><br>
+		<div id="left">
+			<a href="./"><img src="../ritrattocd.png"></a>
+			<h1>Ciacco Davide</h1>
+			<div class="links">
+				<a href="../about"><t>.</t>about</a><br>
+				<a href="./" id="active"><t>.</t>photos</a><br>
+				<a href="../coding"><t>.</t>coding</a><br>
+				<a href="../relax"><t>.</t>relax</a><br>
+				<a href="../games"><t>.</t>games</a><br>
+				<a href="#"><t>.</t>projects</a><br>
+				<a href="../interesting"><t>.</t>interesting stuff</a><br>
+				<a href="../webtools"><t>.</t>webtools</a><br>
+			</div>
 		</div>
-		<div id="container">
-			<photo id="all"><p><a href="photos/index.php?start=0&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/001-IMG_4242.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=1&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/002-IMG_4238.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=2&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/003-IMG_4235.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=3&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/004-IMG_3931.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=4&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/005-IMG_3845.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=5&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/006-IMG_3803.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=6&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/007-IMG_3783.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=7&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/008-IMG_3775.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=8&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/009-IMG_3726.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=9&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/010-IMG_3725.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=10&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/011-IMG_2389.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=11&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/012-IMG_1871.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=12&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/013-IMG_1862.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=13&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/014-IMG_1855.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=14&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/015-IMG_1830.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=15&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/016-IMG_1823.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=16&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/017-IMG_1795.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=17&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/018-IMG_1688.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=18&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/019-IMG_1661.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=19&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/020-IMG_1660.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=20&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/021-IMG_1644.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=21&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/022-IMG_1635.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=22&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/023-IMG_1634.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=23&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/024-IMG_1591.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=24&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/025-IMG_1586.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=25&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/026-IMG_1576.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=26&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/027-IMG_1383.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=27&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/028-IMG_1168.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=28&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/029-IMG_1167.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=29&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/030-IMG_1163.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=30&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/031-IMG_1156.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=31&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/032-IMG_1153.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=32&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/033-IMG_1131.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=33&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/034-IMG_1128.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=34&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/035-IMG_1113.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=35&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/036-IMG_0422.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=36&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/037-IMG_0420.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=37&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/038-IMG_0417.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=38&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/039-IMG_0391.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=39&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/040-IMG_0388.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=40&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/041-IMG_0239.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=41&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/042-IMG_0235.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=42&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/043-IMG_0203.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=43&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/044-IMG_0202.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=44&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/045-IMG_0173.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=45&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/046-IMG_0170.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=46&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/047-IMG_0166.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=47&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/048-IMG_0075.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=48&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/049-IMG_0074.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=49&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/050-IMG_0070.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=50&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/051-IMG_0068.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=51&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/052-IMG_0014.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=52&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/053-IMG_0013.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=53&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/054-IMG_0001.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=54&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/055-IMG_9990.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=55&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/056-IMG_9967.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=56&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/057-IMG_9964.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=57&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/058-IMG_9915.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=58&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/059-IMG_9986.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=59&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/060-IMG_9844.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=60&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/061-IMG_9841.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=61&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/062-IMG_9834.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=62&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/063-IMG_9829.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=63&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/064-IMG_9828.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=64&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/065-IMG_8208.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=65&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/066-IMG_8054.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=66&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/067-IMG_7757.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=67&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/068-IMG_7753.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=68&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/069-IMG_7752.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=69&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/070-IMG_7750.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=70&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/071-IMG_7748.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=71&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/072-IMG_7743.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=72&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/073-IMG_7738.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=73&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/074-IMG_7737.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=74&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/075-IMG_7735.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=75&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/076-IMG_7734.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=76&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/077-IMG_7733.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=77&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/078-IMG_7731.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=78&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/079-IMG_7716.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=79&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/080-IMG_7714.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=80&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/081-IMG_7711.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=81&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/082-IMG_7710.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=82&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/083-IMG_7706.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=83&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/084-IMG_7694.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=84&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/085-IMG_7693.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=85&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/086-IMG_7681.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=86&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/087-IMG_7675.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=87&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/088-IMG_7672.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=88&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/089-IMG_7671.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=89&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/090-IMG_7665.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=90&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/091-IMG_7661.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=91&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/092-IMG_7658.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=92&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/093-IMG_7657.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=93&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/094-IMG_7656.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=94&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/095-IMG_7652.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=95&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/096-IMG_7651.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=96&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/097-IMG_7648.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=97&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/098-IMG_7646.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=98&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/099-IMG_7640.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=99&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/100-IMG_7634.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=100&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/101-IMG_7633.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=101&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/102-IMG_7629.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=102&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/103-IMG_7626.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=103&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/104-IMG_7625.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=104&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/105-IMG_7623.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=105&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/106-IMG_7619.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=106&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/107-IMG_7618.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=107&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/108-IMG_7440.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=108&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/109-IMG_7436.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=109&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/110-IMG_7428.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=110&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/111-IMG_7423.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=111&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/112-IMG_7414.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=112&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/113-8rAgmv.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=113&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/114-gaREcf.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=114&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/115-IMG_6826.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=115&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/116-IMG_6824.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=116&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/117-IMG_6694_r.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=117&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/118-IMG_6500.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=118&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/119-IMG_6496.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=119&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/120-IMG_6482.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=120&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/121-IMG_6389.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=121&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/122-IMG_6383.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=122&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/123-IMG_6338.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=123&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/124-IMG_6337.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=124&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/125-IMG_6334.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=125&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/126-IMG_6329.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=126&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/127-IMG_6326.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=127&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/128-IMG_6325.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=128&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/129-IMG_6324.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=129&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/130-IMG_6298.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=130&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/131-IMG_6292.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=131&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/132-IMG_6241.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=132&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/133-IMG_6232.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=133&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/134-IMG_6223.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=134&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/135-IMG_6219.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=135&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/136-IMG_6189.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=136&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/137-IMG_5732.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=137&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/138-IMG_5591.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=138&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/139-IMG_5546 copia.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=139&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/140-IMG_5545 copia.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=140&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/141-IMG_5250.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=141&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/142-IMG_5133.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=142&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/143-IMG_5099.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=143&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/144-IMG_5031.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=144&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/145-IMG_4420.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=145&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/146-IMG_4410.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=146&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/147-IMG_4409.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=147&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/148-IMG_4408.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=148&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/149-IMG_4401.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=149&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/150-IMG_4288.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=150&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/151-IMG_4183.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=151&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/152-IMG_4157.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=152&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/153-IMG_4152.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=153&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/154-IMG_4132.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=154&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/155-IMG_4127.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=155&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/156-IMG_4093.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=156&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/157-IMG_4091.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=157&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/158-IMG_4071.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=158&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/159-IMG_4064.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=159&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/160-IMG_4063.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=160&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/161-IMG_4062.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=161&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/162-IMG_4054.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=162&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/163-IMG_1815.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=163&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/164-IMG_1142.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=164&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/165-DSCN3553.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=165&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/166-DSCN3532.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=166&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/167-DSCN3530.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=167&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/168-_DSC6600.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=168&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/169-_DSC6597.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=169&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/170-_DSC6490.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=170&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/171-DSC05606.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=171&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/172-DSC05267.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=172&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/173-Stitched_001.jpg" height="100" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=173&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/174-IMG_4059.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=174&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/175-DSCN0343.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=175&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/176-DSCN0342.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=176&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/177-DSCN0341.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=177&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/178-DSCN0339.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=178&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/179-DSCN5393.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=179&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/180-DSCN3989.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=180&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/181-DSCN2290.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=181&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/182-IMG_0457.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=182&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/183-IMG_0456.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=183&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/184-IMG_0452.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=184&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/185-IMG_0461.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=185&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/186-IMG_0736.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=186&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/187-IMG_0867.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=187&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/188-IMG_0869.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=188&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/189-IMG_0948.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=189&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/190-IMG_0959.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=190&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/191-IMG_1007.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=191&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/192-IMG_1051.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=192&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/193-IMG_1055.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=193&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/194-IMG_1065.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=194&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/195-IMG_1078.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=195&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/196-IMG_1080.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=196&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/197-IMG_1084.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=197&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/198-IMG_1087.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=198&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/199-IMG_1097.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=199&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/200-IMG_1144.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=200&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/201-IMG_1154.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=201&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/202-IMG_1209.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=202&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/203-IMG_1321.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=203&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/204-IMG_1219_r.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=204&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/205-IMG_0548.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=205&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/206-IMG_0552.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=206&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/207-IMG_0563.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=207&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/208-IMG_0567.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=208&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/209-IMG_0568.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=209&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/210-IMG_0629.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=210&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/211-IMG_0484.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=211&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/212-IMG_0675.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=212&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/213-IMG_7556.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=213&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/214-IMG_7496.jpg" height="200" /></a></p></photo>
-<photo id="all"><p><a href="photos/index.php?start=214&show=" target="_blank"><img src="http://ciaccodavide.altervista.org/fotografia/thumbs/all/215-IMG_7509.jpg" height="200" /></a></p></photo>
-
+		<div id="right">
+			
 		</div>
 		
-		<script>
-		$(document).ready(function(){
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var loader = $("#right");
+			var i = 20;
 			
-			$("#container").load('http://ciaccodavide.altervista.org/tests/chat/lista.php');
+			for(var x=0;x<20;x++){
+				if(x<10)
+					loader.append('<a src="./stored/dl/cd_0_00'+x+'" download><img src="./stored/dl/cd_0_00'+x+'"></a>');
+				else
+					loader.append('<a src="./stored/dl/cd_0_0'+x+'" download><img src="./stored/dl/cd_0_0'+x+'"></a>');
+			}
 			
-			
-			/*
-			//dynamically generated stuff
-			
-			$(function() {
-			    $(document).on('click', '#pcb', function(e) {
-			       	$("curtain").slideToggle();
-					$("requests").slideToggle();
-			       e.preventDefault();
-			    });
+			var pos = loader.offset().top;
+			while(i<215){
+			$(window).scroll(function() {
+				var windowpos = $(window).scrollTop() ;
+				
+				if(windowpos + $(window).height() == $(document).height()){//è in basso
+					for(var x=0;x<20;x++){
+						if(i<100)
+							loader.append('<a src="./stored/dl/cd_0_0'+i+'" download><img src="./stored/dl/cd_0_0'+i+'"></a>');
+						else if(i<215)
+							loader.append('<a src="./stored/dl/cd_0_'+i+'" download><img src="./stored/dl/cd_0_'+i+'"></a>');
+						i++;
+					}
+				}else if(windowpos >= pos){
+					//torna su
+				}/*else{
+					for(var x=0;x<20;x++){
+						loader.append('<a src="./stored/dl/cd_0_0'+x+'" download><img src="./stored/dl/cd_0_0'+x+'"></a>');
+						i++;
+					}
+				}*/
 			});
-
-			$(function() {
-			    $(document).on('click', 'cont', function(e) {
-			       	$("contacts").slideToggle("slow");
-					$("footer").slideToggle("slow");
-					$("#snd").prop('disabled', false);
-					$("#sndb").prop('disabled', false);
-			       
-			    });
-			});
-			
-			$(function() {
-			    $(document).on('click', 'candidate', function(e) {
-					var candidato = $(this).attr('id');
-					$("#fatto").load('./add.php?cand=' + candidato);
-			       e.preventDefault();
-			    });
-			});
-		
-		
-			
-			$("h1").click(function(){
-				$("#container").load('http://ciaccodavide.altervista.org/fotografia/index.php');
-	 		});
-			*/
-		});
-		</script>
-		
-	</body>
+			}
+		});   
+	</script>
+</body>
 </html>
