@@ -1,7 +1,9 @@
-#right img{
+body #right .photo{
+	float:fixed;
+	float:left;
 	width:100%;
-	margin:0;
-	padding:0;
-	border:none;
-	clear:both;
+	height:65%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }

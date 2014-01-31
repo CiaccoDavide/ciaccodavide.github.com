@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Ciacco Davide</title>  
+		<title>Ciacco Davide</title>
 		<link rel="stylesheet" type="text/css" media="screen" href="./css/photos.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/foto.css" />
 		<link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="./css/stretto.css" />
 		<link rel="stylesheet" type="text/css" media="screen and (min-width: 601px)" href="./css/largo.css" />
 		<link rel='stylesheet' type="text/css" media='screen and (max-height: 200px)' href='./css/mobile.css' />
@@ -31,40 +32,14 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var loader = $("#right");
-			var i = 20;
-			
-			for(var x=0;x<20;x++){
+			for(var x=0;x<215;x++){
 				if(x<10)
-					loader.append('<a src="./stored/dl/cd_0_00'+x+'" download><img src="./stored/dl/cd_0_00'+x+'"></a>');
+					loader.append('<div class="photo" id="id00'+x+'"></div>');
+				else if(x<100)
+					loader.append('<div class="photo" id="id0'+x+'"></div>');
 				else
-					loader.append('<a src="./stored/dl/cd_0_0'+x+'" download><img src="./stored/dl/cd_0_0'+x+'"></a>');
+					loader.append('<div class="photo" id="id'+x+'"></div>');
 			}
-			
-			var pos = loader.offset().top;
-			
-			$(window).scroll(function() {
-				var windowpos = $(window).scrollTop() ;
-				
-				if(i<215 && windowpos + $(window).height() == $(document).height()){//è in basso
-					for(var x=0;x<20;x++){
-						if(i<215 && i<100)
-							loader.append('<a src="./stored/dl/cd_0_0'+i+'" download><img src="./stored/dl/cd_0_0'+i+'"></a>');
-						else if(i<215)
-							loader.append('<a src="./stored/dl/cd_0_'+i+'" download><img src="./stored/dl/cd_0_'+i+'"></a>');
-						i++;
-					}
-				}else if(windowpos >= pos){
-					//torna su
-				}/*else{
-					for(var x=0;x<20;x++){
-						loader.append('<a src="./stored/dl/cd_0_0'+x+'" download><img src="./stored/dl/cd_0_0'+x+'"></a>');
-						i++;
-					}
-				}*/
-					
-					
-			});
-			
 		});   
 	</script>
 </body>
