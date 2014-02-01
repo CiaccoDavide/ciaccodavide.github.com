@@ -151,4 +151,15 @@ a .post desc .thumb img{
 	  background-size: cover;
 	  
     background-repeat: no-repeat;
-	}
+}
+
+
+#counter{
+	position:fixed;
+	right:0;
+	bottom:0;
+}
+
+
+
+
