@@ -67,7 +67,7 @@ $img = imagecreatetruecolor($larghezza*$pixelsize, $altezza*$pixelsize);
 $colore = imagecolorallocate($img,$coloreR,$coloreG,$coloreB);
 $sfondo = imagecolorallocate($img,$sfondoR,$sfondoG,$sfondoB);
 //SFONDO
-imagefilledrectangle($img, 0,0,$larghezza, $altezza, $sfondo);
+imagefilledrectangle($img, 0,0,$larghezza*$pixelsize, $altezza*$pixelsize, $sfondo);
 
 for($i=0;$i<$strlen;$i++){
 		if($countarray[$i]=='0'){
