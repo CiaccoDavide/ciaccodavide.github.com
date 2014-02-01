@@ -52,8 +52,22 @@ h1{
 	width:160px;
 	float:left;
 }
+.links #active{
+	color:#494949;
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	font-weight: 100;
+	letter-spacing:1px;
+	text-decoration:none;
+}
+.links #active t{
+	font: 23px 'Helvetica Neue', Arial, sans-serif;
+	line-height: 0;
+	letter-spacing:3px;
+	color:#38f;
+}
 .links a{
-	color:#888;
+	color:#aaa;
 	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	font-weight: 100;
