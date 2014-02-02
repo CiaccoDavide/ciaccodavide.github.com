@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="author" content="Davide Ciacco">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		
+		<meta charset="UTF-8">
+		<title>CD - Canvas</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/testcanvas.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../prism/prism.css" rel="stylesheet" />
+		<script type='text/javascript' src='../js/jquery.min.js'></script>
+	</head>
+	<body>
+		<div id="left">
+			<a href="../"><img src="../ritrattocd.png">
+			<h1>Ciacco Davide</h1></a>
+			<div class="links">
+				<a href="../about"><t>.</t>about</a><br>
+				<a href="../photos"><t>.</t>photos</a><br>
+				<a href="../coding"><t>.</t>coding</a><br>
+				<a href="../relax"><t>.</t>relax</a><br>
+				<a href="../games"><t>.</t>games</a><br>
+				<a href="#"><t>.</t>projects</a><br>
+				<a href="../interesting"><t>.</t>interesting stuff</a><br>
+				<a href="../webtools"><t>.</t>webtools</a><br>
+			</div>
+		</div>
+		<div id="right">
+
+			<canvas id="canvas" width="600" height="200"></canvas>
+			<canvas id="canvas0" width="600" height="200"></canvas>
+			<canvas id="canvas1" width="600" height="200"></canvas>
+			<canvas id="canvas2" width="600" height="200"></canvas>
+			<canvas id="canvas3" width="600" height="200"></canvas>
+			<canvas id="canvas4" width="600" height="200"></canvas>
+			<canvas id="canvas5" width="600" height="200"></canvas>
+			<canvas id="canvas6" width="600" height="200"></canvas>
+		</div>
+		    <script>
+				var x0=0,y0=0,x1=0,y1=0,x2=0,y2=0,x3=0,y3=0;
+		      function getMousePos(canvas, evt) {
+		        var rect = canvas.getBoundingClientRect();
+		        return {
+		          x: evt.clientX - rect.left,
+		          y: evt.clientY - rect.top
+		        };
+		      }
+			  function drawLine(canvas,x,y){
+		  		context.beginPath();
+		        context.moveTo(x0, y0);
+		        context.lineTo(x,y);
+		        context.stroke();
+				x0=x3;
+				y0=y3;
+		  		context.beginPath();
+		        context.moveTo(x1, y1);
+		        context.lineTo(x,y);
+		        context.stroke();
+				x1=x2;
+				y1=y2;
+		  		context.beginPath();
+		        context.moveTo(x2, y2);
+		        context.lineTo(x,y);
+		        context.stroke();
+				x2=x0;
+				y2=y0;
+		  		context.beginPath();
+		        context.moveTo(x0, y0);
+		        context.lineTo(x,y);
+		        context.stroke();
+				x3=x;
+				y3=y;
+			  }
+			  function drawLine0(canvas,x,y){
+		  		context0.beginPath();
+		        context0.moveTo(0, 0);
+		        context0.lineTo(x,y);
+		        context0.stroke();
+			  }
+			  function drawLine1(canvas,x,y){
+		  		context1.beginPath();
+		        context1.moveTo(x-50, y-50);
+		        context1.lineTo(x+50,y+50);
+		        context1.stroke();
+			  }
+			  function drawLine2(canvas,x,y){
+		  		context2.beginPath();
+		        context2.moveTo(600, 0);
+		        context2.lineTo(x,y);
+		        context2.stroke();
+		  		context2.beginPath();
+		        context2.moveTo(0, 200);
+		        context2.lineTo(x,y);
+		        context2.stroke();
+			  }
+			  function drawLine3(canvas,x,y){
+		  		context3.beginPath();
+		        context3.moveTo(600, 0);
+		        context3.lineTo(x,y);
+		        context3.stroke();
+		  		context3.beginPath();
+		        context3.moveTo(0, 200);
+		        context3.lineTo(x,y);
+		        context3.stroke();
+		  		context3.beginPath();
+		        context3.moveTo(600, 200);
+		        context3.lineTo(x,y);
+		        context3.stroke();
+		  		context3.beginPath();
+		        context3.moveTo(0, 0);
+		        context3.lineTo(x,y);
+		        context3.stroke();
+			  }
+			  function drawLine4(canvas,x,y){
+		  		context4.beginPath();
+		        context4.moveTo(x-50, y-50);
+		        context4.lineTo(x+50,y+50);
+		        context4.stroke();
+		  		context4.beginPath();
+		        context4.moveTo(x-50, y+50);
+		        context4.lineTo(x+50,y-50);
+		        context4.stroke();
+			  }
+			  function drawLine5(canvas,x,y){
+		  		context5.beginPath();
+		        context5.moveTo(x-600, y-600);
+		        context5.lineTo(x+600,y+600);
+		        context5.stroke();
+		  		context5.beginPath();
+		        context5.moveTo(x-600, y+600);
+		        context5.lineTo(x+600,y-600);
+		        context5.stroke();
+			  }
+			  function drawLine6(canvas,x,y){
+		  		context6.beginPath();
+		        context6.moveTo(x-600,y+600);
+		        context6.lineTo(x+600,y-600);
+		        context6.stroke();
+			  }
+		      var canvas = document.getElementById('canvas');
+		      var context = canvas.getContext('2d');
+		      var canvas0 = document.getElementById('canvas0');
+		      var context0 = canvas0.getContext('2d');
+		      var canvas1 = document.getElementById('canvas1');
+		      var context1 = canvas1.getContext('2d');
+		      var canvas2 = document.getElementById('canvas2');
+		      var context2 = canvas2.getContext('2d');
+		      var canvas3 = document.getElementById('canvas3');
+		      var context3 = canvas3.getContext('2d');
+		      var canvas4 = document.getElementById('canvas4');
+		      var context4 = canvas4.getContext('2d');
+		      var canvas5 = document.getElementById('canvas5');
+		      var context5 = canvas5.getContext('2d');
+		      var canvas6 = document.getElementById('canvas6');
+		      var context6 = canvas6.getContext('2d');
+
+		      context.strokeStyle = '#666';
+		      context0.strokeStyle = '#666';
+		      context1.strokeStyle = '#666';
+		      context2.strokeStyle = '#666';
+		      context3.strokeStyle = '#666';
+		      context4.strokeStyle = '#666';
+		      context5.strokeStyle = '#666';
+		      context6.strokeStyle = '#666';
+			  
+		      canvas.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas, evt);
+				drawLine(canvas,mousePos.x,mousePos.y);
+		      }, false);
+		      canvas0.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas0, evt);
+				drawLine0(canvas0,mousePos.x,mousePos.y);
+		      }, false);
+		      canvas1.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas1, evt);
+				drawLine1(canvas1,mousePos.x,mousePos.y);
+		      }, false);
+		      canvas2.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas2, evt);
+				drawLine2(canvas2,mousePos.x,mousePos.y);
+		      }, false);
+		      canvas3.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas3, evt);
+				drawLine3(canvas3,mousePos.x,mousePos.y);
+		      }, false);
+		      canvas4.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas4, evt);
+				drawLine4(canvas4,mousePos.x,mousePos.y);
+		      }, false);
+		      canvas5.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas5, evt);
+				drawLine5(canvas5,mousePos.x,mousePos.y);
+		      }, false);
+		      canvas6.addEventListener('mousemove', function(evt) {
+		        var mousePos = getMousePos(canvas6, evt);
+				drawLine6(canvas6,mousePos.x,mousePos.y);
+		      }, false);
+		    </script>
+	</body>
+</html>

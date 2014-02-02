@@ -26,12 +26,15 @@ body #right{
 /*	background-attachment:fixed;
 	background-image:url('http://ciaccodavide.altervista.org/patt/?l=3000&a=90&d=1&c=ddd&s=999');
 	background-size: auto auto;*/
-	position:fixed;
+	position:absolute;
 	left:160px;
 	right:0px;
 	top:0px;
 	bottom:0px;
 	overflow:scroll;
+}
+body #right canvas{
+	border:1px solid #aaa;
 }
 h1{
 	text-shadow:1px 1px 0px #eee;
@@ -53,8 +56,22 @@ h1{
 	width:160px;
 	float:left;
 }
+.links #active{
+	color:#494949;
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	font-weight: 100;
+	letter-spacing:1px;
+	text-decoration:none;
+}
+.links #active t{
+	font: 23px 'Helvetica Neue', Arial, sans-serif;
+	line-height: 0;
+	letter-spacing:3px;
+	color:#38f;
+}
 .links a{
-	color:#888;
+	color:#aaa;
 	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	font-weight: 100;
@@ -78,7 +95,6 @@ h1{
 	text-decoration:none;
 }
 a .post{
-	float:left;
 	margin:10px;
 	padding:10px;
 	max-width:300px;
@@ -127,7 +143,6 @@ a .post desc .thumb img{
 }
 
 #avatars{background: url(http://ciaccodavide.altervista.org/qbdp/perpets/?counter=5);background-position: 50% 50%;}
-#canvas{background: url(../imgs/icon_canvas.png);background-position: 50% 50%;}
 .icno {
 	margin:10px;
 	width:70px;
