@@ -20,6 +20,8 @@ body #left{
 	background:#eee;
 	height:100%;
 	width:160px;
+	overflow-x:hidden;
+	overflow-y:hidden;
 }
 body #right{
 	padding:10px;
@@ -31,7 +33,8 @@ body #right{
 	right:0px;
 	top:0px;
 	bottom:0px;
-	overflow:scroll;
+	overflow-x:hidden;
+	overflow-y:scroll;
 }
 body #right canvas{
 	border:1px solid #aaa;
