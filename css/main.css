@@ -20,7 +20,8 @@ body #left{
 	background:#eee;
 	height:100%;
 	width:160px;
-	display:block;
+	overflow-y:hidden;
+	overflow-x:hidden;
 }
 body #right{
 	padding:10px;
@@ -32,8 +33,8 @@ body #right{
 	right:0px;
 	top:0px;
 	bottom:0px;
-	overflow:scroll;
-	display:block;
+	overflow-y:scroll;
+	overflow-x:hidden;
 }
 h1{
 	text-shadow:1px 1px 0px #eee;
