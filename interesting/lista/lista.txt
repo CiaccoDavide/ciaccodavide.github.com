@@ -8,3 +8,4 @@
 <a href="http://www.petrolicious.com/"><t>|</t>Petrolicious<span>http://www.petrolicious.com/</span></a><br>
 <a href="http://www.gregorythielker.com"><t>|</t>Gregory Thielker (painter)<span>http://www.gregorythielker.com</span></a><br>
 <a href="http://textmechanic.com"><t>|</t>Text Mechanic (text&seq utility)<span>http://textmechanic.com</span></a><br>
+<a href="http://beej.us/guide/bgp/dof.html"><t>|</t>Beej guide to Photography<span>http://beej.us/guide/bgp/dof.html</span></a><br>
