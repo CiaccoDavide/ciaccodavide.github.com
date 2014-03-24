@@ -29,7 +29,6 @@
 			<input id="bin" type="number" name="bin" value="" placeholder="BIN"><br>
 			<input id="dec" type="number" name="dec" value="" placeholder="DEC"><br>
 			<input id="hex" type="text" name="hex" value="" placeholder="HEX"><br>
-			<input id="test" type="text" name="test" value="" placeholder="test"><br>
 			<input id="reset" type="button" name="reset" value="Reset" onclick="reset()"><br>
 		</div>
 
@@ -100,9 +99,8 @@
 				var inputhex = $('#hex').val();
 				array = inputhex.split("");
 				for(i=0;i<array.length;i++)
-					if(array[i].charCodeAt(0)<90)
+					if(array[i].charCodeAt(0)<48||(array[i].charCodeAt(0)>57&&array[i].charCodeAt(0)<65)||(array[i].charCodeAt(0)>70&&array[i].charCodeAt(0)<97)||array[i].charCodeAt(0)>102)
 						array[i]=-1;
-						//document.getElementById('test').value=inputhex.charCodeAt(i);
 				inputhex='';
 				for(i=0;i<array.length;i++){
 					if(array[i]!=-1)
