@@ -116,6 +116,8 @@ a .post#green{border-bottom:2px solid #9e6;}
 a .post#green t{color:#9e6;}
 a .post#blue{border-bottom:2px solid #38f;}
 a .post#blue t{color:#38f;}
+a .post#yellow{border-bottom:2px solid #ffc532;}
+a .post#yellow t{color:#ffc532;}
 
 
 a .post desc .thumb{
