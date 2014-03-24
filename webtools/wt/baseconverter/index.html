@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="author" content="Davide Ciacco">
-		<title>Ciacco Davide</title>
+		<title>CD - webtools/BaseConverter</title>
 		<link rel="shortcut icon" type="image/x-icon" href="http://ciaccodavi.de/favicon.ico">
 		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<script type='text/javascript' src='../js/jquery.min.js'></script>
+		<script type='text/javascript' src='../../../js/jquery.min.js'></script>
 	</head>
 	<body>
 		<div id="left">
@@ -41,7 +41,7 @@
 				if(inputbin.length>0){
 					document.getElementById('dec').value=parseInt(inputbin, 2);
 					document.getElementById('hex').value=parseInt(inputbin, 2).toString(16);
-				}
+				}else{reset();}
 			}).keyup();
 			$("#dec").keyup(function () {
 			  	var inputdec = $(this).val();
@@ -50,7 +50,7 @@
 				if(inputdec.length>0){
 					document.getElementById('bin').value=parseInt(inputdec, 10).toString(2);
 					document.getElementById('hex').value=parseInt(inputdec, 10).toString(16);
-				}
+				}else{reset();}
 			}).keyup();
 			$("#hex").keyup(function () {
 			  	var inputhex = $(this).val();
@@ -59,8 +59,9 @@
 				if(inputhex.length>0){
 					document.getElementById('bin').value=parseInt(inputhex, 16).toString(2);
 					document.getElementById('dec').value=parseInt(inputhex, 16);
-				}
+				}else{reset();}
 			}).keyup();
+
 			function reset(){
 				document.getElementById('bin').value="";
 				document.getElementById('dec').value="";
@@ -69,10 +70,10 @@
 			function ctrlbin(){
 				var inputbin = $('#bin').val();
 				array = inputbin.split("");
-				for(i=0;i<array.length;i++){
+				for(i=0;i<array.length;i++)
 					if(array[i]!=0 && array[i]!=1)
 						array[i]=-1;
-				}
+				
 				inputbin='';
 				for(i=0;i<array.length;i++){
 					if(array[i]>=0)
@@ -83,10 +84,10 @@
 			function ctrldec(){
 				var inputdec = $('#dec').val();
 				array = inputdec.split("");
-				for(i=0;i<array.length;i++){
+				for(i=0;i<array.length;i++)
 					if(array[i]!=0&&array[i]!=1&&array[i]!=2&&array[i]!=3&&array[i]!=4&&array[i]!=5&&array[i]!=6&&array[i]!=7&&array[i]!=8&&array[i]!=9)
 						array[i]=-1;
-				}
+				
 				inputdec='';
 				for(i=0;i<array.length;i++){
 					if(array[i]>=0)
@@ -96,17 +97,17 @@
 			}
 			function ctrlhex(){
 				var inputhex = $('#hex').val();
-				arrayhex = inputhex.split("");
-				for(i=0;i<arrayhex.length;i++){
-					if(inputhex.charAt(i)=="0")
-						arrayhex[i]=-1;
-				}
+				array = inputhex.split("");
+				for(i=0;i<array.length;i++)
+					if(parseInt(array[i].charCodeAt(0))!=97)
+						array[i]=-1;
+				
 				inputhex='';
-				for(i=0;i<arrayhex.length;i++){
-					if(arrayhex[i]>=0)
-						inputhex+=arrayhex[i];
+				for(i=0;i<array.length;i++){
+					if(array[i]>=0)
+						inputhex+=array[i];
 				}
-				document.getElementById('dec').value=inputhex;
+				document.getElementById('hex').value=inputhex;
 			}
 		</script>
 	</body>
