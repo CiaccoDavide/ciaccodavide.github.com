@@ -1,0 +1,54 @@
+#menu{
+	text-align:center;
+	box-shadow: 0 -3px 1px -3px #111;
+	height:30px;
+	padding-top:3px;
+	margin-bottom:20px;
+}
+#menu img{
+	float:right;
+	height:30px;
+	width:30px;
+}
+#menu .nope{
+	display:none;
+	}
+#menu .active{
+	margin:0px 6px 30px 6px;
+	padding:0;
+	font: 28px 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 100;
+	line-height:1;
+	border-bottom:2px solid rgba(90,160,230,0.6);
+}
+#article{
+	text-align:center;
+	padding:0px;
+	clear:both
+}
+#article .t{
+	font: 30px 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 100;
+	line-height: 1.2em;
+	border-bottom:2px solid #38f;
+	margin-bottom: 0.2em;
+}
+#article .i{
+	height:60px;
+	width:100%;
+	margin-bottom: 0.6em;
+	
+	background-image: url("../img/bokeh.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+	cursor:pointer;
+}
+#article .c{
+	font: 22px 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 100;
+	margin-bottom: 0.2em;
+	padding-bottom: 0.2em;
+	/*border-bottom:1px solid #666;*/
+}

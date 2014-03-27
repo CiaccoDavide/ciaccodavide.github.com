@@ -1,0 +1,273 @@
+<!doctype html>  
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ciacco Davide</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta property="og:image" content="http://floatingminds.altervista.org/davideciacco/crypt/cryptr.png" />
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/crypt.css">
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+		<link rel="stylesheet" href="fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+	
+	<body>
+		<header>
+			<h1>Crypt 4.0</h1>
+		</header>
+	<contents>
+	<input id="b10" value="10" placeholder="base(10)"/><input id="b36" placeholder="base(36)"/><button onclick="to36();">to36!</button><button onclick="to10();">to10!</button>
+	<br><br>
+		<textarea id="plain" placeholder="Plaintext"></textarea>
+		<input id="key" placeholder="Password"/>
+		<textarea id="crittotesto" placeholder="Cyphertext"></textarea>
+		<button onclick="convert();">Convert!</button>
+		<br><input id="sts"/><br><br>
+		
+		<textarea id="crittotestod" placeholder="Plaintext"></textarea>
+		<input id="keyd" placeholder="Password"/>
+		<textarea id="plaind" placeholder="Cyphertext"></textarea>
+		<button onclick="convertd();">Reveal!</button>
+		
+		
+		
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<input id="plain2" value ="TEST"/><input id="key2"/>
+		<input id="crittotesto2"/>
+		<button onclick="convert2();">Convert!</button>
+		<br><input id="sts2"/>
+	</contents>
+		<script type="text/javascript">
+		
+		
+			function convert() {
+				var pt=document.getElementById("plain").value;
+				var pw=document.getElementById("key").value;
+				var ct=document.getElementById("crittotesto");
+				var ctd=document.getElementById("crittotestod");
+				var sts=document.getElementById("sts");
+					ct.value = "";
+					sts.value = "";
+				var s1="";
+				var s2="";
+				var s3="";
+				var tmp = '';
+				var crittotesto="";
+				var n=0;
+				var transpose = 180;//per usare altri set di caratteri
+				//genera stringa di hex-charcode + divisore '.'	
+				for (i=0; i < pt.length-1; i++) {
+					s1 +=pt[i].charCodeAt(0)+'.';
+				}s1 +=pt[pt.length-1].charCodeAt(0);
+				//stringa continua di numeri
+				for (i=0; i < s1.length; i++) {
+					n = Math.floor(Math.random()*pw.length);//index da usare dopo per recuperare char dalla pass RICORDATI CHE E' IN +1 NON IN BASE 0!!!
+					tmp = n.toString(36);//LUNGHEZZA MASSIMA PER LA PASSWORD = 36chars
+					s2 += tmp.charAt(tmp.length-1);//inserisco l'index per rendere reversibile in fase di decript
+					tmp = (s1[i].charCodeAt(0)+pw[n].charCodeAt(0)).toString(36);
+					s2 += tmp.charAt(tmp.length-1);//stringa di n -> charcodes2base36 ->tolgo gli 1
+					//s2 stringa di (2*pt.lenght)+(pt.lenght-1) coppie
+				}
+				for (i=0; i < s2.length-1; i++) {
+					tmp = parseInt(s2[i]+s2[i+1],36);
+					s3 += String.fromCharCode(tmp+transpose);
+					i++;
+				}
+				
+				crittotesto=s3;
+				ct.value = crittotesto;
+				ctd.value = crittotesto;//COPIO IL CRITTOTESTO DIRETTAMENTE PER LA DECODIFICA
+				sts.value = pt.length+' '+crittotesto.length+' '+ct.value.length;
+				
+				if(crittotesto.length==ct.value.length){}else{convert()}
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			function to36() {
+				var b10=document.getElementById("b10").value;
+				var b36=document.getElementById("b36");
+				b36.value=Number(b10).toString(36);
+			}function to10() {
+				var b10=document.getElementById("b10");
+				var b36=document.getElementById("b36").value;
+				b10.value=parseInt(b36,36);
+			}
+			
+			
+			/*
+			function convert() { bin2dec2base36
+				var op=document.getElementById("ti3"); 
+				var output=document.getElementById("ti2");  
+				var input=document.getElementById("ti1").value;
+					op.value="";
+					output.value = "";
+				output.value = parseInt(input,2);
+				op.value=parseInt(input,2).toString(36);
+			}*/
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			function convert2() {
+				var pt=document.getElementById("plain2").value;
+				var pw=document.getElementById("key2").value;
+				var ct=document.getElementById("crittotesto2");
+				var sts=document.getElementById("sts2");
+					ct.value = "";
+					sts.value = "";
+				var s1="";
+				var s2="";
+				var s3="";
+				var tmp = '';
+				var crittotesto="";
+				var n=0;
+				//genera stringa di hex-charcode + divisore '.'	
+				for (i=0; i < pt.length-1; i++) {
+					s1 +=pt[i].charCodeAt(0)+'.';
+				}s1 +=pt[pt.length-1].charCodeAt(0);
+				//stringa continua di numeri
+				for (i=0; i < s1.length; i++) {
+					n = Math.floor(Math.random()*pw.length)+1;//index da usare dopo per recuperare char dalla pass RICORDATI CHE E' IN +1 NON IN BASE 0!!!
+					tmp = n.toString(36);//LUNGHEZZA MASSIMA PER LA PASSWORD = 36chars
+					s2 += tmp.charAt(tmp.length-1);//inserisco l'index per rendere reversibile in fase di decript
+					tmp = (s1[i].charCodeAt(0)*n+pw[n-1].charCodeAt(0)*n).toString(36);
+					s2 += tmp.charAt(tmp.length-1);//stringa di n -> charcodes2base36 ->tolgo gli 1
+					//s2 stringa di (2*pt.lenght)+(pt.lenght-1) coppie
+				}
+				for (i=0; i < s2.length-1; i++) {
+					tmp = parseInt(s2[i]+s2[i+1],36);
+					s3 += String.fromCharCode(tmp);
+					i++;
+				}
+				
+				/*//2°round
+				pt=s3;
+				var s1="";
+				var s2="";
+				var s3="";
+				for (i=0; i < pt.length-1; i++) {
+					s1 +=pt[i].charCodeAt(0)+'.';
+				}s1 +=pt[pt.length-1].charCodeAt(0);
+				//stringa continua di numeri
+				for (i=0; i < s1.length; i++) {
+					n = Math.floor(Math.random()*pw.length)+1;//index da usare dopo per recuperare char dalla pass RICORDATI CHE E' IN +1 NON IN BASE 0!!!
+					tmp = n.toString(36);//LUNGHEZZA MASSIMA PER LA PASSWORD = 36chars
+					s2 += tmp.charAt(tmp.length-1);//inserisco l'index per rendere reversibile in fase di decript
+					tmp = (s1[i].charCodeAt(0)*n+pw[n-1].charCodeAt(0)*n).toString(36);
+					s2 += tmp.charAt(tmp.length-1);//stringa di n -> charcodes2base36 ->tolgo gli 1
+					//s2 stringa di (2*pt.lenght)+(pt.lenght-1) coppie
+				}
+				for (i=0; i < s2.length-1; i++) {
+					tmp = parseInt(s2[i]+s2[i+1],36);
+					s3 += String.fromCharCode(tmp);
+					i++;
+				}*/
+				
+				
+				
+				crittotesto=s3;
+				ct.value = crittotesto;
+				sts.value = pt.length+' '+crittotesto.length+' '+ct.value.length;
+				
+				if(crittotesto.length==ct.value.length){}else{convert2()}
+				/*
+				var res = s1.split(".");
+				for (i=0; i < res.length; i++) {
+					n= String.fromCharCode(parseInt(res[i],36));
+				*/
+				//fin.value = parseInt(pt,10);
+				//parseInt(pt,2).toString(36);
+			}
+		</script>
+		
+		<script>
+		
+			function convertd() {
+				var ct=document.getElementById("crittotestod").value;
+				var pw=document.getElementById("keyd").value;
+				var pt=document.getElementById("plaind");
+				var sts=document.getElementById("sts");
+					pt.value = "";
+					sts.value = "";
+					var s1="";
+					var s2="";
+					var c="";
+					var p="";
+				
+				
+				
+				for (i=0; i < ct.length; i++) {
+					s1 +=ct[i].charCodeAt(0).toString(36);
+				}
+				for (i=0; i < s1.length-1; i++) {
+					n = s1[i];
+					p = pw[n-1].charAt(0);
+					c = s1[i+1].charAt(0);
+					
+					s2 += ;
+					tmp = (s1[i].charCodeAt(0)*n+pw[n-1].charCodeAt(0)*n).toString(36);
+					 s2 += tmp.charAt(tmp.length-1)
+					i++;
+				}
+				
+				
+				var s2="";
+				var s3="";
+				var tmp = '';
+				var crittotesto="";
+				var n=0;
+				var transpose = 0;//per usare altri set di caratteri
+				//genera stringa di hex-charcode + divisore '.'	
+				for (i=0; i < pt.length-1; i++) {
+					s1 +=pt[i].charCodeAt(0)+'.';
+				}s1 +=pt[pt.length-1].charCodeAt(0);
+				//stringa continua di numeri
+				for (i=0; i < s1.length; i++) {
+					n = Math.floor(Math.random()*pw.length)+1;//index da usare dopo per recuperare char dalla pass RICORDATI CHE E' IN +1 NON IN BASE 0!!!
+					tmp = n.toString(36);//LUNGHEZZA MASSIMA PER LA PASSWORD = 36chars
+					s2 += tmp.charAt(tmp.length-1);//inserisco l'index per rendere reversibile in fase di decript
+					tmp = (s1[i].charCodeAt(0)*n+pw[n-1].charCodeAt(0)*n).toString(36);
+					s2 += tmp.charAt(tmp.length-1);//stringa di n -> charcodes2base36 ->tolgo gli 1
+					//s2 stringa di (2*pt.lenght)+(pt.lenght-1) coppie
+				}
+				
+				revealed=s3;
+				pt.value = revealed;
+				sts.value = pt.length+' '+crittotesto.length+' '+ct.value.length;
+				/*
+				var res = s1.split(".");
+				for (i=0; i < res.length; i++) {
+					n= String.fromCharCode(parseInt(res[i],36));
+				*/
+				//fin.value = parseInt(pt,10);
+				//parseInt(pt,2).toString(36);
+			}
+			
+			</script>
+	</body>
+</html>
+

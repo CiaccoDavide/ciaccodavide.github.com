@@ -1,0 +1,133 @@
+<!doctype html>  
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ciacco Davide - RIL</title>
+		<meta property="og:image" content="http://ciaccodavi.de/projects/folder/ril/ril.png" />
+		<meta name="description" content="Experiments!">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/ril.css">
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+		<link rel="stylesheet" href="../../../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+		
+		<script src="jquery.transit.min.js" type="text/javascript"></script>
+	</head>
+	
+	<body>
+		<header>
+			<h1>Random Intermittent Lights</h1><br><h1>RIL</h1>
+		</header>
+		
+		
+		<contents><range>Speed:<br><input type="range" min="0" max="1000" value="600" step="1"onchange="showValue(this.value),getValue(this.value)" /><div id="rg">600</div>---<br><a><span>Light</span></a></range>
+			
+			<post id="0"></post>
+			<post id="1"></post>
+			<post id="2"></post>
+			<post id="3"></post>
+			
+		</contents>
+		
+		
+		<footer>
+			<foot>Created by <a>Davide Ciacco</a></foot>
+		</footer>
+		
+		<div class="sharing">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-text="Random Intermittent Lights #CiaccoDavide" data-url="http://ciaccodavi.de/projects/folder/ril" data-count="small"></a>
+		</div>
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<script type="text/javascript">
+		
+		var interval = 600;
+		function getValue(newValue){
+			clearInterval(id0);
+			id0=setInterval(post0,newValue);
+			clearInterval(id1);
+			id1=setInterval(post1,newValue);
+			clearInterval(id2);
+			id2=setInterval(post2,newValue);
+			clearInterval(id3);
+			id3=setInterval(post3,newValue);
+		}
+			
+		id0=setInterval(post0,interval);
+		id1=setInterval(post1,interval);
+		id2=setInterval(post2,interval);
+		id3=setInterval(post3,interval);
+			
+			//post#0
+		function post0() {
+			var i=0, z="", random;
+			while(i<36){
+				random=Math.floor((Math.random()*2)+1);
+				if(random==1)
+					z +='<sq0a></sq0a>';
+				if(random==2)
+					z +='<sq1a></sq1a>';
+				i++;
+			}
+			document.getElementById('0').innerHTML = z;
+			}
+			
+			
+			//post#1
+		function post1() {
+			var i=0, z="", random;
+			while(i<36){
+				random=Math.floor((Math.random()*2)+1);
+				if(random==1)
+					z +='<sq0b></sq0b>';
+				if(random==2)
+					z +='<sq1b></sq1b>';
+				i++;
+			}
+			document.getElementById('1').innerHTML = z;
+			}
+			
+			//post#2
+		function post2() {
+			var i=0, z="", random;
+			while(i<36){
+				random=Math.floor((Math.random()*2)+1);
+				if(random==1)
+					z +='<sq0c></sq0c>';
+				if(random==2)
+					z +='<sq1c></sq1c>';
+				i++;
+			}
+			document.getElementById('2').innerHTML = z;
+			}
+			
+			//post#3
+		function post3() {
+			var i=0, z="", random;
+			while(i<36){
+				random=Math.floor((Math.random()*2)+1);
+				if(random==1)
+					z +='<sq0d></sq0d>';
+				if(random==2)
+					z +='<sq1d></sq1d>';
+				i++;
+			}
+			document.getElementById('3').innerHTML = z;
+			}
+		</script>
+		<script type="text/javascript">
+		$("span").text('Dark');
+		$("span").toggle(
+			function(){$("span").text('Light');$("html").css('background','#333');$("body").css('background','#333');$("range").css('background','#333');$("h1").css('color','#ccc')},
+			function(){$("span").text('Dark');$("html").css('background','#DEDEDC');$("body").css('background','#DEDEDC');$("range").css('background','#DEDEDC');$("h1").css('color','#222')}
+		);
+	</script>
+	
+	<script type="text/javascript">
+function showValue(newValue)
+{
+	document.getElementById("rg").innerHTML=newValue;
+}
+</script>
+	</body>
+</html>

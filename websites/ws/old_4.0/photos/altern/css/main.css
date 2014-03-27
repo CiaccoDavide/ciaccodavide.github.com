@@ -1,0 +1,92 @@
+html {}
+body {
+	width:100%;margin:0;
+	/*font: normal 14px Monaco, 'Courier New', monospace;
+	*/
+	background: #d3d3d3;
+	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	background-attachment:fixed;
+	/*background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackgroundshaded.php?altezza=200&larghezza=200&pixelsize=8&ygap=0&ystart=0&xstart=0&colore=e3e3e3&sfondo=e3e3e3&probvuoto=50&probpieno=50&counter=rand()');
+	*/ background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackground.php?altezza=60&larghezza=60&pixelsize=6&ygap=0&ystart=0&xstart=0&colore=d6d6d6&sfondo=e3e3e3&probvuoto=50&probpieno=50&counter=rand()');
+*/
+}
+
+h1{
+	color:rgba(0,0,0,0);
+	text-shadow:0 0 2px #696969;
+	background:#e3e3e3;
+	font: 50px 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 100;
+	line-height: 1.2em;
+	margin-bottom: 0.6em;
+	text-align:left;
+	padding-left:30px;
+	/*border: 2px solid #ffffff;*/
+	border-left:none;
+	box-shadow: inset 0 0 6px rgba(0,0,0, 0.5);
+	/*box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);*/
+	border-radius:0 100px 100px 0;
+	width:400px;
+	-webkit-transition:all 1s;
+   	   -moz-transition:all 1s;
+		 -o-transition:all 1s;
+	        transition:all 1s;
+}
+h1:hover{color:#696969;
+	text-shadow:0 0 300px #696969;
+	box-shadow: inset 0 0 0px -20px rgba(0,0,0, 0.5);
+	-webkit-transition:all 1s;
+   	   -moz-transition:all 1s;
+		 -o-transition:all 1s;
+	        transition:all 1s;
+	cursor:pointer;
+}
+h3{
+	color:#000;
+	background:#e9eaee;
+	font: 60px 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 100;
+	line-height: 1.2em;
+	margin-bottom: 0.6em;
+	text-align:left;
+	padding-left:10px;
+	border: 2px solid #ffffff;
+	box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+}
+h2{
+	font-family: 'Quicksand', sans-serif;
+	font-size: 26px;
+	color:#0080C6;
+	text-shadow:#efefef 1px 1px 0px;
+	line-height: 1.2em;
+	margin-bottom: 0em;
+	margin-top: 0em;
+	padding: 6px;
+	/*padding-bottom:9px;
+	border-bottom:3px double #ffffff;*/
+}
+.links{
+	width:100%;
+	margin:30px;
+}
+.links a{
+	color:#969696;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 26px;
+	font-weight: 100;
+	text-decoration:none;
+}
+.links a t{
+	font: 30px 'Helvetica Neue', Arial, sans-serif;
+	line-height: 0;
+}
+.links a:hover{
+	color:#696969;
+}
+.links a:hover t{
+	color:#38f;
+}

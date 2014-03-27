@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>CD - Interesting Stuff</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./css/main.css">
+		<script src="../js/jquery.min.js"></script>
+		<link rel="stylesheet" href="../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+	
+	<body>
+		<div id="left">
+			<a href="../"><img src="../ritrattocd.png">
+			<h1>Ciacco Davide</h1></a>
+		<div class="links">
+			<a href="../about"><t>.</t>about</a><br>
+			<a href="../photos"><t>.</t>photos</a><br>
+			<a href="../coding"><t>.</t>coding</a><br>
+			<a href="#"><t>.</t>relax</a><br>
+			<a href="#"><t>.</t>games</a><br>
+			<a href="#"><t>.</t>projects</a><br>
+			<a href="../interesting" id="active"><t>.</t>interesting stuff</a><br>
+		</div>
+		</div>
+		<div id="right">
+			<p>Links to some interesting stuff:</p><br>
+			<div id="lista">
+			</div>
+		</div>
+		
+		
+		<script>
+		$( document ).ready(function() {
+			$("#lista").load('./lista/lista.txt');
+		});
+		</script>
+	</body>
+</html>

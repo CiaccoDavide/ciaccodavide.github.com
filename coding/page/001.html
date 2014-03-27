@@ -1,0 +1,17 @@
+<div id="post">
+	<h3>JS - Get URL</h3>
+	<p>Can Javascript access the current page url?</p>
+	<p>Yes!</p>
+	<p>Js window.location object can give you informations the current location.</p>
+	<p>For example if you're browsing http://ciaccodavi.de:80/coding/?n=0#001 and this is what you can get through window.location:</p>
+	<pre><code>
+	var s = window.location.protocol; //s = 'http:'
+	var s = window.location.host; //s = 'ciaccodavi.de'
+	var s = window.location.hostname; //s = 'ciaccodavi.de'
+	var s = window.location.pathname; //s = 'coding'
+	var s = window.location.port; //s = '80'
+	var s = window.location.search; //s = '?n=0'
+	var s = window.location.hash; //s = '#001'
+	var s = window.location.href; //s = 'http://ciaccodavi.de:80/coding/?n=0#001'
+	</code></pre>
+</div>

@@ -1,0 +1,163 @@
+*{margin:0;padding:0;}
+html {}
+body {
+	width:100%;margin:0;padding:0;
+	background: #aaa;
+	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	background-image:url('../img/bodybg.png');
+	background-attachment:fixed;
+}
+#main{z-index:1000;
+	position:fixed;
+	top:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	/*background:#fff;/*nero va più che bene! brwn: #3D2D16*/
+	/*
+	background-image:url('../img/bgbigsf2.png');
+	background-attachment:fixed;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position:right;
+	*/
+}
+#main #bl{
+	position:absolute;
+	right:60%;/*864px*/
+	width:40%;
+	height:100%;
+	background:#E1D9D2;
+	background-image:url('../img/bgbigsf2.png');
+	background-attachment:fixed;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position:right;
+}
+#main #br{
+	position:absolute;
+	left:0;/*576px*/
+	width:100%;
+	height:100%;
+	background-color:#E1D9D2;
+	background-image:url('../img/bgbigsf2rtr.png');
+	background-attachment:fixed;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position:right;
+}
+#main .logo{
+	position:absolute;
+	width:100%;
+	height:35%;
+	background:rgba(255,255,255,0);
+	top:5%;
+}
+#main .logo #l{
+	position:absolute;
+	height:100%;
+	right:60%;/*864px*/
+}
+#main .logo #r{
+	position:absolute;
+	height:100%;
+	left:40%;/*576px*/
+}
+#main .logo .sensible{opacity:0.8;}
+#main .logo .sensible:hover{opacity:1;cursor:pointer;}
+
+
+
+header{
+	background:rgba(0,0,30,0.5);
+	margin:1%;
+	width:98%;
+	height:180px;
+}
+header img{
+	float:left;
+	height:100%;
+	border:none;
+	margin:0;
+}header img:hover{
+	cursor:pointer;
+}
+header .hr{
+	float:left;
+	/*background:rgba(0,0,0,0.6);*/
+	width:60%;
+	height:100%;
+	background-image:url('../img/dot.png');
+	background-size: auto 100%;
+	background-repeat: repeat;
+	background-position:left;
+}
+#menu{
+	background:rgba(0,30,0,0.5);
+	position:fixed;
+	top:220px;
+	left:0;
+	width:180px;
+	bottom:0;
+	padding:10px;
+}
+#menu img{
+	padding: 10px 0 10px 0;
+	width:120px;
+	height:auto;
+}
+#menu a{
+	color:#333333;
+	display:block;
+	text-decoration:none;
+}
+#menu a:visited{
+	text-decoration:none;
+}
+#menu a:active{
+	text-decoration:none;
+}
+#menu a:hover{
+	color:#aaaaaa;
+	text-decoration:none;
+}
+#menu #toshop{
+	opacity:0.8;
+}
+#menu #toshop:hover{
+	opacity:1;
+}
+#contents{
+	position:fixed;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	top:220px;
+	left:180px;
+	bottom:0;
+	right:0;
+	background:rgba(30,0,0,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

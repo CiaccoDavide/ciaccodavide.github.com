@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>CD - Glitches</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./css/main.css">
+		<script src="../js/jquery.min.js"></script>
+		<link rel="stylesheet" href="../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+	
+	<body>
+		
+		<a href="../"><h1>Ciacco Davide</h1></a>
+		<div class="links">
+			<a href="../about"><t>.</t>about</a><br>
+			<a href="../photos"><t>.</t>photos</a><br>
+			<a href="../coding"><t>.</t>coding</a><br>
+			<a href="#"><t>.</t>relax</a><br>
+			<a href="#"><t>.</t>games</a><br>
+			<a href="#"><t>.</t>projects</a><br>
+			<a href="../interesting" id="active"><t>.</t>interesting stuff</a><br>
+		</div>
+		<div id="container">
+			<div id="load">
+				<INPUT id="link" TYPE="text" NAME="img" VALUE="" placeholder="link a png image">
+				<INPUT id="fn" TYPE="text" NAME="fn" VALUE="" placeholder="frame number">
+				<button onclick="loadimg()">Add</button>
+			</div>
+			
+			<div id="out"></div>
+			<img id="imgloop" src="http://ciaccodavide.altervista.org/tests/phpstuff/elb/0.png?p=0">
+		</div>
+		
+		
+		<script>
+	
+			var x=0;
+			var img = document.getElementById("imgloop");
+			var imgs = new Array();
+		function loopImage(){
+    			x++;
+    			
+    			if(x>=imgs.length)x=0;
+    			img.src = imgs[x];
+    			
+    			setTimeout("loopImage()", 100);
+    		}
+		function loadimg(){
+			var lnk = document.getElementById('link').value;
+			var fn = document.getElementById('fn').value;
+			//load images links into array
+			for(var i=0;i<fn;i++){
+				imgs[i]='http://ciaccodavide.altervista.org/tests/phpstuff/elb/index.php?file='+encodeURIComponent(lnk)+'&n='+i;
+			}
+			document.getElementById('out').innerHTML=lnk + " | " + fn + " -> " + imgs[0]+'<br>'+encodeURIComponent(lnk);
+			
+	    
+			//	img.src = imgs[fn-1];
+			
+			
+    			setTimeout("loopImage()", 100);
+		}
+		
+    		
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+body #right .photo{
+	float:fixed;
+	float:left;
+	width:50%;
+	height:50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}

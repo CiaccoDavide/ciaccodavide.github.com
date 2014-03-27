@@ -1,0 +1,85 @@
+html {}
+body {
+	width:100%;margin:0;
+	/*font: normal 14px Monaco, 'Courier New', monospace;
+	*/
+	background: #3d3d3d;
+	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	background-attachment:fixed;
+	/*background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackgroundshaded.php?altezza=20&larghezza=20&pixelsize=4&ygap=0&ystart=0&xstart=0&colore=5a88f2&sfondo=18478c&probvuoto=50&probpieno=50&counter=rand()');
+	/*background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackground.php?altezza=20&larghezza=20&pixelsize=2&ygap=0&ystart=0&xstart=0&colore=3d3d3d&sfondo=666666&probvuoto=50&probpieno=50&counter=rand()');
+*/	
+	
+	
+	background-image: url("../img/bokeh.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+	/*opacity:0.8;*/
+
+}
+h1{
+	color:#000;
+	background:#e9eaee;
+	font: 60px 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 100;
+	line-height: 1.2em;
+	margin-bottom: 0.6em;
+	text-align:center;
+
+	border: 2px solid #ffffff;
+	box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+}
+#container{
+	position:relative;
+	color:#000;
+	background:rgba(0,0,0,0);
+	/*
+	background:#e9eaee;*/
+
+	width:90%;
+	margin:5%;
+	
+	border: 2px solid #ffffff;
+	box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-moz-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-webkit-box-shadow: 1px 2px 6px rgba(0,0,0, 0.5);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+#container .top{
+	padding:0;border:none;margin:0;
+	position:relative;
+	width:100%;
+	height:10px;
+	background:#e9eaee;
+}
+#container .title{
+	padding:0;border:none;margin:0;
+	position:relative;
+	width:100%;
+	height:auto;
+	margin:0;
+	padding:0;
+	background:rgba(0,0,0,0.3);
+	
+}
+#container .title img{
+	padding:0;border:none;margin:0;
+	position:relative;
+	width:100%;
+	margin:0;
+	padding:0;
+	display: block;opacity:0.9;
+}
+#container .contenuti{
+	border:none;margin:0;
+	position:relative;
+	width:90%;
+	height:auto;
+	background:#e9eaee;
+	padding:5%;
+}

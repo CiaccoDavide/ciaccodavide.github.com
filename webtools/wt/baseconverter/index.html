@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>CD - webtools/BaseConverter</title>
+		<link rel="shortcut icon" type="image/x-icon" href="http://ciaccodavi.de/favicon.ico">
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script type='text/javascript' src='../../../js/jquery.min.js'></script>
+	</head>
+	<body>
+		<div id="left">
+			<a href="../../../"><img src="../../../ritrattocd.png">
+			<h1>Ciacco Davide</h1></a>
+			<div class="links">
+				<a href="../../../"><t>.</t>about</a><br>
+				<a href="../../../photos"><t>.</t>photos</a><br>
+				<a href="../../../coding"><t>.</t>coding</a><br>
+				<a href="../../../relax"><t>.</t>relax</a><br>
+				<a href="../../../games"><t>.</t>games</a><br>
+				<a href="#"><t>.</t>projects</a><br>
+				<a href="../../../interesting"><t>.</t>interesting stuff</a><br>
+				<a href="../../../webtools" id="active"><t>.</t>webtools</a><br>
+			</div>
+		</div>
+		<div id="right">
+			<input id="bin" type="number" name="bin" value="" placeholder="BIN"><br>
+			<input id="dec" type="number" name="dec" value="" placeholder="DEC"><br>
+			<input id="hex" type="text" name="hex" value="" placeholder="HEX"><br>
+			<input id="reset" type="button" name="reset" value="Reset" onclick="reset()"><br>
+		</div>
+
+		<script type="text/javascript">
+			reset();
+			$("#bin").keyup(function () {
+			  	var inputbin = $(this).val();
+				ctrlbin();
+				inputbin = $(this).val();
+				if(inputbin.length>0){
+					document.getElementById('dec').value=parseInt(inputbin, 2);
+					document.getElementById('hex').value=parseInt(inputbin, 2).toString(16);
+				}else{reset();}
+			}).keyup();
+			$("#dec").keyup(function () {
+			  	var inputdec = $(this).val();
+				ctrldec();
+				inputdec = $(this).val();
+				if(inputdec.length>0){
+					document.getElementById('bin').value=parseInt(inputdec, 10).toString(2);
+					document.getElementById('hex').value=parseInt(inputdec, 10).toString(16);
+				}else{reset();}
+			}).keyup();
+			$("#hex").keyup(function () {
+			  	var inputhex = $(this).val();
+				ctrlhex();
+				inputhex = $(this).val();
+				if(inputhex.length>0){
+					document.getElementById('bin').value=parseInt(inputhex, 16).toString(2);
+					document.getElementById('dec').value=parseInt(inputhex, 16);
+				}else{reset();}
+			}).keyup();
+
+			function reset(){
+				document.getElementById('bin').value="";
+				document.getElementById('dec').value="";
+				document.getElementById('hex').value="";
+			}
+			function ctrlbin(){
+				var inputbin = $('#bin').val();
+				array = inputbin.split("");
+				for(i=0;i<array.length;i++)
+					if(array[i]!=0 && array[i]!=1)
+						array[i]=-1;
+				
+				inputbin='';
+				for(i=0;i<array.length;i++){
+					if(array[i]>=0)
+						inputbin+=array[i];
+				}
+				document.getElementById('bin').value=inputbin;
+			}
+			function ctrldec(){
+				var inputdec = $('#dec').val();
+				array = inputdec.split("");
+				for(i=0;i<array.length;i++)
+					if(array[i]!=0&&array[i]!=1&&array[i]!=2&&array[i]!=3&&array[i]!=4&&array[i]!=5&&array[i]!=6&&array[i]!=7&&array[i]!=8&&array[i]!=9)
+						array[i]=-1;
+				
+				inputdec='';
+				for(i=0;i<array.length;i++){
+					if(array[i]>=0)
+						inputdec+=array[i];
+				}
+				document.getElementById('dec').value=inputdec;
+			}
+			function ctrlhex(){
+				var inputhex = $('#hex').val();
+				array = inputhex.split("");
+				for(i=0;i<array.length;i++)
+					if(array[i].charCodeAt(0)<48||(array[i].charCodeAt(0)>57&&array[i].charCodeAt(0)<65)||(array[i].charCodeAt(0)>70&&array[i].charCodeAt(0)<97)||array[i].charCodeAt(0)>102)
+						array[i]=-1;
+				inputhex='';
+				for(i=0;i<array.length;i++){
+					if(array[i]!=-1)
+						inputhex+=array[i];
+				}
+				document.getElementById('hex').value=inputhex;
+			}
+		</script>
+	</body>
+</html>

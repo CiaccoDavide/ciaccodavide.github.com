@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>Ciacco Davide - RandomArt</title>
+		<link rel="shortcut icon" type="image/x-icon" href="http://ciaccodavi.de/favicon.ico">
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script type='text/javascript' src='../js/jquery.min.js'></script>
+	</head>
+	<body>
+		<div class="container"><div id="random"></div></div>
+		<script type="text/javascript">
+			var str = "";
+			for(x=0; x<30000; x++)
+				str+=String.fromCharCode(Math.round(Math.random() * (9631 - 9600 + 1))+9600);
+			document.getElementById('random').innerHTML=str+"<br><br><br>";
+		</script>
+	</body>
+</html>

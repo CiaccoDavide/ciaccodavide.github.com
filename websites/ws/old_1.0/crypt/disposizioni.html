@@ -1,0 +1,133 @@
+<!doctype html>  
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ciacco Davide</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/crypt.css">
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+		<link rel="stylesheet" href="fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+	
+	<body>
+		<header>
+			<h1>Disposizioni</h1>
+		</header>
+		<contents>
+		<post>
+			<form>
+				<p> n69 k2</p>
+				<INPUT TYPE="button" NAME="button" Value="Disposizioni" onClick="disp(this.form)"><P>
+				<h2></h2><span id="0"></span><br>
+				<h2></h2><span id="1"></span><br>
+				<h2></h2><span id="2"></span><br>
+				
+			</form>
+		</post>	
+			
+		</contents>
+		<footer>
+			<foot>Created by <a>Davide Ciacco</a></foot>
+		</footer>
+		
+		<div class="sharing">
+			<a href="http://twitter.com/share" class="twitter-share-button" data-text="Work in progress #CiaccoDavide" data-url="http://ciaccodavi.de" data-count="small"></a>
+		</div>
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		
+		<script type="text/javascript">
+		
+		function disp(form) {
+			
+			var chars = new Array();
+			z = 0;
+			//letters
+			for(i = 97; i <123; i++){
+				chars[z] = String.fromCharCode(i);
+				z++;
+			}
+			//LETTERS
+			for(i = 65; i <91; i++){
+				chars[z] = String.fromCharCode(i);
+				z++;
+			}
+			//LETTERS
+			for(i = 48; i <58; i++){
+				chars[z] = String.fromCharCode(i);
+				z++;
+			}
+			//symbols
+			chars[z] = String.fromCharCode(33);
+			z++;
+			chars[z] = String.fromCharCode(39);
+			z++;
+			chars[z] = String.fromCharCode(44);
+			z++;
+			chars[z] = String.fromCharCode(46);
+			z++;
+			chars[z] = String.fromCharCode(58);
+			z++;
+			chars[z] = String.fromCharCode(63);
+			z++;
+			//space
+			chars[z] = String.fromCharCode(32);
+			z++;
+			
+			document.getElementById('0').innerHTML += "Range: ";
+			for(i = 0; i <69; i++){
+				document.getElementById('0').innerHTML += chars[i];
+			}
+			
+			var disposti = new Array();
+			document.getElementById('1').innerHTML += "Disposti per array JS: var array = new Array(";
+			k = 0;
+			for(x = 0; x <69; x++){
+				for(y = 0; y <69; y++){
+					disposti[k] = chars[x] + chars[y];
+					document.getElementById('1').innerHTML += "\"" + disposti[k] + "\",";
+					k++;
+				}
+			}
+			//singoli
+			for(i = 97; i <123; i++){
+				disposti[k] = String.fromCharCode(i);
+				k++;
+			}
+			for(i = 65; i <91; i++){
+				disposti[k] = String.fromCharCode(i);
+				k++;
+			}
+			for(i = 48; i <58; i++){
+				disposti[k] = String.fromCharCode(i);
+				k++;
+			}
+			disposti[k] = String.fromCharCode(33);
+			k++;
+			disposti[k] = String.fromCharCode(39);
+			k++;
+			disposti[k] = String.fromCharCode(44);
+			k++;
+			disposti[k] = String.fromCharCode(46);
+			k++;
+			disposti[k] = String.fromCharCode(58);
+			k++;
+			disposti[k] = String.fromCharCode(63);
+			k++;
+			disposti[k] = String.fromCharCode(32);
+			k++;
+			
+			document.getElementById('1').innerHTML += ");";
+			document.getElementById('2').innerHTML += disposti;
+			
+		}
+		/*------DIPS------------------------------------------------------------------------
+			var chars=new Array();z=0;for(i=97;i<123;i++){chars[z]=String.fromCharCode(i);z++;}for(i=65;i<91;i++){chars[z]=String.fromCharCode(i);z++;}for(i=48;i<58;i++){chars[z]=String.fromCharCode(i);z++;}chars[z]=String.fromCharCode(33);z++;chars[z]=String.fromCharCode(39);z++;chars[z]=String.fromCharCode(44);z++;chars[z]=String.fromCharCode(46);z++;chars[z]=String.fromCharCode(58);z++;chars[z]=String.fromCharCode(63);z++;chars[z]=String.fromCharCode(32);z++;var disposti=new Array();k=0;for(x=0;x<69;x++){for(y=0;y<69;y++){disposti[k]=chars[x]+chars[y];k++;}}for(i=97;i<123;i++){disposti[k]=String.fromCharCode(i);k++;}for(i=65;i<91;i++){disposti[k]=String.fromCharCode(i);k++;}for(i=48;i<58;i++){disposti[k]=String.fromCharCode(i);k++;}disposti[k]=String.fromCharCode(33);k++;disposti[k]=String.fromCharCode(39);k++;disposti[k]=String.fromCharCode(44);k++;disposti[k]=String.fromCharCode(46);k++;disposti[k]=String.fromCharCode(58);k++;disposti[k]=String.fromCharCode(63);k++;disposti[k]=String.fromCharCode(32);k++;
+			/*----------------------------------------------------------------------------------*/
+
+		</script>
+		
+	</body>
+</html>
