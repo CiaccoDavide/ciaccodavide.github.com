@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="author" content="Davide Ciacco">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		
+		<meta charset="UTF-8">
+		<title>CD - ImgCrypt</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script type='text/javascript' src='./js/jquery.min.js'></script>
+	</head>
+	<body>
+		<div id="left">
+			<a href="../"><img src="../ritrattocd.png">
+			<h1>Ciacco Davide</h1></a>
+			<div class="links">
+				<a href="../about"><t>.</t>about</a><br>
+				<a href="../photos"><t>.</t>photos</a><br>
+				<a href="../coding"><t>.</t>coding</a><br>
+				<a href="../relax"><t>.</t>relax</a><br>
+				<a href="../games"><t>.</t>games</a><br>
+				<a href="#"><t>.</t>projects</a><br>
+				<a href="../interesting"><t>.</t>interesting stuff</a><br>
+				<a href="../webtools"><t>.</t>webtools</a><br>
+			</div>
+		</div>
+		<div id="right">
+
+			<h1>ImgCrypt</h1>
+
+
+			<input id="key" type="text" name="key" value="" placeholder="Insert a password to encrypt the img!"/><br>
+			<input id="set" type="button" name="set" value="Set" onclick="cryptIt()"/>
+			<input id="reset" type="button" name="reset" value="Reset" onclick="reset()"/>
+			<br><br>
+			<canvas id="input" width="200" height="200">I am canvas</canvas><br>
+			<a id="imageLink" href="data-uri-here" download="myFilename.png">
+    <input id="download" type="button" name="download" value="Download"/>
+</a>
+			<div id="tester"></div>
+
+		</div>
+
+		<script>
+			var bitstring = "";
+			$('#key').focus();
+			$('#set').attr("disabled", true);
+			document.getElementById('key').value="";
+			/*----------LOAD IMAGE---------------------------*/
+			var canvasinput = document.getElementById("input"),
+				contextIn = canvasinput.getContext("2d"),
+				img = document.createElement("img"),
+				clearCanvasIn = function () {contextIn.clearRect(0, 0, canvasinput.width, canvasinput.height);};
+			var key = "", nome = "notset";
+			var databackup;
+			var backed = false;
+			// Image for loading	
+			img.addEventListener("load", function () {
+				clearCanvasIn();
+				canvasinput.height=img.height;
+				canvasinput.width=img.width;
+				contextIn.drawImage(img, 0, 0);
+				ImageDataBackup = contextIn.getImageData(0, 0, canvasinput.width, canvasinput.height);
+				backed = true;
+			}, false);
+			
+			// To enable drag and drop
+			canvasinput.addEventListener("dragover", function (evt) {
+				evt.preventDefault();
+			}, false);
+
+			// Handle dropped image file - only Firefox and Google Chrome
+			canvasinput.addEventListener("drop", function (evt) {clearCanvasIn();
+				var files = evt.dataTransfer.files;
+				if (files.length > 0) {
+					var f = files[0];
+					nome = f.name;
+					nome = nome.substr(0, nome.lastIndexOf('.'));
+					if (typeof FileReader !== "undefined" && f.type.indexOf("image") != -1) {
+						var reader = new FileReader();
+						// Note: addEventListener doesn't work in Google Chrome for this event
+						reader.onload = function (evt) {
+							img.src = evt.target.result;
+						};
+						reader.readAsDataURL(f);
+					}
+				}
+				evt.preventDefault();
+			}, false);
+		/*------END LOAD IMAGE---------------------------*/
+
+			function reset(){
+				$('#set').attr("disabled", true);
+				document.getElementById('key').value="";
+				if(backed == true)
+					contextIn.putImageData(ImageDataBackup, 0, 0);
+				$('#key').focus();
+				$('#key').text(ImageDataBackup);
+				bitstring = "";
+
+			}
+
+			$("#key").keyup(function () {
+				key = $(this).val();
+				if(key.length>0){
+					$('#set').attr("disabled", false);
+				}else{
+					$('#set').attr("disabled", true);
+				}
+			}).keyup();	
+
+			function cryptIt(){
+				var bitstringdue = "";
+				bitstring = "";
+				var z, keyindex = 0, keycycle = 0, out = 0,j;
+				var imageData = contextIn.getImageData(0, 0, canvasinput.width, canvasinput.height);
+
+
+				var	bitlarghezza = canvasinput.width.toString(2),
+					bitaltezza = canvasinput.height.toString(2);
+				while(bitlarghezza.length<16)
+					bitlarghezza=0+bitlarghezza;
+				while(bitaltezza.length<16)
+					bitaltezza=0+bitaltezza;
+
+				var data = imageData.data;
+				var outs="";
+					$('#tester').text('');
+				//crypt output data
+				for(z=0;z<data.length;z++){
+					out = data[z];
+					if((z+1)%4==0){}else{
+						outs=out.toString(10);
+						while(outs.length<3)
+							outs=0+outs;
+					}
+					bitstring += outs + " ";
+				}//write crypted data on output
+
+				for(j=0;j<bitstring.length;j++){
+					switch(bitstring.charAt(j)){
+						case '0': bitstringdue+="0"; break;
+						case '1': bitstringdue+="10"; break;
+						case '2': bitstringdue+="110"; break;
+						case '3': bitstringdue+="1110"; break;
+						case '4': bitstringdue+="11110"; break;
+						case '5': bitstringdue+="111110"; break;
+						case '6': bitstringdue+="1111110"; break;
+						case '7': bitstringdue+="11111110"; break;
+						case '8': bitstringdue+="111111110"; break;
+						case '9': bitstringdue+="1111111110"; break;
+					}
+				}
+
+
+
+				var bitstringfinale=bitlarghezza+bitaltezza+bitstringdue;
+
+
+				var xx=bitstringfinale.length;
+				//while(bitstringfinale.length%xx!=0)
+				//	xx--;
+				var newlarg=xx/10;
+				//var newalte=bitstringfinale.length/xx;
+				var newalte=100;
+
+				$('#tester').text((newlarg)+" - "+newalte);
+
+				/*var arraysing = bitstringfinale.split(""); 
+				var arraycompleto = new Array();
+				var strtemp;
+				var c=0;
+				for(var r=0;r<xx;r++){
+					strtemp=="";
+					strtemp+=arraysing[c];
+					c++;
+					strtemp+=arraysing[c];
+					c++;
+					strtemp+=arraysing[c];
+					c++;
+					arraycompleto[r]=strtemp;
+				}
+*/
+
+
+
+				canvasinput.height=newalte;
+				canvasinput.width=newlarg;
+				contextIn.fillStyle = '#ffffff'; // implicit alpha of 1
+				contextIn.fillRect(0, 0, canvasinput.width, canvasinput.height);
+				//dest = contextIn.getImageData(0, 0).data
+/*
+				var n = 4 * xx;
+				var s = 0, d = 0;
+				while (d < n) {
+				    dest[d++] = arraycompleto[s++];
+				    dest[d++] = arraycompleto[s++];
+				    dest[d++] = arraycompleto[s++];
+				    d++;    // skip the alpha byte
+				}
+
+
+
+
+				contextIn.putImageData(dest,0,0);
+
+*/
+
+				imageLink.href = canvasinput.toDataURL();
+				imageLink.download = nome+'_decrypted.png';
+
+			}
+			//press enter to crypt
+			var enter = document.getElementById("key");
+			enter.addEventListener("keydown", function (e) {
+    			if (e.keyCode === 13 && key.length > 0) {
+			        cryptIt();
+			    }
+			});
+
+
+		</script>
+		
+		<script type="text/javascript">
+		</script>
+		
+	</body>
+</html>

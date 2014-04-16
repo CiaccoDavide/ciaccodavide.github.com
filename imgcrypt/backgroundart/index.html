@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="author" content="Davide Ciacco">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		
+		<meta charset="UTF-8">
+		<title>CD - ImgCrypt</title>  
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script type='text/javascript' src='./js/jquery.min.js'></script>
+	</head>
+	<body>
+		<div id="right">
+
+			
+			<input id="key" type="text" name="key" value="" placeholder="Type to trip!"/><br>
+			<input id="height" type="number" name="height" value="" placeholder="Height"/><input id="width" type="number" name="width" value="" placeholder="Width"/><br>
+			<canvas id="input" width="600" height="10">I am canvas</canvas><br>
+			<a id="imageLink" href="data-uri-here" download="myFilename.png"><input id="download" type="button" name="download" value="Download this!"/></a>
+
+		</div>
+
+		<script>
+				$('#key').focus();
+			document.getElementById('key').value="";
+		/*----------LOAD IMAGE---------------------------*/
+			var canvasinput = document.getElementById("input"),
+				contextIn = canvasinput.getContext("2d"),
+				clearCanvasIn = function () {contextIn.clearRect(0, 0, canvasinput.width, canvasinput.height);};
+			var key = "", nome = "notset";
+
+			canvasinput.width = 100;
+			canvasinput.height = 100;
+			clearCanvasIn();
+
+		/*------END LOAD IMAGE---------------------------*/
+
+			function reset(){
+				$('#key').focus();
+				clearCanvasIn();
+				assignToDiv();
+			}
+
+			$("#key").keyup(function () {
+				key = $(this).val();
+				if(key.length>0){
+					cryptIt();
+				}else{
+					reset();
+				}
+			}).keyup();	
+
+			function cryptIt(){
+				
+				var z, keyindex = 0, keycycle = 0, out = 0;
+				var imageData = contextIn.getImageData(0, 0, canvasinput.width, canvasinput.height);
+				var data = imageData.data;
+				//crypt output data
+				for(z=0;z<data.length;z++){
+					out = data[z];
+					
+						if(keyindex > key.length-1){
+							keyindex -= key.length;
+							keycycle++;
+						}
+						out += (keycycle + key.charCodeAt(keyindex)+keyindex+z+(key.charCodeAt(keyindex)+keycycle-keyindex)*keyindex)+Math.floor(Math.random() * z)+Math.floor(Math.random() * keycycle)+Math.floor(Math.random() * keyindex);
+						while(out > 255)
+							out -= 256;
+						while(out < 0)
+							out += 256;
+						keyindex++;
+					
+					data[z] = out;
+				}//write crypted data on output
+				contextIn.putImageData(imageData, 0, 0);
+				$('#key').focus();
+
+				assignToDiv();
+				imageLink.href = canvasinput.toDataURL();
+				imageLink.download = nome+'_crypted.png';
+			}
+
+			//press enter to crypt
+			var enter = document.getElementById("key");
+			enter.addEventListener("keydown", function (e) {
+    			if (e.keyCode === 13 && key.length > 0) {
+			        cryptIt();
+			    }
+			});
+
+			function assignToDiv(){ // this kind of function you are looking for
+			  dataUrl = canvasinput.toDataURL();
+			  document.getElementById('right').style.background='url('+dataUrl+')';
+			}
+
+			$("#height").keyup(function () {
+				height = $(this).val();
+				if(height==null||height<1){
+					canvasinput.height = 100;
+				}else{
+					canvasinput.height = height;
+				}
+			}).keyup();	
+
+			$("#width").keyup(function () {
+				width = $(this).val();
+				if(width==null||width<1){
+					canvasinput.width = 100;
+				}else{
+					canvasinput.width = width;
+				}
+			}).keyup();	
+		</script>
+		
+		<script type="text/javascript">
+		</script>
+		
+	</body>
+</html>
