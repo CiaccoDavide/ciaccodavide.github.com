@@ -9,7 +9,7 @@ font-family: 'Raleway', sans-serif; // - 100,200
 	*/
 	background: #ddd;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
-}body img{width:300px;padding:0;margin-top: -30px;opacity:0.8;}body img:hover{opacity:1;}
+}body img{width:300px;padding:0;opacity:0.8;}body img:hover{opacity:1;}
 body #left a img{width:160px;opacity:0.8;}
 body #left a:hover img{opacity:1;}
 body #left{
@@ -121,7 +121,7 @@ a:hover{
 	line-height: 0;
 	letter-spacing:3px;
 }a:hover t{color:#38f;}
-p{
+p{padding:0;margin-bottom:0;
 	font-size:20px;
 	font-family: 'Raleway', sans-serif;
 }
