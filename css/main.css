@@ -135,6 +135,8 @@ a .post desc .thumb img{
 #canvas{background: url(../imgs/icon_canvas.png);background-position: 50% 50%;}
 #randomart{background: url(../imgs/icon_randomart.png);background-position: 50% 50%;}
 #prog{background: url(../imgs/icon_prog2.png);background-position: 50% 50%;}
+#indexcrypted{background: url(../imgs/icon_indexcrypted.png);background-position: 50% 50%;}
+#crypt{background: url(../imgs/icon_crypt.png);background-position: 50% 50%;}
 .icno {
 	margin:10px;
 	width:70px;
