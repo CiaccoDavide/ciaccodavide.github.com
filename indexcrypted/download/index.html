@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>CD - Download Crypted</title>  
+		<link href='http://fonts.googleapis.com/css?family=Quicksand:400' rel='stylesheet' type='text/css'>
+		<link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+		<script type='text/javascript' src='../jquery.min.js'></script>
+		<style type="text/css">
+			body {
+	font-family:QuicksandBook, Helvetica, Arial, sans-serif;
+	text-shadow:#efefef 1px 1px 0px;
+	font-size: 22px;
+	color: #222;
+	background-color:#f8f8f8;
+	text-align:center;}
+			#key{
+				background:rgba(90,90,90,1);
+				color:#fff;
+				position:fixed;
+				top:50%;
+				left:50%;
+				height:auto;
+				width:200px;
+				margin-top:-60px;
+				margin-left:-130px;
+				z-index:1;
+		
+				box-shadow: 
+			        0 1px 0 rgba(34, 136, 255,0.4), 
+			        inset 0 1px 1px rgba(0,0,0,0.1),
+			        0 0 0 3px rgba(34, 136, 255,0.3);
+			    outline: none;
+				/* Size and position */
+			    padding: 8px 4px 8px 4px;
+
+			    /* Styles */
+			    border: 1px solid #4e3043; /* Fallback */
+			    border: 1px solid rgba(0,0,0, 0.8);
+			    border-radius: 3px;
+			    box-shadow: 
+			        1px 1px 0 rgba(255,255,255,0.2), 
+			        inset 0 1px 1px rgba(0,0,0,0.1);
+
+			    /* Font styles */
+			    font: 20px 'Helvetica Neue', Arial, sans-serif;
+				font-weight: 100;
+				letter-spacing: 1px;
+			}
+			#output{
+				position:absolute;
+				top:0;
+				left:0;
+				margin:0;
+				border:0;
+				z-index:0;
+				padding:10px;
+			}
+			a {
+	color: #f76f76;
+	text-decoration: none;
+
+	-webkit-transition: 0.15s color ease;
+	   -moz-transition: 0.15s color ease;
+	    -ms-transition: 0.15s color ease;
+	     -o-transition: 0.15s color ease;
+	        transition: 0.15s color ease;
+}
+a:hover {
+		color: #F43342;
+		text-decoration: underline;
+	}
+		</style>
+	</head>
+	<body>	
+		<INPUT id="key" TYPE="text" NAME="unlockbox" VALUE="" placeholder="unlock key"><P>
+		<div id="output"></div>
+		<script>var stringa='ᐂ㫛ᖸ㕈ᖏ㝻ᐂ㟔ᐄ㩈ᕝ㥛ᐎ㡰ᕉ㠶ᖏ㢔ᖲ㩳ᕚ㦯ᖁ㞢ᖟ㡪ᖤ㞪ᑋ㖬ᕤ㨢ᖩ㖮ᕉ㦳ᑏ㠅ᖨ㡰ᕲ㖃ᕊ㒈ᑋ㦹ᖑ㔛ᕎ㪀ᕔ㗋ᖋ㞤ᖀ㬭ᗆ㩽ᒍ㨐ᒗ㐿';
+		</script>
+		<script src="../dcrptd.js"></script>
+		
+		<script type="text/javascript">
+			$(function(){
+				$('#container').masonry({
+					itemSelector: '.item',
+					columnWidth: 10,
+					isAnimated: !Modernizr.csstransitions,
+					animationOptions: {duration: 750,easing: 'linear',queue: false}
+				});});
+		</script>
+	</body>
+</html>
