@@ -43,7 +43,7 @@ h1 {
 }
 h2 {
 	color: #222;
-	font-size: 46px;
+	font-size: 20px;
 	line-height: 1;
 	font-family: QuicksandBold, Helvetica, Arial, sans-serif;
 	font-weight: bold;
@@ -51,10 +51,9 @@ h2 {
 	text-decoration: none;
 	text-shadow:#ddd 1px 1px 0px, #999 0px 0px 10px, #999 0px 0px 10px;
 	padding:10px 20px 0 0; /*top dx bottom sx*/
-	width:800px;
 	position:fixed;
-	bottom:50%;
-	left:30px;
+	bottom:10px;
+	right:10px;
 }
 h4 {
 	font-size: 20px;
@@ -132,29 +131,15 @@ p {
 del {
 	opacity: 0.6;
 }
-contents{z-index:0;
+contents{
+	z-index:0;
 	position:fixed;
-	top:0;
+	top:90px;
+	left:0;
+	right:-80px;
 } 
 /*top dx bottom sx*/
 
-footer{
-	border-top: 1px dashed #aaa;
-	border-bottom:0;
-	position:fixed;
-	bottom:10px;
-	text-align:center;
-	margin-left:30%;
-	margin-right:30%;
-	width:40%;
-}
-footer foot{
-	font-size: 14px;
-	font-family: QuicksandBold, Helvetica, Arial, sans-serif;
-	padding:10px 0 10px 0;
-	color: #999;
-	-webkit-text-size-adjust: none;
-}
 
 sq0{z-index:3;position:relative;
 	float:left;
