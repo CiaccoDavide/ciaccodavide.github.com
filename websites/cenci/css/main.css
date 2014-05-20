@@ -1,0 +1,38 @@
+*,html {margin:0;padding:0;}
+body {
+	margin:0;
+	padding:0;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300;
+	background: #e5e5e5;
+}
+header{
+	position:fixed;
+	top: 0;
+	left:0;
+	right:0;
+	height: 90px;
+	background: #f4f4f4;
+	border-bottom: 1px solid #a0a0a0;
+}
+#back{
+	color:#0095ff;
+	font-size: 25px;
+
+}
+content{
+	position: fixed;
+	top:91px;
+	left:0;
+	right:0;
+	text-align: center;
+}
+.button{
+	background:#fff;
+	border: 1px solid #c8c8c8;
+	color:#333333;
+	padding:20px 0 20px 0; /*top right bottom left*/
+	font-size: 40px;
+	margin-top: 60px;
+	margin-left: 20%;
+	margin-right: 20%;
+}
