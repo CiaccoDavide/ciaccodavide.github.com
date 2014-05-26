@@ -2,7 +2,7 @@ html {}
 body {
 	width:100%;margin:0;padding:0;
 	background: #fff;
-	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	font: 14px Arial, sans-serif;
 }
 body .container{
 	position:fixed;
