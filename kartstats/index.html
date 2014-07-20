@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>CD - WebTools</title>
+		<meta name="description" content="Realized using css3, html5, JS and PHP">
+		<meta name="author" content="Davide Ciacco">
+		<meta name="viewport" content="width=800, user-scalable=yes">
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic,300italic|Quicksand:300,400|Source+Code+Pro:200,300,400|Raleway:100,200' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./css/main.css">
+		<script src="../js/jquery.min.js"></script>
+		<script src="./Chart.js"></script>
+		<link rel="stylesheet" href="../fonts/base64_quicksandfonts.css" type="text/css" charset="utf-8">
+	</head>
+
+	<body>
+
+			<script>
+var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+var lineChartData = {
+labels : [//"Giro 1",
+"Giro 2","Giro 3","Giro 4","Giro 5","Giro 6","Giro 7","Giro 8","Giro 9","Giro 10","Giro 11","Giro 12","Giro 13"],
+datasets : [
+{
+label: "Davide",
+fillColor : "rgba(151,187,205,0.2)",
+strokeColor : "rgba(151,187,205,1)",
+pointColor : "rgba(151,187,205,1)",
+pointStrokeColor : "#fff",
+pointHighlightFill : "#fff",
+pointHighlightStroke : "rgba(220,220,220,1)",
+data : [	64.385,
+					57.236,
+					56.727,
+					57.352,
+					57.054,
+					57.906,
+					55.433,
+					55.406,
+					54.284,
+					50,
+					55.028
+				]
+},
+{
+label: "Giuseppe",
+fillColor : "rgba(255,151,187,0.2)",
+strokeColor : "rgba(255,151,187,1)",
+pointColor : "rgba(255,151,187,1)",
+pointStrokeColor : "#fff",
+pointHighlightFill : "#fff",
+pointHighlightStroke : "rgba(151,187,205,1)",
+data : [	65.185,
+					51.784,
+					51.477,
+					51.409,
+					51.756,
+					50.962,
+					51.965,
+					51.230,
+					50.826,
+					51.990,
+					51.790,
+					51.158,
+					51.202
+				]
+},
+{
+label: "Giuseppe",
+fillColor : "rgba(120,222,120,0.2)",
+strokeColor : "rgba(120,222,120,1)",
+pointColor : "rgba(120,222,120,1)",
+pointStrokeColor : "#fff",
+pointHighlightFill : "#fff",
+pointHighlightStroke : "rgba(151,187,205,1)",
+data : [	//61.673,
+					51.576,
+					51.509,
+					51.756,
+					50.761,
+					50.922,
+					51.402,
+					50.877,
+					51.333,
+					51.148,
+					52.174,
+					51.008,
+					51.133
+				]
+}
+]
+
+}
+
+window.onload = function(){
+var ctx = document.getElementById("canvas").getContext("2d");
+window.myLine = new Chart(ctx).Line(lineChartData, {
+	// Boolean - Whether to animate the chart
+    animation: true,
+    // Number - Number of animation steps
+    animationSteps: 60,
+
+responsive: true,
+//bezierCurve: false,
+showTooltips: true,
+tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+
+
+});
+}
+
+
+</script>
+
+		<div id="left">
+			<a href="../"><img src="../ritrattocd.png">
+			<h1>Ciacco Davide</h1></a>
+		<div class="links">
+			<a href="../about"><t>.</t>about</a><br>
+			<a href="../photos"><t>.</t>photos</a><br>
+			<a href="../coding"><t>.</t>coding</a><br>
+			<a href="#"><t>.</t>relax</a><br>
+			<a href="#"><t>.</t>games</a><br>
+			<a href="#"><t>.</t>projects</a><br>
+			<a href="../interesting"><t>.</t>interesting stuff</a><br>
+			<a href="./" id="active"><t>.</t>webtools</a><br>
+		</div>
+		</div>
+		<div id="right">
+
+			<canvas id="canvas" width="600" height="400"></canvas>
+
+		</div>
+	</body>
+</html>
