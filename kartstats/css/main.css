@@ -10,7 +10,7 @@ font-family: 'Raleway', sans-serif; // - 100,200
 	background: #ddd;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
 }
-body #left a img{width:160px;opacity:0.8;}
+body #left a img{width:60px;opacity:0.8;}
 body #left a:hover img{opacity:1;}
 body #left{
 	overflow:scroll;
@@ -18,8 +18,8 @@ body #left{
 	position:fixed;
 	left:0;
 	background:#eee;
-	height:160px;
-	width:160px;
+	height:60px;
+	width:60px;
 	overflow-x:hidden;
 	overflow-y:hidden;
 	z-index:1000;
@@ -135,3 +135,14 @@ a span{
 	font-family: 'Raleway', sans-serif;
 }
 a:hover span{visibility:visible;}
+
+
+
+
+
+
+
+
+davide dot{padding:6px;color:rgba(151,187,205,1)}
+giuse dot{padding:6px;color:rgba(255,151,187,1)}
+loris dot{padding:6px;color:rgba(120,222,120,1)}
