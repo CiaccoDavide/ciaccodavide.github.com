@@ -33,7 +33,9 @@ body #right{
 	top:0px;
 	bottom:0px;
 	overflow-x:hidden;
-	overflow-y:scroll;
+	overflow-y:hidden;
+	margin:0;
+	padding:0;
 }
 h1{
 	text-shadow:1px 1px 0px #eee;
