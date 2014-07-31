@@ -29,7 +29,19 @@
 			</div>
 		</div>
 		<div id="right">
-			<iframe src="http://ciaccodavide.altervista.org/fotografia/galleria" frameborder="0"></iframe>
 		</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var loader = $("#right");
+			for(var x=0;x<215;x++){
+				if(x<10)
+					loader.append('<div class="photo" id="id00'+x+'"></div>');
+				else if(x<100)
+					loader.append('<div class="photo" id="id0'+x+'"></div>');
+				else
+					loader.append('<div class="photo" id="id'+x+'"></div>');
+			}
+		});   
+	</script>
 </body>
 </html>
