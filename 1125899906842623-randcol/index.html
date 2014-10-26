@@ -61,7 +61,7 @@ function convertImgToBase64(url, callback, outputFormat){
 
 
 $('img').click(function(event){
-    var imageUrl = $(this).src;
+    var imageUrl = $(this).getAttribute('src');
     console.log('imageUrl', imageUrl);
     convertImgToBase64(imageUrl, function(base64Img){
         /*$('.output')
