@@ -62,7 +62,7 @@ function convertImgToBase64(url, callback, outputFormat){
 
 $('img').click(function(event){
     var imageUrl = $(this).attr('src');
-    console.log('imageUrl', imageUrl);
+
     convertImgToBase64(imageUrl, function(base64Img){
         /*$('.output')
             .find('textarea')
@@ -75,6 +75,7 @@ $('img').click(function(event){
             .find('img')
                 .attr('src', base64Img);*/
 								alert(base64Img);
+								console.log('imageUrl', base64Img);
     });
 
     event.preventDefault();
