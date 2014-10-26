@@ -61,8 +61,8 @@ function convertImgToBase64(url, callback, outputFormat){
 
 
 $('img').click(function(event){
-    var imageUrl = $('img').src;
-    console.log('imageUrl', "asdgs");
+    var imageUrl = this.attr('src');
+    console.log('imageUrl', imageUrl);
     convertImgToBase64(imageUrl, function(base64Img){
         /*$('.output')
             .find('textarea')
