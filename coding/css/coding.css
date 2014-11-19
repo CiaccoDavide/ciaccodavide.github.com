@@ -40,6 +40,9 @@ header .menu{
 	position: absolute;
 	right: 10px;
 	bottom: 10px;
+}header .menu:hover{
+	text-decoration: underline;
+	cursor: pointer;
 }
 a{text-decoration:none;color:#f93682;}
 a:hover{text-decoration:none;color:#ff56a2;text-decoration: underline;}
