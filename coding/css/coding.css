@@ -13,6 +13,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 	background-attachment:fixed;
 	background-image:url('http://ciaccodavide.altervista.org/qbdp/multicolor/universalbackground.php?altezza=60&larghezza=60&pixelsize=6&ygap=0&ystart=0&xstart=0&colore=1b1b1b&sfondo=161616&probvuoto=50&probpieno=50&counter=rand()');
+	background-image:url('http://ciaccodavide.altervista.org/patt/tri.php?c=202020&s=1b1b1b&l=200&a=200&d=20');
 }
 header{
 	position: fixed;
@@ -49,8 +50,8 @@ a:hover{text-decoration:none;color:#ff56a2;text-decoration: underline;}
 
 .spacer{height: 69px}
 .intestazione{padding: 10px 10px 0 10px;font-size: 30px;}
-.linguaggio{padding: 0 10px 0 20px;}
 .creator{padding: 0 10px 0 20px;}
+.linguaggio{padding: 4px 10px 0 20px;}
 .hr{margin: 10px 0 10px 0;border-top: 1px solid #424242;}
 .text{
 	padding: 10px;
