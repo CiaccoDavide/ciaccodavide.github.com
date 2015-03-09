@@ -5,15 +5,18 @@
     <meta name="description" content="Simple Canvas Based HTML5 Color-Picker">
     <meta name="keywords" content="HTML,CSS,JavaScript">
     <meta name="author" content="Ciacco Davide">
+    <title>Simple Web Color Picker | Ciacco Davide</title>
     <style>
-      body {background: #222; margin: 0px; padding: 0px; font-family: "Arial Black", Gadget, sans-serif;}
+      .h1{font-size: 30px; padding: 10px}
+      body {color: #ddd; background: #222; margin: 0px; padding: 0px; font-family: "Arial Black", Gadget, sans-serif; text-align: center;}
       canvas{border: 3px double #39d;}
-      #output{color: #ddd; text-align: center; width: 276px;}
     </style>
   </head>
   <body>
+  <a href="https://github.com/CiaccoDavide/SimpleWebColorPicker"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+  <div class="h1">Simple Web Color Picker</div>
     <canvas id="picker" width="276" height="340"></canvas>
-    <div id="output"></div>
+    <div id="output">Choose a color!</div>
     <script>
       function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
