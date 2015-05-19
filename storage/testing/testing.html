@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./tooltipster.css" />
+    <link rel="stylesheet" href="./jquery.mCustomScrollbar.css" />
+  <style type="text/css">
+  *               {padding:0;margin:0;font-family: Verdana,Geneva,sans-serif;}
+  body            {background:#111;color:#eee;font-size:11px;overflow-x:scroll;padding-top:40px;}
+  h2              {font-size:20px;font-weight: 100;padding-top: 10px}
+  header          {font-size:20px;position:absolute;left:10px;top:3px;right:10px;height:30px;padding:4px;}
+  .main,.gear,.inventory,.minions    {text-align:center;position:relative;display:inline-block;height:620px;/*float:left;*/width:330px;margin-left:10px;box-shadow:inset 0 0 10px 0 #000;border:solid 1px #333;overflow:hidden;border-radius: 3px;}
+  button b        {font-size:12px;}
+  button          {background:#333;border:solid 1px #f93;color:#fff;border-radius:3px;font-size:10px;padding:6px;cursor:pointer;width:100%;height:auto;margin-top:3px;margin-bottom:3px;text-align:left;}
+  button:active   {cursor:pointer;background:#333;border:solid 1px #39f;color:#fff;margin-top:5px;}
+  a,a:visited     {color:#eee;text-decoration:none;}
+  a:hover         {color:#fff;text-decoration:underline;}
+  footer          {position:fixed;bottom:0;font-size:10px;padding:0 0 0 6px;/*top right bottom left*/}
+  footer a:hover  {color:#f39;}
+  #on             {background:#333;border:solid 1px #f93;color:#fff;}
+  #off            {background:#222;border:solid 1px #642;color:#666;}
+  #off g          {color:#555}
+  #bought         {background:#222;border:solid 1px #396;color:#666;}
+  #bought g       {color:#555}
+  #achieved       {background:#222;border:solid 1px #396;color:#eee;}
+  #stats          {text-align:left;padding:10px;font-size:11px;}
+  g               {color:#bdbdbd;}
+  #mine{position:absolute;z-index:-1;left:10px;top:110px;}
+  .subpanelL{width:161px;margin: 0;float: left;text-align: right;padding:2px;color:#aaa;}
+  .subpanelR{width:161px;margin: 0;float: left;text-align: left;padding:2px;}
+  .div{float: left;width: 330px;}
+  progress{border: solid 1px #333;width:280px;height:20px;padding:1px;background: #111;box-shadow:inset 0 0 3px 0 #000;border-radius: 4px;}
+  -webkit-progress-value{background: #1b7ded; /* Old browsers */
+background: -moz-linear-gradient(top,  #1b7ded 0%, #0755a9 18%, #1364b5 96%, #408fe4 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1b7ded), color-stop(18%,#0755a9), color-stop(96%,#1364b5), color-stop(100%,#408fe4)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b7ded', endColorstr='#408fe4',GradientType=0 ); /* IE6-9 */
+border-radius: 2px;}
+  progress[value]::-moz-progress-bar{background: #1b7ded; /* Old browsers */
+background: -moz-linear-gradient(top,  #1b7ded 0%, #0755a9 18%, #1364b5 96%, #408fe4 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1b7ded), color-stop(18%,#0755a9), color-stop(96%,#1364b5), color-stop(100%,#408fe4)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #1b7ded 0%,#0755a9 18%,#1364b5 96%,#408fe4 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b7ded', endColorstr='#408fe4',GradientType=0 ); /* IE6-9 */
+border-radius: 2px;
+}
+.icons{height: 40px;width: 330px;padding: 3px;}
+.icons span{border: solid 1px #333;width:38px;height:38px;padding:1px;box-shadow:inset 0 0 3px 0 #000;border-radius: 4px;float: left;margin: 6px}
+.icons:hover{cursor:pointer;}
+.invslot span{/*border: solid 1px #333;*/background:rgba(0,0,0,0.1);width:38px;height:38px;padding:1px;box-shadow:inset 0 0 3px 3px #000;border-radius: 4px;float: left;margin: 6px}
+.invslot:hover{cursor:pointer;}
+.slots{width: 300px;padding:20px;}
+.slots span{/*border: solid 1px #333;*/width:28px;height:28px;box-shadow:inset 0 0 2px 2px #000;border-radius: 4px;float: left;margin: 3px}
+.slots:hover{cursor:pointer;}
+.minion{width: 330px;padding: 3px;text-align: left;float: left;margin-left: 10px;}
+.minion .upgrade{border: solid 1px #333;width:38px;height:38px;padding:1px;box-shadow:inset 0 0 3px 0 #000;border-radius: 4px;float: left;margin: 6px}
+.minion .buy{border: solid 1px #333;width:38px;height:38px;padding:1px;box-shadow:inset 0 0 3px 0 #000;border-radius: 4px;float: left;margin: 6px}
+.minion small,h4{display: inline-block;}
+.minion .upgrade:hover{cursor:pointer;}
+.minion .buy:hover{cursor:pointer;}
+.upgrade{}
+.upon{background: url("./icon_up.png");background-position: right 1px top 2px; !important}
+.upoff{background: url("./icon_up_off.png");background-position: right 1px top 2px; !important}
+#level{margin-top:-21px;margin-bottom: 20px}
+
+.minions{overflow-y:auto;}
+.minions::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+#boots{opacity:0.3;background: url("./gear_Boots.png");}
+#armor{opacity:0.3;background: url("./gear_Armor.png");}
+#helm{opacity:0.3;background: url("./gear_Helm.png");}
+#gaunlet{opacity:0.3;background: url("./gear_Gaunlet.png");}
+#ring{opacity:0.3;background: url("./gear_Ring.png");}
+#pickaxe{opacity:0.3;background: url("./gear_Pickaxe.png");}
+
+
+
+.q0{border:solid 1px #333; !important}
+.q1{border:solid 1px #666; !important}
+.q2{border:solid 1px #04A3E4; !important}
+.q3{border:solid 1px #cFcF14; !important}
+.q4{border:solid 1px #D107FF; !important}
+.q5{border:solid 1px #FF3C35; !important}
+.q6{border:solid 1px #FFA347; !important}
+
+
+#q1{color:#bbb;}
+#q2{color:#04A3E4;}
+#q3{color:#cFcF14;}
+#q4{color:#D107FF;}
+#q5{color:#FF3C35;}
+#q6{color:#FFA347;}
+
+
+.hr{width:330px;height:1px;background:#333;position:absolute;top:250px;}
+#sort{text-decoration:none;position: absolute;bottom:8px;right:8px}
+#sort:hover{cursor:pointer;text-decoration:underline;}
+
+.meglio{color:#3CeF65;}
+.neutro{color:#999;}
+.peggio{color:#eF4C55;}
+
+.potGold{color:#fCdF65;}
+.potDiams{color:#fff;}
+.potEff{color:#fC3Fe5;}
+.potMf{color:#4C8Ff5;}
+.potExp{color:#3CeF65;}
+
+
+
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <p>Gold: <output id="profit">0</output></p>
+  </header>
+
+  <div class="main">
+  <div class="tempo">0</div>
+    <img src="./title.png">
+    <img id="mine" src="./mine.png">
+
+    <br><br><br> <br><br><br> <br><br><br><br>
+    <span id="mainPanel"></span>
+  </div>
+  <div class="gear">
+    <h2>Gear</h2><br>
+    <div class="invslot"><span id="boots" class="q0"></span><span id="armor" class="q0"></span><span id="helm" class="q0"></span><span id="gaunlet" class="q0"></span><span id="ring" class="q0"></span><span id="pickaxe" class="q0"></span></div>
+    <span id="gearPanel"></span>
+<!--  </div>
+  <br>
+  <div class="inventory"> -->
+  <div class="hr"></div>
+    <div class="div"><h2>Inventory</h2><small>(double left-click to equip/use,right-click to sell)</small></div>
+    <div class="slots">
+    	
+    </div>
+    <div class="div"><a href="#" id="invleft"><</a> <span id="invnav"></span> <a href="#" id="invright">></a><span id="sort">sort</span><br><br></div>
+    
+  </div>
+
+  <div class="minions">
+    <div class="div"><h2>Minions</h2><small>(double left-click to equip/use,right-click to toggle auto-buy)</small></div><br><br><br><br>
+    <div class="list">
+	    
+    </div>
+    
+  </div>
+
+  <script src="./jquery.min.js"></script>
+  <script src="./jquery.timer.js"></script>
+  <script src="./jquery.tooltipster.min.js"></script>
+  <script src="./jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <script>
+  eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$(2D).4F(k(){$(".4f").49({41:"y",5J:"5M"})});C V=2x=0;C 1D=1U=1n=2p=0,1x=3p;C 1B=1,1A=1,1z=0.1,1L=0.5,2g=5;C 2f=0,2d=0,2c=0,2b=0,2a=0;C d=h=m=s=0;C 2l=1;C H=r w(0,0,0,0,0);C D=1,22=20;C c=r w();C z=r w();z[0]=r w("5y",0,10,2,0);z[1]=r w("5B",0,5C,62,0.5);z[2]=r w("67",0,5X,5S,35);z[3]=r w("5a",0,55,53,5q);z[4]=r w("5s",0,5t,5v,5i);z[5]=r w("5m",0,5k,4T,5h);z[6]=r w("5V",0,5W,5T,5Q);z[7]=r w("5z 5A",0,5G,4C,4D);z[8]=r w("4E 4K",0,59,4u,4t);z[9]=r w("4s",0,4v,4w,4z);z[10]=r w("4y 4x",0,4r,4q,4k);z[11]=r w("4j 4i",0,4l,4m,4p);C L=r w();L[0]=r w(1,4o);L[1]=r w(1,4n);L[2]=r w(1,4A);L[3]=r w(1,4B);L[4]=r w(1,4O);L[5]=r w(1,4N);L[6]=r w(1,4M);L[7]=r w(1,4P);L[8]=r w(1,4Q);L[9]=r w(1,4S);L[10]=r w(1,4R);L[11]=r w(1,4L);C R=r w();R[0]=1;R[1]=1;R[2]=1;R[3]=1;R[4]=1;R[5]=1;R[6]=1;R[7]=1;R[8]=1;R[9]=1;R[10]=1;R[11]=1;R[12]=1;R[13]=1;R[14]=1;R[15]=1;R[16]=1;C v=r w();v[0]=r w(-1,0,0,0,0,0,0,0);v[1]=r w(-1,0,0,0,0,0,0,0);v[2]=r w(-1,0,0,0,0,0,0,0);v[3]=r w(-1,0,0,0,0,0,0,0);v[4]=r w(-1,0,0,0,0,0,0,0);v[5]=r w(-1,0,0,0,0,0,0,0);C 2E=\'\';17(C i=0;i<z.1m;i++){2E+=\'<Q J="4G"><e G="u\'+i+\'" J="2O 1Y"></e><e J="2u" G="b\'+i+\'">4J 4I</e><e G="m\'+i+\'"><2e>\'+z[i][0]+\'</2e> <1c>3a.\'+L[i][0]+\'</1c><p>3w: \'+g(z[i][1])+\'</p><p>2i: \'+g(1q(i))+\'</p></e></Q>\'};$(\'.4h\').1u(2E);17(C i=0;i<z.1m;i++){$(\'#u\'+i).1l({1k:$(\'<b>1N \'+(L[i][0]+1)+\'</b><l><i>3z 3C 3v 2F 3q \'+z[i][0]+\'</i><p>2i: \'+g(1w(i))+\' V</p>\'),2B:1J});$(\'#b\'+i).1l({1k:$(\'<b>\'+z[i][0]+\'</b><p> +\'+g(2j(i))+\' V/s</p><p> +\'+g(2k(i))+\' 2w/s</p>\'),2B:1J})};2W();1F();C S=\'\';2z();k 3B(){$("#4a").1u(g(V))}k 2W(){C 26=\'\';17(C i=0;i<64;i++){26+=\'<e J="1R" G="s\'+(i)+\'"></e>\'};$(\'.3X\').1u(26);17(C i=0;i<64;i++){$(\'#s\'+i).1l({1k:$(\'<i>3U 1R</i>\'),2B:1J})}17(C i=0;i<64*22;i++){c[i]=r w(-1,0,0,0,0,0,0,0,0,0)}}$(\'#27\').1S(k(){c.27(k(a,b){E b[2]-a[2]});c.27(k(a,b){E b[1]-a[1]});c.27(k(a,b){E b[0]-a[0]});1F()});k 1F(){C 26=\'\';17(C i=0;i<64;i++){q=c[i+64*(D-1)][2]+1;t=c[i+64*(D-1)][1];2s(i,q,t)};$(\'#3R\').1u(\'<1c>3Q \'+D+\'/\'+22+\' </1c>\')}k 2s(i,q,t){f(c[i+64*(D-1)][0]==-1){$(\'#s\'+i).X("1g 1e 1a 1j 1h 1f").Y("1d");$(\'#s\'+i).W({\'1p\':\'23("./3L.21")\'});$(\'#s\'+i).1l(\'1k\',\'<i>3K 1R</i>\')}j f(c[i+64*(D-1)][0]==2){$(\'#s\'+i).X("1d 1e 1a 1j 1h 1f 1g").Y("q"+q);o=\'\';1v(t){A 0:o=\'3J\';x;A 1:o=\'3M\';x;A 2:o=\'3N\';x;A 3:o=\'3P\';x;A 4:o=\'3O\';x;A 5:o=\'3V\';x}n=\'\';1v(q-1){A 0:n=\'3f\';x;A 1:n=\'1Z\';x;A 2:n=\'3h\';x;A 3:n=\'3l\';x;A 4:n=\'33\';x;A 5:n=\'32\';x}$(\'#s\'+i).W({\'1p\':\'23("./4g\'+o+\'.21")\'});C I=P(c[i+64*(D-1)][5]-v[t][3]);f(I>0)O=\'1M">(+\'+g(I)+\')\';j f(I<0)O=\'1K">(\'+g(I)+\')\';j O=\'19">\';1s=\'\';1s+=\'29/s: \'+g(c[i+64*(D-1)][5])+\' <e J="\'+O+\'</e><l>\';I=c[i+64*(D-1)][6]-v[t][4];f(I>0)O=\'1M">(+\'+g(I)+\')\';j f(I<0)O=\'1K">(\'+g(I)+\')\';j O=\'19">\';1s+=\'4b/s: \'+g(c[i+64*(D-1)][6])+\' <e J="\'+O+\'</e><l>\';I=c[i+64*(D-1)][7]-v[t][5];f(I>0)O=\'1M">(+\'+g(I)+\'%)\';j f(I<0)O=\'1K">(\'+g(I)+\'%)\';j O=\'19">\';1s+=\'3Z: \'+g(c[i+64*(D-1)][7])+\'% <e J="\'+O+\'</e><l>\';I=c[i+64*(D-1)][8]-v[t][6];f(I>0)O=\'1M">(+\'+g(I)+\'%)\';j f(I<0)O=\'1K">(\'+g(I)+\'%)\';j O=\'19">\';1s+=\'M.2r/s: \'+g(c[i+64*(D-1)][8])+\'% <e J="\'+O+\'</e><l>\';I=c[i+64*(D-1)][9]-v[t][7];f(I>0)O=\'1M">(+\'+g(I)+\')\';j f(I<0)O=\'1K">(\'+g(I)+\')\';j O=\'19">\';1s+=\'31/s: \'+g(c[i+64*(D-1)][9])+\' <e J="\'+O+\'</e><l>\';$(\'#s\'+i).1l(\'1k\',\'<b G="q\'+q+\'">\'+n+\' \'+o+\' +\'+c[i+64*(D-1)][3]+\'</b><l><i>1N \'+g(c[i+64*(D-1)][4])+\'</i><l><1c>\'+1s+\'</1c>\')}j f(c[i+64*(D-1)][0]==1){1O=\'\';1v(q%3){A 0:1O=\'48\';x;A 1:1O=\'43\';x;A 2:1O=\'42\';x}o=\'\';1b=\'\';1v(t%5){A 0:o=\'2N\';1b=\'2N 44\';x;A 1:o=\'V\';1b=\'V 1b\';x;A 2:o=\'2M\';1b=\'2M 1b\';x;A 3:o=\'45\';1b=\'47 46\';x;A 4:o=\'4H\';1b=\'2w 1b\';x}$(\'#s\'+i).X("1g 1e 1a 1j 1h 1f").Y("1d");$(\'#s\'+i).W({\'1p\':\'23("./5O\'+(t%5)+\'\'+(q%3)+\'.21")\'});$(\'#s\'+i).W({\'1p-3g\':\'50% 50%\'});$(\'#s\'+i).W({\'1p-38\':\'39%\'});$(\'#s\'+i).1l(\'1k\',\'<b>\'+1O+\' \'+o+\' 4U</b><l><i>5H \'+1b+\' 5K 50% 17 \'+(10*(1+(q%3)))+\' 5L.</i>\')}j f(c[i+64*(D-1)][0]==0){$(\'#s\'+i).X("1g 1e 1a 1j 1h 1f").Y("1d");n=\'\';1v(q-1){A 0:n=\'3f\';x;A 1:n=\'1Z\';x;A 2:n=\'3h\';x;A 3:n=\'3l\';x;A 4:n=\'33\';x;A 5:n=\'32\';x}$(\'#s\'+i).W({\'1p\':\'23("./5F\'+(q-1)+\'.21")\'});$(\'#s\'+i).W({\'1p-3g\':\'50% 50%\'});$(\'#s\'+i).W({\'1p-38\':\'39%\'});$(\'#s\'+i).1l(\'1k\',\'<b G="q\'+q+\'">\'+n+\' 5E</b><l><1c><i>5D 3 5P 2F \'+n+\' 2o<l>63 a 1i 61.</i></1c>\')}}$(\'#5Z\').1S(k(){f(D>1){D--;1F()}});$(\'#65\').1S(k(){f(D<22){D++;1F()}});$(\'.1R\').66(k(){G=Z((1W.G).1V(1));i=G+64*(D-1);f(c[i][0]==-1){}j f(c[i][0]==2){U=0;o=c[i][1];f(v[o][0]==-1)c[i][0]=-1;U=v[o][0];v[o][0]=c[i][2];c[i][2]=U;U=v[o][1];v[o][1]=c[i][3];c[i][3]=U;U=v[o][2];v[o][2]=c[i][4];c[i][4]=U;U=v[o][3];v[o][3]=c[i][5];c[i][5]=U;U=v[o][4];v[o][4]=c[i][6];c[i][6]=U;U=v[o][5];v[o][5]=c[i][7];c[i][7]=U;U=v[o][6];v[o][6]=c[i][8];c[i][8]=U;U=v[o][7];v[o][7]=c[i][9];c[i][9]=U;2d=0;2c=0;2a=0;2b=0;2f=0;3k(o);1F();2v()}j f(c[i][0]==1){H[c[i][1]]+=10*(c[i][2]+1);c[i][0]=-1;1C(i)}j f(c[i][0]==0){c[i][0]=-1;28=c[i][2];1X(28);1X(28);1X(28);2A()}});1o(1);1o(2);1o(3);1o(4);1o(5);1o(0);$(\'.1R\').2G(\'30\',k(){i=Z((1W.G).1V(1));f(c[i+64*(D-1)][0]==2){2p+=1E*c[i+64*(D-1)][2]*c[i+64*(D-1)][4];c[i+64*(D-1)][0]=-1;1C(i+64*(D-1))}E 2K});k 2z(){d=Z(1n/(60*60*24));h=Z((1n/(60*60))%24);m=Z((1n/60)%60);s=Z(1n%60);S=\'<Q G="1n">5U 1n: \'+d+\'d \'+h+\'h \'+m+\'m \'+s+\'s</Q><Q G="5x">5w</Q><l><3o G="58" 57="\'+1D+\'" 56="\'+1x+\'"></3o><Q G="1U">1N \'+g(1U)+\' - 31: \'+g(Z(1D))+\'/\'+g(1x)+\'</Q><Q J="2T"><p>29:</p><p>2t:</p><p>5c 5b:</p><l><p>29/s:</p><p>2t/s:</p><p>2Q 2R:</p><p>1Z 2r/s:</p><p>3c/s:</p></Q><Q J="3D"><e>\'+g(V)+\'</e><l><e>\'+g(2x)+\'</e><l><e>\'+g(2p)+\'</e><l><l>\';f(H[1]>0){H[1]-=0.2;S+=\'<e J="54">\'+g(1A)+\'</e><e J="19"> [\'+g(H[1])+\'s]</e><l>\'}j f(H[1]<0){H[1]=0;S+=\'<e>\'+g(1A)+\'</e><l>\'}j{S+=\'<e>\'+g(1A)+\'</e><l>\'}f(H[4]>0){H[4]-=0.2;S+=\'<e J="4X">\'+g(1z)+\'</e><e J="19"> [\'+g(H[4])+\'s]</e><l>\'}j f(H[4]<0){H[4]=0;S+=\'<e>\'+g(1z)+\'</e><l>\'}j{S+=\'<e>\'+g(1z)+\'</e><l>\'}f(H[3]>0){H[3]-=0.2;S+=\'<e J="4W">\'+g(2g)+\'</e><e J="19"> [\'+g(H[3])+\'s]</e><l>\'}j f(H[3]<0){H[3]=0;S+=\'<e>\'+g(2g)+\'</e><l>\'}j{S+=\'<e>\'+g(2g)+\'</e><l>\'}f(H[0]>0){H[0]-=0.2;S+=\'<e J="4Y">\'+g(1L)+\'</e><e J="19"> [\'+g(H[0])+\'s]</e><l>\'}j f(H[0]<0){H[0]=0;S+=\'<e>\'+g(1L)+\'</e><l>\'}j{S+=\'<e>\'+g(1L)+\'</e><l>\'}f(H[2]>0){H[2]-=0.2;S+=\'<e J="4Z">\'+g(1B)+\'</e><e J="19"> [\'+g(H[2])+\'s]</e><l>\'}j f(H[2]<0){H[2]=0;S+=\'<e>\'+g(1B)+\'</e><l>\'}j{S+=\'<e>\'+g(1B)+\'</e><l>\'}$(\'#51\').1u(S+\'<l></Q>\')}k 3k(2o){1v(2o){A 0:$(\'#3m\').X("1d 1e 1a 1j 1h 1f 1g").Y("q"+(v[0][0]+1));$(\'#3m\').W({1H:1});x;A 1:$(\'#3i\').X("1d 1e 1a 1j 1h 1f 1g").Y("q"+(v[1][0]+1));$(\'#3i\').W({1H:1});x;A 2:$(\'#3d\').X("1d 1e 1a 1j 1h 1f 1g").Y("q"+(v[2][0]+1));$(\'#3d\').W({1H:1});x;A 3:$(\'#3e\').X("1d 1e 1a 1j 1h 1f 1g").Y("q"+(v[3][0]+1));$(\'#3e\').W({1H:1});x;A 4:$(\'#2Z\').X("1d 1e 1a 1j 1h 1f 1g").Y("q"+(v[4][0]+1));$(\'#2Z\').W({1H:1});x;A 5:$(\'#2J\').X("1d 1e 1a 1j 1h 1f 1g").Y("q"+(v[5][0]+1));$(\'#2J\').W({1H:1});x}}k 18(i){i+=2;C 1T=0;C 1Q=6;1v(i){A 2:1r(1Q>0)1T+=v[--1Q][i];1T/=6;x;5I:1r(1Q>0)1T+=v[--1Q][i];x}E 1T}k 2v(){2d=18(1);2c=18(2);2a=18(3);2b=18(4);2f=18(5);$(\'#5o\').1u(\'<Q J="Q"><l><2U>5r 5R</2U></Q><l><l><Q J="2T"><p>1N:</p><p>29/s:</p><p>2t/s:</p><p>2Q 2R:</p><p>1Z 2r/s:</p><p>3c/s:</p></Q><Q J="3D"><e>\'+g(18(0))+\'</e><l><e>\'+g(2d)+\'</e><l><e>\'+g(2c)+\'</e><l><e>\'+g(2a)+\'%</e><l><e>\'+g(2b)+\'%</e><l><e>\'+g(2f)+\'</e><l><l></Q>\')}C 1I=$.1I(k(){2n()},3x,1J);C 1I=$.1I(k(){3t()},5l,1J);k 2n(){2z();2v();3B();3y();1A=3F();1z=3H();1B=2P();1n+=1/5;1D+=1B/5;V+=1A/5;2x+=1z/5;f(1D>=1x){3u()}}k 3t(){f(N.1i()*1E<1L)3s()}k 3s(){o=n=0;o=N.1t((N.1i()*9));f(o==0){1o(2m())}j f(o<3){2A()}j{1X(2m())}}k 1C(i){q=c[i][2]+1;t=c[i][1];2s(i-64*(D-1),q,t)}k 2m(){n=N.1t((N.1i()*5p));f(n<3)n=6;j f(n<40)n=5;j f(n<3p)n=4;j f(n<5e)n=3;j f(n<5d)n=2;j n=1;E n}k 2A(){i=n=0;1r(i<c.1m){f(c[i][0]==-1){c[i][0]=1;c[i][1]=N.1t((N.1i()*5));n=N.1t((N.1i()*1E));f(n<10)c[i][2]=2;j f(n<35)c[i][2]=1;j c[i][2]=0;x}i++}1C(i)}k 1o(n){i=0;1r(i<c.1m){f(c[i][0]==-1){c[i][0]=0;c[i][2]=n;x}i++}1C(i)}k 1X(n){i=0;1r(i<c.1m){f(c[i][0]==-1){c[i][0]=2;c[i][1]=N.1t((N.1i()*6));c[i][2]=n;c[i][3]=0;c[i][4]=N.1t((N.1i()*1U)+1);c[i][5]=P(((((N.1i()*16*c[i][4])+16+10*(c[i][4]-1))*N.1y(1.1,c[i][4])/16)*(n+c[i][3])));c[i][6]=P(((((N.1i()*16*c[i][4])+16+10*(c[i][4]-1))*N.1y(1.1,c[i][4])/16)*(n+c[i][3])/1E));c[i][7]=P((10/(11-c[i][3]))/(7-c[i][2]));f(c[i][7]>10)c[i][7]=10;c[i][8]=P((10/(11-c[i][3]))/(7-c[i][2]));f(c[i][8]>10)c[i][8]=10;c[i][9]=2;x}i++}1C(i)}k 3u(){1D=0;1x=Z(1x*1.25);1U++}k 3y(){17(C i=0;i<z.1m;i++){f(V>=1w(i))$(\'#u\'+i).X(\'1Y 2C\').Y(\'1Y\');j $(\'#u\'+i).X(\'1Y 2C\').Y(\'2C\')}}k 2j(i){E z[i][3]*N.1y(2,L[i][0]-1)}k 3E(){1G=0;17(C i=0;i<z.1m;i++)1G+=z[i][1]*2j(i);E 1G}k 2k(i){E z[i][4]*N.1y(2,L[i][0]-1)}k 3I(){1G=0;17(C i=0;i<z.1m;i++)1G+=z[i][1]*2k(i);E 1G}k 2h(){17(C i=0;i<z.1m;i++){$(\'#m\'+i).1u(\'<2e>\'+z[i][0]+\'</2e> <1c>3a.\'+L[i][0]+\'</1c><p>3w: \'+g(z[i][1])+\'</p><p>2i: \'+g(1q(i))+\'</p>\');$(\'#u\'+i).1l(\'1k\',\'<b>1N \'+(L[i][0]+1)+\'</b><l><i>3z 3C 3v 2F 3q \'+z[i][0]+\'</i><p>2i: \'+g(1w(i))+\' V</p>\');$(\'#b\'+i).1l(\'1k\',\'<b>\'+z[i][0]+\'</b><p> +\'+g(2j(i))+\' V/s</p><p> +\'+g(2k(i))+\' 2w/s</p>\')}}k 1q(i){E(i+1+1*i)*z[i][2]*N.1y(1.5,z[i][1])}k 1w(i){E(i+1+1*i)*L[i][1]*N.1y(2.5,L[i][0]-1)}k 3F(){E(1+3E()+18(1))*2l}k 3H(){E(0.5N+3I()+18(2))*2l}k 2P(){E(1+18(5))*2l}$(\'.2u\').1S(k(){G=Z($(1W).2q(\'G\').1V(1));f(V>=1q(G)){V-=1q(G);z[G][1]++;2h()}});$(\'.2O\').1S(k(){G=Z($(1W).2q(\'G\').1V(1));f(V>=1w(G)){V-=1w(G);L[G][0]++;2h()}});$(\'.2u\').2G(\'30\',k(){G=Z($(1W).2q(\'G\').1V(1));1r(V>=1q(G)){V-=1q(G);z[G][1]++;2h()}E 2K});$(2D).4d(k(){1I.4c();2Y=r 36()});$(2D).3S(k(){1I.4V();34=r 36();1P=(34.2X()-2Y.2X());1P/=3x;$(\'.3W\').3Y(1P/5);1r(1P>0){1P--;2n()}});k g(F){f(F<2y)E P(F);j f(F>=3G)E P(F/3G)+" 5g";j f(F>=3A)E P(F/3A)+" 5j";j f(F>=2L)E P(F/2L)+" 5f";j f(F>=2I)E P(F/2I)+" 5n";j f(F>=2V)E P(F/2V)+" 5u";j f(F>=3j)E P(F/3j)+" 52";j f(F>=3b)E P(F/3b)+" 5Y";j f(F>=3n)E P(F/3n)+" 4e";j f(F>=2H)E P(F/2H)+" 3T";j f(F>=2S)E P(F/2S)+" T";j f(F>=3r)E P(F/3r)+" B";j f(F>=37)E P(F/37)+" M";j f(F>=2y)E P(F/2y)+" K"}k P(F){E N.1t(1E*F)/1E}',62,380,'||||||||||||invArray||span|if|scala|||else|function|br||rar|tipo|||new||||gearArray|Array|break||minionsArray|case||var|invpage|return|num|id|timerPozioni|diffe|class||upgradeArray||Math|colores|pDD|div|typeMulti|mainpanel||tmp|gold|css|removeClass|addClass|parseInt||||||||for|getGearStats|neutro|q2|gain|small|q0|q1|q5|q6|q4|random|q3|content|tooltipster|length|time|dropChest|background|costoMinion|while|stats|floor|html|switch|costoUpgrade|expmax|pow|diamsps|goldps|expps|updateSlotInv|exp|100|updateInventario|sommaprofit|opacity|timer|true|peggio|mf|meglio|Level|qual|elapsedTime|tipi|slot|click|tota|level|substring|this|dropGear|upon|Magic||png|invmaxpages|url|||inv|sort|rarchest|Gold|gear_clickeff|gear_mf|gear_diamsps|gear_goldps|h4|gear_expps|clickeff|updateMinions|Cost|profitGoldMinion|profitDiamsMinion|globalmulti|getRar|ciclo|gear|refined|attr|Find|setInvIcon|Diamonds|buy|updateGearPanel|diamonds|diams|1e3|updateMainPanel|dropPotion|contentAsHTML|upoff|window|minionsoutput|of|bind|1e15|1e30|pickaxe|false|1e33|experience|magic|upgrade|profitExp|Click|Efficency|1e12|subpanelL|h3|1e27|initInventario|getTime|before|ring|contextmenu|Exp|Unique|Legendary|now||Date|1e6|size|110|LVL|1e21|Experience|helm|gaunlet|Common|position|Rare|armor|1e24|updateGearSlots|Epic|boots|1e18|progress|180|every|1e9|drop|cicloSecondo|levelUP|productivity|Owned|200|updateUpIcons|Doubles|1e36|update|the|subpanelR|profitGoldMinions|profitGold|1e39|profitDiam|profitDiamsMinions|Boots|empty|inv_empty|Armor|Helm|Ring|Gaunlet|Page|invnav|focus|Quadrillions|Empty|Pickaxe|tempo|slots|text|Eff||axis|Awesome|Fat|find|efficency|efficiency|mining|Small|mCustomScrollbar|profit|Diams|pause|blur|Quintillions|minions|inv_|list|Miner|Interstellar|252762073862144000|40118396363399500000000|8023679272679900000000|162640|30000|31342497158905900000|64707090908708900000|323535454543544000000|Dwarf|19125459584000|4896117653504000|2741825885962240000|548365177192448000|Laser|Orbiting|2142051473408000|955584|8947187|46189789184000|180428864000|Robodigger|load|minion|diamond|icon|Buy|9000|42668400716850500000000|2479939843096|26632872483|332876723|247316548884437|26162340799934200|344595182898789000000|2924962271561780000|4913807360|Potion|play|potEff|potDiams|potMf|potExp||mainPanel|Septillions|680960|potGold|3404800|max|value|progressbar|24480588267520000|Macho|materials|Refined|1500|560|Decillions|Duodecillions|19194560|218120|Undecillions|24569036800|1000|Auger|Nonillions|gearPanel|3600|2660|Gear|Robot|279169600|Octillions|55838720|Username|username|Earthworm|Bagger|293|Mole|640|Drops|Chest|chest|230948945920000|Increases|default|theme|by|seconds|minimal|01|pot_|pieces|1804288640|Stats|8960|461897891840|Game|Excavator|2309489459200|44800|Sextillions|invleft||potion|128|and||invright|dblclick|Zombie'.split('|')))
+
+  </script>
+
+</body>
+</html>
