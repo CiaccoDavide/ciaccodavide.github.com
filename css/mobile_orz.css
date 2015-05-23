@@ -160,6 +160,8 @@ a .post desc .thumb img{
 	bottom:0;
 }
 
+#hiddencounter{display:none;}
+#btc-quote{position: fixed;right: 0;bottom: 0;}
 
 
 
