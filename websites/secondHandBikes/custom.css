@@ -1,0 +1,62 @@
+#Image1{
+	padding-top: 10px;
+	width: 200px !important;
+	height: auto !important;
+}
+#SearchBox{
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: 100;
+	background:#7FD3C3;
+	padding:20px;
+	width: 80%;
+	margin-left: 10%;
+	color: #ffffff;
+}#SearchBox select,input{
+	color:#000000;
+	height:50px;
+}#SearchBox a{
+	color:#000000;
+	background: #FBC728;
+	padding:14px;
+}
+#CategoryMenu{
+	display: none;
+}
+.container,.body-content{
+	width: 80%;
+	margin-left: 10%;
+}
+#MainContent_productListSpecial_groupPlaceholderContainer table{
+	border-bottom: 1px solid #cccccc;
+	width: 100%;
+	text-align: left !important;
+}
+#SpecialProductImg a img{
+	border: 1px solid #cccccc !important;
+	margin-right: 30px;
+	margin-top: 10px;
+	width: 100px;
+	height: 75px;
+}
+#SpecialProductBrand a{
+	color: #505368;
+}
+#SpecialProductDescription a{
+	color: #505368;
+}
+#SpecialProductDate a{
+	color: #888888;
+}
+#SpecialProductLocation a{
+	color: #888888;
+}
+#SpecialProductBuy a{
+	color: #04CB0C;
+}
+
+
+
+td{
+	display: block;
+}
