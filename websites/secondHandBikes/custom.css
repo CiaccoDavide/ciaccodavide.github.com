@@ -284,14 +284,14 @@ footer{
 
 
 
-
+a{text-decoration: none;}
 
 
 
 	.list{
 		text-decoration: none;
-		width: 80%;
-		margin-left: 10%;
+		width: 98%;
+		margin-left: 1%;
 		height: 100%;
 		background: #aaa;
 		position: relative;
@@ -302,51 +302,59 @@ footer{
 		border-bottom: 1px solid #cccccc;
 		width: 100%;
 		position: relative;
-		height: 120px;
+		height: auto;
 		background: #ffffff;
-		line-height: 6px;
+		line-height: 7px;
 		overflow: hidden;
 	}.bike:hover{
 		background: #fafafa;
 		cursor: pointer;
 	}
 	.bike .thumb{
-		position: absolute;
-		height: 100%;
+		position: relative;
+		height: auto;
 	}
 	.bike .thumb img{
 		border: 1px solid #cccccc !important;
 		width: 134px;
 		height: 100px;
-		position: absolute;
-		top:50%;
-		margin-top:-62px;
+		position: relative;
+		margin-top:10px;
+		left: 50%;
+		margin-left: -67px;
 	}
 	.bike .info{
 		overflow: hidden;
-		left: 160px;
-		position: absolute;
-		height: 100%;
+		left: auto;
+		width: 100%;
+		position: relative;
+		height: auto;
 		padding-top: 5px;
+		text-align: center;
 	}
 	.bike .info h2{color: #000000;}
 	.bike .info h3{color: #333333;}
 	.bike .info p{color: #555555;}
 	.bike .quantity{
-		right: 120px;
-		position: absolute;
+		right: 0;
+		position: relative;
 		height: 100%;
+		width: 100%;
+		text-align: center;
 		color: #333333;
-		padding-top: 34px;
+		padding-top: 0;
 	}
 	.bike .price{
 		right: 0;
-		position: absolute;
+		position: relative;
 		height: 100%;
+		width: 100%;
+		text-align: center;
 		color: #04CB0C;
 		font-size: 22px;
 		font-weight: 400;
-		padding-top: 50px;
+		padding-top: 0;
+		padding-bottom: 20px;
 	}
 }
 @media only screen and (max-device-width:480px){
