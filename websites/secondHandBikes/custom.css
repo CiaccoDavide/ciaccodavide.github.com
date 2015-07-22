@@ -198,6 +198,31 @@ footer{
 
 
 @media only screen and (max-width:860px){
+
+    header{
+		position: absolute;
+		top: 40px;
+		width: 100%;
+		text-align: center;
+	}
+	header .btn_login{
+		float: right;
+		padding-top: 12px;
+		margin-left: 10px;
+		width: 120px;
+		height: 35px;
+		background: #ffffff;
+		display: inline-block;
+		text-align: center;
+		border: 1px solid #000000;
+		font-size: 18px;
+	}
+
+	#Image1{
+		padding-top: 140px;
+		width: 200px !important;
+		height: auto !important;
+	}
     #SearchBox{
     	position: relative;
 		text-align: center;
@@ -205,12 +230,124 @@ footer{
 		font-size: 18px;
 		font-weight: 100;
 		background:#7FD3C3;
-		padding:50px 0 20px 0;
+		padding:20px 0 20px 0;
 		width: 100%;
 		margin-left: 0%;
 		color: #ffffff;
 		margin-bottom: 10px;
     }
+
+    #SearchBox select,input{
+		width: 45%;
+		position: relative;
+		margin:10px 10px 10px 10px;
+		margin-left: 1%;
+		margin-right: 4%;
+		color:#000000;
+		display: inline-block;
+		right: 0;
+	}#SearchBox a{
+		position: relative;
+		color:#000000;
+		background: #FBC728;
+		/* top | right | bottom | left */
+		padding:12px 36px 14px 36px;
+		margin:0 8px 0 8px;
+		text-decoration: none;
+		display: block;
+	}#SearchBox a:hover{
+		color:#000000;
+		background: #FfCf2f;
+		text-decoration: none;
+	}
+	#SearchBox label{
+		width: 48%;
+		position: relative;
+		top: 15px;
+		font-size: 18px;
+		float: left;
+		text-align: center;
+		padding-left: 1%;
+		padding-right: 1%;
+		display: inline-block;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.list{
+		text-decoration: none;
+		width: 80%;
+		margin-left: 10%;
+		height: 100%;
+		background: #aaa;
+		position: relative;
+	}
+	.bike{
+		padding-top: 10px;
+		color: #000000;
+		border-bottom: 1px solid #cccccc;
+		width: 100%;
+		position: relative;
+		height: 120px;
+		background: #ffffff;
+		line-height: 6px;
+		overflow: hidden;
+	}.bike:hover{
+		background: #fafafa;
+		cursor: pointer;
+	}
+	.bike .thumb{
+		position: absolute;
+		height: 100%;
+	}
+	.bike .thumb img{
+		border: 1px solid #cccccc !important;
+		width: 134px;
+		height: 100px;
+		position: absolute;
+		top:50%;
+		margin-top:-62px;
+	}
+	.bike .info{
+		overflow: hidden;
+		left: 160px;
+		position: absolute;
+		height: 100%;
+		padding-top: 5px;
+	}
+	.bike .info h2{color: #000000;}
+	.bike .info h3{color: #333333;}
+	.bike .info p{color: #555555;}
+	.bike .quantity{
+		right: 120px;
+		position: absolute;
+		height: 100%;
+		color: #333333;
+		padding-top: 34px;
+	}
+	.bike .price{
+		right: 0;
+		position: absolute;
+		height: 100%;
+		color: #04CB0C;
+		font-size: 22px;
+		font-weight: 400;
+		padding-top: 50px;
+	}
 }
 @media only screen and (max-device-width:480px){
    /* styles for mobile browsers smaller than 480px; (iPhone) */
