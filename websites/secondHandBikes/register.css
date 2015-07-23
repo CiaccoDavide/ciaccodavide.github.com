@@ -1,7 +1,28 @@
 html,body{
 	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 	margin: 0;
+	width: 100%;
+	height: 100%;
 }
+
+
+
+
+body #background_image{
+	z-index: -100;
+	position: fixed;
+	bottom:0;
+	right: 0;
+	opacity: 1;
+	max-height: 100%;
+}
+
+@media only screen and (max-width:1300px){
+	body #background_image{
+		opacity: 0.3;
+	}
+}
+
 
 
 header{
@@ -135,20 +156,10 @@ select{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 @media only screen and (max-width:860px){
-
+	body #background_image{
+		opacity: 0.2;
+	}
 	header{
 		position: relative;
 		text-align: center;
