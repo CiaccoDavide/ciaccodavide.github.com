@@ -55,11 +55,13 @@ html,body{
 	position: relative;
 }
 .contents .left{
+	position: relative;
 	margin:0;
 	width:60%;
 	display:inline-block;
 }
 .contents .right{
+	position: relative;
 	margin:0;
 	width:40%;
 	display:inline-block;
