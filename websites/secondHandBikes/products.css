@@ -20,13 +20,13 @@ html,body{
 	color: #ffffff;
 	margin-bottom: 10px;
 }#SearchBox select,input{
-	margin:0 40px 0 10px;
+	margin:0 60px 0 10px;
 	color:#000000;
 }#SearchBox a{
 	color:#000000;
 	background: #FBC728;
 	/* top | right | bottom | left */
-	padding:12px 46px 14px 46px;
+	padding:12px 66px 14px 66px;
 	margin:0 8px 0 8px;
 	text-decoration: none;
 }#SearchBox a:hover{
