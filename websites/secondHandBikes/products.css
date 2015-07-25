@@ -26,7 +26,7 @@ html,body{
 	color:#000000;
 	background: #FBC728;
 	/* top | right | bottom | left */
-	padding:12px 36px 14px 36px;
+	padding:12px 46px 14px 46px;
 	margin:0 8px 0 8px;
 	text-decoration: none;
 }#SearchBox a:hover{
@@ -44,6 +44,15 @@ html,body{
 }
 
 
+@media only screen and (max-width:1024px){
+	#SearchBox select,input{
+		margin:0 20px 0 10px;
+		color:#000000;
+	}
+	#SearchBox a{
+		padding:12px 36px 14px 36px;
+	}
+}
 
 
 .list{
