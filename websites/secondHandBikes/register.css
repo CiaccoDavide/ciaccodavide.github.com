@@ -59,6 +59,10 @@ form{
 	width: 50%;
 	margin-left: 10%;
 }
+form h1{
+	font-weight:100;
+	font-size:30px;
+}
 form input{
 	padding-left: 10px;
 	margin: 6px 0 10px 0;
