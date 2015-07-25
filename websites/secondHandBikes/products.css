@@ -44,6 +44,15 @@ html,body{
 }
 
 
+@media only screen and (max-width:1280px){
+	#SearchBox select,input{
+		margin:0 40px 0 10px;
+		color:#000000;
+	}
+	#SearchBox a{
+		padding:12px 46px 14px 46px;
+	}
+}
 @media only screen and (max-width:1024px){
 	#SearchBox select,input{
 		margin:0 20px 0 10px;
