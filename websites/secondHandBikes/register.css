@@ -19,7 +19,8 @@ body #background_image{
 
 @media only screen and (max-width:1300px){
 	body #background_image{
-		opacity: 0.3;
+		opacity: 1;
+		/*opacity: 0.3;*/
 	}
 }
 
