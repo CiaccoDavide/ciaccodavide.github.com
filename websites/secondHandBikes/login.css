@@ -3,6 +3,7 @@ html,body{
 	margin: 0;
 	width: 100%;
 	height: 100%;
+	color: #666;
 }
 
 
@@ -79,22 +80,11 @@ form input{
 	border-radius: 4px;
     box-shadow: inset 0px 0px 10px #ddd,0px 0px 10px #ddd;
     background: white;
-}form .half{
-	width: 40%;
-}form #second{
-	margin-left: 5%; 
 }
-form [type="radio"]{
-	height: 20px;
+form [type="checkbox"]{
 	width: auto;
-	display: inline-block;
-	margin-left: 10px;
-}span{
-	font-size: 20px;
-	padding-left: 10px;
-}
-form select{
-	margin-top: 10px;
+	margin: 10px;
+	height: auto;
 }
 form [type="submit"]{
 	margin-top: 6px;
@@ -162,7 +152,10 @@ select{
 }
 
 
-
+small{
+	font-size: 16px;
+	text-shadow: 0px 0px 4px #fff,0px 0px 3px #fff,0px 0px 2px #fff,0px 0px 1px #fff;
+}
 
 
 
@@ -208,9 +201,9 @@ select{
 		padding-left: 10px;
 	}
 	form input{
-		padding-left: 10px;
+		padding-left: 2%;
 		margin: 6px 0 10px 0;
-		width: 90%;
+		width: 88%;
 		height: 45px;
 		font-size: 22px;
 		color: #767676;
@@ -218,23 +211,6 @@ select{
 		border-radius: 4px;
 	    box-shadow: inset 0px 0px 10px #ddd,0px 0px 10px #ddd;
 	    background: white;
-	}form .half{
-		width: 90%;
-	}form #second{
-		margin-left: 0; 
-	}
-	form [type="radio"]{
-		height: 20px;
-		width: auto;
-		display: inline-block;
-		margin-left: 10px;
-	}span{
-		font-size: 20px;
-		padding-left: 10px;
-	}
-	form select{
-		width: 90%;
-		margin-top: 10px;
 	}
 	form [type="submit"]{
 		margin-top: 6px;
