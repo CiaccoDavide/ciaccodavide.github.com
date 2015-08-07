@@ -429,34 +429,9 @@ footer .links{
 		right: 0;
 		height: auto;
 		border-left: none;
-	}.panel .right .block{
-		display: block;
-		margin:0 0 20px 0;
-		width: 100%;
-		border-bottom: 1px solid #ddd;
-	}.panel .right .block h3{
-		font-weight: 100;
-		font-size: 28px;
-		color: #555;
-		padding: 0;
-		margin: 0;
-	}.panel .right .block img{
-		margin: 0;
-		padding: 0;
-		width: 100%;
-	}.panel .right .block p{
-		margin: 0;
-		padding: 0;
-		font-size: 20px;
-	}.panel .right .block a{
-		color:#555;
-		display: block;
-		text-decoration: none;
-		font-weight: bold;
-		font-size: 22px;
-	}.panel .right .block a:hover{
-		text-decoration: none;
-		color:#222;
+	}.panel .right .article{
+		font-family: 'Source Sans Pro', sans-serif;
+		padding: 0 20px 0 20px;
 	}
 
 }
