@@ -153,7 +153,7 @@ html,body{
 	color:#3F9383;
 	text-decoration: none;
 }
-
+pre{overflow: scroll;}
 
 
 .counter{
