@@ -18,7 +18,6 @@ html,body{
 	width: 80%;
 	margin-left: 10%;
 	color: #ffffff;
-	margin-bottom: 10px;
 }#SearchBox select,input{
 	margin:0 60px 0 10px;
 	color:#000000;
@@ -64,66 +63,107 @@ html,body{
 }
 
 
-.list{
+.panel{
 	text-decoration: none;
 	width: 80%;
 	margin-left: 10%;
-	height: 100%;
-	background: #aaa;
+	height: auto;
 	position: relative;
 }
-.bike{
-	padding-top: 10px;
-	color: #000000;
-	border-bottom: 1px solid #cccccc;
+.panel .name{
 	width: 100%;
-	position: relative;
-	height: 120px;
-	background: #ffffff;
-	line-height: 6px;
-	overflow: hidden;
-}.bike:hover{
-	background: #fafafa;
-	cursor: pointer;
-}
-.bike .thumb{
-	position: absolute;
-	height: 100%;
-}
-.bike .thumb img{
-	border: 1px solid #cccccc !important;
-	width: 134px;
-	height: 100px;
-	position: absolute;
-	top:50%;
-	margin-top:-62px;
-}
-.bike .info{
-	overflow: hidden;
-	left: 160px;
-	position: absolute;
-	height: 100%;
-	padding-top: 5px;
-}
-.bike .info h2{color: #000000;}
-.bike .info h3{color: #333333;}
-.bike .info p{color: #555555;}
-.bike .quantity{
-	right: 120px;
-	position: absolute;
-	height: 100%;
+}.panel .name h2{
+	padding: 10px 0 20px 0;
+	font-weight: 100;
+	font-size: 26px;
 	color: #333333;
-	padding-top: 34px;
+	border-bottom: 1px solid #ddd;
 }
-.bike .price{
-	right: 0;
-	position: absolute;
+.panel .left{
+	width: 200px;
 	height: 100%;
-	color: #04CB0C;
-	font-size: 22px;
-	font-weight: 400;
-	padding-top: 50px;
+
+	position: absolute;
+}.panel .left .block{
+	padding: 10px 0 10px 0;
+	width: 180px;
+	border-bottom: 1px solid #ddd;
+}.panel .left .block a{
+	color:#555;
+	display: block;
+	text-decoration: none;
+	padding: 2px 0 2px 0;
+	font-weight: bold;
+}.panel .left .block a:hover{
+	display: block;
+	text-decoration: none;
+	color:#222;
+	padding: 2px 0 2px 0;
+	font-weight: bold;
+}.panel .left .block .business{
+	width: 180px;
+	font-size: 14px;
+	font-weight: 100;
+	padding: 10px 0 10px 0;
 }
+.panel .right{
+	position: relative;
+	margin-left: 200px;
+	margin-top: 30px;
+	right: 0;
+	height: auto;
+	border-left: 1px solid #ddd;
+}.panel .right .block{
+	display: inline-table;
+	margin:0 2% 20px 2%;
+	width: 45%;
+}.panel .right .block h3{
+	font-weight: 100;
+	font-size: 18px;
+	color: #555;
+	padding: 0;
+	margin: 0;
+}.panel .right .block img{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}.panel .right .block p{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}.panel .right .block a{
+	color:#555;
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
+}.panel .right .block a:hover{
+	text-decoration: none;
+	color:#222;
+}
+
+
+.counter{
+	text-align: center;
+	font-size: 12px;
+	padding: 1px 4px 1px 4px;
+	background: #F04330;
+	color: #ffffff;
+	border-radius: 100%;
+	box-shadow: -1px 0 0 #a01300;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 select,input{
 	width: 140px;
 	height: 48px;
@@ -141,9 +181,6 @@ select,input{
 	text-align: center;
 	font-size: 18px;
 }
-
-
-
 header{
 	position: absolute;
 	top: 40px;
@@ -152,7 +189,8 @@ header{
 }
 header .btn_sell{
 	font-weight: 600;
-	position: relative;
+	position: absolute;
+	right: 140px;
 	padding-top: 12px;
 	width: 120px;
 	height: 35px;
@@ -177,15 +215,15 @@ header .btn_sell{
 }
 header .btn_login{
 	position: relative;
-	padding-top: 12px;
+	padding-top: 16px;
 	margin-left: 10px;
 	width: 120px;
-	height: 35px;
+	height: 31px;
 	background: #ffffff;
 	display: inline-block;
 	text-align: center;
 	border: 1px solid #000000;
-	font-size: 18px;
+	font-size: 12px;
 }header .btn_login a{
 	text-decoration: none;
 	color: #000000;
@@ -213,6 +251,7 @@ footer .links{
 	background: #dddddd;
 	width: 80%;
 	margin-left: 10%;
+
 }footer .links .column{
 	padding: 20px;
 	display: inline-block;
@@ -254,15 +293,15 @@ footer .links{
 	}
 	header .btn_login{
 		float: right;
-		padding-top: 12px;
+		padding-top: 16px;
 		margin-left: 10px;
 		width: 120px;
-		height: 35px;
+		height: 31px;
 		background: #ffffff;
 		display: inline-block;
 		text-align: center;
 		border: 1px solid #000000;
-		font-size: 18px;
+		font-size: 12px;
 	}
 
 	#Image1{
@@ -331,78 +370,90 @@ footer .links{
 
 
 
-a{text-decoration: none;}
+	a{text-decoration: none;}
 
 
 
-	.list{
+	.panel{
 		text-decoration: none;
 		width: 98%;
 		margin-left: 1%;
 		height: 100%;
-		background: #aaa;
 		position: relative;
 	}
-	.bike{
-		padding-top: 10px;
-		color: #000000;
-		border-bottom: 1px solid #cccccc;
-		width: 100%;
-		position: relative;
-		height: auto;
-		background: #ffffff;
-		line-height: normal;
-		overflow: hidden;
-	}.bike:hover{
-		background: #fafafa;
-		cursor: pointer;
-	}
-	.bike .thumb{
-		position: relative;
-		height: auto;
-	}
-	.bike .thumb img{
-		border: 1px solid #cccccc !important;
-		width: 134px;
-		height: 100px;
-		position: relative;
-		margin-top:10px;
-		left: 50%;
-		margin-left: -67px;
-	}
-	.bike .info{
-		overflow: hidden;
-		left: auto;
-		width: 100%;
-		position: relative;
-		height: auto;
-		padding-top: 0;
+	.panel .name{
 		text-align: center;
-	}
-	.bike .info h2{color: #000000;}
-	.bike .info h3{color: #333333;}
-	.bike .info p{color: #555555;}
-	.bike .quantity{
-		right: 0;
-		position: relative;
-		height: 100%;
 		width: 100%;
-		text-align: center;
+	}.panel .name h2{
+		padding: 10px 0 20px 0;
+		font-weight: 100;
+		font-size: 26px;
 		color: #333333;
-		padding-top: 0;
+		border-bottom: 1px solid #ddd;
 	}
-	.bike .price{
-		right: 0;
-		position: relative;
-		height: 100%;
+	.panel .left{
 		width: 100%;
+		height: auto;
+		position: relative;
 		text-align: center;
-		color: #04CB0C;
-		font-size: 22px;
-		font-weight: 400;
-		padding-top: 0;
-		padding-bottom: 20px;
+	}.panel .left .block{
+		padding: 0 0 0 0;
+		width: 100%;
+		border-bottom: none;
+	}.panel .left .block a{
+		padding: 10px 0 10px 0;
+		border-bottom: 1px solid #ddd;
+		color:#555;
+		display: block;
+		text-decoration: none;
+		font-weight: bold;
+	}.panel .left .block a:hover{
+		padding: 10px 0 10px 0;
+		text-decoration: none;
+		color:#222;
+	}.panel .left .block .business{
+		width: 100%;
+		font-size: 14px;
+		font-weight: 100;
+		padding: 10px 0 10px 0;
 	}
+	.panel .right{
+		position: relative;
+		margin-left: 0;
+		margin-top: 60px;
+		right: 0;
+		height: auto;
+		border-left: none;
+	}.panel .right .block{
+		display: block;
+		margin:0 0 20px 0;
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+	}.panel .right .block h3{
+		font-weight: 100;
+		font-size: 28px;
+		color: #555;
+		padding: 0;
+		margin: 0;
+	}.panel .right .block img{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}.panel .right .block p{
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+	}.panel .right .block a{
+		color:#555;
+		display: block;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 22px;
+	}.panel .right .block a:hover{
+		text-decoration: none;
+		color:#222;
+	}
+
 }
 @media only screen and (max-device-width:480px){
    /* styles for mobile browsers smaller than 480px; (iPhone) */
