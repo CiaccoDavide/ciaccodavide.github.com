@@ -56,18 +56,20 @@ header{
 form{
 	position: relative;
 	text-align: left;
-	width: 50%;
+	width: 520px;
+	max-width: 520px;
 	margin-left: 10%;
+	background: #ffa;
 }
 form h2{
 	font-weight:100;
 	font-size:32px;
 	color:#222;
 }
-form input{
+form input{margin-right: 0;
 	padding-left: 10px;
 	margin: 6px 0 10px 0;
-	width: 90%;
+	width: 507px;
 	height: 45px;
 	font-size: 22px;
 	color: #767676;
@@ -76,9 +78,11 @@ form input{
     box-shadow: inset 0px 0px 10px #ddd,0px 0px 10px #ddd;
     background: white;
 }form .half{
-	width: 40%;
+	width: 240px;
 }form #second{
-	margin-left: 5%; 
+	margin-left: 5%;
+	position: absolute;
+	right: 0;
 }
 form [type="radio"]{
 	height: 20px;
@@ -219,6 +223,7 @@ small{
 	}form .half{
 		width: 90%;
 	}form #second{
+		position: relative;
 		margin-left: 0; 
 	}
 	form [type="radio"]{
