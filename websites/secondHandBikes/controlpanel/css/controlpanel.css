@@ -98,13 +98,19 @@ html,body{
 	display: block;
 	text-decoration: none;
 	color:#222;
-	padding: 2px 0 2px 0;
 	font-weight: bold;
-}.panel .left .block .business{
+}.panel .left .block_last{
+	margin-top: 20px;
+}.panel .left .block_last .business{
 	width: 180px;
 	font-size: 14px;
 	font-weight: 100;
 	padding: 10px 0 10px 0;
+}.panel .left .block_last .business img{
+	width: 180px;
+	border: none;
+	padding: 0;
+	margin:0;
 }
 .panel .right{
 	position: relative;
@@ -124,7 +130,7 @@ html,body{
 	padding: 0;
 	margin: 0;
 }.panel .right .block img{
-	margin: 0;
+	margin: 4px 0 6px 0;
 	padding: 0;
 	width: 100%;
 }.panel .right .block p{
@@ -435,15 +441,17 @@ footer .links{
 		color: #555;
 		padding: 0;
 		margin: 0;
+		padding: 10px;
 	}.panel .right .block img{
 		margin: 0;
 		padding: 0;
 		width: 100%;
 	}.panel .right .block p{
 		margin: 0;
-		padding: 0;
+		padding: 10px;
 		font-size: 20px;
 	}.panel .right .block a{
+		padding: 10px;
 		color:#555;
 		display: block;
 		text-decoration: none;
