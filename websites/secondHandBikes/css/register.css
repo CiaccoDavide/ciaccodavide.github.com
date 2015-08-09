@@ -59,7 +59,6 @@ form{
 	width: 520px;
 	max-width: 520px;
 	margin-left: 10%;
-	background: #ffa;
 }
 form h2{
 	font-weight:100;
@@ -161,7 +160,7 @@ select{
 	font-size: 18px;
 }
 small{
-	text-shadow: 0px 0px 4px #fff,0px 0px 3px #fff,0px 0px 2px #fff,0px 0px 1px #fff;
+	text-shadow: 0px 0px 6px #fff,0px 0px 5px #fff,0px 0px 2px #fff,0px 0px 3px #fff;
 }
 
 
