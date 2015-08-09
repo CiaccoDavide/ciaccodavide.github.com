@@ -34,19 +34,25 @@ header{
 	width: 80%;
 	margin-left: 10%;
 	margin-bottom: 30px;
-	padding-bottom: 0;
-	border-bottom: 1px solid #cfcfcf;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #eee;
 }header #logo{
+	margin: 0;
+	padding: 0;
 	padding-top: 20px;
-	padding-right: 60px;
-	width: 100px;
+	padding-right: 20px;
+	width: 80px;
 	height: auto;
 	display: inline-block;
 }header p{
+	margin: 0;
+	padding: 0;
 	display: inline-block;
 	font-size: 20px;
 	color: #666666;
 }header .arrow{
+	margin: 0;
+	padding: 0;
 	display: inline-block;
 	opacity: 0.6;
 	margin-left: 5px;
@@ -75,9 +81,9 @@ form input{
 	height: 45px;
 	font-size: 22px;
 	color: #767676;
-	border: 1px solid #cfcfcf;
+	border: 1px solid #eee;
 	border-radius: 4px;
-    box-shadow: inset 0px 0px 6px #ddd,0px 0px 6px #ddd;
+    box-shadow: inset 0px 0px 6px #f8f8f8,0px 0px 6px #f8f8f8;
     background: white;
 }form .half{
 	width: 40%;
@@ -168,9 +174,9 @@ select{
 	width: 90%;
 	font-size: 22px;
 	color: #767676;
-	border: 1px solid #cfcfcf;
+	border: 1px solid #eee;
 	border-radius: 4px;
-    box-shadow: inset 0px 0px 6px #ddd,0px 0px 6px #ddd;
+    box-shadow: inset 0px 0px 6px #f8f8f8,0px 0px 6px #f8f8f8;
     background: white;
     font-size: 18px
 }
@@ -194,7 +200,7 @@ select{
 	}header #logo{
 		padding-top: 20px;
 		padding-right: 0;
-		width: 100px;
+		width: 80px;
 		padding-left: 50%;
 		margin-left: -50px;
 
@@ -227,9 +233,9 @@ select{
 		height: 45px;
 		font-size: 22px;
 		color: #767676;
-		border: 1px solid #cfcfcf;
+		border: 1px solid #eee;
 		border-radius: 4px;
-	    box-shadow: inset 0px 0px 6px #ddd,0px 0px 6px #ddd;
+	    box-shadow: inset 0px 0px 6px #f8f8f8,0px 0px 6px #f8f8f8;
 	    background: white;
 	}form .half{
 		width: 90%;
