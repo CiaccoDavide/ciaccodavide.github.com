@@ -336,7 +336,7 @@ footer .links{
 	width: 80%;
 	margin-left: 10%;
 }footer .links .column{
-	padding: 20px;
+	padding: 20px 50px;
 	display: inline-block;
 }footer .links .column a{
 	color: #000000;
