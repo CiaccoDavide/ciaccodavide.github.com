@@ -25,7 +25,7 @@ html,body{
 
 body #background_image{
 	z-index: -100;
-	position: fixed;
+	position: absolute;
 	bottom:0;
 	right: 0;
 	opacity: 1;
@@ -78,8 +78,8 @@ header{
 form{
 	position: relative;
 	text-align: left;
-	width: 520px;
-	max-width: 520px;
+	width: 480px;
+	max-width: 480px;
 	margin-left: 10%;
 }
 form h2{
@@ -90,7 +90,7 @@ form h2{
 form input{margin-right: 0;
 	padding-left: 10px;
 	margin: 6px 0 10px 0;
-	width: 507px;
+	width: 467px;
 	height: 45px;
 	font-size: 22px;
 	color: #767676;
@@ -99,7 +99,7 @@ form input{margin-right: 0;
     box-shadow: inset 0px 0px 10px #f8f8f8,0px 0px 10px #f8f8f8;
     background: white;
 }form .half{
-	width: 240px;
+	width: 220px;
 }form #second{
 	margin-left: 5%;
 	position: absolute;
