@@ -3,7 +3,7 @@ html,body{
 	margin: 0;
 }
 #Image1{
-	padding-top: 60px;
+	padding-top: 20px;
 	width: 200px !important;
 	height: auto !important;
 }
@@ -188,7 +188,7 @@ select,input{
 }
 header{
 	position: absolute;
-	top: 40px;
+	top: 20px;
 	right: 10%;
 	text-align: right;
 }
