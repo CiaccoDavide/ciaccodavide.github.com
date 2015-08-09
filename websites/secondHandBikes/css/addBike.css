@@ -23,7 +23,7 @@ html,body{
 }
 body #background_image{
 	z-index: -100;
-	position: fixed;
+	position: absolute;
 	bottom:0;
 	right: 0;
 	opacity: 1;
