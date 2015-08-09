@@ -264,19 +264,47 @@ header .btn_sell{
 	text-align: center;
 	border: 1px solid #00E400;
 	font-size: 18px;
+
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00ee00), color-stop(1, #00ca00) );
+	background:-moz-linear-gradient( center top, #00ee00 5%, #00ca00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ee00', endColorstr='#00ca00');
+	background-color:#00ee00;
+	-webkit-border-top-left-radius:1px;
+	-moz-border-radius-topleft:1px;
+	border-top-left-radius:1px;
+	-webkit-border-top-right-radius:1px;
+	-moz-border-radius-topright:1px;
+	border-top-right-radius:1px;
+	-webkit-border-bottom-right-radius:1px;
+	-moz-border-radius-bottomright:1px;
+	border-bottom-right-radius:1px;
+	-webkit-border-bottom-left-radius:1px;
+	-moz-border-radius-bottomleft:1px;
+	border-bottom-left-radius:1px;
+	border:1px solid #bdbdbd;
+}header .btn_sell:hover{
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00ca00), color-stop(1, #00ee00) );
+	background:-moz-linear-gradient( center top, #00ca00 5%, #00ee00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ca00', endColorstr='#00ee00');
+	background-color:#00ca00;
+	cursor: pointer;
+}header .btn_sell:active{
+	position:relative;
+	top:1px;
 }header .btn_sell a{
 	text-decoration: none;
 	color: #ffffff;
 }header .btn_sell span{
 	position: absolute;
 	text-align: center;
-	font-size: 16px;
+	font-size: 14px;
 	top: -12px;
-	right: -6px;
+	right: -10px;
 	padding: 3px;
 	background: #F04330;
 	border-radius: 100%;
-	width: 20px;
+	width: 16px;
+	box-shadow: -1px 0 0 #a01300;
 }
 header .btn_login{
 	position: relative;
