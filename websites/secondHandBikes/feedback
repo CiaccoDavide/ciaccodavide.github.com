@@ -1,10 +1,10 @@
 1.     Done
-2.     The search engine box is to wide compared to the sketches. As we talked about, we need to go much more blue /cyad color in the theme. (See screenshot)
+2.     Now after you resize the page over a certain width the enlarging stops, preserving the searchbox sketched appearence.
+		The searchbox color is now the same as the logo's sky is it ok?
 3.     is it light enough? (i've also brighten up the login,addbike and register inputs. Now it should be like the sketches)
 4.     Space between footer-links increased. Background color is now beige for the footer-links.
 5.     The header of the register, logind and addbike page takes to much space. Resize the logo and remove all the white space. (See screenshot)
 6.     It should be your cache (check if the background image is still an svg, it should be a png now...)
-
 7.     The image of the bicycle in the bike.html is to big. It needs to be smaller so it does not push the right side out. “Bianchi Road Bike” has to be able to be on one line instead of pushed down to next line.
 8.     Log ind illustration has to placed right side as on the sketch
 9.     Create user is stuck on the right side to the page. It just has to be normally placed at the right side as on the sketch.
