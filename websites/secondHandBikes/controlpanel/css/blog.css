@@ -77,7 +77,7 @@ html,body{
 	font-weight: 100;
 	font-size: 26px;
 	color: #333333;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #eee;
 }
 .panel .left{
 	width: 200px;
@@ -87,7 +87,7 @@ html,body{
 }.panel .left .block{
 	padding: 10px 0 10px 0;
 	width: 180px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #eee;
 }.panel .left .block a{
 	color:#555;
 	display: block;
@@ -112,7 +112,7 @@ html,body{
 	margin-top: 30px;
 	right: 0;
 	height: auto;
-	border-left: 1px solid #ddd;
+	border-left: 1px solid #eee;
 }.panel .right .article{
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 0 0 0 20px;
@@ -281,7 +281,7 @@ footer{
 footer .links{
 	font-size: 16px;
 	margin-top: 30px;
-	background: #dddddd;
+	background: #F8F7E6;
 	width: 80%;
 	margin-left: 10%;
 
@@ -422,7 +422,7 @@ footer .links{
 		font-weight: 100;
 		font-size: 26px;
 		color: #333333;
-		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid #eee;
 	}
 	.panel .left{
 		width: 100%;
@@ -435,7 +435,7 @@ footer .links{
 		border-bottom: none;
 	}.panel .left .block a{
 		padding: 10px 0 10px 0;
-		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid #eee;
 		color:#555;
 		display: block;
 		text-decoration: none;
