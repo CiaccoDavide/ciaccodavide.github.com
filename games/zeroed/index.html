@@ -274,9 +274,6 @@ $(document).keydown(function(a) {
 
 
 $(".main").swipe({
-  tap:function(event, target) {
-          alert("tap")
-        },
   swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
     switch(direction){
       case "up": move(38); break;
@@ -293,7 +290,7 @@ $("body").swipe( {
   hold:function(event, target) {
     window.location.reload();
   },
-  threshold:10000
+  threshold:50
 });
 
 

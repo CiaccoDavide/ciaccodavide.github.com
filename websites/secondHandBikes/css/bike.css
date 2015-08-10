@@ -5,10 +5,10 @@ html,body{
 	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 	margin: 0;
 	font-size: 20px;
-		width: 1111px;
+		width: 1280px;
 		position: absolute;
 		left: 50%;
-		margin-left: -555px;
+		margin-left: -640px;
 }
 #Image1{
 	padding-top: 20px;
@@ -21,7 +21,7 @@ html,body{
 	margin-top: 10px;
 	font-size: 18px;
 	font-weight: 100;
-	background:#00A2E8;
+	background:#8ED9FF;
 	padding:65px 0 35px 0;
 	width: 80%;
 	margin-left: 10%;
@@ -346,7 +346,7 @@ footer .links{
 }
 
 
-@media only screen and (max-width:1111px){
+@media only screen and (max-width:1280px){
 	html,body{
 		font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 		margin: 0;
@@ -403,7 +403,7 @@ footer .links{
 		margin-top: 10px;
 		font-size: 18px;
 		font-weight: 100;
-		background:#00A2E8;
+		background:#8ED9FF;
 		padding:20px 0 20px 0;
 		width: 100%;
 		margin-left: 0%;
