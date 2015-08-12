@@ -45,8 +45,8 @@ body #background_image{
 header{
 	position: relative;
 	text-align: left;
-	width: 80%;
-	margin-left: 10%;
+	width: 90%;
+	margin-left: 5%;
 	padding-bottom: 0;
 	border-bottom: 1px solid #eee;
 	padding-bottom: 6px;
@@ -80,7 +80,7 @@ form{
 	text-align: left;
 	width: 50%;
 	max-width: 520px;
-	margin-left: 10%;
+	margin-left: 5%;
 }
 form p{
 	margin-bottom: 0;

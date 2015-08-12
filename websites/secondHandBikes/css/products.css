@@ -60,7 +60,7 @@ html,body{
 }
 
 
-@media only screen and (max-width:1024px){
+@media only screen and (max-width:1080px){
 	#SearchBox select,input{
 		margin:0 20px 0 10px;
 		color:#000000;
@@ -155,7 +155,7 @@ select,input{
 header{
 	position: absolute;
 	top: 20px;
-	right: 10%;
+	right: 5%;
 	text-align: right;
 }
 header .btn_sell{
@@ -248,8 +248,8 @@ footer .links{
 	font-size: 16px;
 	margin-top: 30px;
 	background: #F8F7E6;
-	width: 80%;
-	margin-left: 10%;
+	width: 90%;
+	margin-left: 5%;
 }footer .links .column{
 	padding: 20px 50px;
 	display: inline-block;
