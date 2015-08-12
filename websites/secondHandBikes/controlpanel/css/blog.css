@@ -29,7 +29,7 @@ html,body{
 	font-size: 18px;
 	font-weight: 100;
 	background:#88CCC9;
-	padding:50px 0 20px 0;
+	padding:65px 0 35px 0;
 	width: 90%;
 	margin-left: 5%;
 	color: #ffffff;
@@ -51,7 +51,7 @@ html,body{
 }
 #SearchBox label{
 	position: absolute;
-	top: 15px;
+	top: 30px;
 	font-size: 18px;
 	float: left;
 	text-align: center;
