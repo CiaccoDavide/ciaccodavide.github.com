@@ -28,19 +28,20 @@ html,body{
 	margin-top: 10px;
 	font-size: 18px;
 	font-weight: 100;
-	background:#8ED9FF;
+	background:#88CCC9;
 	padding:50px 0 20px 0;
-	width: 80%;
-	margin-left: 10%;
+	width: 90%;
+	margin-left: 5%;
 	color: #ffffff;
 }#SearchBox select,input{
-	margin:0 60px 0 10px;
+	margin:0 20px 0 10px;
 	color:#000000;
+	width: 180px;
 }#SearchBox a{
 	color:#000000;
 	background: #FBC728;
 	/* top | right | bottom | left */
-	padding:12px 66px 14px 66px;
+	padding:12px 100px 14px 100px;
 	margin:0 8px 0 8px;
 	text-decoration: none;
 }#SearchBox a:hover{
@@ -57,18 +58,11 @@ html,body{
 	padding-left: 10px;
 }
 
-
-#SearchBox select,input{
-	margin:0 40px 0 10px;
-	color:#000000;
-}
-#SearchBox a{
-	padding:12px 46px 14px 46px;
-}
 @media only screen and (max-width:1024px){
 	#SearchBox select,input{
 		margin:0 20px 0 10px;
 		color:#000000;
+		width: 160px;
 	}
 	#SearchBox a{
 		padding:12px 36px 14px 36px;
@@ -78,8 +72,8 @@ html,body{
 
 .panel{
 	text-decoration: none;
-	width: 80%;
-	margin-left: 10%;
+	width: 90%;
+	margin-left: 5%;
 	height: auto;
 	position: relative;
 }
@@ -361,7 +355,7 @@ footer .links{
 		margin-top: 10px;
 		font-size: 18px;
 		font-weight: 100;
-		background:#8ED9FF;
+		background:#88CCC9;
 		padding:20px 0 20px 0;
 		width: 100%;
 		margin-left: 0%;
