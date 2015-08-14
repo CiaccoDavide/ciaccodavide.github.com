@@ -107,6 +107,8 @@ a .post t{display:inline;
 a .post desc{
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
+	
+	padding-top:90px;
 }
 a .post#red{border-bottom:2px solid #f66;}
 a .post#red t{color:#f66;}
