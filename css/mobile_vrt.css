@@ -142,7 +142,7 @@ a .post desc .thumb img{
 	width:70px;
 	height:70px;
 	
-	position:absolute;
+	position:relative;
 	left:50%;
 	margin-left:-35px;
 	-webkit-border-top-left-radius: 50px;
