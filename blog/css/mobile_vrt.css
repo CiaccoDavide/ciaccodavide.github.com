@@ -1,25 +1,20 @@
 html {}
 body {
 	width:100%;margin:0;padding:0;
-	/*
-font-family: 'Lato', sans-serif; //all - 100,300 anche italic
-font-family: 'Quicksand', sans-serif; //menu - 300,400
-font-family: 'Source Code Pro', sans-serif; //code - 200,300,400
-font-family: 'Raleway', sans-serif; // - 100,200
-	*/
 	background: #ddd;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	text-align: center;
 }
 body #left a img{width:160px;opacity:0.8;}
 body #left a:hover img{opacity:1;}
 body #left{
 	overflow:scroll;
 	box-shadow:1px 0 0 #ccc;
-	position:fixed;
 	left:0;
+	right:0;
 	background:#eee;
-	height:100%;
-	width:160px;
+	height:auto;
+	
 	overflow-y:hidden;
 	overflow-x:hidden;
 }
@@ -28,13 +23,10 @@ body #right{
 /*	background-attachment:fixed;
 	background-image:url('http://ciaccodavide.altervista.org/patt/?l=3000&a=90&d=1&c=ddd&s=999');
 	background-size: auto auto;*/
-	position:fixed;
 	left:160px;
 	right:0px;
 	top:0px;
 	bottom:0px;
-	overflow-y:scroll;
-	overflow-x:hidden;
 }
 h1{
 	text-shadow:1px 1px 0px #eee;
@@ -52,8 +44,9 @@ h1{
 	        transition:all 1s;
 }
 .links{
-	margin:10px;
-	width:160px;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	float:left;
 }
 .links a{
@@ -82,9 +75,14 @@ h1{
 }
 a .post{
 	float:left;
-	margin:1%;
-	padding:1%;
-	width:46%;
+	/*
+	margin:10px;
+	padding:10px;
+	max-width:300px;*/
+	width:92%;
+	margin:2%;
+	padding:2%;
+	
 	height:auto;
 	background:#eeeeee;
 	color:#666;
@@ -109,6 +107,8 @@ a .post t{display:inline;
 a .post desc{
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
+	
+	background:rgba(123,204,10,0.5);
 }
 a .post#red{border-bottom:2px solid #f66;}
 a .post#red t{color:#f66;}
@@ -132,15 +132,19 @@ a .post desc .thumb img{
 }
 
 #avatars{background: url(http://ciaccodavide.altervista.org/qbdp/perpets/?counter=5);background-position: 50% 50%;}
-#canvas{background: url(../../imgs/icon_canvas.png);background-position: 50% 50%;}
-#randomart{background: url(../../imgs/icon_randomart.png);background-position: 50% 50%;}
-#prog{background: url(../../imgs/icon_prog2.png);background-position: 50% 50%;}
-#indexcrypted{background: url(../../imgs/icon_indexcrypted.png);background-position: 50% 50%;}
-#crypt{background: url(../../imgs/icon_crypt.png);background-position: 50% 50%;}
+#canvas{background: url(../imgs/icon_canvas.png);background-position: 50% 50%;}
+#randomart{background: url(../imgs/icon_randomart.png);background-position: 50% 50%;}
+#prog{background: url(../imgs/icon_prog2.png);background-position: 50% 50%;}
+#indexcrypted{background: url(../imgs/icon_indexcrypted.png);background-position: 50% 50%;}
+#crypt{background: url(../imgs/icon_crypt.png);background-position: 50% 50%;}
 .icno {
 	margin:10px;
 	width:70px;
 	height:70px;
+	
+	position:relative;
+	left:50%;
+	margin-left:-35px;
 	-webkit-border-top-left-radius: 50px;
 	  -webkit-border-top-right-radius: 50px;
 	  -webkit-border-bottom-right-radius: 50px;
@@ -159,7 +163,7 @@ a .post desc .thumb img{
 	  -moz-background-size: cover;
 	  -webkit-background-size: cover;
 	  background-size: cover;
-
+	  
     background-repeat: no-repeat;
 }
 
@@ -170,22 +174,9 @@ a .post desc .thumb img{
 	bottom:0;
 }
 
+
+
+
+
 #hiddencounter{display:none;}
 #btc-quote{position: fixed;right: 0;bottom: 0;}
-
-
-
-
-
-@media only screen and (max-width:900px){
-	a .post{
-		float:left;
-		margin:1%;
-		padding:1%;
-		width:96%;
-		height:auto;
-		background:#eeeeee;
-		color:#666;
-		text-decoration:none;
-	}
-}
