@@ -70,7 +70,8 @@ header{
 	padding: 0;
 	display: inline-block;
 	opacity: 0.6;
-	margin-left: 5px;
+	margin-left: 20px;
+	margin-right: 15px;
 }
 
 
@@ -94,8 +95,9 @@ form input{
 	margin: 6px 0 10px 0;
 	width: 90%;
 	height: 45px;
-	font-size: 22px;
-	color: #767676;
+	font-weight: 100;
+	font-size: 20px;
+	color: #999;
 	border: 1px solid #eee;
 	border-radius: 4px;
     box-shadow: inset 0px 0px 6px #f8f8f8,0px 0px 6px #f8f8f8;
