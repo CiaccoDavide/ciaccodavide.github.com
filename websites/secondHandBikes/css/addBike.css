@@ -24,7 +24,7 @@ html,body{
 body #background_image{
 	z-index: -100;
 	position: absolute;
-	top:140px;
+	top:104px;
 	right: 0;
 	opacity: 1;
 	max-height: 800px;
@@ -84,15 +84,19 @@ form{
 	max-width: 520px;
 	margin-left: 5%;
 }
+form p{
+	margin: 0
+}
 form h2{
 	font-weight:100;
 	font-size:32px;
 	color:#222;
+	margin-bottom: 20px;
 }
 form input{
 	padding-left: 10px;
 	padding-right: 10px;
-	margin: 6px 0 10px 0;
+	margin: 6px 0 -10px 0;
 	width: 90%;
 	height: 45px;
 	font-weight: 100;
@@ -108,7 +112,7 @@ form input{
 	margin-left: 5%; 
 }
 form [type="radio"]{
-	height: 20px;
+	height: 0 20px;
 	width: auto;
 	display: inline-block;
 	margin-left: 10px;
@@ -118,6 +122,7 @@ form [type="radio"]{
 }
 form select{
 	margin-top: 10px;
+	margin-bottom: 0;
 }
 form [type="submit"]{
 	margin-top: 6px;
@@ -182,12 +187,13 @@ select{
 	overflow: hidden;
 	text-align: center;
 	font-size: 18px;
+	margin: 0;
 }
 
 .brandname{font-size: 18px}
 .description{
 	padding: 10px;
-	margin: 6px 0 10px 0;
+	margin: 6px 0 0 0;
 	width: 90%;
 	font-size: 22px;
 	color: #767676;
