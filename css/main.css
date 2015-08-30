@@ -81,7 +81,7 @@ h1{
 	text-decoration:none;
 }
 a .post{
-	float:left;
+	display:inline-table;
 	margin:10px;
 	padding:10px;
 	max-width:300px;
