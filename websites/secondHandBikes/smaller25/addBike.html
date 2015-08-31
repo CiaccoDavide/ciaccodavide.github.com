@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- for Google -->
+	<meta name="description" content="Add a bike on SecondHandBikes" />
+	<meta name="keywords" content="Second Hand Bikes" />
+	<meta name="author" content="Ciacco Davide" />
+	<meta name="copyright" content="http://ciaccodavi.de" />
+	<meta name="application-name" content="SecondHandBikes" />
+
+	<!-- for Facebook -->
+	<meta property="og:title" content="Second Hand Bikes - Add a bike" />
+	<meta property="og:type" content="article" />
+	<meta property="og:image" content="http://www.ciaccodavi.de/websites/secondHandBikes/logo.jpg" />
+	<meta property="og:url" content="" />
+	<meta property="og:description" content="Add a bike on SecondHandBikes" />
+
+	<!-- for Twitter -->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Second Hand Bikes - Add a bike" />
+	<meta name="twitter:description" content="Add a bike on SecondHandBikes" />
+	<meta name="twitter:image" content="http://www.ciaccodavi.de/websites/secondHandBikes/logo.jpg" />
+
+
+	<title>SecondHandBikes - Add a bike</title>
+	<link href="./css/addBike.css" rel="stylesheet"/>
+	<link href="./favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+	<header>
+		<img id="logo" src="./imgs/logo.jpg">
+		<p>Create user</p><img class="arrow" src="./imgs/arrow.png">
+		<p>Create ad</p><img class="arrow" src="./imgs/arrow.png">
+		<p>Bike sold</p>
+	</header>
+	<form>
+	<h2>Create bike ad</h2>
+		<p>What is the brand of the bicycle?</p>
+		<input type="text" class="brandname" name="brandname" placeholder="Brand name of the bike (Example: Kildemoes)" required>
+
+<br><br>
+
+		<p>Select type, condition and gears</p><br>
+		<select name="sex">
+			<option value="male">Male bicycle</option>
+			<option value="female">Female bicycle</option>
+			<option value="unisex">Unisex bicycle</option>
+		</select>
+		<select name="rideability">
+			<option value="rideable">Rideable</option>
+		</select>
+		<select name="gears">
+			<option value="3">3 gears</option>
+		</select>
+<br><br>
+		<p>Description of the bicycle</p><br>
+		<textarea class="description" name="brandname" placeholder="Add a good description of your bicycle and sell your
+bicycle a lot faster" required></textarea>
+<br><br>
+
+
+
+		<p>Upload a picture of your bicycle</p><br>
+		<select name="photo">
+			<option value="empty">Vælg fil</option>
+		</select>
+		<p class="tip">(A great picture sells fast)</p>
+		<br><br>
+		<p>Price of the bicycle</p><br>
+		<input type="number" class="price" name="price" placeholder="" required>
+		<p>kr,-</p><br>
+		<br>
+		<small>I accept the terms and conditions of Second Hand Bikes</small>
+		<input type="submit" value="Create bike ad">
+	</form>
+
+
+	<footer>
+
+	</footer>
+<img id="background_image" src="./imgs/addBikeBackground.png">
+
+
+</body>
+</html>
