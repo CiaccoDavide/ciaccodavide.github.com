@@ -238,10 +238,12 @@ footer{
 	margin-bottom: 45px;
 	text-align: center;
 }footer img{
+	width: 94px;
 	display: inline-block;
 }footer #prev,#next{
 	cursor: pointer;
 }footer .pages{
+	font-size: 12px;
 	margin-top: 15px;
 }footer .pages a{
 	text-decoration: none;
