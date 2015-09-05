@@ -113,7 +113,7 @@ html,body{
 	height: 100%;
 	padding-top: 4px;
 }
-.bike .info h2{color: #000000;font-size:18px;}
+.bike .info h2{color: #000000;font-size:18px;font-weight:100;}
 .bike .info h3{color: #333333;font-size:13px;}
 .bike .info p{color: #555555;font-size:12px;}
 .bike .quantity{
@@ -419,7 +419,7 @@ a{text-decoration: none;}
 		padding-top: 0;
 		text-align: center;
 	}
-	.bike .info h2{color: #000000;font-size:18px;}
+	.bike .info h2{color: #000000;font-size:18px;font-weight:100;}
 	.bike .info h3{color: #333333;font-size:13px;}
 	.bike .info p{color: #555555;font-size:12px;}
 	.bike .quantity{
