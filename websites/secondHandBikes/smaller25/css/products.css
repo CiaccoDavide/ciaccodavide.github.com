@@ -114,7 +114,7 @@ html,body{
 	padding-top: 4px;
 }
 .bike .info h2{color: #000000;font-size:18px;font-weight:100;}
-.bike .info h3{color: #333333;font-size:13px;}
+.bike .info h3{color: #333333;font-size:13px;font-weight:100;}
 .bike .info p{color: #555555;font-size:12px;}
 .bike .quantity{
 	font-size:12px;
@@ -420,7 +420,7 @@ a{text-decoration: none;}
 		text-align: center;
 	}
 	.bike .info h2{color: #000000;font-size:18px;font-weight:100;}
-	.bike .info h3{color: #333333;font-size:13px;}
+	.bike .info h3{color: #333333;font-size:13px;font-weight:100;}
 	.bike .info p{color: #555555;font-size:12px;}
 	.bike .quantity{
 		font-size:12px;
