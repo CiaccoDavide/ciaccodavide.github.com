@@ -28,7 +28,7 @@ html,body{
 	margin-top: 7px;
 	font-size: 13px;
 	font-weight: 100;
-	background:#88CCC9;
+	background:#3498db;
 	padding:48px 0 26px 0;
 	width: 90%;
 	margin-left: 5%;
@@ -57,7 +57,6 @@ html,body{
 	text-align: center;
 	padding-left: 7px;
 }
-
 
 @media only screen and (max-width:810px){
 	#SearchBox select,input{
@@ -121,6 +120,15 @@ html,body{
 	padding: 0;
 	margin:0;
 }
+
+
+
+
+
+
+
+
+
 .panel .right{
 	position: relative;
 	margin-left: 150px;
@@ -215,7 +223,6 @@ header .btn_sell{
 	border: 1px solid #00E400;
 	font-size: 13px;
 
-
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00ee00), color-stop(1, #00ca00) );
 	background:-moz-linear-gradient( center top, #00ee00 5%, #00ca00 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ee00', endColorstr='#00ca00');
@@ -256,6 +263,7 @@ header .btn_sell a{
 	background: #F04330;
 	border-radius: 100%;
 	width: 15px;
+	box-shadow: -1px 0 0 #a01300;
 }
 header .btn_login{
 	position: relative;
@@ -359,7 +367,7 @@ footer .links{
 		margin-top: 7px;
 		font-size: 13px;
 		font-weight: 100;
-		background:#88CCC9;
+		background:#3498db;
 		padding:15px 0 15px 0;
 		width: 100%;
 		margin-left: 0%;

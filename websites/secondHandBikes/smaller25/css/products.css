@@ -28,7 +28,7 @@ html,body{
 	margin-top: 7px;
 	font-size: 13px;
 	font-weight: 100;
-	background:#88CCC9;
+	background:#3498db;
 	padding:48px 0 26px 0;
 	width: 90%;
 	margin-left: 5%;
@@ -113,10 +113,11 @@ html,body{
 	height: 100%;
 	padding-top: 4px;
 }
-.bike .info h2{color: #000000;}
-.bike .info h3{color: #333333;}
-.bike .info p{color: #555555;}
+.bike .info h2{color: #000000;font-size:18px;}
+.bike .info h3{color: #333333;font-size:13px;}
+.bike .info p{color: #555555;font-size:12px;}
 .bike .quantity{
+	font-size:12px;
 	right: 90px;
 	position: absolute;
 	height: 100%;
@@ -126,11 +127,13 @@ html,body{
 .bike .price{
 	right: 0;
 	position: absolute;
+	font-size:16px;
 	height: 100%;
 	color: #04CB0C;
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: 100;
 	padding-top: 37px;
+	padding-right: 10px;
 }
 select,input{
 	width: 105px;
@@ -313,7 +316,7 @@ footer .links{
 		margin-top: 7px;
 		font-size: 13px;
 		font-weight: 100;
-		background:#88CCC9;
+		background:#3498db;
 		padding:15px 0 15px 0;
 		width: 100%;
 		margin-left: 0%;
@@ -416,10 +419,11 @@ a{text-decoration: none;}
 		padding-top: 0;
 		text-align: center;
 	}
-	.bike .info h2{color: #000000;}
-	.bike .info h3{color: #333333;}
-	.bike .info p{color: #555555;}
+	.bike .info h2{color: #000000;font-size:18px;}
+	.bike .info h3{color: #333333;font-size:13px;}
+	.bike .info p{color: #555555;font-size:12px;}
 	.bike .quantity{
+		font-size:12px;
 		right: 0;
 		position: relative;
 		height: 100%;
@@ -436,8 +440,9 @@ a{text-decoration: none;}
 		text-align: center;
 		color: #04CB0C;
 		font-size: 16px;
-		font-weight: 400;
+		font-weight: 100;
 		padding-top: 0;
 		padding-bottom: 15px;
+		padding-right: 10px;
 	}
 }

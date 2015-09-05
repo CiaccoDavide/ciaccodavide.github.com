@@ -124,9 +124,575 @@ g               {color:#bdbdbd;}
 <script src="./jquery.min.js"></script>
 <script src="./jquery.mobile.min.js"></script>
 <script>
+/*
+$(".upgrades").hide();
+$(".achievements").hide();
+$(".settings").hide();
+$("#tab_professions").on("tap",function(){
+$("#tab_professions").addClass("active");
+$("#tab_upgrades").removeClass("active");
+$("#tab_achievements").removeClass("active");
+$("#tab_settings").removeClass("active");
+$(".professions").show();
+$(".upgrades").hide();
+$(".achievements").hide();
+$(".settings").hide();
+});
+$("#tab_upgrades").on("tap",function(){
+$("#tab_professions").removeClass("active");
+$("#tab_upgrades").addClass("active");
+$("#tab_achievements").removeClass("active");
+$("#tab_settings").removeClass("active");
+$(".professions").hide();
+$(".upgrades").show();
+$(".achievements").hide();
+$(".settings").hide();
+});
+$("#tab_achievements").on("tap",function(){
+$("#tab_professions").removeClass("active");
+$("#tab_upgrades").removeClass("active");
+$("#tab_achievements").addClass("active");
+$("#tab_settings").removeClass("active");
+$(".professions").hide();
+$(".upgrades").hide();
+$(".achievements").show();
+$(".settings").hide();
+});
+$("#tab_settings").on("tap",function(){
+$("#tab_professions").removeClass("active");
+$("#tab_upgrades").removeClass("active");
+$("#tab_achievements").removeClass("active");
+$("#tab_settings").addClass("active");
+$(".professions").hide();
+$(".upgrades").hide();
+$(".achievements").hide();
+$(".settings").show();
+});
+var profit=0;
+var wholeprofit=0;
+var spent=maxprofit=achmulti=globalmultinext=0;
+var globalmulti=100;
+var level=1;
+var inc=1.06+0.05*level;
+var numresets=0;
+var deleteTimerCounter=0;
+var profArray = new Array();
+profArray[0] = new Array("Farmers",     0,5,          2);
+profArray[1] = new Array("Builders",    0,24,         4);
+profArray[2] = new Array("Gardeners",   0,120,        16);
+profArray[3] = new Array("Waiters",     0,624,        60);
+profArray[4] = new Array("Bartenders",  0,3369,       222);
+profArray[5] = new Array("Chefs",       0,18869,       797);
+profArray[6] = new Array("Writers",     0,109444,      2666);
+profArray[7] = new Array("Merchants",   0,656656,      9396);
+profArray[8] = new Array("Warriors",    0,4071333,     31007);
+profArray[9] = new Array("Doctors",     0,26056572,     99222);
+profArray[10] = new Array("Lawyers",    0,171973377,    306603);
+profArray[11] = new Array("Actors",     0,1169418963,    922797);
+profArray[12] = new Array("Bankers",    0,8185851855,   2666111);
+profArray[13] = new Array("Governors",  0,58938715765,   7450101);
+profArray[14] = new Array("Presidents", 0,436146496662,  21231321);
+profArray[15] = new Array("Kings",      0,3314713374637,  55555555);
+var upgradeArray = new Array();
+upgradeArray[0] = new Array("Whip",           1, 26,"Slaves profits x2");
+upgradeArray[1] = new Array("Windmill",       1, 150,"Farmers profits x2");
+upgradeArray[2] = new Array("Hammer",         1, 898,"Builders profits x2");
+upgradeArray[3] = new Array("Rake",           1, 5656,"Gardeners profits x2");
+upgradeArray[4] = new Array("Roller-skates",  1, 36333,"Waiters profits x2");
+upgradeArray[5] = new Array("Alcohol",        1, 244160,"Bartenders profits x2");
+upgradeArray[6] = new Array("Knives",         1, 1699361,"Chefs profits x2");
+upgradeArray[7] = new Array("Typography",     1, 12252252,"Writers profits x2");
+upgradeArray[8] = new Array("Agreement",      1, 91313313,"Merchants profits x2");
+upgradeArray[9] = new Array("Disagreement",   1, 699699699,"Warriors profits x2");
+upgradeArray[10] = new Array("Vaccine",       1, 5505050505,"Doctors profits x2");
+upgradeArray[11] = new Array("Judge friend",  1, 45145145145,"Lawyers profits x2");
+upgradeArray[12] = new Array("Script",          1, 380380380380,"Actors profits x2");
+upgradeArray[13] = new Array("Creditors",          1, 3284284284284,"Bankers profits x2");
+upgradeArray[14] = new Array("Constitution",  1, 30303030303030,"Governors profits x2");
+upgradeArray[15] = new Array("Good speech",   1, 256256256256256,"Presidents profits x2");
+upgradeArray[16] = new Array("Scepter",       1, 2420420420420420,"Kings profits x2");
+upgradeArray[17] = new Array("Whip",                  1, 18811881188118811,"Slaves profits x2");
+upgradeArray[18] = new Array("OGM",                   1, 143791174324761231,"Farmers profits x2");
+upgradeArray[19] = new Array("Reinforced Cement",     1, 1024102410241024102,"Builders profits x2");
+upgradeArray[20] = new Array("Manure",                1, 6936936936936936936,"Gardeners profits x2");
+upgradeArray[21] = new Array("Balance",               1, 43434343434343434343,"Waiters profits x2");
+upgradeArray[22] = new Array("Juggling",              1, 250250250250250250250,"Bartenders profits x2");
+upgradeArray[23] = new Array("Refined Taste",         1, 1320132013201320132013,"Chefs profits x2");
+upgradeArray[24] = new Array("Muse",                  1, 6333633363336333633363,"Writers profits x2");
+upgradeArray[25] = new Array("New Worlds Discovery",  1, 26622662266226622662266,"Merchants profits x2");
+upgradeArray[26] = new Array("World War",             1, 105105105105105105105105,"Warriors profits x2");
+upgradeArray[27] = new Array("Virus",                 1, 353000000000000000000000,"Doctors profits x2");
+upgradeArray[28] = new Array("Inside man",            1, 1000000000000000000000000,"Lawyers profits x2");
+upgradeArray[29] = new Array("Mask",                  1, 2400000000000000000000000,"Actors profits x2");
+upgradeArray[30] = new Array("Debitors",                  1, 4200000000000000000000000,"Bankers profits x2");
+upgradeArray[31] = new Array("Informations",                  1, 6000000000000000000000000,"Governors profits x2");
+upgradeArray[32] = new Array("Corruption",            1, 9000000000000000000000000,"Presidents profits x2");
+upgradeArray[33] = new Array("Ignorance",             1, 10000000000000000000000000,"Kings profits x2");
+var typeMulti = new Array();typeMulti[0]=1;typeMulti[1]=1;typeMulti[2]=1;typeMulti[3]=1;typeMulti[4]=1;typeMulti[5]=1;typeMulti[6]=1;typeMulti[7]=1;typeMulti[8]=1;typeMulti[9]=1;typeMulti[10]=1;typeMulti[11]=1;typeMulti[12]=1;typeMulti[13]=1;typeMulti[14]=1;typeMulti[15]=1;typeMulti[16]=1;
+if(localStorage.saved)
+if(parseInt(localStorage.saved)==1)
+loadDataDave();
+createLongClickableButtons();
+updateButtons();
+runtimeLoop();
+longerRuntimeLoop();
+saveEveryMinute();
+function addMatter(){
+profit+=1*slavesProfit();
+wholeprofit+=1*slavesProfit();
+}
+function addProf(p){
+if(profArray[p][1]<200&&costo(p)<=profit){
+profit-=costo(p);
+spent+=costo(p);
+profArray[p][1]+=1;
+updateButtons();
+}
+}
+function buyUpgrade(i){
+if(upgradeArray[i][2]<=profit){
+profit-=upgradeArray[i][2];
+spent+=upgradeArray[i][2];
+upgradeArray[i][1]=2;
+updateButtons();
+}
+}
+function createLongClickableButtons(){
+botplace='';
+for(i=0;i<16;i++){
+botplace+='<div id="'+i+'" class="longo"></div>';
+}
+botplace+='<div id="buyallbtn" class="notlongo"></div>';
+botplace+='<div id="levelupbtn" class="notlongo"></div>';
+document.getElementById("bottoni").innerHTML = botplace;
+botplace='';
+for(i=0;i<34;i++){
+botplace+='<div id="'+(i+1000)+'" class="btn_buy_upgrade"></div>';
+}
+botplace+='<div id="buyallupgradesbtn" class="not_btn_buy_upgrade"></div>';
+document.getElementById("upgrades").innerHTML = botplace;
+}
+function updateButtons(){
+bottoni='';
+maxedperc=0;
+for(i=0;i<16;i++){
+if(profArray[i][1]==200){
+bottoni='<button id="maxed"><b>'+profArray[i][0]+' <g>LVL'+level+'</g></b><br><g>Owned:</g>  '+scala(profArray[i][1])+' (maxed)<br><g>Cost:</g>   $'+scala(costo(i))+'<br><g>Profit:</g> $'+scala(guadagnoPerSingolo(i))+'/s<br><g>Profit (tot):</g> $'+scala(guadagno(i))+'/s<br></button>';
+}else{
+if(costo(i)>profit)
+bottoni='<button id="off"><b>'+profArray[i][0]+' <g>LVL'+level+'</g></b><br><g>Owned:</g>  '+scala(profArray[i][1])+'<br><g>Cost:</g>   $'+scala(costo(i))+'<br><g>Profit:</g> $'+scala(guadagnoPerSingolo(i))+'/s<br><g>Profit (tot):</g> $'+scala(guadagno(i))+'/s<br></button>';
+else
+bottoni='<button id="on"><b>'+profArray[i][0]+' <g>LVL'+level+'</g></b><br><g>Owned:</g>  '+scala(profArray[i][1])+'<br><g>Cost:</g>   $'+scala(costo(i))+'<br><g>Profit:</g> $'+scala(guadagnoPerSingolo(i))+'/s<br><g>Profit (tot):</g> $'+scala(guadagno(i))+'/s<br></button>';
+}
+document.getElementById(i).innerHTML = bottoni;
+maxedperc+=profArray[i][1];
+}
+document.getElementById("buyallbtn").innerHTML = '<button id="maxed"><br><b>Tap to buy all avaiable professions!</b><br><br></button>';
+maxedperc/=3200;
+document.getElementById("levelupbtn").innerHTML = '<button id="maxed"><br><b>LEVEL UP!<br><g>Avaiable when every profession is maxed out.</g><br><g>'+pDD(maxedperc*100)+'%</g><br><br></button>';
+document.getElementById("slaves").innerHTML = '<b>Slaves</b><br><g>Profit:</g> $'+scala(slavesProfit())+'/s';
+upgrades='';
+for(i=0;i<34;i++){
+if(upgradeArray[i][1]==2)
+upgrades='<button id="bought"><b>'+upgradeArray[i][0]+'</b><br><g>Cost:</g>   bought.<br><g>Effect:</g> '+upgradeArray[i][3]+'</button>';
+else if(upgradeArray[i][2]>profit)
+upgrades='<button id="off"><b>'+upgradeArray[i][0]+'</b><br><g>Cost:</g>   $'+scala(upgradeArray[i][2])+'<br><g>Effect:</g> '+upgradeArray[i][3]+'</button>';
+else
+upgrades='<button id="on"><b>'+upgradeArray[i][0]+'</b><br><g>Cost:</g>   $'+scala(upgradeArray[i][2])+'<br><g>Effect:</g> '+upgradeArray[i][3]+'</button>';
+document.getElementById((i+1000)).innerHTML = upgrades;
+}
+document.getElementById("buyallupgradesbtn").innerHTML = '<button id="maxed"><br><b>Tap to buy all avaiable upgrades!</b><br><br></button>';
+achievements='';
+achievementscount=0;
+achmulti=1;
+tipi=tipi25=tipi50=tipi100=tipi200=0;//1
+for(i=0;i<16;i++){
+if(profArray[i][1]>=200)
+tipi200++;
+if(profArray[i][1]>=100)
+tipi100++;
+if(profArray[i][1]>=50)
+tipi50++;
+if(profArray[i][1]>=25)
+tipi25++;
+if(profArray[i][1]>0)
+tipi++;
+}
+if(tipi<8){
+achievements+='<button id="off"><b>8 different professions<br><g>[1 owned]</g></b><br>['+tipi+'/8]<br><g>Effect:</g> Every profit x2</button>';
+}else{
+achmulti*=2;achievementscount++;
+achievements+='<button id="achieved"><b>8 different professions<br><g>[1 owned]</g></b><br>[8/8]<br><g>Effect:</g> Every profit x2</button>';
+}
+if(tipi<16){
+achievements+='<button id="off"><b>16 different professions<br><g>[1 owned]</g></b><br>['+tipi+'/16]<br><g>Effect:</g> Every profit x2</button>';
+}else{
+achmulti*=2;achievementscount++;
+achievements+='<button id="achieved"><b>16 different professions<br><g>[1 owned]</g></b><br>[16/16]<br><g>Effect:</g> Every profit x2</button>';
+}
+if(tipi25<8){
+achievements+='<button id="off"><b>8 different professions<br><g>[25 owned]</g></b><br>['+tipi25+'/8]<br><g>Effect:</g> Every profit x2</button>';
+}else{
+achmulti*=2;achievementscount++;
+achievements+='<button id="achieved"><b>16 different professions<br><g>[25 owned]</g></b><br>[8/8]<br><g>Effect:</g> Every profit x2</button>';
+}
+if(tipi25<16){
+achievements+='<button id="off"><b>16 different professions<br><g>[25 owned]</g></b><br>['+tipi25+'/16]<br><g>Effect:</g> Every profit x2</button>';
+}else{
+achmulti*=2;achievementscount++;
+achievements+='<button id="achieved"><b>16 different professions<br><g>[25 owned]</g></b><br>[16/16]<br><g>Effect:</g> Every profit x2</button>';
+}
+if(tipi50<8){
+achievements+='<button id="off"><b>8 different professions<br><g>[50 owned]</g></b><br>['+tipi50+'/8]<br><g>Effect:</g> Every profit x4</button>';
+}else{
+achmulti*=4;achievementscount++;
+achievements+='<button id="achieved"><b>8 different professions<br><g>[50 owned]</g></b><br>[8/8]<br><g>Effect:</g> Every profit x4</button>';
+}
+if(tipi50<16){
+achievements+='<button id="off"><b>16 different professions<br><g>[50 owned]</g></b><br>['+tipi50+'/16]<br><g>Effect:</g> Every profit x4</button>';
+}else{
+achmulti*=4;achievementscount++;
+achievements+='<button id="achieved"><b>16 different professions<br><g>[50 owned]</g></b><br>[16/16]<br><g>Effect:</g> Every profit x4</button>';
+}
+if(tipi100<8){
+achievements+='<button id="off"><b>8 different professions<br><g>[100 owned]</g></b><br>['+tipi100+'/8]<br><g>Effect:</g> Every profit x4</button>';
+}else{
+achmulti*=4;achievementscount++;
+achievements+='<button id="achieved"><b>8 different professions<br><g>[100 owned]</g></b><br>[8/8]<br><g>Effect:</g> Every profit x4</button>';
+}
+if(tipi100<16){
+achievements+='<button id="off"><b>16 different professions<br><g>[100 owned]</g></b><br>['+tipi100+'/16]<br><g>Effect:</g> Every profit x4</button>';
+}else{
+achmulti*=4;achievementscount++;
+achievements+='<button id="achieved"><b>16 different professions<br><g>[100 owned]</g></b><br>[16/16]<br><g>Effect:</g> Every profit x4</button>';
+}
+
+if(tipi200<8){
+achievements+='<button id="off"><b>8 different professions<br><g>[200 owned]</g></b><br>['+tipi200+'/8]<br><g>Effect:</g> Every profit x8</button>';
+}else{
+achmulti*=8;achievementscount++;
+achievements+='<button id="achieved"><b>8 different professions<br><g>[200 owned]</g></b><br>[8/8]<br><g>Effect:</g> Every profit x8</button>';
+}
+if(tipi200<16){
+achievements+='<button id="off"><b>16 different professions<br><g>[200 owned]</g></b><br>['+tipi200+'/16]<br><g>Effect:</g> Every profit x8</button>';
+}else{
+achmulti*=8;achievementscount++;
+achievements+='<button id="achieved"><b>16 different professions<br><g>[200 owned]</g></b><br>[16/16]<br><g>Effect:</g> Every profit x8</button>';
+}
+for(i=0;i<16;i++){
+if(profArray[i][1]>=100){
+typeMulti[i]=128;achievementscount++;achievementscount++;achievementscount++;
+achievements+='<button id="achieved"><b>25 '+profArray[i][0]+' owned</b><br>[25/25]<br><g>Effect:</g> '+profArray[i][0]+' profit x2</button>';
+achievements+='<button id="achieved"><b>50 '+profArray[i][0]+' owned</b><br>[50/50]<br><g>Effect:</g> '+profArray[i][0]+' profit x4</button>';
+achievements+='<button id="achieved"><b>100 '+profArray[i][0]+' owned</b><br>[100/100]<br><g>Effect:</g> '+profArray[i][0]+' profit x16</button>';
+}else if(profArray[i][1]>=50){
+typeMulti[i]=8;achievementscount++;achievementscount++;
+achievements+='<button id="achieved"><b>25 '+profArray[i][0]+' owned</b><br>[25/25]<br><g>Effect:</g> '+profArray[i][0]+' profit x2</button>';
+achievements+='<button id="achieved"><b>50 '+profArray[i][0]+' owned</b><br>[50/50]<br><g>Effect:</g> '+profArray[i][0]+' profit x4</button>';
+achievements+='<button id="off"><b>100 '+profArray[i][0]+' owned</b><br>['+profArray[i][1]+'/100]<br><g>Effect:</g> '+profArray[i][0]+' profit x16</button>';
+}else if(profArray[i][1]>=25){
+typeMulti[i]=2;achievementscount++;
+achievements+='<button id="achieved"><b>25 '+profArray[i][0]+' owned</b><br>[25/25]<br><g>Effect:</g> '+profArray[i][0]+' profit x2</button>';
+achievements+='<button id="off"><b>50 '+profArray[i][0]+' owned</b><br>['+profArray[i][1]+'/50]<br><g>Effect:</g> '+profArray[i][0]+' profit x4</button>';
+achievements+='<button id="off"><b>100 '+profArray[i][0]+' owned</b><br>['+profArray[i][1]+'/100]<br><g>Effect:</g> '+profArray[i][0]+' profit x16</button>';
+}else{
+achievements+='<button id="off"><b>25 '+profArray[i][0]+' owned</b><br>['+profArray[i][1]+'/25]<br><g>Effect:</g> '+profArray[i][0]+' profit x2</button>';
+achievements+='<button id="off"><b>50 '+profArray[i][0]+' owned</b><br>['+profArray[i][1]+'/50]<br><g>Effect:</g> '+profArray[i][0]+' profit x4</button>';
+achievements+='<button id="off"><b>100 '+profArray[i][0]+' owned</b><br>['+profArray[i][1]+'/100]<br><g>Effect:</g> '+profArray[i][0]+' profit x16</button>';
+}
+}
+upgraded=0;
+for(i=0;i<34;i++) if(upgradeArray[i][1]==2) upgraded++;
+if(upgraded<17){
+achievements+='<button id="off"><b>17 Upgrades bought</b><br>['+upgraded+'/17]<br><g>Effect:</g> Every profit x16</button>';
+}else{
+achmulti*=16;achievementscount++;
+achievements+='<button id="achieved"><b>17 Upgrades bought</b><br>[17/17]<br><g>Effect:</g> Every profit x16</button>';
+}if(upgraded<34){
+achievements+='<button id="off"><b>34 Upgrades bought</b><br>['+upgraded+'/34]<br><g>Effect:</g> Every profit x32</button>';
+}else{
+achmulti*=32;achievementscount++;
+achievements+='<button id="achieved"><b>34 Upgrades bought</b><br>[34/34]<br><g>Effect:</g> Every profit x32</button>';
+}
+if(maxprofit>=1e39){achmulti*=2*8*32*64;achievementscount++;achievementscount++;achievementscount++;achievementscount++;
+achievements+='<button id="achieved"><b>Reach 1 Billion profit</b><br>[1 Billion/1 Billion]<br><g>Effect:</g> Every profit x2</button>';
+achievements+='<button id="achieved"><b>Reach 1 Sextillion profit</b><br>[1 Sextillion/1 Sextillion]<br><g>Effect:</g> Every profit x8</button>';
+achievements+='<button id="achieved"><b>Reach 1 Decillion profit</b><br>[1 Decillion/1 Decillion]<br><g>Effect:</g> Every profit x32</button>';
+achievements+='<button id="achieved"><b>Reach 1 Duodecillion profit</b><br>[1 Duodecillion/1 Duodecillion]<br><g>Effect:</g> Every profit x64</button>';
+}else if(maxprofit>=1e33){achmulti*=2*8*32;achievementscount++;achievementscount++;achievementscount++;
+achievements+='<button id="achieved"><b>Reach 1 Billion profit</b><br>[1 Billion/1 Billion]<br><g>Effect:</g> Every profit x2</button>';
+achievements+='<button id="achieved"><b>Reach 1 Sextillion profit</b><br>[1 Sextillion/1 Sextillion]<br><g>Effect:</g> Every profit x8</button>';
+achievements+='<button id="achieved"><b>Reach 1 Decillion profit</b><br>[1 Decillion/1 Decillion]<br><g>Effect:</g> Every profit x32</button>';
+achievements+='<button id="off"><b>Reach 1 Duodecillion profit</b><br>['+scala(maxprofit)+'/1 Duodecillion]<br><g>Effect:</g> Every profit x64</button>';
+}else if(maxprofit>=1e21){achmulti*=2*8;achievementscount++;achievementscount++;
+achievements+='<button id="achieved"><b>Reach 1 Billion profit</b><br>[1 Billion/1 Billion]<br><g>Effect:</g> Every profit x2</button>';
+achievements+='<button id="achieved"><b>Reach 1 Sextillion profit</b><br>[1 Sextillion/1 Sextillion]<br><g>Effect:</g> Every profit x8</button>';
+achievements+='<button id="off"><b>Reach 1 Decillion profit</b><br>['+scala(maxprofit)+'/1 Decillion]<br><g>Effect:</g> Every profit x32</button>';
+achievements+='<button id="off"><b>Reach 1 Duodecillion profit</b><br>['+scala(maxprofit)+'/1 Duodecillion]<br><g>Effect:</g> Every profit x64</button>';
+}else if(maxprofit>=1e9){achmulti*=2;achievementscount++;
+achievements+='<button id="achieved"><b>Reach 1 Billion profit</b><br>[1 Billion/1 Billion]<br><g>Effect:</g> Every profit x2</button>';
+achievements+='<button id="off"><b>Reach 1 Sextillion profit</b><br>['+scala(maxprofit)+'/1 Sextillion]<br><g>Effect:</g> Every profit x8</button>';
+achievements+='<button id="off"><b>Reach 1 Decillion profit</b><br>['+scala(maxprofit)+'/1 Decillion]<br><g>Effect:</g> Every profit x32</button>';
+achievements+='<button id="off"><b>Reach 1 Duodecillion profit</b><br>['+scala(maxprofit)+'/1 Duodecillion]<br><g>Effect:</g> Every profit x64</button>';
+}else{
+achievements+='<button id="off"><b>Reach 1 Billion profit</b><br>['+scala(maxprofit)+'/1 Billion]<br><g>Effect:</g> Every profit x2</button>';
+achievements+='<button id="off"><b>Reach 1 Sextillion profit</b><br>['+scala(maxprofit)+'/1 Sextillion]<br><g>Effect:</g> Every profit x8</button>';
+achievements+='<button id="off"><b>Reach 1 Decillion profit</b><br>['+scala(maxprofit)+'/1 Decillion]<br><g>Effect:</g> Every profit x32</button>';
+achievements+='<button id="off"><b>Reach 1 Duodecillion profit</b><br>['+scala(maxprofit)+'/1 Duodecillion]<br><g>Effect:</g> Every profit x64</button>';
+}
+document.getElementById("achievements").innerHTML = achievements;}
+function saveDataDave(){
+localStorage.saved=parseInt(1);
+localStorage.level=parseInt(level);
+localStorage.numresets=parseInt(numresets);
+localStorage.profit=parseFloat(profit);
+localStorage.wholeprofit=parseFloat(wholeprofit);
+localStorage.spent=parseFloat(spent);
+localStorage.maxprofit=parseFloat(maxprofit);
+localStorage.globalmulti=parseFloat(globalmulti);
+localStorage.profArray=JSON.stringify(profArray);
+localStorage.upgradeArray=JSON.stringify(upgradeArray);
+localStorage.typeMulti=JSON.stringify(typeMulti);
+}
+function loadDataDave(){
+level=parseInt(localStorage.level);
+numresets=parseInt(localStorage.numresets);
+profit=parseFloat(localStorage.profit);
+wholeprofit=parseFloat(localStorage.wholeprofit);
+spent=parseFloat(localStorage.spent);
+maxprofit=parseFloat(localStorage.maxprofit);
+globalmulti=parseFloat(localStorage.globalmulti);
+
+profArray=$.parseJSON(localStorage.profArray);
+upgradeArray=$.parseJSON(localStorage.upgradeArray);
+typeMulti=$.parseJSON(localStorage.typeMulti);
+}
+function deleteDataDave(){localStorage.saved=parseInt(0);window.location.reload();}
+function update(){
+if(profit>maxprofit) maxprofit=profit;
+wanted=1000000;
+if(wholeprofit<wanted) globalmultinext=0;
+else globalmultinext=Math.sqrt(wholeprofit*0.002+(10000-wanted*0.002));
+if(globalmultinext<globalmulti) globalmultinext=globalmulti;
+document.getElementById("profit").innerHTML = scala(profit);
+stats='<g>Level:</g> '+level+'<br>';
+stats+='<g>Profit:</g> $'+scala(profit)+'<br>';
+stats+='<g>Profit (tot):</g> $'+scala(wholeprofit)+'<br>';
+stats+='<g>Profit (max):</g> $'+scala(maxprofit)+'<br>';
+stats+='<g>Profit/s:</g> $'+scala(sommaProfit())+'<br>';
+stats+='<g>Spent:</g> $'+scala(spent)+'<br>';
+stats+='<g>Achievements Multiplier:</g> x'+scala(achmulti)+'<br>';
+stats+='<g>Achievements Unlocked:</g> '+achievementscount+'/64<br>';
+stats+='<g>Efficiency Multiplier:</g> '+scala(globalmulti)+' %<br>';
+stats+='<g>EM [next reset]:</g> '+scala(globalmultinext)+' %<br>';
+stats+='<g>Number of resets:</g> '+numresets+'<br><br>';
+document.getElementById("stats").innerHTML = stats;
+}
+function runtimeLoop(){
+setInterval(function(){
+update();
+profit+=(sommaProfit())/5;
+wholeprofit+=(sommaProfit())/5;
+},200);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function saveEveryMinute(){setInterval(function(){saveDataDave();},60000);}
+function costo(i){return profArray[i][2]*(Math.pow(inc,profArray[i][1]));}
+function guadagnoPerSingolo(i){return profArray[i][3]*upgradeArray[i+1][1]*upgradeArray[i+18][1]*typeMulti[i]*achmulti*(globalmulti/100);}
+function guadagno(i){return profArray[i][1]*profArray[i][3]*upgradeArray[i+1][1]*upgradeArray[i+18][1]*typeMulti[i]*achmulti*(globalmulti/100);}
+function slavesProfit(){return upgradeArray[0][1]*upgradeArray[17][1]*achmulti*(globalmulti/100);}
+function sommaProfit(){
+sommaprofit=0;for(i=0;i<16;i++){sommaprofit+=guadagno(i);}
+return (slavesProfit()+sommaprofit);}
+function scala(num){
+if(num < 1e3)         return pDD(num);
+else if(num >= 1e48)  return pDD(num/1e48) + " EventsHorizon";
+else if(num >= 1e45)  return pDD(num/1e45) + " Quadridecillions";
+else if(num >= 1e42)  return pDD(num/1e42) + " Tridecillions";
+else if(num >= 1e39)  return pDD(num/1e39) + " Duodecillions";
+else if(num >= 1e36)  return pDD(num/1e36) + " Undecillions";
+else if(num >= 1e33)  return pDD(num/1e33) + " Decillions";
+else if(num >= 1e30)  return pDD(num/1e30) + " Nonillions";
+else if(num >= 1e27)  return pDD(num/1e27) + " Octillions";
+else if(num >= 1e24)  return pDD(num/1e24) + " Septillions";
+else if(num >= 1e21)  return pDD(num/1e21) + " Sextillions";
+else if(num >= 1e18)  return pDD(num/1e18) + " Quintillions";
+else if(num >= 1e15)  return pDD(num/1e15) + " Quadrillions";
+else if(num >= 1e12)  return pDD(num/1e12) + " T";
+else if(num >= 1e9)   return pDD(num/1e9) + " B";
+else if(num >= 1e6)   return pDD(num/1e6) + " M";
+else if(num >= 1e3)   return pDD(num/1e3) + " K";
+}function pDD(num){return parseInt(100*num)/100;}
+function arraysReset() {
+profArray[0] = new Array("Farmers",     0,5,          2);
+profArray[1] = new Array("Builders",    0,24,         4);
+profArray[2] = new Array("Gardeners",   0,120,        16);
+profArray[3] = new Array("Waiters",     0,624,        60);
+profArray[4] = new Array("Bartenders",  0,3369,       222);
+profArray[5] = new Array("Chefs",       0,18869,       797);
+profArray[6] = new Array("Writers",     0,109444,      2666);
+profArray[7] = new Array("Merchants",   0,656656,      9396);
+profArray[8] = new Array("Warriors",    0,4071333,     31007);
+profArray[9] = new Array("Doctors",     0,26056572,     99222);
+profArray[10] = new Array("Lawyers",    0,171973377,    306603);
+profArray[11] = new Array("Actors",     0,1169418963,    922797);
+profArray[12] = new Array("Bankers",    0,8185851855,   2666111);
+profArray[13] = new Array("Governors",  0,58938715765,   7450101);
+profArray[14] = new Array("Presidents", 0,436146496662,  21231321);
+profArray[15] = new Array("Kings",      0,3314713374637,  55555555);
+upgradeArray[0] = new Array("Whip",           1, 26,"Slaves profits x2");
+upgradeArray[1] = new Array("Windmill",       1, 150,"Farmers profits x2");
+upgradeArray[2] = new Array("Hammer",         1, 898,"Builders profits x2");
+upgradeArray[3] = new Array("Rake",           1, 5656,"Gardeners profits x2");
+upgradeArray[4] = new Array("Roller-skates",  1, 36333,"Waiters profits x2");
+upgradeArray[5] = new Array("Alcohol",        1, 244160,"Bartenders profits x2");
+upgradeArray[6] = new Array("Knives",         1, 1699361,"Chefs profits x2");
+upgradeArray[7] = new Array("Typography",     1, 12252252,"Writers profits x2");
+upgradeArray[8] = new Array("Agreement",      1, 91313313,"Merchants profits x2");
+upgradeArray[9] = new Array("Disagreement",   1, 699699699,"Warriors profits x2");
+upgradeArray[10] = new Array("Vaccine",       1, 5505050505,"Doctors profits x2");
+upgradeArray[11] = new Array("Judge friend",  1, 45145145145,"Lawyers profits x2");
+upgradeArray[12] = new Array("Script",          1, 380380380380,"Actors profits x2");
+upgradeArray[13] = new Array("Creditors",          1, 3284284284284,"Bankers profits x2");
+upgradeArray[14] = new Array("Constitution",  1, 30303030303030,"Governors profits x2");
+upgradeArray[15] = new Array("Good speech",   1, 256256256256256,"Presidents profits x2");
+upgradeArray[16] = new Array("Scepter",       1, 2420420420420420,"Kings profits x2");
+upgradeArray[17] = new Array("Whip",                  1, 18811881188118811,"Slaves profits x2");
+upgradeArray[18] = new Array("OGM",                   1, 143791174324761231,"Farmers profits x2");
+upgradeArray[19] = new Array("Reinforced Cement",     1, 1024102410241024102,"Builders profits x2");
+upgradeArray[20] = new Array("Manure",                1, 6936936936936936936,"Gardeners profits x2");
+upgradeArray[21] = new Array("Balance",               1, 43434343434343434343,"Waiters profits x2");
+upgradeArray[22] = new Array("Juggling",              1, 250250250250250250250,"Bartenders profits x2");
+upgradeArray[23] = new Array("Refined Taste",         1, 1320132013201320132013,"Chefs profits x2");
+upgradeArray[24] = new Array("Muse",                  1, 6333633363336333633363,"Writers profits x2");
+upgradeArray[25] = new Array("New Worlds Discovery",  1, 26622662266226622662266,"Merchants profits x2");
+upgradeArray[26] = new Array("World War",             1, 105105105105105105105105,"Warriors profits x2");
+upgradeArray[27] = new Array("Virus",                 1, 353000000000000000000000,"Doctors profits x2");
+upgradeArray[28] = new Array("Inside man",            1, 1000000000000000000000000,"Lawyers profits x2");
+upgradeArray[29] = new Array("Mask",                  1, 2400000000000000000000000,"Actors profits x2");
+upgradeArray[30] = new Array("Debitors",                  1, 4200000000000000000000000,"Bankers profits x2");
+upgradeArray[31] = new Array("Informations",                  1, 6000000000000000000000000,"Governors profits x2");
+upgradeArray[32] = new Array("Corruption",            1, 9000000000000000000000000,"Presidents profits x2");
+upgradeArray[33] = new Array("Ignorance",             1, 10000000000000000000000000,"Kings profits x2");
+typeMulti[0]=1;typeMulti[1]=1;typeMulti[2]=1;typeMulti[3]=1;typeMulti[4]=1;typeMulti[5]=1;typeMulti[6]=1;typeMulti[7]=1;typeMulti[8]=1;typeMulti[9]=1;typeMulti[10]=1;typeMulti[11]=1;typeMulti[12]=1;typeMulti[13]=1;typeMulti[14]=1;typeMulti[15]=1;typeMulti[16]=1;
+}
+
+
+
+
+function buyMax(id){
+while(profArray[id][1]<200&&costo(id)<=profit){
+addProf(id);
+}
+}
+
+
+
+
+
+
+
+
+
+$('.reset').on("tap",function(){
+if(globalmultinext>globalmulti){
+globalmulti=globalmultinext;
+profit=wholeprofit=spent=maxprofit=achmulti=globalmultinext=0;
+numresets++;
+arraysReset();
+}
+});
+$('.btn_buy_upgrade').on("tap",function(){
+buyUpgrade((this.id-1000));
+});
+$('.longo').on("tap",function(){
+addProf(this.id);
+});
+$('.longo').on("taphold",function(){
+buyMax(this.id);
+});
+$('.btn_deleteSave').on("tap",function(){
+if(deleteTimerCounter<2){
+deleteTimerCounter++;
+$('.btn_deleteSave').html('<p>Tap this button '+(3-deleteTimerCounter)+' times to erase all the savedata!</p>');
+}else{
+deleteDataDave();
+}
+});
+$('.btn_save').on("tap",function(){
+saveDataDave();
+});
+$('#buyallbtn').on("tap",function(){
+i=0;
+while(i<16){
+while(profArray[i][1]<200&&costo(i)<=profit){
+profit-=costo(i);
+spent+=costo(i);
+profArray[i][1]+=1;
+}i++;
+}updateButtons();
+});
+$('.not_btn_buy_upgrade').on("tap",function(){
+i=0;
+while(i<34){
+if(upgradeArray[i][1]!=2&&upgradeArray[i][2]<=profit){
+profit-=upgradeArray[i][2];
+spent+=upgradeArray[i][2];
+upgradeArray[i][1]=2;
+}i++;
+}updateButtons();
+});
+
+
+
+$('#levelupbtn').on("tap",function(){
+if(maxedperc==1){
+globalmulti=globalmultinext=100;
+profit=wholeprofit=spent=maxprofit=achmulti=globalmultinext=0;
+level++;
+arraysReset();
+saveDataDave();
+window.location.reload();
+}
+});
+function longerRuntimeLoop(){
+setInterval(function(){
+if(deleteTimerCounter>0){deleteTimerCounter--;
+$('.btn_deleteSave').html('<p>Tap this button '+(3-deleteTimerCounter)+' times to erase all the savedata!</p>');
+}else{
+$('.btn_deleteSave').html('<p>Tap this button 3 times to erase all the savedata!</p>');
+}
+inc=1.06+0.05*level;
+updateButtons();
+if(globalmultinext<=globalmulti){
+$('.reset').html('<button id="off" class="btn_reset"><p>RESET</p><small>Can\'t reset right now...come back when you\'ve earned at least $1M</small></button>');
+}else{
+$('.reset').html('<button id="on" class="btn_reset"><p>RESET</p><small>Get the +'+scala(globalmultinext-globalmulti)+'% bonus efficiency multiplier</small><br><small>Total EM after reset: '+scala(globalmultinext)+'%</small></button>');
+}
+},1000);
+}
+
+*/
 
 
 eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$(".1a").U();$(".n").U();$(".2i").U();$("#2r").S("1b",y(){$("#2r").2t("Q");$("#2o").1d("Q");$("#2l").1d("Q");$("#2p").1d("Q");$(".F").2B();$(".1a").U();$(".n").U();$(".2i").U()});$("#2o").S("1b",y(){$("#2r").1d("Q");$("#2o").2t("Q");$("#2l").1d("Q");$("#2p").1d("Q");$(".F").U();$(".1a").2B();$(".n").U();$(".2i").U()});$("#2l").S("1b",y(){$("#2r").1d("Q");$("#2o").1d("Q");$("#2l").2t("Q");$("#2p").1d("Q");$(".F").U();$(".1a").U();$(".n").2B();$(".2i").U()});$("#2p").S("1b",y(){$("#2r").1d("Q");$("#2o").1d("Q");$("#2l").1d("Q");$("#2p").2t("Q");$(".F").U();$(".1a").U();$(".n").U();$(".2i").2B()});1n f=0;1n 1h=0;1n 1g=G=H=W=0;1n R=L;1n 1c=1;1n 2M=1.3B+0.3C*1c;1n 1v=0;1n 1y=0;1n j=e d();j[0]=e d("1C",0,5,2);j[1]=e d("1A",0,24,4);j[2]=e d("1W",0,3b,16);j[3]=e d("2b",0,39,60);j[4]=e d("1G",0,3g,3h);j[5]=e d("1V",0,3r,3i);j[6]=e d("1I",0,3j,3l);j[7]=e d("1J",0,3s,3k);j[8]=e d("1H",0,3n,3q);j[9]=e d("1K",0,3p,3o);j[10]=e d("1N",0,38,3f);j[11]=e d("1P",0,3d,3P);j[12]=e d("1D",0,3U,3V);j[13]=e d("1F",0,5l,5f);j[14]=e d("1O",0,5j,5h);j[15]=e d("2c",0,5i,5a);1n h=e d();h[0]=e d("2C",1,26,"2k m k");h[1]=e d("5c",1,5k,"1C m k");h[2]=e d("59",1,4U,"1A m k");h[3]=e d("4V",1,4S,"1W m k");h[4]=e d("4R-4N",1,4O,"2b m k");h[5]=e d("4P",1,4Q,"1G m k");h[6]=e d("4W",1,55,"1V m k");h[7]=e d("56",1,54,"1I m k");h[8]=e d("53",1,51,"1J m k");h[9]=e d("52",1,4T,"1H m k");h[10]=e d("4Z",1,4Y,"1K m k");h[11]=e d("57 4X",1,58,"1N m k");h[12]=e d("5d",1,5e,"1P m k");h[13]=e d("5g",1,5b,"1D m k");h[14]=e d("5m",1,4L,"1F m k");h[15]=e d("4d 4c",1,4b,"1O m k");h[16]=e d("49",1,4a,"2c m k");h[17]=e d("2C",1,4e,"2k m k");h[18]=e d("4f",1,4j,"1C m k");h[19]=e d("4i 4h",1,4g,"1A m k");h[20]=e d("48",1,47,"1W m k");h[21]=e d("3Z",1,3Y,"2b m k");h[22]=e d("3X",1,4M,"1G m k");h[23]=e d("3W 40",1,41,"1V m k");h[24]=e d("46",1,45,"1I m k");h[25]=e d("44 42 43",1,4k,"1J m k");h[26]=e d("4l 4E",1,4D,"1H m k");h[27]=e d("4C",1,4A,"1K m k");h[28]=e d("4B 4F",1,4G,"1N m k");h[29]=e d("4K",1,4J,"1P m k");h[30]=e d("4I",1,4H,"1D m k");h[31]=e d("4z",1,4y,"1F m k");h[32]=e d("4q",1,4p,"1O m k");h[33]=e d("4o",1,4m,"2c m k");1n r=e d();r[0]=1;r[1]=1;r[2]=1;r[3]=1;r[4]=1;r[5]=1;r[6]=1;r[7]=1;r[8]=1;r[9]=1;r[10]=1;r[11]=1;r[12]=1;r[13]=1;r[14]=1;r[15]=1;r[16]=1;o(I.2D)o(1u(I.2D)==1)3H();3O();1z();3v();3F();3u();y 5H(){f+=1*2m();1h+=1*2m()}y 2J(p){o(j[p][1]<1p&&1e(p)<=f){f-=1e(p);1g+=1e(p);j[p][1]+=1;1z()}}y 4r(i){o(h[i][2]<=f){f-=h[i][2];1g+=h[i][2];h[i][1]=2;1z()}}y 3O(){1s=\'\';1t(i=0;i<16;i++){1s+=\'<1q l="\'+i+\'" 1w="36"></1q>\'}1s+=\'<1q l="2U" 1w="3J"></1q>\';1s+=\'<1q l="2T" 1w="3J"></1q>\';1j.1l("1X").1k=1s;1s=\'\';1t(i=0;i<34;i++){1s+=\'<1q l="\'+(i+2z)+\'" 1w="4n"></1q>\'}1s+=\'<1q l="37" 1w="4x"></1q>\';1j.1l("1a").1k=1s}y 1z(){1X=\'\';2q=0;1t(i=0;i<16;i++){o(j[i][1]==1p){1X=\'<c l="1R"><b>\'+j[i][0]+\' <g>2Z\'+1c+\'</g></b><a><g>2V:</g>  \'+w(j[i][1])+\' (1R)<a><g>1U:</g>   $\'+w(1e(i))+\'<a><g>1i:</g> $\'+w(2F(i))+\'/s<a><g>1i (2v):</g> $\'+w(2g(i))+\'/s<a></c>\'}v{o(1e(i)>f)1X=\'<c l="C"><b>\'+j[i][0]+\' <g>2Z\'+1c+\'</g></b><a><g>2V:</g>  \'+w(j[i][1])+\'<a><g>1U:</g>   $\'+w(1e(i))+\'<a><g>1i:</g> $\'+w(2F(i))+\'/s<a><g>1i (2v):</g> $\'+w(2g(i))+\'/s<a></c>\';v 1X=\'<c l="S"><b>\'+j[i][0]+\' <g>2Z\'+1c+\'</g></b><a><g>2V:</g>  \'+w(j[i][1])+\'<a><g>1U:</g>   $\'+w(1e(i))+\'<a><g>1i:</g> $\'+w(2F(i))+\'/s<a><g>1i (2v):</g> $\'+w(2g(i))+\'/s<a></c>\'}1j.1l(i).1k=1X;2q+=j[i][1]}1j.1l("2U").1k=\'<c l="1R"><a><b>2f 2h 3a 2j 3c F!</b><a><a></c>\';2q/=5F;1j.1l("2T").1k=\'<c l="1R"><a><b>5G 5C!<a><g>5x 3K 5A 5D 5z 1R 5y.</g><a><g>\'+P(2q*L)+\'%</g><a><a></c>\';1j.1l("5w").1k=\'<b>2k</b><a><g>1i:</g> $\'+w(2m())+\'/s\';1a=\'\';1t(i=0;i<34;i++){o(h[i][1]==2)1a=\'<c l="1E"><b>\'+h[i][0]+\'</b><a><g>1U:</g>   1E.<a><g>q:</g> \'+h[i][3]+\'</c>\';v o(h[i][2]>f)1a=\'<c l="C"><b>\'+h[i][0]+\'</b><a><g>1U:</g>   $\'+w(h[i][2])+\'<a><g>q:</g> \'+h[i][3]+\'</c>\';v 1a=\'<c l="S"><b>\'+h[i][0]+\'</b><a><g>1U:</g>   $\'+w(h[i][2])+\'<a><g>q:</g> \'+h[i][3]+\'</c>\';1j.1l((i+2z)).1k=1a}1j.1l("37").1k=\'<c l="1R"><a><b>2f 2h 3a 2j 3c 1a!</b><a><a></c>\';n=\'\';D=0;H=1;2a=1S=1T=1Z=2e=0;1t(i=0;i<16;i++){o(j[i][1]>=1p)2e++;o(j[i][1]>=L)1Z++;o(j[i][1]>=50)1T++;o(j[i][1]>=25)1S++;o(j[i][1]>0)2a++}o(2a<8){n+=\'<c l="C"><b>8 O F<a><g>[1 A]</g></b><a>[\'+2a+\'/8]<a><g>q:</g> u f k</c>\'}v{H*=2;D++;n+=\'<c l="E"><b>8 O F<a><g>[1 A]</g></b><a>[8/8]<a><g>q:</g> u f k</c>\'}o(2a<16){n+=\'<c l="C"><b>16 O F<a><g>[1 A]</g></b><a>[\'+2a+\'/16]<a><g>q:</g> u f k</c>\'}v{H*=2;D++;n+=\'<c l="E"><b>16 O F<a><g>[1 A]</g></b><a>[16/16]<a><g>q:</g> u f k</c>\'}o(1S<8){n+=\'<c l="C"><b>8 O F<a><g>[25 A]</g></b><a>[\'+1S+\'/8]<a><g>q:</g> u f k</c>\'}v{H*=2;D++;n+=\'<c l="E"><b>16 O F<a><g>[25 A]</g></b><a>[8/8]<a><g>q:</g> u f k</c>\'}o(1S<16){n+=\'<c l="C"><b>16 O F<a><g>[25 A]</g></b><a>[\'+1S+\'/16]<a><g>q:</g> u f k</c>\'}v{H*=2;D++;n+=\'<c l="E"><b>16 O F<a><g>[25 A]</g></b><a>[16/16]<a><g>q:</g> u f k</c>\'}o(1T<8){n+=\'<c l="C"><b>8 O F<a><g>[50 A]</g></b><a>[\'+1T+\'/8]<a><g>q:</g> u f Z</c>\'}v{H*=4;D++;n+=\'<c l="E"><b>8 O F<a><g>[50 A]</g></b><a>[8/8]<a><g>q:</g> u f Z</c>\'}o(1T<16){n+=\'<c l="C"><b>16 O F<a><g>[50 A]</g></b><a>[\'+1T+\'/16]<a><g>q:</g> u f Z</c>\'}v{H*=4;D++;n+=\'<c l="E"><b>16 O F<a><g>[50 A]</g></b><a>[16/16]<a><g>q:</g> u f Z</c>\'}o(1Z<8){n+=\'<c l="C"><b>8 O F<a><g>[L A]</g></b><a>[\'+1Z+\'/8]<a><g>q:</g> u f Z</c>\'}v{H*=4;D++;n+=\'<c l="E"><b>8 O F<a><g>[L A]</g></b><a>[8/8]<a><g>q:</g> u f Z</c>\'}o(1Z<16){n+=\'<c l="C"><b>16 O F<a><g>[L A]</g></b><a>[\'+1Z+\'/16]<a><g>q:</g> u f Z</c>\'}v{H*=4;D++;n+=\'<c l="E"><b>16 O F<a><g>[L A]</g></b><a>[16/16]<a><g>q:</g> u f Z</c>\'}o(2e<8){n+=\'<c l="C"><b>8 O F<a><g>[1p A]</g></b><a>[\'+2e+\'/8]<a><g>q:</g> u f 1r</c>\'}v{H*=8;D++;n+=\'<c l="E"><b>8 O F<a><g>[1p A]</g></b><a>[8/8]<a><g>q:</g> u f 1r</c>\'}o(2e<16){n+=\'<c l="C"><b>16 O F<a><g>[1p A]</g></b><a>[\'+2e+\'/16]<a><g>q:</g> u f 1r</c>\'}v{H*=8;D++;n+=\'<c l="E"><b>16 O F<a><g>[1p A]</g></b><a>[16/16]<a><g>q:</g> u f 1r</c>\'}1t(i=0;i<16;i++){o(j[i][1]>=L){r[i]=5B;D++;D++;D++;n+=\'<c l="E"><b>25 \'+j[i][0]+\' A</b><a>[25/25]<a><g>q:</g> \'+j[i][0]+\' f k</c>\';n+=\'<c l="E"><b>50 \'+j[i][0]+\' A</b><a>[50/50]<a><g>q:</g> \'+j[i][0]+\' f Z</c>\';n+=\'<c l="E"><b>L \'+j[i][0]+\' A</b><a>[L/L]<a><g>q:</g> \'+j[i][0]+\' f 1Q</c>\'}v o(j[i][1]>=50){r[i]=8;D++;D++;n+=\'<c l="E"><b>25 \'+j[i][0]+\' A</b><a>[25/25]<a><g>q:</g> \'+j[i][0]+\' f k</c>\';n+=\'<c l="E"><b>50 \'+j[i][0]+\' A</b><a>[50/50]<a><g>q:</g> \'+j[i][0]+\' f Z</c>\';n+=\'<c l="C"><b>L \'+j[i][0]+\' A</b><a>[\'+j[i][1]+\'/L]<a><g>q:</g> \'+j[i][0]+\' f 1Q</c>\'}v o(j[i][1]>=25){r[i]=2;D++;n+=\'<c l="E"><b>25 \'+j[i][0]+\' A</b><a>[25/25]<a><g>q:</g> \'+j[i][0]+\' f k</c>\';n+=\'<c l="C"><b>50 \'+j[i][0]+\' A</b><a>[\'+j[i][1]+\'/50]<a><g>q:</g> \'+j[i][0]+\' f Z</c>\';n+=\'<c l="C"><b>L \'+j[i][0]+\' A</b><a>[\'+j[i][1]+\'/L]<a><g>q:</g> \'+j[i][0]+\' f 1Q</c>\'}v{n+=\'<c l="C"><b>25 \'+j[i][0]+\' A</b><a>[\'+j[i][1]+\'/25]<a><g>q:</g> \'+j[i][0]+\' f k</c>\';n+=\'<c l="C"><b>50 \'+j[i][0]+\' A</b><a>[\'+j[i][1]+\'/50]<a><g>q:</g> \'+j[i][0]+\' f Z</c>\';n+=\'<c l="C"><b>L \'+j[i][0]+\' A</b><a>[\'+j[i][1]+\'/L]<a><g>q:</g> \'+j[i][0]+\' f 1Q</c>\'}}1B=0;1t(i=0;i<34;i++)o(h[i][1]==2)1B++;o(1B<17){n+=\'<c l="C"><b>17 2A 1E</b><a>[\'+1B+\'/17]<a><g>q:</g> u f 1Q</c>\'}v{H*=16;D++;n+=\'<c l="E"><b>17 2A 1E</b><a>[17/17]<a><g>q:</g> u f 1Q</c>\'}o(1B<34){n+=\'<c l="C"><b>34 2A 1E</b><a>[\'+1B+\'/34]<a><g>q:</g> u f 1x</c>\'}v{H*=32;D++;n+=\'<c l="E"><b>34 2A 1E</b><a>[34/34]<a><g>q:</g> u f 1x</c>\'}o(G>=2L){H*=2*8*32*64;D++;D++;D++;D++;n+=\'<c l="E"><b>N 1 V f</b><a>[1 V/1 V]<a><g>q:</g> u f k</c>\';n+=\'<c l="E"><b>N 1 X f</b><a>[1 X/1 X]<a><g>q:</g> u f 1r</c>\';n+=\'<c l="E"><b>N 1 1f f</b><a>[1 1f/1 1f]<a><g>q:</g> u f 1x</c>\';n+=\'<c l="E"><b>N 1 1m f</b><a>[1 1m/1 1m]<a><g>q:</g> u f 2s</c>\'}v o(G>=2G){H*=2*8*32;D++;D++;D++;n+=\'<c l="E"><b>N 1 V f</b><a>[1 V/1 V]<a><g>q:</g> u f k</c>\';n+=\'<c l="E"><b>N 1 X f</b><a>[1 X/1 X]<a><g>q:</g> u f 1r</c>\';n+=\'<c l="E"><b>N 1 1f f</b><a>[1 1f/1 1f]<a><g>q:</g> u f 1x</c>\';n+=\'<c l="C"><b>N 1 1m f</b><a>[\'+w(G)+\'/1 1m]<a><g>q:</g> u f 2s</c>\'}v o(G>=2K){H*=2*8;D++;D++;n+=\'<c l="E"><b>N 1 V f</b><a>[1 V/1 V]<a><g>q:</g> u f k</c>\';n+=\'<c l="E"><b>N 1 X f</b><a>[1 X/1 X]<a><g>q:</g> u f 1r</c>\';n+=\'<c l="C"><b>N 1 1f f</b><a>[\'+w(G)+\'/1 1f]<a><g>q:</g> u f 1x</c>\';n+=\'<c l="C"><b>N 1 1m f</b><a>[\'+w(G)+\'/1 1m]<a><g>q:</g> u f 2s</c>\'}v o(G>=2H){H*=2;D++;n+=\'<c l="E"><b>N 1 V f</b><a>[1 V/1 V]<a><g>q:</g> u f k</c>\';n+=\'<c l="C"><b>N 1 X f</b><a>[\'+w(G)+\'/1 X]<a><g>q:</g> u f 1r</c>\';n+=\'<c l="C"><b>N 1 1f f</b><a>[\'+w(G)+\'/1 1f]<a><g>q:</g> u f 1x</c>\';n+=\'<c l="C"><b>N 1 1m f</b><a>[\'+w(G)+\'/1 1m]<a><g>q:</g> u f 2s</c>\'}v{n+=\'<c l="C"><b>N 1 V f</b><a>[\'+w(G)+\'/1 V]<a><g>q:</g> u f k</c>\';n+=\'<c l="C"><b>N 1 X f</b><a>[\'+w(G)+\'/1 X]<a><g>q:</g> u f 1r</c>\';n+=\'<c l="C"><b>N 1 1f f</b><a>[\'+w(G)+\'/1 1f]<a><g>q:</g> u f 1x</c>\';n+=\'<c l="C"><b>N 1 1m f</b><a>[\'+w(G)+\'/1 1m]<a><g>q:</g> u f 2s</c>\'}1j.1l("n").1k=n}y 2u(){I.2D=1u(1);I.1c=1u(1c);I.1v=1u(1v);I.f=1o(f);I.1h=1o(1h);I.1g=1o(1g);I.G=1o(G);I.R=1o(R);I.j=2Q.2R(j);I.h=2Q.2R(h);I.r=2Q.2R(r)}y 3H(){1c=1u(I.1c);1v=1u(I.1v);f=1o(I.f);1h=1o(I.1h);1g=1o(I.1g);G=1o(I.G);R=1o(I.R);j=$.2S(I.j);h=$.2S(I.h);r=$.2S(I.r)}y 4s(){I.2D=1u(0);4w.4v.4t()}y 3A(){o(f>G)G=f;35=5r;o(1h<35)W=0;v W=3x.5I(1h*0.3G+(5u-35*0.3G));o(W<R)W=R;1j.1l("f").1k=w(f);Y=\'<g>5s:</g> \'+1c+\'<a>\';Y+=\'<g>1i:</g> $\'+w(f)+\'<a>\';Y+=\'<g>1i (2v):</g> $\'+w(1h)+\'<a>\';Y+=\'<g>1i (5q):</g> $\'+w(G)+\'<a>\';Y+=\'<g>1i/s:</g> $\'+w(2E())+\'<a>\';Y+=\'<g>5o:</g> $\'+w(1g)+\'<a>\';Y+=\'<g>3y 3w:</g> x\'+w(H)+\'<a>\';Y+=\'<g>3y 5p:</g> \'+D+\'/64<a>\';Y+=\'<g>6b 3w:</g> \'+w(R)+\' %<a>\';Y+=\'<g>3z [6a 1Y]:</g> \'+w(W)+\' %<a>\';Y+=\'<g>69 6c 6d:</g> \'+1v+\'<a><a>\';1j.1l("Y").1k=Y}y 3v(){2O(y(){3A();f+=(2E())/5;1h+=(2E())/5},1p)}y 3F(){2O(y(){o(1y>0){1y--;$(\'.2y\').2n(\'<p>2f 2d c \'+(3-1y)+\' 2Y 2h 2W 2j 2w 2X!</p>\')}v{$(\'.2y\').2n(\'<p>2f 2d c 3 2Y 2h 2W 2j 2w 2X!</p>\')}2M=1.3B+0.3C*1c;1z();o(W<=R){$(\'.1Y\').2n(\'<c l="C" 1w="3D"><p>3E</p><1L>67\\\'t 1Y 5P 5Q...5R 5S 3K 5O\\\'5N 68 5J 5K $1M</1L></c>\')}v{$(\'.1Y\').2n(\'<c l="S" 1w="3D"><p>3E</p><1L>5M 2w +\'+w(W-R)+\'% 5T 5U 62</1L><a><1L>65 3z 66 1Y: \'+w(W)+\'%</1L></c>\')}},2z)}y 3u(){2O(y(){2u()},5Z)}y 1e(i){J j[i][2]*(3x.5W(2M,j[i][1]))}y 2F(i){J j[i][3]*h[i+1][1]*h[i+18][1]*r[i]*H*(R/L)}y 2g(i){J j[i][1]*j[i][3]*h[i+1][1]*h[i+18][1]*r[i]*H*(R/L)}y 2m(){J h[0][1]*h[17][1]*H*(R/L)}y 2E(){2N=0;1t(i=0;i<16;i++){2N+=2g(i)}J(2m()+2N)}y w(z){o(z<2I)J P(z);v o(z>=3Q)J P(z/3Q)+" 5t";v o(z>=3R)J P(z/3R)+" 5Y";v o(z>=3S)J P(z/3S)+" 5X";v o(z>=2L)J P(z/2L)+" 5V";v o(z>=3N)J P(z/3N)+" 61";v o(z>=2G)J P(z/2G)+" 63";v o(z>=3I)J P(z/3I)+" 5L";v o(z>=3t)J P(z/3t)+" 6e";v o(z>=3L)J P(z/3L)+" 6g";v o(z>=2K)J P(z/2K)+" 6f";v o(z>=3M)J P(z/3M)+" 6h";v o(z>=3T)J P(z/3T)+" 5n";v o(z>=3m)J P(z/3m)+" T";v o(z>=2H)J P(z/2H)+" B";v o(z>=3e)J P(z/3e)+" M";v o(z>=2I)J P(z/2I)+" K"}y P(z){J 1u(L*z)/L}y 2P(){j[0]=e d("1C",0,5,2);j[1]=e d("1A",0,24,4);j[2]=e d("1W",0,3b,16);j[3]=e d("2b",0,39,60);j[4]=e d("1G",0,3g,3h);j[5]=e d("1V",0,3r,3i);j[6]=e d("1I",0,3j,3l);j[7]=e d("1J",0,3s,3k);j[8]=e d("1H",0,3n,3q);j[9]=e d("1K",0,3p,3o);j[10]=e d("1N",0,38,3f);j[11]=e d("1P",0,3d,3P);j[12]=e d("1D",0,3U,3V);j[13]=e d("1F",0,5l,5f);j[14]=e d("1O",0,5j,5h);j[15]=e d("2c",0,5i,5a);h[0]=e d("2C",1,26,"2k m k");h[1]=e d("5c",1,5k,"1C m k");h[2]=e d("59",1,4U,"1A m k");h[3]=e d("4V",1,4S,"1W m k");h[4]=e d("4R-4N",1,4O,"2b m k");h[5]=e d("4P",1,4Q,"1G m k");h[6]=e d("4W",1,55,"1V m k");h[7]=e d("56",1,54,"1I m k");h[8]=e d("53",1,51,"1J m k");h[9]=e d("52",1,4T,"1H m k");h[10]=e d("4Z",1,4Y,"1K m k");h[11]=e d("57 4X",1,58,"1N m k");h[12]=e d("5d",1,5e,"1P m k");h[13]=e d("5g",1,5b,"1D m k");h[14]=e d("5m",1,4L,"1F m k");h[15]=e d("4d 4c",1,4b,"1O m k");h[16]=e d("49",1,4a,"2c m k");h[17]=e d("2C",1,4e,"2k m k");h[18]=e d("4f",1,4j,"1C m k");h[19]=e d("4i 4h",1,4g,"1A m k");h[20]=e d("48",1,47,"1W m k");h[21]=e d("3Z",1,3Y,"2b m k");h[22]=e d("3X",1,4M,"1G m k");h[23]=e d("3W 40",1,41,"1V m k");h[24]=e d("46",1,45,"1I m k");h[25]=e d("44 42 43",1,4k,"1J m k");h[26]=e d("4l 4E",1,4D,"1H m k");h[27]=e d("4C",1,4A,"1K m k");h[28]=e d("4B 4F",1,4G,"1N m k");h[29]=e d("4K",1,4J,"1P m k");h[30]=e d("4I",1,4H,"1D m k");h[31]=e d("4z",1,4y,"1F m k");h[32]=e d("4q",1,4p,"1O m k");h[33]=e d("4o",1,4m,"2c m k");r[0]=1;r[1]=1;r[2]=1;r[3]=1;r[4]=1;r[5]=1;r[6]=1;r[7]=1;r[8]=1;r[9]=1;r[10]=1;r[11]=1;r[12]=1;r[13]=1;r[14]=1;r[15]=1;r[16]=1}$(\'.1Y\').S("1b",y(){o(W>R){R=W;f=1h=1g=G=H=W=0;1v++;2P()}});$(\'.4n\').S("1b",y(){4r((2d.l-2z))});$(\'.36\').S("1b",y(){2J(2d.l)});$(\'.36\').S("5E",y(){4u(2d.l)});$(\'.2y\').S("1b",y(){o(1y<2){1y++;$(\'.2y\').2n(\'<p>2f 2d c \'+(3-1y)+\' 2Y 2h 2W 2j 2w 2X!</p>\')}v{4s()}});$(\'.5v\').S("1b",y(){2u()});$(\'#2U\').S("1b",y(){i=0;2x(i<16){2x(j[i][1]<1p&&1e(i)<=f){f-=1e(i);1g+=1e(i);j[i][1]+=1}i++}1z()});$(\'.4x\').S("1b",y(){i=0;2x(i<34){o(h[i][1]!=2&&h[i][2]<=f){f-=h[i][2];1g+=h[i][2];h[i][1]=2}i++}1z()});$(\'#2T\').S("1b",y(){o(2q==1){R=W=L;f=1h=1g=G=H=W=0;1c++;2P();2u();4w.4v.4t()}});y 4u(l){2x(j[l][1]<1p&&1e(l)<=f){2J(l)}}',62,390,'||||||||||br||button|Array|new|profit||upgradeArray||profArray|x2|id|profits|achievements|if||Effect|typeMulti|||Every|else|scala||function|num|owned||off|achievementscount|achieved|professions|maxprofit|achmulti|localStorage|return||100||Reach|different|pDD|active|globalmulti|on||hide|Billion|globalmultinext|Sextillion|stats|x4|||||||||||upgrades|tap|level|removeClass|costo|Decillion|spent|wholeprofit|Profit|document|innerHTML|getElementById|Duodecillion|var|parseFloat|200|div|x8|botplace|for|parseInt|numresets|class|x32|deleteTimerCounter|updateButtons|Builders|upgraded|Farmers|Bankers|bought|Governors|Bartenders|Warriors|Writers|Merchants|Doctors|small||Lawyers|Presidents|Actors|x16|maxed|tipi25|tipi50|Cost|Chefs|Gardeners|bottoni|reset|tipi100|||||||||||tipi|Waiters|Kings|this|tipi200|Tap|guadagno|to|settings|all|Slaves|tab_achievements|slavesProfit|html|tab_upgrades|tab_settings|maxedperc|tab_professions|x64|addClass|saveDataDave|tot|the|while|btn_deleteSave|1000|Upgrades|show|Whip|saved|sommaProfit|guadagnoPerSingolo|1e33|1e9|1e3|addProf|1e21|1e39|inc|sommaprofit|setInterval|arraysReset|JSON|stringify|parseJSON|levelupbtn|buyallbtn|Owned|erase|savedata|times|LVL||||||wanted|longo|buyallupgradesbtn|171973377|624|buy|120|avaiable|1169418963|1e6|306603|3369|222|797|109444|9396|2666|1e12|4071333|99222|26056572|31007|18869|656656|1e27|saveEveryMinute|runtimeLoop|Multiplier|Math|Achievements|EM|update|06|05|btn_reset|RESET|longerRuntimeLoop|002|loadDataDave|1e30|notlongo|when|1e24|1e18|1e36|createLongClickableButtons|922797|1e48|1e45|1e42|1e15|8185851855|2666111|Refined|Juggling|43434343434343434343|Balance|Taste|1320132013201320132013|Worlds|Discovery|New|6333633363336333633363|Muse|6936936936936936936|Manure|Scepter|2420420420420420|256256256256256|speech|Good|18811881188118811|OGM|1024102410241024102|Cement|Reinforced|143791174324761231|26622662266226622662266|World|10000000000000000000000000|btn_buy_upgrade|Ignorance|9000000000000000000000000|Corruption|buyUpgrade|deleteDataDave|reload|buyMax|location|window|not_btn_buy_upgrade|6000000000000000000000000|Informations|353000000000000000000000|Inside|Virus|105105105105105105105105|War|man|1000000000000000000000000|4200000000000000000000000|Debitors|2400000000000000000000000|Mask|30303030303030|250250250250250250250|skates|36333|Alcohol|244160|Roller|5656|699699699|898|Rake|Knives|friend|5505050505|Vaccine||91313313|Disagreement|Agreement|12252252|1699361|Typography|Judge|45145145145|Hammer|55555555|3284284284284|Windmill|Script|380380380380|7450101|Creditors|21231321|3314713374637|436146496662|150|58938715765|Constitution|Quadrillions|Spent|Unlocked|max|1000000|Level|EventsHorizon|10000|btn_save|slaves|Avaiable|out|is|every|128|UP|profession|taphold|3200|LEVEL|addMatter|sqrt|at|least|Nonillions|Get|ve|you|right|now|come|back|bonus|efficiency|Duodecillions|pow|Tridecillions|Quadridecillions|60000||Undecillions|multiplier|Decillions||Total|after|Can|earned|Number|next|Efficiency|of|resets|Octillions|Sextillions|Septillions|Quintillions'.split('|'),0,{}))
-
 
 </script></body></html>

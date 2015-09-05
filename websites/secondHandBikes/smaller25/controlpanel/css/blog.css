@@ -1,12 +1,12 @@
 html,body{
 	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 	margin: 0;
-		width: 1280px;
+		width: 960px;
 		position: absolute;
 		left: 50%;
-		margin-left: -640px;
+		margin-left: -480px;
 }
-@media only screen and (max-width:1280px){
+@media only screen and (max-width:960px){
 	html,body{
 		font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 		margin: 0;
@@ -18,31 +18,31 @@ html,body{
 	}
 }
 #Image1{
-	padding-top: 20px;
-	width: 200px !important;
+	padding-top: 15px;
+	width: 150px !important;
 	height: auto !important;
 }
 #SearchBox{
 	position: relative;
 	text-align: center;
-	margin-top: 10px;
-	font-size: 18px;
+	margin-top: 7px;
+	font-size: 13px;
 	font-weight: 100;
-	background:#88CCC9;
-	padding:65px 0 35px 0;
+	background:#3498db;
+	padding:48px 0 26px 0;
 	width: 90%;
 	margin-left: 5%;
 	color: #ffffff;
 }#SearchBox select,input{
-	margin:0 20px 0 10px;
+	margin:0 15px 0 7px;
 	color:#000000;
 	width: 180px;
 }#SearchBox a{
 	color:#000000;
 	background: #FBC728;
 	/* top | right | bottom | left */
-	padding:12px 100px 14px 100px;
-	margin:0 8px 0 8px;
+	padding:9px 75px 10px 75px;
+	margin:0 6px 0 6px;
 	text-decoration: none;
 }#SearchBox a:hover{
 	color:#000000;
@@ -51,21 +51,21 @@ html,body{
 }
 #SearchBox label{
 	position: absolute;
-	top: 30px;
-	font-size: 18px;
+	top: 22px;
+	font-size: 13px;
 	float: left;
 	text-align: center;
-	padding-left: 10px;
+	padding-left: 7px;
 }
 
-@media only screen and (max-width:1080px){
+@media only screen and (max-width:810px){
 	#SearchBox select,input{
-		margin:0 20px 0 10px;
+		margin:0 15px 0 7px;
 		color:#000000;
-		width: 160px;
+		width: 120px;
 	}
 	#SearchBox a{
-		padding:12px 36px 14px 36px;
+		padding:8px 25px 10px 25px;
 	}
 }
 
@@ -80,20 +80,20 @@ html,body{
 .panel .name{
 	width: 100%;
 }.panel .name h2{
-	padding: 10px 0 20px 0;
+	padding: 7px 0 15px 0;
 	font-weight: 100;
-	font-size: 26px;
+	font-size: 19px;
 	color: #333333;
 	border-bottom: 1px solid #eee;
 }
 .panel .left{
-	width: 200px;
+	width: 150px;
 	height: 100%;
 
 	position: absolute;
 }.panel .left .block{
-	padding: 10px 0 10px 0;
-	width: 180px;
+	padding: 7px 0 7px 0;
+	width: 135px;
 	border-bottom: 1px solid #eee;
 }.panel .left .block a{
 	color:#555;
@@ -101,55 +101,70 @@ html,body{
 	text-decoration: none;
 	padding: 2px 0 2px 0;
 	font-weight: bold;
+	font-size: 12px;
 }.panel .left .block a:hover{
 	display: block;
 	text-decoration: none;
 	color:#222;
-	padding: 2px 0 2px 0;
 	font-weight: bold;
-}.panel .left .block .business{
-	width: 180px;
-	font-size: 14px;
+}.panel .left .block_last{
+	margin-top: 15px;
+}.panel .left .block_last .business{
+	width: 135px;
+	font-size: 10px;
 	font-weight: 100;
-	padding: 10px 0 10px 0;
+	padding: 7px 0 7px 0;
+}.panel .left .block_last .business img{
+	width: 135px;
+	border: none;
+	padding: 0;
+	margin:0;
 }
+
+
+
+
+
+
+
+
 .panel .right{
 	position: relative;
-	margin-left: 200px;
-	margin-top: 30px;
+	margin-left: 150px;
+	margin-top: 22px;
 	right: 0;
 	height: auto;
 	border-left: 1px solid #eee;
 }.panel .right .article{
 	font-family: 'Source Sans Pro', sans-serif;
-	padding: 0 0 0 20px;
+	padding: 0 0 0 15px;
 }.panel .right .article p{
-	font-size: 16px;
+	font-size: 12px;
 }.panel .right .article img{
 	max-width: 100%;
 }.panel .right .article h1{
 	font-weight: 900;
-	font-size: 32px;
-}.panel .right .article h2{
-	padding-top: 8px;
-	font-weight: 600;
 	font-size: 24px;
-}.panel .right .article h3{
-	padding-top: 8px;
+}.panel .right .article h2{
+	padding-top: 6px;
 	font-weight: 600;
-	font-size: 21px;
-}.panel .right .article h4{
-	padding-top: 8px;
-	font-weight: 600;
-	font-size: 19px;
-}.panel .right .article h5{
-	padding-top: 8px;
-	font-weight: 400;
-	font-size: 19px;
-}.panel .right .article h6{
-	padding-top: 8px;
-	font-weight: 400;
 	font-size: 18px;
+}.panel .right .article h3{
+	padding-top: 6px;
+	font-weight: 600;
+	font-size: 16px;
+}.panel .right .article h4{
+	padding-top: 6px;
+	font-weight: 600;
+	font-size: 14px;
+}.panel .right .article h5{
+	padding-top: 6px;
+	font-weight: 400;
+	font-size: 14px;
+}.panel .right .article h6{
+	padding-top: 6px;
+	font-weight: 400;
+	font-size: 13px;
 }.panel .right .article a{
 	color:#3F9383;
 	text-decoration: none;
@@ -165,8 +180,8 @@ pre{overflow: scroll;}
 
 .counter{
 	text-align: center;
-	font-size: 12px;
-	padding: 1px 4px 1px 4px;
+	font-size: 8px;
+	padding: 1px 3px 1px 3px;
 	background: #F04330;
 	color: #ffffff;
 	border-radius: 100%;
@@ -177,8 +192,8 @@ pre{overflow: scroll;}
 
 
 select,input{
-	width: 140px;
-	height: 48px;
+	width: 105px;
+	height: 36px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,f2f2f2+51,e2e2e2+100 */
 	background: rgb(252,255,244); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(242,242,242,1) 51%, rgba(226,226,226,1) 100%); /* FF3.6+ */
@@ -191,26 +206,26 @@ select,input{
 	border: 1px solid #fff;
 	overflow: hidden;
 	text-align: center;
-	font-size: 18px;
+	font-size: 13px;
 }
 header{
 	position: absolute;
-	top: 20px;
+	top: 15px;
 	right: 5%;
 	text-align: right;
 }
 header .btn_sell{
 	font-weight: 600;
 	position: absolute;
-	right: 140px;
-	padding-top: 12px;
-	width: 120px;
-	height: 35px;
+	right: 105px;
+	padding-top: 8px;
+	width: 80px;
+	height: 26px;
 	background: #00E400;
 	display: inline-block;
 	text-align: center;
 	border: 1px solid #00E400;
-	font-size: 18px;
+	font-size: 13px;
 
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00ee00), color-stop(1, #00ca00) );
 	background:-moz-linear-gradient( center top, #00ee00 5%, #00ca00 100% );
@@ -238,32 +253,33 @@ header .btn_sell{
 }header .btn_sell:active{
 	position:relative;
 	top:1px;
-}header .btn_sell a{
+}
+header .btn_sell a{
 	text-decoration: none;
 	color: #ffffff;
 }header .btn_sell span{
 	position: absolute;
 	text-align: center;
-	font-size: 14px;
-	top: -12px;
-	right: -10px;
-	padding: 3px;
+	font-size: 12px;
+	top: -8px;
+	right: -5px;
+	padding: 2px;
 	background: #F04330;
 	border-radius: 100%;
-	width: 16px;
+	width: 15px;
 	box-shadow: -1px 0 0 #a01300;
 }
 header .btn_login{
 	position: relative;
-	padding-top: 16px;
-	margin-left: 10px;
-	width: 120px;
-	height: 31px;
+	padding-top: 12px;
+	margin-left: 7px;
+	width: 80px;
+	height: 23px;
 	background: #ffffff;
 	display: inline-block;
 	text-align: center;
 	border: 1px solid #000000;
-	font-size: 12px;
+	font-size: 8px;
 }header .btn_login a{
 	text-decoration: none;
 	color: #000000;
@@ -272,28 +288,28 @@ header .btn_login{
 
 
 footer{
-	margin-top: 60px;
-	margin-bottom: 60px;
+	margin-top: 45px;
+	margin-bottom: 45px;
 	text-align: center;
 }footer img{
 	display: inline-block;
 }footer #prev,#next{
 	cursor: pointer;
 }footer .pages{
-	margin-top: 20px;
+	margin-top: 15px;
 }footer .pages a{
 	text-decoration: none;
-	padding: 5px;
+	padding: 4px;
 }
 footer .links{
-	font-size: 16px;
-	margin-top: 30px;
+	font-size: 12px;
+	margin-top: 22px;
 	background: #F8F7E6;
 	width: 90%;
 	margin-left: 5%;
 
 }footer .links .column{
-	padding: 20px 50px;
+	padding: 15px 37px;
 	display: inline-block;
 }footer .links .column a{
 	color: #000000;
@@ -320,53 +336,50 @@ footer .links{
 
 
 
-
-
-
 @media only screen and (max-width:860px){
 
     header{
 		position: absolute;
-		top: 40px;
+		top: 30px;
 		width: 100%;
 		text-align: center;
 	}
 	header .btn_login{
 		float: right;
-		padding-top: 16px;
-		margin-left: 10px;
-		width: 120px;
-		height: 31px;
+		padding-top: 12px;
+		margin-left: 7px;
+		width: 80px;
+		height: 23px;
 		background: #ffffff;
 		display: inline-block;
 		text-align: center;
 		border: 1px solid #000000;
-		font-size: 12px;
+		font-size: 8px;
 	}
 
 	#Image1{
-		padding-top: 140px;
-		width: 200px !important;
+		padding-top: 105px;
+		width: 150px !important;
 		height: auto !important;
 	}
     #SearchBox{
     	position: relative;
 		text-align: center;
-		margin-top: 10px;
-		font-size: 18px;
+		margin-top: 7px;
+		font-size: 13px;
 		font-weight: 100;
-		background:#88CCC9;
-		padding:20px 0 20px 0;
+		background:#3498db;
+		padding:15px 0 15px 0;
 		width: 100%;
 		margin-left: 0%;
 		color: #ffffff;
-		margin-bottom: 10px;
+		margin-bottom: 7px;
     }
 
     #SearchBox select,input{
 		width: 45%;
 		position: relative;
-		margin:10px 10px 10px 10px;
+		margin:7px 7px 7px 7px;
 		margin-left: 1%;
 		margin-right: 4%;
 		color:#000000;
@@ -377,8 +390,8 @@ footer .links{
 		color:#000000;
 		background: #FBC728;
 		/* top | right | bottom | left */
-		padding:12px 36px 14px 36px;
-		margin:0 8px 0 8px;
+		padding:8px 26px 10px 26px;
+		margin:0 6px 0 6px;
 		text-decoration: none;
 		display: block;
 	}#SearchBox a:hover{
@@ -389,8 +402,8 @@ footer .links{
 	#SearchBox label{
 		width: 48%;
 		position: relative;
-		top: 15px;
-		font-size: 18px;
+		top: 11px;
+		font-size: 13px;
 		float: left;
 		text-align: center;
 		padding-left: 1%;
@@ -425,9 +438,9 @@ footer .links{
 		text-align: center;
 		width: 100%;
 	}.panel .name h2{
-		padding: 10px 0 20px 0;
+		padding: 7px 0 15px 0;
 		font-weight: 100;
-		font-size: 26px;
+		font-size: 19px;
 		color: #333333;
 		border-bottom: 1px solid #eee;
 	}
@@ -441,46 +454,32 @@ footer .links{
 		width: 100%;
 		border-bottom: none;
 	}.panel .left .block a{
-		padding: 10px 0 10px 0;
-		border-bottom: 1px solid #eee;
+		padding: 7px 0 7px 0;
+		border-bottom: 1px solid #ddd;
 		color:#555;
 		display: block;
 		text-decoration: none;
 		font-weight: bold;
 	}.panel .left .block a:hover{
-		padding: 10px 0 10px 0;
+		padding: 7px 0 7px 0;
 		text-decoration: none;
 		color:#222;
 	}.panel .left .block .business{
 		width: 100%;
-		font-size: 14px;
+		font-size: 10px;
 		font-weight: 100;
-		padding: 10px 0 10px 0;
+		padding: 7px 0 7px 0;
 	}
 	.panel .right{
 		position: relative;
 		margin-left: 0;
-		margin-top: 60px;
+		margin-top: 45px;
 		right: 0;
 		height: auto;
 		border-left: none;
 	}.panel .right .article{
 		font-family: 'Source Sans Pro', sans-serif;
-		padding: 0 20px 0 20px;
+		padding: 0 15px 0 15px;
 	}
 
-}
-@media only screen and (max-device-width:480px){
-   /* styles for mobile browsers smaller than 480px; (iPhone) */
-}
-@media only screen and (device-width:768px){
-   /* default iPad screens */
-}
-/* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-  /* For portrait layouts only */
-}
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-  /* For landscape layouts only */
 }
