@@ -1,39 +1,39 @@
 html,body{
 	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 	margin: 0;
-	font-size: 20px;
-		width: 1280px;
+		font-size: 15px;
+		width: 960px;
 		position: absolute;
 		left: 50%;
-		margin-left: -640px;
+		margin-left: -480px;
 }
 #Image1{
-	padding-top: 20px;
-	width: 200px !important;
+	padding-top: 15px;
+	width: 150px !important;
 	height: auto !important;
 }
 #SearchBox{
 	position: relative;
 	text-align: center;
-	margin-top: 10px;
-	font-size: 18px;
+	margin-top: 7px;
+	font-size: 13px;
 	font-weight: 100;
-	background:#88CCC9;
-	padding:65px 0 35px 0;
+	background:#3498db;
+	padding:48px 0 26px 0;
 	width: 90%;
 	margin-left: 5%;
 	color: #ffffff;
-	margin-bottom: 10px;
+	margin-bottom: 7px;
 }#SearchBox select,input{
-	margin:0 20px 0 10px;
+	margin:0 15px 0 7px;
 	color:#000000;
-	width: 180px;
+	width: 135px;
 }#SearchBox a{
 	color:#000000;
 	background: #FBC728;
 	/* top | right | bottom | left */
-	padding:12px 100px 14px 100px;
-	margin:0 8px 0 8px;
+	padding:9px 75px 10px 75px;
+	margin:0 6px 0 6px;
 	text-decoration: none;
 }#SearchBox a:hover{
 	color:#000000;
@@ -42,25 +42,24 @@ html,body{
 }
 #SearchBox label{
 	position: absolute;
-	top: 30px;
-	font-size: 18px;
+	top: 22px;
+	font-size: 13px;
 	float: left;
 	text-align: center;
-	padding-left: 10px;
+	padding-left: 7px;
 }
 
 
-@media only screen and (max-width:1080px){
+@media only screen and (max-width:810px){
 	#SearchBox select,input{
-		margin:0 20px 0 10px;
+		margin:0 15px 0 7px;
 		color:#000000;
-		width: 160px;
+		width: 120px;
 	}
 	#SearchBox a{
-		padding:12px 36px 14px 36px;
+		padding:8px 25px 10px 25px;
 	}
 }
-
 
 
 .contents{
@@ -80,7 +79,7 @@ html,body{
 }
 .contents .left .goback{
 	font-weight: 100;
-	font-size: 24px;
+	font-size: 18px;
 	color: #333333;
 	text-decoration: none;
 	opacity: 1;
@@ -89,20 +88,20 @@ html,body{
 }
 .contents .left .bigbike{
 	width: 100%;
-	padding-top: 30px;
+	padding-top: 22px;
 }.contents .left .testdrive{
 	width: 100%;
 	text-align: center;
 	color: #666666;
 }
 .contents .left .testdrive a{
-	margin-top: 16px;
-	margin-bottom: 36px;
+	margin-top: 12px;
+	margin-bottom: 27px;
 	width: 100%;
 	height: 100%;
 	display: block;
-	padding-top: 12px;
-	padding-bottom: 12px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00ee00), color-stop(1, #00ca00) );
 	background:-moz-linear-gradient( center top, #00ee00 5%, #00ca00 100% );
@@ -123,7 +122,7 @@ html,body{
 	border:2px solid #8d8dbd;
 	color:#ffffff;
 	font-family:arial;
-	font-size:24px;
+	font-size:18px;
 	font-style:normal;
 	font-weight:bold;
 	text-decoration:none;
@@ -139,12 +138,12 @@ html,body{
 	top:1px;
 }
 .contents .left .testdrive .seq{
-	width: 608px;
+	width: 456px;
 	display: block;
 	position: relative;
 	left: 50%;
-	margin-left: -304px;
-	padding-bottom: 22px;
+	margin-left: -228px;
+	padding-bottom: 16px;
 }
 
 
@@ -159,20 +158,20 @@ html,body{
 	width:20%;
 	display:inline-block;
 }.contents .right h4{
-	font-size: 26px;
+	font-size: 19px;
 }.contents .right .price{
-	font-size: 30px;
+	font-size: 22px;
 	color: #04CB0C;
 }.contents .right o{
 	color: #666;
 	font-weight: bold;
 }.contents .right a{
-	margin-top: 16px;
-	margin-bottom: 16px;
-	width: 180px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	width: 130px;
 	display: block;
-	padding-top: 12px;
-	padding-bottom: 12px;
+	padding-top: 9px;
+	padding-bottom: 9px;
 
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00ee00), color-stop(1, #00ca00) );
 	background:-moz-linear-gradient( center top, #00ee00 5%, #00ca00 100% );
@@ -193,7 +192,7 @@ html,body{
 	border:2px solid #8d8dbd;
 	color:#ffffff;
 	font-family:arial;
-	font-size:22px;
+	font-size:16px;
 	font-style:normal;
 	font-weight:bold;
 	text-decoration:none;
@@ -209,13 +208,13 @@ html,body{
 	top:1px;
 }
 .contents .right .social img{
-	padding-right: 12px;
+	padding-right: 9px;
 }.contents .right .social img:hover{
 	cursor: pointer;
 }
 select,input{
-	width: 140px;
-	height: 48px;
+	width: 105px;
+	height: 36px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,f2f2f2+51,e2e2e2+100 */
 	background: rgb(252,255,244); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(242,242,242,1) 51%, rgba(226,226,226,1) 100%); /* FF3.6+ */
@@ -228,28 +227,29 @@ select,input{
 	border: 1px solid #fff;
 	overflow: hidden;
 	text-align: center;
-	font-size: 18px;
+	font-size: 13px;
 }
 
 
 
 header{
 	position: absolute;
-	top: 20px;
+	top: 15px;
 	right: 5%;
 	text-align: right;
 }
 header .btn_sell{
 	font-weight: 600;
 	position: relative;
-	padding-top: 12px;
-	width: 120px;
-	height: 35px;
+	padding-top: 9px;
+	width: 90px;
+	height: 26px;
 	background: #00E400;
 	display: inline-block;
 	text-align: center;
 	border: 1px solid #00E400;
-	font-size: 18px;
+	font-size: 13px;
+
 
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00ee00), color-stop(1, #00ca00) );
 	background:-moz-linear-gradient( center top, #00ee00 5%, #00ca00 100% );
@@ -283,26 +283,26 @@ header .btn_sell{
 }header .btn_sell span{
 	position: absolute;
 	text-align: center;
-	font-size: 14px;
-	top: -12px;
-	right: -10px;
-	padding: 3px;
+	font-size: 10px;
+	top: -9px;
+	right: -7px;
+	padding: 2px;
 	background: #F04330;
 	border-radius: 100%;
-	width: 16px;
+	width: 12px;
 	box-shadow: -1px 0 0 #a01300;
 }
 header .btn_login{
 	position: relative;
-	padding-top: 12px;
-	margin-left: 10px;
-	width: 120px;
-	height: 35px;
+	padding-top: 9px;
+	margin-left: 7px;
+	width: 90px;
+	height: 26px;
 	background: #ffffff;
 	display: inline-block;
 	text-align: center;
 	border: 1px solid #000000;
-	font-size: 18px;
+	font-size: 13px;
 }header .btn_login a{
 	text-decoration: none;
 	color: #000000;
@@ -311,18 +311,29 @@ header .btn_login{
 
 
 footer{
-	margin-top: 200px;
-	margin-bottom: 60px;
+	margin-top: 45px;
+	margin-bottom: 45px;
 	text-align: center;
+}footer img{
+	width: 94px;
+	display: inline-block;
+}footer #prev,#next{
+	cursor: pointer;
+}footer .pages{
+	font-size: 12px;
+	margin-top: 15px;
+}footer .pages a{
+	text-decoration: none;
+	padding: 4px;
 }
 footer .links{
-	font-size: 16px;
-	margin-top: 30px;
+	font-size: 12px;
+	margin-top: 22px;
 	background: #F8F7E6;
 	width: 90%;
 	margin-left: 5%;
 }footer .links .column{
-	padding: 20px 50px;
+	padding: 15px 37px;
 	display: inline-block;
 }footer .links .column a{
 	color: #000000;
@@ -336,13 +347,11 @@ footer .links{
 	color: #000000;
 	text-decoration: none;
 }
-
-
-@media only screen and (max-width:1280px){
+@media only screen and (max-width:960px){
 	html,body{
 		font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 		margin: 0;
-		font-size: 20px;
+		font-size: 15px;
 
 		width: 100%;
 		left: 0;
@@ -359,54 +368,50 @@ footer .links{
 
 
 
-
-
-
-
-@media only screen and (max-width:860px){
+@media only screen and (max-width:645px){
 
     header{
 		position: absolute;
-		top: 40px;
+		top: 22px;
 		width: 100%;
 		text-align: center;
 	}
 	header .btn_login{
 		float: right;
-		padding-top: 12px;
-		margin-left: 10px;
-		width: 120px;
-		height: 35px;
+		padding-top: 9px;
+		margin-left: 7px;
+		width: 90px;
+		height: 26px;
 		background: #ffffff;
 		display: inline-block;
 		text-align: center;
 		border: 1px solid #000000;
-		font-size: 18px;
+		font-size: 13px;
 	}
 
 	#Image1{
-		padding-top: 140px;
-		width: 200px !important;
+		padding-top: 105px;
+		width: 150px !important;
 		height: auto !important;
 	}
     #SearchBox{
     	position: relative;
 		text-align: center;
-		margin-top: 10px;
-		font-size: 18px;
+		margin-top: 7px;
+		font-size: 13px;
 		font-weight: 100;
-		background:#88CCC9;
-		padding:20px 0 20px 0;
+		background:#3498db;
+		padding:15px 0 15px 0;
 		width: 100%;
 		margin-left: 0%;
 		color: #ffffff;
-		margin-bottom: 10px;
+		margin-bottom: 7px;
     }
 
     #SearchBox select,input{
 		width: 45%;
 		position: relative;
-		margin:10px 10px 10px 10px;
+		margin:7px 7px 7px 7px;
 		margin-left: 1%;
 		margin-right: 4%;
 		color:#000000;
@@ -417,8 +422,8 @@ footer .links{
 		color:#000000;
 		background: #FBC728;
 		/* top | right | bottom | left */
-		padding:12px 36px 14px 36px;
-		margin:0 8px 0 8px;
+		padding:9px 27px 10px 27px;
+		margin:0 6px 0 6px;
 		text-decoration: none;
 		display: block;
 	}#SearchBox a:hover{
@@ -429,8 +434,8 @@ footer .links{
 	#SearchBox label{
 		width: 48%;
 		position: relative;
-		top: 15px;
-		font-size: 18px;
+		top: 11px;
+		font-size: 13px;
 		float: left;
 		text-align: center;
 		padding-left: 1%;
@@ -456,19 +461,19 @@ a{text-decoration: none;}
 	}
 	.contents .left .bigbike{
 		width: 100%;
-		padding-top: 30px;
+		padding-top: 22px;
 	}.contents .left .testdrive{
 		width: 100%;
 		text-align: center;
 		color: #666666;
 	}
 	.contents .left .testdrive .seq{
-		width: 608px;
+		width: 456px;
 		display: block;
 		position: relative;
 		left: 50%;
-		margin-left: -304px;
-		padding-bottom: 22px;
+		margin-left: -228px;
+		padding-bottom: 16px;
 	}
 
 
@@ -483,20 +488,6 @@ a{text-decoration: none;}
 		width:100%;
 		display:inline-block;
 	}
-	.contents .right .rl{display: inline-block;width: 240px;padding: 30px;}
-	.contents .right .rr{display: inline-block;width: 240px;padding: 30px;}
-}
-@media only screen and (max-device-width:480px){
-   /* styles for mobile browsers smaller than 480px; (iPhone) */
-}
-@media only screen and (device-width:768px){
-   /* default iPad screens */
-}
-/* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-  /* For portrait layouts only */
-}
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-  /* For landscape layouts only */
+	.contents .right .rl{display: inline-block;width: 180px;padding: 22px;}
+	.contents .right .rr{display: inline-block;width: 180px;padding: 22px;}
 }

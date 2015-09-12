@@ -4,13 +4,13 @@ html,body{
 	width: 100%;
 	height: 100%;
 	color: #666;
-		width: 1280px;
+		width: 960px;
 		position: absolute;
 		left: 50%;
-		margin-left: -640px;
+		margin-left: -480px;
 }
 
-@media only screen and (max-width:1280px){
+@media only screen and (max-width:960px){
 	html,body{
 		font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 		margin: 0;
@@ -27,13 +27,13 @@ html,body{
 body #background_image{
 	z-index: -100;
 	position: absolute;
-	top:150px;
+	top:112px;
 	right: 0;
 	opacity: 1;
-	max-height: 700px;
+	max-height: 525px;
 }
 
-@media only screen and (max-width:1300px){
+@media only screen and (max-width:975px){
 	body #background_image{
 		opacity: 1;
 		/*opacity: 0.3;*/
@@ -49,28 +49,28 @@ header{
 	margin-left: 5%;
 	padding-bottom: 0;
 	border-bottom: 1px solid #eee;
-	padding-bottom: 6px;
+	padding-bottom: 4px;
 }header #logo{
 	margin: 0;
 	padding: 0;
-	padding-top: 20px;
-	padding-right: 20px;
-	width: 80px;
+	padding-top: 15px;
+	padding-right: 15px;
+	width: 60px;
 	height: auto;
 	display: inline-block;
 }header p{
 	margin: 0;
 	padding: 0;
 	display: inline-block;
-	font-size: 20px;
+	font-size: 15px;
 	color: #666666;
 }header .arrow{
 	padding: 0;
 	margin: 0;
 	display: inline-block;
 	opacity: 0.6;
-	margin-left: 20px;
-	margin-right: 10px;
+	margin-left: 15px;
+	margin-right: 7px;
 }
 
 
@@ -80,27 +80,27 @@ form{
 	position: relative;
 	text-align: left;
 	width: 50%;
-	max-width: 520px;
+	max-width: 390px;
 	margin-left: 5%;
 }
 form p{
 	margin-bottom: 0;
-	margin-top: 10px;
-	font-size:20px;
+	margin-top: 7px;
+	font-size:15px;
 }
 form h2{
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	font-weight:100;
-	font-size:42px;
+	font-size:31px;
 	color:#222;
 }
 form input{
-	padding-left: 10px;
-	margin: 6px 0 0 0;
+	padding-left: 7px;
+	margin: 4px 0 0 0;
 	width: 90%;
-	height: 45px;
+	height: 33px;
 	font-weight: 100;
-	font-size: 20px;
+	font-size: 15px;
 	color: #999;
 	border: 1px solid #eee;
 	border-radius: 4px;
@@ -109,13 +109,13 @@ form input{
 }
 form [type="checkbox"]{
 	width: auto;
-	margin: 0 10px;
+	margin: 0 7px;
 	height: auto;
 }
 form [type="submit"]{
 	margin-top: 0;
-	width: 260px;
-	height: 60px;
+	width: 195px;
+	height: 45px;
 	display: block;
 
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -140,7 +140,7 @@ form [type="submit"]{
 	border:1px solid #bdbdbd;
 	color:#ffffff;
 	font-family:arial;
-	font-size:22px;
+	font-size:16px;
 	font-style:normal;
 	text-decoration:none;
 	text-align:center;
@@ -160,8 +160,8 @@ footer{
 	display: none;
 }
 select{
-	width: 140px;
-	height: 48px;
+	width: 105px;
+	height: 36px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,f2f2f2+51,e2e2e2+100 */
 	background: rgb(252,255,244); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(242,242,242,1) 51%, rgba(226,226,226,1) 100%); /* FF3.6+ */
@@ -174,12 +174,13 @@ select{
 	border: 1px solid #ccc;
 	overflow: hidden;
 	text-align: center;
-	font-size: 18px;
+	font-size: 13px;
 }
 
 
+
 small{
-	font-size: 16px;
+	font-size: 12px;
 	text-shadow: 0px 0px 4px #fff,0px 0px 3px #fff,0px 0px 2px #fff,0px 0px 1px #fff;
 }
 
@@ -188,7 +189,7 @@ small{
 @media only screen and (max-width:860px){
 	body #background_image{
 		opacity: 0.2;
-		top:160px;
+		top:120px;
 		max-width: 100%;
 	}
 	header{
@@ -196,26 +197,26 @@ small{
 		text-align: center;
 		width: 90%;
 		margin-left: 5%;
-		margin-bottom: 30px;
+		margin-bottom: 22px;
 		padding-bottom: 0;
 		border-bottom: 1px solid #cfcfcf;
 	}header #logo{
-		padding-top: 20px;
+		padding-top: 15px;
 		padding-right: 0;
-		width: 80px;
+		width: 60px;
 		padding-left: 50%;
-		margin-left: -50px;
+		margin-left: -37px;
 
 		height: auto;
 		display: block;
 	}header p{
 		display: inline-block;
-		font-size: 20px;
+		font-size: 15px;
 		color: #666666;
 	}header .arrow{
 		display: inline-block;
 		opacity: 0.6;
-		margin-left: 5px;
+		margin-left: 4px;
 	}
 
 
@@ -226,14 +227,14 @@ small{
 		text-align: left;
 		width: 90%;
 		margin-left: 5%;
-		padding-left: 10px;
+		padding-left: 7px;
 	}
 	form input{
 		padding-left: 2%;
-		margin: 6px 0 10px 0;
+		margin: 4px 0 7px 0;
 		width: 88%;
-		height: 45px;
-		font-size: 22px;
+		height: 33px;
+		font-size: 16px;
 		color: #767676;
 		border: 1px solid #eee;
 		border-radius: 4px;
@@ -241,9 +242,9 @@ small{
 	    background: white;
 	}
 	form [type="submit"]{
-		margin-top: 6px;
+		margin-top: 4px;
 		width: 90%;
-		height: 60px;
+		height: 45px;
 		display: block;
 
 		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -268,23 +269,9 @@ small{
 		border:1px solid #bdbdbd;
 		color:#ffffff;
 		font-family:arial;
-		font-size:22px;
+		font-size:16px;
 		font-style:normal;
 		text-decoration:none;
 		text-align:center;
 	}
-}
-@media only screen and (max-device-width:480px){
-   /* styles for mobile browsers smaller than 480px; (iPhone) */
-}
-@media only screen and (device-width:768px){
-   /* default iPad screens */
-}
-/* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-  /* For portrait layouts only */
-}
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-  /* For landscape layouts only */
 }
