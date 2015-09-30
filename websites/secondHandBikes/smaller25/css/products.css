@@ -113,12 +113,12 @@ html,body{
 	height: 100%;
 	padding-top: 4px;
 }
-.bike .info h2{color: #000000;font-size:18px;font-weight:100;}
-.bike .info h3{color: #333333;font-size:13px;font-weight:100;}
+.bike .info h2{color: #000000;font-size:20px;font-weight:100;}
+.bike .info h3{color: #333333;font-size:15px;font-weight:100;}
 .bike .info p{color: #555555;font-size:12px;}
-.bike .quantity{
+.bike .date{
 	font-size:12px;
-	right: 90px;
+	right: 110px;
 	position: absolute;
 	height: 100%;
 	color: #333333;
@@ -206,14 +206,13 @@ header .btn_sell{
 }header .btn_sell span{
 	position: absolute;
 	text-align: center;
-	font-size: 10px;
+	font-size: 12px;
 	top: -9px;
-	right: -7px;
+	right: -8px;
 	padding: 2px;
 	background: #F04330;
 	border-radius: 100%;
-	width: 12px;
-	box-shadow: -1px 0 0 #a01300;
+	width: 14px;
 }
 header .btn_login{
 	position: relative;
@@ -234,11 +233,16 @@ header .btn_login{
 
 
 footer{
+<<<<<<< HEAD
+	margin-top: 45px;
+	margin-bottom: 0px;
+=======
 	margin-top: 10px;
 	margin-bottom: 45px;
+>>>>>>> origin/master
 	text-align: center;
 }footer img{
-	width: 94px;
+	width: 80px;
 	display: inline-block;
 }footer #prev,#next{
 	cursor: pointer;
@@ -407,10 +411,10 @@ a{text-decoration: none;}
 		padding-top: 0;
 		text-align: center;
 	}
-	.bike .info h2{color: #000000;font-size:18px;font-weight:100;}
-	.bike .info h3{color: #333333;font-size:13px;font-weight:100;}
+	.bike .info h2{color: #000000;font-size:20px;font-weight:100;}
+	.bike .info h3{color: #333333;font-size:15px;font-weight:100;}
 	.bike .info p{color: #555555;font-size:12px;}
-	.bike .quantity{
+	.bike .date{
 		font-size:12px;
 		right: 0;
 		position: relative;

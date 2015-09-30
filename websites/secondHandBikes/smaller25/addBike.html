@@ -38,12 +38,7 @@
 	</header>
 	<form>
 	<h2>Create bike ad</h2>
-		<p>What is the brand of the bicycle?</p>
 		<input type="text" class="brandname" name="brandname" placeholder="Brand name of the bike (Example: Kildemoes)" required>
-
-<br><br>
-
-		<p>Select type, condition and gears</p><br>
 		<select name="sex">
 			<option value="male">Male bicycle</option>
 			<option value="female">Female bicycle</option>
@@ -55,22 +50,12 @@
 		<select name="gears">
 			<option value="3">3 gears</option>
 		</select>
-<br><br>
-		<p>Description of the bicycle</p><br>
 		<textarea class="description" name="brandname" placeholder="Add a good description of your bicycle and sell your
 bicycle a lot faster" required></textarea>
-<br><br>
-
-
-
-		<p>Upload a picture of your bicycle</p><br>
-		<select name="photo">
-			<option value="empty">Vælg fil</option>
-		</select>
-		<p class="tip">(A great picture sells fast)</p>
-		<br><br>
-		<p>Price of the bicycle</p><br>
-		<input type="number" class="price" name="price" placeholder="" required>
+		<button name="photo" class="upload">
+			Vælg fil
+		</button>
+		<input type="number" class="price" name="price" placeholder="price" required>
 		<p>kr,-</p><br>
 		<br>
 		<small>I accept the terms and conditions of Second Hand Bikes</small>

@@ -87,7 +87,7 @@ html,body{
 	opacity: 0.8;
 }
 .contents .left .bigbike{
-	width: 100%;
+	width: 90%;
 	padding-top: 22px;
 }.contents .left .testdrive{
 	width: 100%;
@@ -208,6 +208,7 @@ html,body{
 	top:1px;
 }
 .contents .right .social img{
+	width: 40px;
 	padding-right: 9px;
 }.contents .right .social img:hover{
 	cursor: pointer;
@@ -283,14 +284,13 @@ header .btn_sell{
 }header .btn_sell span{
 	position: absolute;
 	text-align: center;
-	font-size: 10px;
+	font-size: 12px;
 	top: -9px;
-	right: -7px;
+	right: -8px;
 	padding: 2px;
 	background: #F04330;
 	border-radius: 100%;
-	width: 12px;
-	box-shadow: -1px 0 0 #a01300;
+	width: 14px;
 }
 header .btn_login{
 	position: relative;
@@ -460,7 +460,7 @@ a{text-decoration: none;}
 		display:inline-block;
 	}
 	.contents .left .bigbike{
-		width: 100%;
+		width: 90%;
 		padding-top: 22px;
 	}.contents .left .testdrive{
 		width: 100%;
@@ -469,10 +469,11 @@ a{text-decoration: none;}
 	}
 	.contents .left .testdrive .seq{
 		width: 456px;
+		max-width: 100%;
 		display: block;
 		position: relative;
-		left: 50%;
-		margin-left: -228px;
+		left: 0;
+		margin-left: 0;
 		padding-bottom: 16px;
 	}
 
