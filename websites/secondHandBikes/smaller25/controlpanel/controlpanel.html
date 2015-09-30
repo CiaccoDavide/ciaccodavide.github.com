@@ -37,8 +37,17 @@
 	</div>
 
 	<header>
-		<div class="btn_sell"><a href="../addBike.html">Sell bicycle</a></div>
-		<div class="btn_login"><a href="./controlpanel.html">Giuseppe Rodano</a></div>
+		<div class="normal_menu">
+			<div class="btn_sell"><a href="../addBike.html">Sell bicycle</a></div>
+			<div class="btn_login"><a href="./controlpanel.html">Giuseppe Rodano</a></div>
+		</div>
+		<div class="mini_menu">
+			<img src="../imgs/menu_btn.png" id="menu_toggle"><br>
+			<div id="btns_menu">
+				<div class="btn_sell"><a href="../addBike.html">Sell bicycle</a></div><br>
+				<div class="btn_login"><a href="./controlpanel.html">Giuseppe Rodano</a></div>
+			</div>
+		</div>
 	</header>
 
 	<form id="SearchBox">
@@ -158,6 +167,12 @@
 	</footer>
 
 
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#menu_toggle').click(function() {
+			$('#btns_menu').toggle('slow');
+		});
+	</script>
 
 </body>
 </html>

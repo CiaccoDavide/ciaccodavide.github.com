@@ -37,8 +37,17 @@
 	</div>
 
 	<header>
-		<div class="btn_sell"><a href="./addBike.html">Sell bicycle<span class="notify">1</span></a></div>
-		<div class="btn_login"><a href="./login.html">Log in</a></div>
+		<div class="normal_menu">
+			<div class="btn_sell"><a href="./addBike.html">Sell bicycle<span class="notify">1</span></a></div>
+			<div class="btn_login"><a href="./login.html">Log in</a></div>
+		</div>
+		<div class="mini_menu">
+			<img src="./imgs/menu_btn.png" id="menu_toggle"><br>
+			<div id="btns_menu">
+				<div class="btn_sell"><a href="./addBike.html">Sell bicycle<span class="notify">1</span></a></div><br>
+				<div class="btn_login"><a href="./login.html">Log in</a></div>
+			</div>
+		</div>
 	</header>
 
 	<form id="SearchBox">
@@ -263,5 +272,11 @@
 
 
 
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#menu_toggle').click(function() {
+			$('#btns_menu').toggle('slow');
+		});
+	</script>
 </body>
 </html>

@@ -361,7 +361,8 @@ footer .links{
 }
 
 
-
+.normal_menu{display:block;}
+.mini_menu{display:none;}
 
 
 
@@ -369,15 +370,23 @@ footer .links{
 
 
 @media only screen and (max-width:645px){
+.normal_menu{display:none;}
+.mini_menu{display:block;text-align: right;}
+.mini_menu img{height:30px;right: 0;}
+.mini_menu img:hover{cursor: pointer;}
+.mini_menu #btns_menu{margin: 0;display: none;}
+.mini_menu *{margin:5px 0;}
 
     header{
 		position: absolute;
-		top: 22px;
-		width: 100%;
+		top: 10px;
+		width: auto;
 		text-align: center;
+		height: auto;
+		background: #fff;
+		box-shadow: 0 0 10px 6px #fff;
 	}
 	header .btn_login{
-		float: right;
 		padding-top: 9px;
 		margin-left: 7px;
 		width: 90px;
@@ -387,10 +396,11 @@ footer .links{
 		text-align: center;
 		border: 1px solid #000000;
 		font-size: 13px;
+		margin-bottom: 20px;
 	}
 
 	#Image1{
-		padding-top: 105px;
+		padding-top: 1px;
 		width: 150px !important;
 		height: auto !important;
 	}

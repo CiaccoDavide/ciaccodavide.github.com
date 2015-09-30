@@ -333,32 +333,56 @@ footer .links{
 
 
 
+.normal_menu{display:block;}
+.mini_menu{display:none;}
 
 
 
 @media only screen and (max-width:860px){
 
+.normal_menu{display:none;}
+.mini_menu{display:block;text-align: right;}
+.mini_menu img{height:30px;right: 0;}
+.mini_menu img:hover{cursor: pointer;}
+.mini_menu #btns_menu{margin: 0;display: none;}
+.mini_menu *{margin:5px 0;}
+
     header{
 		position: absolute;
-		top: 30px;
-		width: 100%;
+		top: 10px;
+		width: auto;
 		text-align: center;
+		height: auto;
+		background: #fff;
+		box-shadow: 0 0 10px 6px #fff;
 	}
 	header .btn_login{
-		float: right;
-		padding-top: 12px;
+		padding-top: 9px;
 		margin-left: 7px;
-		width: 80px;
-		height: 23px;
+		width: 100px;
+		height: auto;
 		background: #ffffff;
-		display: inline-block;
+		display: block;
 		text-align: center;
 		border: 1px solid #000000;
-		font-size: 8px;
+		font-size: 13px;
+	}
+	header .btn_sell{
+		font-weight: 600;
+		position: relative;
+		padding-top: 9px;
+		width: 100px;
+		height: 26px;
+		right: 0;
+		background: #00E400;
+		display: inline-block;
+		text-align: center;
+		border: 1px solid #00E400;
+		font-size: 13px;
 	}
 
 	#Image1{
-		padding-top: 105px;
+		padding-top: 1px;
 		width: 150px !important;
 		height: auto !important;
 	}
