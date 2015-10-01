@@ -385,6 +385,7 @@ footer .links{
 		height: auto;
 		background: #fff;
 		box-shadow: 0 0 10px 6px #fff;
+		z-index: 10000;
 	}
 	header .btn_login{
 		padding-top: 9px;
