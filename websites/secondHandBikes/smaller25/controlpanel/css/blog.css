@@ -339,7 +339,7 @@ footer .links{
 @media only screen and (max-width:860px){
 
 .normal_menu{display:none;}
-.mini_menu{display:block;text-align: right;}
+.mini_menu{display:block;text-align: right;width: 110px;float: right;background: #fff;padding-right: 10px;}
 .mini_menu img{height:30px;right: 0;}
 .mini_menu img:hover{cursor: pointer;}
 .mini_menu #btns_menu{margin: 0;display: none;}
@@ -348,83 +348,58 @@ footer .links{
     header{
 		position: absolute;
 		top: 10px;
-		width: auto;
+		width: 100%;
 		text-align: center;
 		height: auto;
-		background: #fff;
-		box-shadow: 0 0 10px 6px #fff;
 		z-index: 10000;
 	}
 	header .btn_login{
 		padding-top: 9px;
 		margin-left: 7px;
+		width: 90px;
+		height: 26px;
+		background: #ffffff;
+		display: inline-block;
+		text-align: center;
+		border: 1px solid #000000;
+		font-size: 13px;
+		margin-bottom: 10px;
+	}
+header .btn_sell,header .btn_sell:active{
+	font-weight: 600;
+	left:0;
+	position: absolute;
+	padding-top: 9px;
+	width: 90px;
+	margin-left: 45px;
+	height: 26px;
+	background: #00E400;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #00E400;
+	font-size: 13px;
+}
+
+	header .btn_login{
+		padding-top: 9px;
+		margin: 10px;
 		width: 100px;
 		height: auto;
 		background: #ffffff;
 		display: block;
 		text-align: center;
 		border: 1px solid #000000;
-		font-size: 13px;
-	}
-	header .btn_sell{
-		font-weight: 600;
-		position: relative;
-		padding-top: 9px;
-		width: 100px;
-		height: 26px;
-		right: 0;
-		background: #00E400;
-		display: inline-block;
-		text-align: center;
-		border: 1px solid #00E400;
 		font-size: 13px;
 	}
 	header .btn_login:active{
 		padding-top: 9px;
-		margin-left: 7px;
+		margin: 10px;
 		width: 100px;
 		height: auto;
 		background: #ffffff;
 		display: block;
 		text-align: center;
 		border: 1px solid #000000;
-		font-size: 13px;
-	}
-	header .btn_sell:hover{
-		font-weight: 600;
-		position: relative;
-		padding-top: 9px;
-		width: 100px;
-		height: 26px;
-		right: 0;
-		background: #00E400;
-		display: inline-block;
-		text-align: center;
-		border: 1px solid #00E400;
-		font-size: 13px;
-	}
-	header .btn_login:hover{
-		padding-top: 9px;
-		margin-left: 7px;
-		width: 100px;
-		height: auto;
-		background: #ffffff;
-		display: block;
-		text-align: center;
-		border: 1px solid #000000;
-		font-size: 13px;
-	}
-	header .btn_sell:active{
-		font-weight: 600;
-		position: relative;
-		padding-top: 9px;
-		width: 100px;
-		height: 26px;
-		right: 0;
-		background: #00E400;
-		display: inline-block;
-		text-align: center;
-		border: 1px solid #00E400;
 		font-size: 13px;
 	}
 
