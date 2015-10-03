@@ -1,9 +1,0 @@
-1.     Done, is it despaced enough?
-2.     Now after you resize the page over a certain width the enlarging stops, preserving the searchbox sketched appearence. Searchbox color changed.
-3.     is it light enough? (i've also brighten up the login,addbike and register inputs. Now it should be like the sketches)
-4.     Space between footer-links increased. Background color is now beige for the footer-links.
-5.     I've resized the logo and decreased the white spaces, is it any good like this? I'll wait for more instructions.
-6.     It should be your cache (check if the background image is still an svg, it should be a png now...)
-7.     Thanks to the limited resizing (fixed with 2.) the image stays way smaller. Should it be even smaller? I could halve the image size and place the description on its side (and if it's long enough let it overflow under the image).
-8.     This should be the same problem as in point 6. Let me know if nothing changes!
-9.     Is it fixed now? (I did the same on the login and addbike pages. If you want I can revert to the fixed position on the bottom-right corner)
