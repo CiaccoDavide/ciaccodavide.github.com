@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <style>
+            #canvas{background:#272727;}
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="282" height="76"></canvas>
+        <script type="text/javascript">
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+
+            var d = new Date();
+
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+
+            draw();
+
+            setInterval(function(){
+                draw();
+            },100);
+
+            function draw() {
+                //pulisci sfondo
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                //disegna cerchi
+                ctx.beginPath();
+                ctx.fillStyle = '#2a2a2b';
+                ctx.arc(34.5,34.5,25.5,0,2*Math.PI);
+                ctx.arc(105.5,34.5,25.5,0,2*Math.PI);
+                ctx.arc(176.5,34.5,25.5,0,2*Math.PI);
+                ctx.arc(247.5,34.5,25.5,0,2*Math.PI);
+                ctx.fill();
+                //scrivi nomi città
+                ctx.fillStyle = '#7f7f7f';
+                ctx.font = "8px Verdana";
+                ctx.fillText("MILANO",17,71);
+                ctx.fillText("LONDON",87,71);
+                ctx.fillText("TOKYO",162,71);
+                ctx.fillText("NEW YORK",225,71);
+
+                if(s<59){
+                    s++;
+                }else{
+                    s=0;
+                    if(m<59){
+                        m++;
+                    }else{
+                        m=0;
+                        if(h<23)
+                            h++;
+                        else
+                            h=0;
+                    }
+                }
+                //lancette
+                timestring=h+" : "+m+" : "+s;
+                ctx.fillText(timestring,20,51);
+
+                ctx.beginPath();
+                ctx.strokeStyle = '#009ee0';
+                ctx.moveTo(34.5+4,34.5);
+                ctx.lineTo(34.5+18+4,34.5);
+                ctx.stroke();
+
+
+                drawLancettaSecondi(s);
+
+
+            }
+            function drawLancettaSecondi(s) {
+                ctx.beginPath();
+                ctx.strokeStyle = '#7f7f7f';
+                //angolo della lancetta
+                angolo=6*s;
+                ctx.moveTo(34.5+4*Math.cos(angolo),34.5+4*Math.sin(angolo));
+                ctx.lineTo(34.5+18+4,34.5);
+                ctx.stroke();
+            }
+        </script>
+    </body>
+</html>
