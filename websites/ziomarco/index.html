@@ -11,16 +11,15 @@
             var ctx = c.getContext("2d");
 
             var d = new Date();
-
-            var h = d.getHours();
-            var m = d.getMinutes();
-            var s = d.getSeconds();
+            var h = d.getUTCHours();
+            var m = d.getUTCMinutes();
+            var s = d.getUTCSeconds();
 
             draw();
 
             setInterval(function(){
                 draw();
-            },100);
+            },1000);
 
             function draw() {
                 //pulisci sfondo
@@ -56,28 +55,92 @@
                     }
                 }
                 //lancette
-                timestring=h+" : "+m+" : "+s;
-                ctx.fillText(timestring,20,51);
-
+                drawLancette();
+            }
+            function drawLancette() {
+                //posizione0 MILANO +2
+                fuso=0;
+                posx=34.5;
+                posy=34.5;
+                ctx.beginPath();
+                ctx.strokeStyle = '#444';
+                angolo=toRadians(s*6-90);
+                ctx.moveTo(posx+(4*Math.cos(angolo)),posy+(4*Math.sin(angolo)));
+                ctx.lineTo(posx+(21+4)*Math.cos(angolo),posy+(21+4)*Math.sin(angolo));
+                ctx.stroke();
                 ctx.beginPath();
                 ctx.strokeStyle = '#009ee0';
-                ctx.moveTo(34.5+4,34.5);
-                ctx.lineTo(34.5+18+4,34.5);
+                angolo=toRadians(m*6-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(18+4)*Math.cos(angolo),posy+(18+4)*Math.sin(angolo));
                 ctx.stroke();
-
-
-                drawLancettaSecondi(s);
-
-
-            }
-            function drawLancettaSecondi(s) {
+                angolo=toRadians((360/12)*(h+fuso)-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(12+4)*Math.cos(angolo),posy+(12+4)*Math.sin(angolo));
+                ctx.stroke();
+                //posizione0 LONDON +1
+                fuso=1;
+                posx=105.5;
+                posy=34.5;
                 ctx.beginPath();
-                ctx.strokeStyle = '#7f7f7f';
-                //angolo della lancetta
-                angolo=6*s;
-                ctx.moveTo(34.5+4*Math.cos(angolo),34.5+4*Math.sin(angolo));
-                ctx.lineTo(34.5+18+4,34.5);
+                ctx.strokeStyle = '#444';
+                angolo=toRadians(s*6-90);
+                ctx.moveTo(posx+(4*Math.cos(angolo)),posy+(4*Math.sin(angolo)));
+                ctx.lineTo(posx+(21+4)*Math.cos(angolo),posy+(21+4)*Math.sin(angolo));
                 ctx.stroke();
+                ctx.beginPath();
+                ctx.strokeStyle = '#009ee0';
+                angolo=toRadians(m*6-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(18+4)*Math.cos(angolo),posy+(18+4)*Math.sin(angolo));
+                ctx.stroke();
+                angolo=toRadians((360/12)*(h+fuso)-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(12+4)*Math.cos(angolo),posy+(12+4)*Math.sin(angolo));
+                ctx.stroke();
+                //posizione0 TOKYO +9
+                fuso=9;
+                posx=176.5;
+                posy=34.5;
+                ctx.beginPath();
+                ctx.strokeStyle = '#444';
+                angolo=toRadians(s*6-90);
+                ctx.moveTo(posx+(4*Math.cos(angolo)),posy+(4*Math.sin(angolo)));
+                ctx.lineTo(posx+(21+4)*Math.cos(angolo),posy+(21+4)*Math.sin(angolo));
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.strokeStyle = '#009ee0';
+                angolo=toRadians(m*6-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(18+4)*Math.cos(angolo),posy+(18+4)*Math.sin(angolo));
+                ctx.stroke();
+                angolo=toRadians((360/12)*(h+fuso)-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(12+4)*Math.cos(angolo),posy+(12+4)*Math.sin(angolo));
+                ctx.stroke();
+                //posizione0 NEW YORK -4 (+20)
+                fuso=20;
+                posx=247.5;
+                posy=34.5;
+                ctx.beginPath();
+                ctx.strokeStyle = '#444';
+                angolo=toRadians(s*6-90);
+                ctx.moveTo(posx+(4*Math.cos(angolo)),posy+(4*Math.sin(angolo)));
+                ctx.lineTo(posx+(21+4)*Math.cos(angolo),posy+(21+4)*Math.sin(angolo));
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.strokeStyle = '#009ee0';
+                angolo=toRadians(m*6-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(18+4)*Math.cos(angolo),posy+(18+4)*Math.sin(angolo));
+                ctx.stroke();
+                angolo=toRadians((360/12)*(h+fuso)-90);
+                ctx.moveTo(posx+4*Math.cos(angolo),posy+4*Math.sin(angolo));
+                ctx.lineTo(posx+(12+4)*Math.cos(angolo),posy+(12+4)*Math.sin(angolo));
+                ctx.stroke();
+            }
+            function toRadians (angle) {
+              return angle * (Math.PI / 180);
             }
         </script>
     </body>
