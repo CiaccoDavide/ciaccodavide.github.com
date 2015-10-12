@@ -145,8 +145,9 @@ html,body{
 	top: 0;
 	right: 0;
 	height: 100%;
-	width:20%;
+	width:25%;
 	display:inline-block;
+	font-size: 12px;
 }.contents .right h4{
 	font-size: 19px;
 }.contents .right .price{
@@ -205,7 +206,7 @@ html,body{
 }
 
 .contents .right img{width: 20px;position: relative;left: 0;padding: 1px 0;}
-.contents .right .label{color:#36da4f;font-size: 11px;display:inline-block;padding-left:5px;position: relative;height: 20px;top:-7px;}
+.contents .right .label{color:#36da4f;font-size: 12px;display:inline-block;padding-left:5px;position: relative;height: 20px;top:-7px;}
 .contents .right p{position: relative;display: inline-block;}
 .contents .right .onlywide{display: inline-block;color:#3F9BD5;}
 select,input{
@@ -236,7 +237,7 @@ select,input{
 	#SearchBox a{
 		padding:8px 25px 10px 25px;
 	}
-.contents .right .label{color:#36da4f;font-size: 9px;display:inline-block;padding-left:5px;position: relative;height: 20px;top:-7px;}
+.contents .right .label{color:#36da4f;font-size: 12px;display:inline-block;padding-left:5px;position: relative;height: 20px;top:-7px;}
 }
 
 header{
@@ -384,7 +385,7 @@ footer .links{
 .mini_menu #btns_menu{margin: 0;display: none;}
 .mini_menu *{margin:5px 0;}
 
-.contents .right .label{color:#36da4f;font-size: 11px;display:inline-block;padding-left:5px;position: relative;height: 20px;top:-7px;}
+.contents .right .label{color:#36da4f;font-size: 12px;display:inline-block;padding-left:5px;position: relative;height: 20px;top:-7px;}
     
     header{
 		position: absolute;
