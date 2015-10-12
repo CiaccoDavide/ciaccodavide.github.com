@@ -148,7 +148,8 @@ html,body{
 	width:25%;
 	display:inline-block;
 	font-size: 12px;
-}.contents .right h4{
+}
+.contents .right h4{
 	font-size: 19px;
 }.contents .right .price{
 	font-size: 22px;
@@ -205,10 +206,18 @@ html,body{
 	cursor: pointer;
 }
 
+	.contents .right .rl p{display: block;}
+	.contents .right .rr p{display: block;}
 .contents .right img{width: 20px;position: relative;left: 0;padding: 1px 0;}
 .contents .right .label{color:#36da4f;font-size: 12px;display:inline-block;padding-left:5px;position: relative;height: 20px;top:-7px;}
-.contents .right p{position: relative;display: inline-block;}
+.contents .right .label p{position: relative;display: inline-block;}
 .contents .right .onlywide{display: inline-block;color:#3F9BD5;}
+
+
+
+
+
+
 select,input{
 	width: 105px;
 	height: 36px;
