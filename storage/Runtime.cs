@@ -2,9 +2,23 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using System.Collections.Generic;
 
 public class Runtime : MonoBehaviour
 {
+    private static readonly Dictionary<String, String> REVMOB_APP_IDS = new Dictionary<String, String>() {
+        { "Android", "561eba1696ab5cd467c65c8e"},
+        { "IOS", "5609237c1fae625340e06b39" }
+    };
+    private RevMob revmob;
+
+    void Awake()
+    {
+        revmob = RevMob.Start(REVMOB_APP_IDS, "Your GameObject name");
+    }
+
+
+
 
     private double coins;
     public Text coins_text;
@@ -30,17 +44,27 @@ public class Runtime : MonoBehaviour
     private int rank;
     public Text rankText;
     public RectTransform achLine0;
+    private float achWidth0;
+    private float achWidth0real;
     public RectTransform achLine1;
+    private float achWidth1;
+    private float achWidth1real;
     public RectTransform achLine2;
+    private float achWidth2;
+    private float achWidth2real;
     private int pickaxeLevel;
     private double maxcoins;
     private int resetTaps;
     private double globalMulti;
-    private float deltaTime = 0;
 
     // Use this for initialization
     void Start()
     {
+
+
+        PlayerPrefs.DeleteAll();
+
+
         coins = 0;
         //InvokeRepeating("Loop", 0.2f, 0.1f);
         InvokeRepeating("LongLoop", 1f, 2f);
@@ -70,8 +94,12 @@ public class Runtime : MonoBehaviour
         pickaxeLevel = 1;
         resetTaps = 10;
         globalMulti = 1;
+        maxcoins = 0;
+
+        Load();
 
         calculateRank();
+        InvokeRepeating("Save", 20f, 20f);
     }
 
     // Update is called once per frame
@@ -100,11 +128,13 @@ public class Runtime : MonoBehaviour
         {
             Reset();
         }
-        btnLeftText.text = "<size=18>Rank Reset</size>\nDelete your progress to obtain a multiplier.\nCurrent multiplier: x"+Scala(globalMulti)+"\nNext multiplier: x" + Scala(GetResetBonus()) + "\n(tap " + resetTaps + " times to reset)";
+        btnLeftText.text = "<size=18>Rank Reset</size>\nDelete your progress to obtain a multiplier.\nCurrent multiplier: x" + Scala(globalMulti) + "\nNext multiplier: x" + Scala(GetResetBonus()) + "\n(tap " + resetTaps + " times to reset)";
 
 
 
         LoopRealTime();
+
+        SmoothBars();
     }
 
     public void TapOnMountain()
@@ -146,7 +176,7 @@ public class Runtime : MonoBehaviour
 
     void LoopRealTime()
     {
-        
+
 
         coins += Profit() * Time.deltaTime;
         totalProfit += Profit() * Time.deltaTime;
@@ -199,6 +229,7 @@ public class Runtime : MonoBehaviour
             mountainLevel++;
             TapOnMountain();
             upgrades++;
+            Save();
         }
     }
     void UpgradeSf(int i)
@@ -209,6 +240,7 @@ public class Runtime : MonoBehaviour
             sf_levels[i]++;
             TapOnSf(i + 1);
             upgrades++;
+            Save();
         }
     }
 
@@ -227,7 +259,8 @@ public class Runtime : MonoBehaviour
             rank++;
         }
         ratio = tempStat / limit;
-        achLine1.sizeDelta = new Vector2(25 + 275 * (float)ratio, 1);
+        achWidth1 = 25 + 275 * (float)ratio;
+        //achLine1.sizeDelta = new Vector2(25 + 275 * (float)ratio, 1);
 
         limit = 10;
         tempStat = maxcoins;
@@ -239,7 +272,8 @@ public class Runtime : MonoBehaviour
             rank++;
         }
         ratio = tempStat / limit;
-        achLine2.sizeDelta = new Vector2(25 + 275 * (float)ratio, 1);
+        achWidth2 = 25 + 275 * (float)ratio;
+        //achLine2.sizeDelta = new Vector2(25 + 275 * (float)ratio, 1);
 
         limit = 10;
         tempStat = taps;
@@ -251,7 +285,8 @@ public class Runtime : MonoBehaviour
             rank++;
         }
         ratio = tempStat / limit;
-        achLine0.sizeDelta = new Vector2(25 + 275 * (float)ratio, 1);
+        achWidth0 = 25 + 275 * (float)ratio;
+        //achLine0.sizeDelta = new Vector2(25 + 275 * (float)ratio, 1);
 
 
         if (rank > 999) rank = 999;
@@ -259,7 +294,47 @@ public class Runtime : MonoBehaviour
 
         rankText.text = rank.ToString();
     }
+    void SmoothBars()
+    {
+        if (achWidth0real < achWidth0)
+        {
+            achWidth0real += 1f;
+        }
+        else if (achWidth0real > achWidth0)
+        {
+            if (achWidth0real - achWidth0 < 4)
+                achWidth0real = achWidth0;
+            else
+                achWidth0real -= 4f;
+        }
+        achLine0.sizeDelta = new Vector2(achWidth0real, 1);
 
+        if (achWidth1real < achWidth1)
+        {
+            achWidth1real += 1f;
+        }
+        else if (achWidth1real > achWidth1)
+        {
+            if (achWidth1real - achWidth1 < 4)
+                achWidth1real = achWidth1;
+            else
+                achWidth1real -= 4f;
+        }
+        achLine1.sizeDelta = new Vector2(achWidth1real, 1);
+
+        if (achWidth2real < achWidth2)
+        {
+            achWidth2real += 1f;
+        }
+        else if (achWidth2real > achWidth2)
+        {
+            if (achWidth2real - achWidth2 < 4)
+                achWidth2real = achWidth2;
+            else
+                achWidth2real -= 4f;
+        }
+        achLine2.sizeDelta = new Vector2(achWidth2real, 1);
+    }
 
     string Scala(double num)
     {
@@ -356,6 +431,7 @@ public class Runtime : MonoBehaviour
             pickaxeLevel = 1;
             resetTaps = 10;
             btnRightText.text = "Select something\nto upgrade.";
+            Save();
         }
         else
         {
@@ -368,6 +444,104 @@ public class Runtime : MonoBehaviour
         if (rank < 30) return 1;
         return bonus;
     }
+
+
+
+
+
+
+
+    void Load()
+    {
+        coins = GetDouble("coins", 0);
+        sf_levels[0] = PlayerPrefs.GetInt("sf_level0", 0);
+        sf_levels[1] = PlayerPrefs.GetInt("sf_level1", 0);
+        sf_levels[2] = PlayerPrefs.GetInt("sf_level2", 0);
+        sf_levels[3] = PlayerPrefs.GetInt("sf_level3", 0);
+        sf_levels[4] = PlayerPrefs.GetInt("sf_level4", 0);
+        sf_levels[5] = PlayerPrefs.GetInt("sf_level5", 0);
+        sf_levels[6] = PlayerPrefs.GetInt("sf_level6", 0);
+        sf_levels[7] = PlayerPrefs.GetInt("sf_level7", 0);
+        selected = PlayerPrefs.GetInt("selected", -1);
+        mountainLevel = PlayerPrefs.GetInt("mountainLevel", 1);
+        taps = PlayerPrefs.GetInt("taps", 0);
+        totalProfit = GetDouble("totalProfit", 0);
+        upgrades = PlayerPrefs.GetInt("upgrades", 0);
+        pickaxeLevel = PlayerPrefs.GetInt("pickaxeLevel", 1);
+        resetTaps = PlayerPrefs.GetInt("resetTaps", 10);
+        globalMulti = GetDouble("globalMulti", 1);
+        maxcoins = GetDouble("maxcoins", 0);
+
+    }
+    void Save()
+    {
+        RevMobBanner banner = revmob.CreateBanner();
+        banner.Show();
+        SetDouble("coins", coins);
+        PlayerPrefs.SetInt("sf_level0", sf_levels[0]);
+        PlayerPrefs.SetInt("sf_level1", sf_levels[1]);
+        PlayerPrefs.SetInt("sf_level2", sf_levels[2]);
+        PlayerPrefs.SetInt("sf_level3", sf_levels[3]);
+        PlayerPrefs.SetInt("sf_level4", sf_levels[4]);
+        PlayerPrefs.SetInt("sf_level5", sf_levels[5]);
+        PlayerPrefs.SetInt("sf_level6", sf_levels[6]);
+        PlayerPrefs.SetInt("sf_level7", sf_levels[7]);
+        PlayerPrefs.SetInt("selected", selected);
+        PlayerPrefs.SetInt("mountainLevel", mountainLevel);
+        PlayerPrefs.SetInt("taps", taps);
+        SetDouble("totalProfit", totalProfit);
+        PlayerPrefs.SetInt("upgrades", upgrades);
+        PlayerPrefs.SetInt("pickaxeLevel", pickaxeLevel);
+        PlayerPrefs.SetInt("resetTaps", resetTaps);
+        SetDouble("globalMulti", globalMulti);
+        SetDouble("maxcoins", maxcoins);
+    }
+
+
+    //saving stuff
+    public static void SetDouble(string key, double value)
+    {
+        PlayerPrefs.SetString(key, DoubleToString(value));
+    }
+    public static double GetDouble(string key, double defaultValue)
+    {
+        string defaultVal = DoubleToString(defaultValue);
+        return StringToDouble(PlayerPrefs.GetString(key, defaultVal));
+    }
+    public static double GetDouble(string key)
+    {
+        return GetDouble(key, 0d);
+    }
+
+    private static string DoubleToString(double target)
+    {
+        return target.ToString("R");
+    }
+    private static double StringToDouble(string target)
+    {
+        if (string.IsNullOrEmpty(target))
+            return 0d;
+        return double.Parse(target);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
