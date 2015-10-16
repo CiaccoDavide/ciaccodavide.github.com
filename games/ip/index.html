@@ -126,6 +126,7 @@ g               {color:#bdbdbd;}
 	<a href="https://play.google.com/store/apps/developer?id=CiaccoDavide"><img src="./imgs/android.png"></a>
 	<a href="https://itunes.apple.com/it/app/idle-professions/id1047226038"><img src="./imgs/ios.png"></a>
 </footer>
+    <script type="text/javascript" src="http://www.kongregate.com/javascripts/kongregate_api.js"></script>
 <script src="./jquery.min.js"></script>
 <script src="./jquery.mobile.min.js"></script>
 <script>
@@ -173,6 +174,19 @@ $(".upgrades").hide();
 $(".achievements").hide();
 $(".settings").show();
 });
+
+
+
+      // Begin the process of loading the Kongregate API:
+      kongregateAPI.loadAPI(onLoadCompleted);
+function onLoadCompleted(){
+        // Get a global reference to the kongregate API. This way, pages included in the
+        // iframe can access it by using "parent.kongregate"
+        kongregate = kongregateAPI.getAPI();
+      
+
+}
+
 var profit=0;
 var wholeprofit=0;
 var spent=maxprofit=achmulti=globalmultinext=0;
@@ -695,6 +709,5 @@ $('.reset').html('<button id="on" class="btn_reset"><p>RESET</p><small>Get the +
 }
 },1000);
 }
-
 
 </script></body></html>
