@@ -531,6 +531,66 @@ public class Runtime : MonoBehaviour
 
 
 
+        else if (num >= 1e180) return pDD(num / 1e180) + " Qr";
+        else if (num >= 1e177) return pDD(num / 1e177) + " Tr";
+        else if (num >= 1e174) return pDD(num / 1e174) + " Du";
+        else if (num >= 1e171) return pDD(num / 1e171) + " Ud";
+        else if (num >= 1e168) return pDD(num / 1e168) + " Dc";
+        else if (num >= 1e165) return pDD(num / 1e165) + " No";
+        else if (num >= 1e162) return pDD(num / 1e162) + " Oc";
+        else if (num >= 1e159) return pDD(num / 1e159) + " Sp";
+        else if (num >= 1e156) return pDD(num / 1e156) + " Sx";
+        else if (num >= 1e153) return pDD(num / 1e153) + " Qt";
+        else if (num >= 1e150) return pDD(num / 1e150) + " Qd";
+        else if (num >= 1e147) return pDD(num / 1e147) + " T";
+        else if (num >= 1e144) return pDD(num / 1e144) + " B";
+        else if (num >= 1e141) return pDD(num / 1e141) + " M";
+        else if (num >= 1e138) return pDD(num / 1e138) + " K";
+        else if (num >= 1e135) return pDD(num / 1e135) + " Qr";
+        else if (num >= 1e132) return pDD(num / 1e132) + " Tr";
+        else if (num >= 1e129) return pDD(num / 1e129) + " Du";
+        else if (num >= 1e126) return pDD(num / 1e126) + " Ud";
+        else if (num >= 1e123) return pDD(num / 1e123) + " Dc";
+        else if (num >= 1e120) return pDD(num / 1e120) + " No";
+        else if (num >= 1e117) return pDD(num / 1e117) + " Oc";
+        else if (num >= 1e114) return pDD(num / 1e114) + " Sp";
+        else if (num >= 1e111) return pDD(num / 1e111) + " Sx";
+        else if (num >= 1e108) return pDD(num / 1e108) + " Qt";
+        else if (num >= 1e105) return pDD(num / 1e105) + " Qd";
+        else if (num >= 1e102) return pDD(num / 1e102) + " T";
+        else if (num >= 1e99) return pDD(num / 1e99) + " B";
+        else if (num >= 1e96) return pDD(num / 1e96) + " M";
+        else if (num >= 1e93) return pDD(num / 1e93) + " K";
+        else if (num >= 1e90) return pDD(num / 1e90) + " aQr";
+        else if (num >= 1e87) return pDD(num / 1e87) + " aTr";
+        else if (num >= 1e84) return pDD(num / 1e84) + " aDu";
+        else if (num >= 1e81) return pDD(num / 1e81) + " aUd";
+        else if (num >= 1e78) return pDD(num / 1e78) + " aDc";
+        else if (num >= 1e75) return pDD(num / 1e75) + " aNo";
+        else if (num >= 1e72) return pDD(num / 1e72) + " aOc";
+        else if (num >= 1e69) return pDD(num / 1e69) + " aSp";
+        else if (num >= 1e66) return pDD(num / 1e66) + " aSx";
+        else if (num >= 1e63) return pDD(num / 1e63) + " aQt";
+        else if (num >= 1e60) return pDD(num / 1e60) + " aQd";
+        else if (num >= 1e57) return pDD(num / 1e57) + " aT";
+        else if (num >= 1e54) return pDD(num / 1e54) + " aB";
+        else if (num >= 1e51) return pDD(num / 1e51) + " aM";
+        else if (num >= 1e48) return pDD(num / 1e48) + " aK";
+        else if (num >= 1e45) return pDD(num / 1e45) + " Qr";
+        else if (num >= 1e42) return pDD(num / 1e42) + " Tr";
+        else if (num >= 1e39) return pDD(num / 1e39) + " Du";
+        else if (num >= 1e36) return pDD(num / 1e36) + " Ud";
+        else if (num >= 1e33) return pDD(num / 1e33) + " Dc";
+        else if (num >= 1e30) return pDD(num / 1e30) + " No";
+        else if (num >= 1e27) return pDD(num / 1e27) + " Oc";
+        else if (num >= 1e24) return pDD(num / 1e24) + " Sp";
+        else if (num >= 1e21) return pDD(num / 1e21) + " Sx";
+        else if (num >= 1e18) return pDD(num / 1e18) + " Qt";
+        else if (num >= 1e15) return pDD(num / 1e15) + " Qd";
+        else if (num >= 1e12) return pDD(num / 1e12) + " T";
+        else if (num >= 1e9) return pDD(num / 1e9) + " B";
+        else if (num >= 1e6) return pDD(num / 1e6) + " M";
+        else if (num >= 1e3) return pDD(num / 1e3) + " K";
 
 
 
