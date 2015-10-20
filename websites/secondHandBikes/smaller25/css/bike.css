@@ -334,6 +334,8 @@ header .btn_login{
 }
 
 
+header a:visited .btn_sell {color:#fff;}
+header a:visited .btn_login {color:#000;}
 
 footer{
 	margin-top: 45px;
