@@ -84,6 +84,7 @@ html,body{
 	background: #fafafa;
 	cursor: pointer;
 }
+.link{position: absolute;top: 16px;bottom: 0;right: 0;left: 0}
 .bike .thumb{
 	position: absolute;
 	height: 100%;
@@ -302,7 +303,7 @@ footer .links{
 #tip2:hover #expla2{display: block;}
 .tip{display: inline-block;color:#3F9BD5;padding-left: 1px;margin-left: 0;}
 
-
+	
 
 @media only screen and (max-width:960px){
 	html,body{
@@ -577,4 +578,5 @@ a{text-decoration: none;}
 
 
 
+.link{position: relative;top: 16px;bottom: 0;right: 0;left: 0}
 }
