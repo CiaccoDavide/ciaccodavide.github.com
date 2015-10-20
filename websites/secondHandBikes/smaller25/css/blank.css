@@ -76,50 +76,50 @@ html,body{
 	position: relative;
 }
 
-.panel .right{
+.panel .center{
 	position: relative;
 	/*margin-left: 150px;*/
 	margin-top: 22px;
 	right: 0;
 	height: auto;
 	/*border-left: 1px solid #eee;*/
-}.panel .right .article{
+}.panel .center .article{
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 0 0 0 15px;
-}.panel .right .article p{
+}.panel .center .article p{
 	font-size: 12px;
-}.panel .right .article img{
+}.panel .center .article img{
 	max-width: 100%;
-}.panel .right .article h1{
+}.panel .center .article h1{
 	font-weight: 900;
 	font-size: 24px;
-}.panel .right .article h2{
+}.panel .center .article h2{
 	padding-top: 6px;
 	font-weight: 600;
 	font-size: 18px;
-}.panel .right .article h3{
+}.panel .center .article h3{
 	padding-top: 6px;
 	font-weight: 600;
 	font-size: 16px;
-}.panel .right .article h4{
+}.panel .center .article h4{
 	padding-top: 6px;
 	font-weight: 600;
 	font-size: 14px;
-}.panel .right .article h5{
+}.panel .center .article h5{
 	padding-top: 6px;
 	font-weight: 400;
 	font-size: 14px;
-}.panel .right .article h6{
+}.panel .center .article h6{
 	padding-top: 6px;
 	font-weight: 400;
 	font-size: 13px;
-}.panel .right .article a{
+}.panel .center .article a{
 	color:#3F9383;
 	text-decoration: none;
-}.panel .right .article a:hover{
+}.panel .center .article a:hover{
 	color:#4Fc393;
 	text-decoration: underline;
-}.panel .right .article a:visited{
+}.panel .center .article a:visited{
 	color:#3F9383;
 	text-decoration: none;
 }
@@ -468,14 +468,14 @@ header .btn_sell,header .btn_sell:active{
 		font-weight: 100;
 		padding: 7px 0 7px 0;
 	}
-	.panel .right{
+	.panel .center{
 		position: relative;
 		margin-left: 0;
 		margin-top: 45px;
 		right: 0;
 		height: auto;
 		border-left: none;
-	}.panel .right .article{
+	}.panel .center .article{
 		font-family: 'Source Sans Pro', sans-serif;
 		padding: 0 15px 0 15px;
 	}
