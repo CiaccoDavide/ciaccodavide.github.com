@@ -390,7 +390,10 @@ footer .links{
 
 @media only screen and (max-width:645px){
 
-.expla{position: absolute;background:#fff;height:auto;z-index:10000000000;width: 200px;right: 0px;bottom:20px;left: auto;top:auto;margin-left:-100px;padding: 10px;border-radius:4px;box-shadow:0 0 6px #aaa;color:#888;line-height: 12px;}
+.expla{position: absolute;background:#fff;height:auto;z-index:10000000000;width: 200px;padding: 10px;border-radius:4px;box-shadow:0 0 6px #aaa;color:#888;line-height: 12px;}
+#tip0 #expla0{display: none;right: 0px;bottom:20px;left: auto;top:auto;margin-left:-100px;}
+#tip1 #expla1{display: none;right: 0px;bottom:20px;left: auto;top:auto;margin-left:-100px;}
+#tip2 #expla2{display: none;right: 0px;bottom:20px;left: auto;top:auto;margin-left:-100px;}
 .normal_menu{display:none;}
 .mini_menu{display:block;text-align: right;width: 100px;float: right;background: #fff;padding-right: 10px;}
 .mini_menu img{height:30px;right: 0;}
