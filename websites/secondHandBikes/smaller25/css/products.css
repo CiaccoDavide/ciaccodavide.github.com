@@ -239,6 +239,12 @@ header .btn_login{
 	color: #000000;
 }
 
+header a .btn_sell {color:#fff;}
+header a .btn_login {color:#000;}
+header a:active .btn_sell {color:#fff;}
+header a:active .btn_login {color:#000;}
+header a:hover .btn_sell {color:#fff;}
+header a:hover .btn_login {color:#000;}
 header a:visited .btn_sell {color:#fff;}
 header a:visited .btn_login {color:#000;}
 
