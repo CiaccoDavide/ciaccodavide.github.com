@@ -96,7 +96,7 @@ form h2{
 form input{
 	padding-left: 7px;
 	padding-right: 7px;
-	margin: 4px 0 -7px 0;
+	margin: 2px 0 0px 0;
 	width: 90%;
 	height: 33px;
 	font-weight: 100;
@@ -121,7 +121,7 @@ form [type="radio"]{
 	padding-left: 7px;
 }
 form select{
-	margin-top: 7px;
+	margin-top: 12px;
 	margin-bottom: 0;
 }
 form [type="submit"]{
@@ -192,7 +192,7 @@ select{
 .brandname{font-size: 13px}
 .description{
 	padding: 7px;
-	margin: 4px 0 0 0;
+	margin: 12px 0 12px 0;
 	width: 90%;
 	height:60px;
 	font-size: 16px;
@@ -252,7 +252,7 @@ select{
 	}
 	form input{
 		padding-left: 2%;
-		margin: 4px 0 7px 0;
+		margin: 8px 0 7px 0;
 		width: 88%;
 		height: 33px;
 		font-size: 16px;
