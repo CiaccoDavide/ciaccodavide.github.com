@@ -102,7 +102,8 @@ html,body{
 	left: 120px;
 	position: absolute;
 	height: 100%;
-	padding-top: 4px;
+	padding-top: 0;
+	margin-top: -3px;
 }
 .bike .info h2{color: #000000;font-size:20px;font-weight:100;}
 .bike .info h3{color: #333333;font-size:15px;font-weight:100;}
@@ -113,7 +114,7 @@ html,body{
 	position: absolute;
 	height: 100%;
 	color: #333333;
-	padding-top: 25px;
+	padding-top: 20px;
 }
 .bike .price{
 	right: 180px;
@@ -123,7 +124,7 @@ html,body{
 	color: #36da4f;
 	font-size: 16px;
 	font-weight: normal;
-	padding-top: 37px;
+	padding-top: 32px;
 	padding-right: 10px;
 	text-align: right;
 }
