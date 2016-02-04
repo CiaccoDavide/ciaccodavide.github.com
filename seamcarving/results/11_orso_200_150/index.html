@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>Seam Carving Results - Elaborazione delle Immagini I</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<style type="text/css">
+			
+			*,html{margin:0;padding:0;}
+			body{position:fixed;top:0;bottom:0;left:0;right:0;background:#111;color:#eee;text-align: center;font-family: Verdana, Geneva, Tahoma, sans-serif;}
+			form{width:300px;position:fixed;left:50%;margin-left:-150px;bottom:0;background:#222;padding:6px;box-shadow: 0 0 8px #000;font-size:9px;}
+			img{/*position:fixed;top:50%;left:50%;*/position:relative;padding-top:40px;}
+
+		</style>
+	</head>
+	<body>
+	<br>
+	<h3 id="titolo">Immagine originale</h3>
+	<img src="./0_originale.png" id="img">
+	<form>
+		<p id="zoom">usare le frecce sinistra e destra<br>per scorrere le immagini<br>usare ctrl+mousewheel per ridimensionarle</p>
+	</form>
+
+	<script type="text/javascript">
+
+		var i = 0;
+
+		document.onkeydown = checkKey;
+
+		function checkKey(e) {
+
+		    e = e || window.event;
+
+		    if (e.keyCode == '37') {
+		       i--;
+		    }else if (e.keyCode == '39') {
+		       i++;
+		    }
+		    if(i<0)i=6;
+		    else if(i>6)i=0;
+		    updateImage();
+		}
+
+		function updateImage() {
+			switch(i){
+				case 0:
+					document.getElementById("img").src="./0_originale.png";
+					document.getElementById("titolo").innerHTML = "Immagine originale";
+					break;
+				case 1:
+					document.getElementById("img").src="./1_energia.png";
+					document.getElementById("titolo").innerHTML = "Energia dell'immagine";
+					break;
+				case 2:
+					document.getElementById("img").src="./2_costo_o.png";
+					document.getElementById("titolo").innerHTML = "Costo energetico orizzontale";
+					break;
+				case 3:
+					document.getElementById("img").src="./2_costo_v.png";
+					document.getElementById("titolo").innerHTML = "Costo energetico verticale";
+					break;
+				case 4:
+					document.getElementById("img").src="./3_seam_o.png";
+					document.getElementById("titolo").innerHTML = "Seam orizzontali rimossi";
+					break;
+				case 5:
+					document.getElementById("img").src="./3_seam_v.png";
+					document.getElementById("titolo").innerHTML = "Seam verticali rimossi";
+					break;
+				case 6:
+					document.getElementById("img").src="./4_result.png";
+					document.getElementById("titolo").innerHTML = "width -200, height -150";
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Davide Ciacco">
+		<title>Seam Carving Results - Elaborazione delle Immagini I</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<style type="text/css">
+			
+			*,html{margin:0;padding:0;}
+			body{position:relative;top:0;bottom:0;left:0;right:0;background:#111;color:#eee;text-align:center;font-family: Verdana, Geneva, Tahoma, sans-serif;}
+			form{width:300px;position:fixed;left:50%;margin-left:-150px;bottom:0;background:#222;padding:6px;box-shadow: 0 0 8px #000;font-size:9px;}
+			img{/*position:fixed;top:50%;left:50%;*/position:relative;height:50px;width:50px;}
+			h3{font-weight: 100;}
+			a{text-decoration:none;color:#ddd;text-align:left;}
+			a:hover{text-decoration:none;}
+			a:visited{text-decoration:none;color:#ddd;}
+			a .link{height:50px;background:#1a1a1a;margin:1px;position: relative;color:#ddd;width:400px;left:50%;margin-left:-200px;border-right: 1px solid #000;}
+			a:hover .link{text-decoration:none;color:#fff;background:#222;border-right: 1px solid #59f;}
+			a:visited .link{border-right: 1px solid #192;}
+			a:visited:hover .link{border-right: 1px solid #8af;}
+			a .link img{opacity:.8;}
+			a:hover .link img{opacity:1;}
+			a .link span{position:absolute;left:75px;top:15px;font-size:12px;}
+
+		</style>
+	</head>
+	<body>
+		<br><br>
+		<h3>Risultati del Seam Carving</h3>
+		<br>
+
+		<a href="./00_elephant_300_100/index.html" target="_blank"><div class="link"><img src="./00_elephant_300_100/thumb.png" id="img"><span><small>00</small> elephant <small>[-300,-100]</small></span></div></a>
+		<a href="./01_stars_200_180/index.html" target="_blank"><div class="link"><img src="./01_stars_200_180/thumb.png" id="img"><span><small>01</small> stars <small>[-200,-180]</small></span></div></a>
+		<a href="./02_object_200_100/index.html" target="_blank"><div class="link"><img src="./02_object_200_100/thumb.png" id="img"><span><small>02</small> object <small>[-200,-100]</small></span></div></a>
+		<a href="./03_river_100_100/index.html" target="_blank"><div class="link"><img src="./03_river_100_100/thumb.png" id="img"><span><small>03</small> river <small>[-100,-100]</small></span></div></a>
+		<a href="./04_car_150_100/index.html" target="_blank"><div class="link"><img src="./04_car_150_100/thumb.png" id="img"><span><small>04</small> car <small>[-150,-100]</small></span></div></a>
+		<a href="./05_carsimmetrica_200_0/index.html" target="_blank"><div class="link"><img src="./05_carsimmetrica_200_0/thumb.png" id="img"><span><small>05</small> carsimmetrica <small>[-200,-0]</small></span></div></a>
+		<a href="./06_carmovimento_200_100/index.html" target="_blank"><div class="link"><img src="./06_carmovimento_200_100/thumb.png" id="img"><span><small>06</small> carmovimento <small>[-200,-100]</small></span></div></a>
+		<a href="./07_trees_200_0/index.html" target="_blank"><div class="link"><img src="./07_trees_200_0/thumb.png" id="img"><span><small>07</small> trees <small>[-200,-0]</small></span></div></a>
+		<a href="./08_desert_200_0/index.html" target="_blank"><div class="link"><img src="./08_desert_200_0/thumb.png" id="img"><span><small>08</small> desert <small>[-200,-0]</small></span></div></a>
+		<a href="./09_landscape_300_0/index.html" target="_blank"><div class="link"><img src="./09_landscape_300_0/thumb.png" id="img"><span><small>09</small> landscape <small>[-300,-0]</small></span></div></a>
+		<a href="./10_landscape_300_0/index.html" target="_blank"><div class="link"><img src="./10_landscape_300_0/thumb.png" id="img"><span><small>10</small> landscape <small>[-300,-0]</small></span></div></a>
+		<a href="./11_orso_200_150/index.html" target="_blank"><div class="link"><img src="./11_orso_200_150/thumb.png" id="img"><span><small>11</small> orso <small>[-200,-150]</small></span></div></a>
+		<a href="./12_ritrattobn_0_200/index.html" target="_blank"><div class="link"><img src="./12_ritrattobn_0_200/thumb.png" id="img"><span><small>12</small> ritrattobn <small>[-0,-200]</small></span></div></a>
+		<a href="./13_ritratto_200_200/index.html" target="_blank"><div class="link"><img src="./13_ritratto_200_200/thumb.png" id="img"><span><small>13</small> ritratto <small>[-200,-200]</small></span></div></a>
+		<a href="./14_industrial_250_100/index.html" target="_blank"><div class="link"><img src="./14_industrial_250_100/thumb.png" id="img"><span><small>14</small> industrial <small>[-250,-100]</small></span></div></a>
+		<a href="./15_building_100_100/index.html" target="_blank"><div class="link"><img src="./15_building_100_100/thumb.png" id="img"><span><small>15</small> building <small>[-100,-100]</small></span></div></a>
+		<a href="./15_building_300_100/index.html" target="_blank"><div class="link"><img src="./15_building_300_100/thumb.png" id="img"><span><small>15</small> building <small>[-300,-100]</small></span></div></a>
+		<a href="./16_old_150_0/index.html" target="_blank"><div class="link"><img src="./16_old_150_0/thumb.png" id="img"><span><small>16</small> old <small>[-150,-0]</small></span></div></a>
+		<a href="./17_eiffel_200_0/index.html" target="_blank"><div class="link"><img src="./17_eiffel_200_0/thumb.png" id="img"><span><small>17</small> eiffel <small>[-200,-0]</small></span></div></a>
+		<a href="./17_eiffel_300_125/index.html" target="_blank"><div class="link"><img src="./17_eiffel_300_125/thumb.png" id="img"><span><small>17</small> eiffel <small>[-300,-125]</small></span></div></a>
+		<a href="./18_onice_300_38/index.html" target="_blank"><div class="link"><img src="./18_onice_300_38/thumb.png" id="img"><span><small>18</small> onice <small>[-300,-38]</small></span></div></a>
+		<a href="./19_portrait_100_200/index.html" target="_blank"><div class="link"><img src="./19_portrait_100_200/thumb.png" id="img"><span><small>19</small> portrait <small>[-100,-200]</small></span></div></a>
+		<a href="./20_terrace1_100_0/index.html" target="_blank"><div class="link"><img src="./20_terrace1_100_0/thumb.png" id="img"><span><small>20</small> terrace1 <small>[-100,-0]</small></span></div></a>
+		<a href="./21_terrace2_100_50/index.html" target="_blank"><div class="link"><img src="./21_terrace2_100_50/thumb.png" id="img"><span><small>21</small> terrace2 <small>[-100,-50]</small></span></div></a>
+		<a href="./22_terrace3_100_100/index.html" target="_blank"><div class="link"><img src="./22_terrace3_100_100/thumb.png" id="img"><span><small>22</small> terrace3 <small>[-100,-100]</small></span></div></a>
+		<a href="./23_terrace4_100_100/index.html" target="_blank"><div class="link"><img src="./23_terrace4_100_100/thumb.png" id="img"><span><small>23</small> terrace4 <small>[-100,-100]</small></span></div></a>
+		<a href="./24_terrace6_100_100/index.html" target="_blank"><div class="link"><img src="./24_terrace6_100_100/thumb.png" id="img"><span><small>24</small> terrace6 <small>[-100,-100]</small></span></div></a>
+
+		<br>
+</body>
+</html>
