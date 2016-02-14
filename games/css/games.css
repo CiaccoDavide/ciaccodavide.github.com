@@ -9,6 +9,11 @@ font-family: 'Raleway', sans-serif; // - 100,200
 	*/
 	background: #ddd;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	color:#aaa;
+}
+hr{
+	color:#aaa;
+	border: solid 1px #aaa;
 }
 body #left a img{width:160px;opacity:0.8;}
 body #left a:hover img{opacity:1;}
@@ -97,7 +102,7 @@ h1{
 a .post{
 	margin:10px;
 	padding:10px;
-	max-width:300px;
+	max-width:600px;
 	height:auto;
 	background:#eeeeee;
 	color:#666;
@@ -176,6 +181,13 @@ a .post desc .thumb img{
 	bottom:0;
 }
 
-
+.gi{
+	/* game icon */
+	width: 40px;
+	height: 40px;
+	margin: 4px 6px 0 6px;
+	border: solid 1px #fff;
+	border-radius: 6px;
+}
 
 
