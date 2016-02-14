@@ -1,14 +1,9 @@
 html {}
 body {
 	width:100%;margin:0;padding:0;
-	/*
-font-family: 'Lato', sans-serif; //all - 100,300 anche italic
-font-family: 'Quicksand', sans-serif; //menu - 300,400
-font-family: 'Source Code Pro', sans-serif; //code - 200,300,400
-font-family: 'Raleway', sans-serif; // - 100,200
-	*/
 	background: #ddd;
 	font: 14px 'Helvetica Neue', Arial, sans-serif;
+	text-align: center;
 	color:#aaa;
 }
 body #left a img{width:160px;opacity:0.8;}
@@ -16,26 +11,23 @@ body #left a:hover img{opacity:1;}
 body #left{
 	overflow:scroll;
 	box-shadow:1px 0 0 #ccc;
-	position:fixed;
 	left:0;
+	right:0;
 	background:#eee;
-	height:100%;
-	width:160px;
-	overflow-x:hidden;
+	height:auto;
+	
 	overflow-y:hidden;
+	overflow-x:hidden;
 }
 body #right{
 	padding:10px;
 /*	background-attachment:fixed;
 	background-image:url('http://ciaccodavide.altervista.org/patt/?l=3000&a=90&d=1&c=ddd&s=999');
 	background-size: auto auto;*/
-	position:fixed;
 	left:160px;
 	right:0px;
 	top:0px;
 	bottom:0px;
-	overflow-x:hidden;
-	overflow-y:scroll;
 }
 h1{
 	text-shadow:1px 1px 0px #eee;
@@ -53,26 +45,13 @@ h1{
 	        transition:all 1s;
 }
 .links{
-	margin:10px;
-	width:160px;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	float:left;
 }
-.links #active{
-	color:#494949;
-	font-family: 'Raleway', sans-serif;
-	font-size: 16px;
-	font-weight: 100;
-	letter-spacing:1px;
-	text-decoration:none;
-}
-.links #active t{
-	font: 23px 'Helvetica Neue', Arial, sans-serif;
-	line-height: 0;
-	letter-spacing:3px;
-	color:#38f;
-}
 .links a{
-	color:#aaa;
+	color:#888;
 	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	font-weight: 100;
@@ -96,9 +75,15 @@ h1{
 	text-decoration:none;
 }
 a .post{
+	float:left;
+	/*
 	margin:10px;
 	padding:10px;
-	max-width:600px;
+	max-width:300px;*/
+	width:92%;
+	margin:2%;
+	padding:2%;
+	
 	height:auto;
 	background:#eeeeee;
 	color:#666;
@@ -123,6 +108,8 @@ a .post t{display:inline;
 a .post desc{
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
+	
+	background:rgba(123,204,10,0.5);
 }
 a .post#red{border-bottom:2px solid #f66;}
 a .post#red t{color:#f66;}
@@ -130,6 +117,8 @@ a .post#green{border-bottom:2px solid #9e6;}
 a .post#green t{color:#9e6;}
 a .post#blue{border-bottom:2px solid #38f;}
 a .post#blue t{color:#38f;}
+a .post#yellow{border-bottom:2px solid #ffc532;}
+a .post#yellow t{color:#ffc532;}
 
 
 a .post desc .thumb{
@@ -144,10 +133,19 @@ a .post desc .thumb img{
 }
 
 #avatars{background: url(http://ciaccodavide.altervista.org/qbdp/perpets/?counter=5);background-position: 50% 50%;}
+#canvas{background: url(../imgs/icon_canvas.png);background-position: 50% 50%;}
+#randomart{background: url(../imgs/icon_randomart.png);background-position: 50% 50%;}
+#prog{background: url(../imgs/icon_prog2.png);background-position: 50% 50%;}
+#indexcrypted{background: url(../imgs/icon_indexcrypted.png);background-position: 50% 50%;}
+#crypt{background: url(../imgs/icon_crypt.png);background-position: 50% 50%;}
 .icno {
 	margin:10px;
 	width:70px;
 	height:70px;
+	
+	position:relative;
+	left:50%;
+	margin-left:-35px;
 	-webkit-border-top-left-radius: 50px;
 	  -webkit-border-top-right-radius: 50px;
 	  -webkit-border-bottom-right-radius: 50px;
@@ -177,9 +175,15 @@ a .post desc .thumb img{
 	bottom:0;
 }
 
+
+
+
 hr{
 	color:#aaa;
 	border: solid 1px #aaa;
+	width: 100%;
+	display: block;
+	float: left;
 }
 .gi{
 	/* game icon */
@@ -190,4 +194,5 @@ hr{
 	border-radius: 6px;
 }
 
-
+#hiddencounter{display:none;}
+#btc-quote{position: fixed;right: 0;bottom: 0;}
