@@ -43,11 +43,33 @@
 			</div>
 			<div class="post" id="yellow">
 				<t>.</t><h2>Code test</h2>
-				<div class="content"></div>
+				<div class="content"><p>Let's test how code will look in my devlog:
+<pre><code>
+using UnityEngine;
+using System.Collections;
+
+public class ExampleClass : MonoBehaviour {
+    public Transform startMarker;
+    public Transform endMarker;
+    public float speed = 1.0F;
+    private float startTime;
+    private float journeyLength;
+    void Start() {
+        startTime = Time.time;
+        journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
+    }
+    void Update() {
+        float distCovered = (Time.time - startTime) * speed;
+        float fracJourney = distCovered / journeyLength;
+        transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);
+    }
+}
+</code></pre>
+				</div>
 			</div>
 			<div class="post" id="yellow">
 				<t>.</t><h2>Image test</h2>
-				<div class="content"><p> Just testing if an image fits well in this layout:</p><img src="http://i.imgur.com/c3nujcn.jpg"/><p>But what about an image larger than the div width?</p><img src="http://i.imgur.com/lmgQfDu.jpg"/><p>And tall images?<img src="./imgs/tall.jpg"/><p>And why not, gifs?</p><img src="https://i.imgur.com/rgOdA9h.gif"><p>Everything works, splendid!</p><img src="https://i.imgur.com/P1Chi6u.gif"/></div>
+				<div class="content"><p> Just testing if an image fits well in this layout:</p><img src="http://i.imgur.com/c3nujcn.jpg"/><p>But what about an image larger than the div width?</p><img src="https://scontent-mxp1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/535937_10201013863537861_1774452961_n.jpg?oh=3792cfc574cd427ab738b70d38ac8612&oe=57B92127"/><p>And tall images?<img src="./imgs/tall.jpg"/><p>And why not, gifs?</p><img src="https://i.imgur.com/rgOdA9h.gif"><p>Everything works, splendid!</p><img src="https://i.imgur.com/P1Chi6u.gif"/></div>
 			</div>
 
 			<div class="post" id="blue">
