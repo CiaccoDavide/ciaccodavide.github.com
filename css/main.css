@@ -10,7 +10,8 @@ font-family: 'Raleway', sans-serif; // - 100,200
 	background: #090909; 
 	font: 12px ;
 /*	font-family: 'profontwindowsregular';*/
-	font-family: Consolas,monaco,monospace;
+/*	font-family: Consolas,monaco,monospace;*/
+font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 	letter-spacing: 0px;
 
 }*{font-size: 12px;
