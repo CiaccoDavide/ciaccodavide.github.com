@@ -112,6 +112,7 @@ a .post:hover{
 	cursor:pointer;
 	background:#121212;
 	border-left: 1px solid #16a;
+	box-shadow: inset 0 0 0 1px #000;
 }
 #avatars{background: url(http://ciaccodavide.altervista.org/qbdp/perpets/?counter=5);background-position: 50% 50%;}
 #canvas{background: url(../imgs/icon_canvas.png);background-position: 50% 50%;}
