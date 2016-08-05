@@ -80,7 +80,11 @@ h2{
 
 a{
 	text-decoration:none;
-color:#888;}
+color:#f83;}
+a:hover{
+	text-decoration:underline;
+color:#3f8;}
+}
 .links{
 	margin:10px;
 	float:right;
