@@ -1,3 +1,5 @@
+
+
 html {}
 body {
 	width:100%;margin:0;padding:0;
@@ -13,6 +15,9 @@ font-family: 'Raleway', sans-serif; // - 100,200
 /*	font-family: Consolas,monaco,monospace;*/
 font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, monospace;
 	letter-spacing: 0px;
+	
+
+	`color:#eee;
 
 }*{font-size: 12px;
 	font-weight: 100;
@@ -57,7 +62,10 @@ h2{
 	overflow-y:scroll;
 	overflow-x:hidden;*/
 	text-align: center;
+
+	color: #888;
 }
+
 #left h1{
 	text-shadow:1px 1px 0px #333;
 	text-align:right;
@@ -320,3 +328,20 @@ a .post:hover{
 .downloadButton{opacity: 1;}
 }
 
+
+
+
+.tutorialScreen{
+	display: block;
+	width: 300px;
+	position: relative;
+	left: 50%;
+	
+	margin: 20px;
+	margin-left: -150px;
+
+	border: 1px solid #222;
+	padding: 2px;
+}
+
+small{font-size: 9px;color:#38f;}
