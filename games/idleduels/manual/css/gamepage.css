@@ -390,4 +390,5 @@ p{margin: 5px 0;}
 }
 
 table{position: relative;text-align: center;margin: 10px auto;}
+th{text-align: center;}
 td{text-align: left;padding: 10px;}
