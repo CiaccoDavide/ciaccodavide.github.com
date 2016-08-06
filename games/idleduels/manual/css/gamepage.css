@@ -387,8 +387,17 @@ p{margin: 5px 0;}
 	padding: 2px;
 
 	border-radius: 3px;
+	text-align: center;
 }
 
 table{position: relative;text-align: center;margin: 10px auto;}
 th{text-align: center;}
-td{text-align: left;padding: 10px;}
+td{text-align: left;padding: 10px 10px;max-width: 500px;}
+td small{color: #666;font-size: 11px;}
+
+.expl td{
+	padding:2px 10px;
+	text-align: center;
+	background: #060606;
+}
+p{padding: 0 4px;}

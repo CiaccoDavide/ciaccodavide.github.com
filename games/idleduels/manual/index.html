@@ -100,7 +100,19 @@ Every 1000 drops of the same type of gear, the probability of finding an item of
 - &nbsp;0.3% <span class="t5">unique</span> drop&nbsp;&nbsp;&nbsp;</p>
 <br>
 <div class="download">The Duel Mechanics</div>
+<p>In this game every duel is a "one versus one duel".<br>Defeating one enemy will not replenish your Health Points.<br>Every time you defeat an opponent you will start a duel with the next one.<br>You lose when your Health Points reach 0.<br>Once you lose you will face a weaker opponent that you have already defeated.<br><br>The level cap is 100.<br>Once you get to the opponent #10101 the 1337 Mode will activate: here you'll face the strongest adversaries, all with Unique gear equipped.<br>When you are in 1337 Mode your Health Points will be restored after each duel.</p>
+<p><br>Your pg will attack every 1.5s / SPD (the attack speed of your weapon).</p><p>
+<br>Your DEF (defense) will lower the damage that your opponent's ATK (attack power) can deal.</p><p>
+<br>Your ACC (accuracy) and DEX (dexterity) compared to your opponent's ones modify the probability of hits, misses and criticals.<br>
 
+<table class="expl">
+<tr><td> if </td><td> crit probability </td><td> miss probability </td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;your ACC > 2 * opponent DEX</td><td>40%</td><td>1%</td></tr>
+<tr><td>your ACC > opponent DEX</td><td>15%</td><td>5%</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;your ACC < 2 * opponent DEX</td><td>1%</td><td>40%</td></tr>
+<tr><td>your ACC < opponent DEX</td><td>5%</td><td>15%</td></tr>
+<table>
+        </p>
 <br>
 <div class="download">The Power Gems</div>
 <p>rarer items are infused with a certain number of power gems:<br>
@@ -118,27 +130,45 @@ The Power Gems have a certain effect depending if they are placed on a sword or 
 <table>
 <tr>
 	<th><img src="./imgs/gem_00_armor.png" class="powerGem_img g0"><img src="./imgs/gem_00_sword.png" class="powerGem_img g0"></th>
-	<td>Armor effect: Fire Shield<br>Sword effect: Flaming sword</td>
+	<td>
+		<p>Armor effect: Fire Shield.<br><small>Nullifies any incoming fire damage.</small></p>
+		<p>Sword effect: Flaming Sword<br><small>Your attacks will deal 10% more damage thanks to the burning wounds of your enemy.</small></p>
+	</td>
 </tr>
 <tr>
 	<th><img src="./imgs/gem_01_armor.png" class="powerGem_img g1"><img src="./imgs/gem_01_sword.png" class="powerGem_img g1"></th>
-	<td>Armor effect: Poison Shield<br>Sword effect: Poisoned blade</td>
+	<td>
+		<p>Armor effect: Poison Shield.<br><small>Nullifies any incoming poison damage.</small></p>
+		<p>Sword effect: Poisoned Blade<br><small>If your blade is poisoned your damage will increase over time: from 2% to 30% of bonus poison damage.<br>The first 2 hits will grant a 2% bonus -> the next 3 hits will grant a 4% bonus -> 4x6% -> 5x8% -> 6x10% -> 7x12% -> 8x14% -> 9x16% -> 10x18% -> 11x20% -> 12x22% -> 13x24% -> 14x26% -> 15x28% -> all the next attacks will have the maximum poison effect (30%).</small></p>
+	</td>
 </tr>
 <tr>
-	<td><img src="./imgs/gem_02_armor.png" class="powerGem_img g2"><img src="./imgs/gem_02_sword.png" class="powerGem_img g2"></td>
-	<td>Armor effect: Ice Shield<br>Sword effect: Freezing sword</td>
+	<th><img src="./imgs/gem_02_armor.png" class="powerGem_img g2"><img src="./imgs/gem_02_sword.png" class="powerGem_img g2"></th>
+	<td>
+		<p>Armor effect: Ice Shield.<br><small>Nullifies the effect of your opponent's Freezing Sword.</small></p>
+		<p>Sword effect: Freezing Sword<br><small>Your sword will reduce the attack speed of your opponent by 1.</small></p>
+	</td>
 </tr>
 <tr>
 	<th><img src="./imgs/gem_03_armor.png" class="powerGem_img g3"><img src="./imgs/gem_03_sword.png" class="powerGem_img g3"></th>
-	<td>Armor effect: Self-Healing armor<br>Sword effect: Healing strikes</td>
+	<td>
+		<p>Armor effect: Self-Healing Armor<br><small>Every time your opponent hits you, your armor will heal you by 10% of the physical damage dealt.</small></p>
+		<p>Sword effect: Self-Healing Strikes<br><small>Every time you land a strike on your enemy, you will be healed for 10% of the physical damage you deal.</small></p>
+	</td>
 </tr>
 <tr>
 	<th><img src="./imgs/gem_04_armor.png" class="powerGem_img g4"><img src="./imgs/gem_04_sword.png" class="powerGem_img g4"></th>
-	<td>Armor effect: Confusion Shield<br>Sword effect: Confusing blade</td>
+	<td>
+		<p>Armor effect: Confusion Shield.<br><small>Nullifies the effect of your opponent's Confusing Blade.</small></p>
+		<p>Sword effect: Confusing Blade<br><small>For each of his attacks your opponent has a 20% probability to become confused and attack himself with half of his attack power.</small></p>
+	</td>
 </tr>
 <tr>
 	<th><img src="./imgs/gem_05_armor.png" class="powerGem_img g5"><img src="./imgs/gem_05_sword.png" class="powerGem_img g5"></th>
-	<td>Armor effect: Shadow concealer<!-- occultatore --><br>Sword effect: Shadow sword</td>
+	<td>
+		<p>Armor effect: Shadow concealer<!-- occultatore --><br><small>Grants its owner a 50% Dexterity bonus.<br>You will be concealed in a shadow cloud, hitting you will be more difficult.</small></p>
+		<p>Sword effect: Shadow Sword<br><small>Grants its owner a 50% Accuracy bonus.<br>Your sword is imbued with the Shadow Spell, it will be harder for your opponent to read your attacks.</small></p>
+	</td>
 </tr>
 </table>
 </p>
