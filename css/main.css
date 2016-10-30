@@ -90,11 +90,11 @@ color:#888;}
 }
 .links a:hover t{
 	color:#38f;
-	text-shadow: 0 0 3px #aaf;
+	text-shadow: 0 0 3px #aaf,0 0 1px #04a;
 }
 .links #active t{
 	color:#38f;
-	text-shadow: 0 0 3px #aaf;	
+	text-shadow: 0 0 3px #aaf,0 0 1px #04a;	
 }
 * a:visited{
 	text-decoration:none;
@@ -160,6 +160,12 @@ a .post:hover{
 
 #hiddencounter{display:none;}
 #btc-quote{position: fixed;right: 0;bottom: 0;}
+.padded{padding: 20px;}
+#right a:hover{
+	color: #38f;
+	text-decoration: underline;
+	text-shadow: 0 0 3px #04a;
+}
 
 
 @media only screen and ( max-width: 750px ) {
