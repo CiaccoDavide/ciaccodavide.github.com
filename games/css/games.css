@@ -96,6 +96,10 @@ color:#888;}
 	color:#38f;
 	text-shadow: 0 0 3px #aaf;
 }
+.links #active t{
+	color:#38f;
+	text-shadow: 0 0 3px #aaf;	
+}
 * a:visited{
 	text-decoration:none;
 }* a{
