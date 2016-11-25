@@ -1,8 +1,8 @@
 
 var NUM_PARTICLES = ( ( ROWS = 100 ) * ( COLS = 100 ) ),
     THICKNESS = Math.pow( 80, 2 ),
-    SPACING = 6,
-    MARGIN = 10,
+    SPACING = 4,
+    MARGIN = 100,
     COLOR = 120,
     DRAG = 0.95,
     EASE = 0.25,
@@ -13,8 +13,6 @@ var NUM_PARTICLES = ( ( ROWS = 100 ) * ( COLS = 100 ) ),
     B = 4 / Math.PI,
     C = -4 / Math.pow( Math.PI, 2 ),
     P = 0.225,
-
-    
 
     container,
     particle,
@@ -99,7 +97,7 @@ function step() {
     for ( i = 0; i < NUM_PARTICLES; i++ ) {
 
       p = list[i];
-COLOR=Math.floor((Math.random() * 155)+100); 
+COLOR=Math.floor((Math.random() * 150)+100); 
       b[n = ( ~~p.x + ( ~~p.y * w ) ) * 4] = b[n+1] = b[n+2] = COLOR, b[n+3] = 255;
     }
     ctx.putImageData( a, 0, 0 );
