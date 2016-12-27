@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Oswald:300" rel="stylesheet"> 
+	<style type="text/css">
+		
+body{color:#fff;font-family: 'Amatic SC', cursive;     
+
+    font-family: 'Oswald', sans-serif;
+font-size: 20px;
+
+}
+a{text-decoration:none;color:#fff;}
+a:visited{text-decoration:none;color:#fff;}
+a:hover{text-decoration:none;color:#fff;}
+
+.options_toggle{
+	position:fixed;
+	bottom: 56px;left: 50%;margin-left:-16px;
+	width:32px;height:32px;border-radius:64px;border:4px solid rgba(255,255,255,0.6);
+	transition:all .4s;
+	background: rgba(255,255,255,0);
+	overflow: hidden;
+}.options_toggle:hover{/*cursor:pointer;*/background:rgba(255,255,255,0.18);border: 4px solid #fff;/*}
+
+.options_opened{*/width: 256px;height:128px;border-radius:3px;margin-left:-128px;box-shadow:0 -2px 6px rgba(0,0,0,0.1);}
+.options_toggle .options_options{opacity: 0;transition: all .1s;position:relative;top:10px;bottom:10px;left:10px;right:10px;}
+.options_toggle:hover .options_options{opacity: 1;transition: all .9s;}
+
+
+
+
+.canvas-interactive-wrapper {
+    position: fixed;
+    top:0;bottom:0;left:0;right:0;
+    text-align: center;
+}
+
+.canvas-interactive-wrapper canvas {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.canvas-interactive-wrapper .cta-wrapper {
+    margin-top: 130px;
+}
+
+.canvas-interactive-wrapper .cta-wrapper a {
+    position: relative;
+    display: inline-block;
+    padding: 3px 7px;
+    border: solid 1px transparent;
+    margin-right: 50px;
+    text-decoration: none;
+    transition: border .3s;
+}
+
+.canvas-interactive-wrapper .cta-wrapper a.active {
+    border-color: #fff;
+}
+
+iframe{}
+
+#musicbox{position: fixed;left: 0;right: 0;}
+
+	</style>
+</head>
+<body>
+
+<div class="canvas-interactive-wrapper">
+    <canvas id="canvas-interactive"></canvas>
+    <div class="cta-wrapper">
+        <a href="#default-state" id="default-state-cta">Default state</a>
+        <a href="#violet-state" id="violet-state-cta" class="active">Violet state</a>
+        <a href="#orange-state" id="orange-state-cta">Orange state</a>
+
+
+    </div>
+
+
+</div>
+
+
+<div class="bloc-logo">
+    <canvas id="logo-canvas"></canvas>
+    <a href="index.html" class="logo-mask">Granim.js</a>
+</div>
+
+
+<div id="options_toggle" class="options_toggle options_opened">
+	<div class="options_options">
+		Yesioohf
+	</div>
+</div>
+
+
+
+
+
+<iframe id="musicbox" width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/9696979&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="./granim.min.js"></script>
+<script type="text/javascript">
+	
+
+var granimInstance = new Granim({
+    element: '#canvas-interactive',
+    name: 'interactive-gradient',
+    elToSetClassOn: '.canvas-interactive-wrapper',
+    direction: 'diagonal',
+    opacity: [1, 1],
+    isPausedWhenNotInView: true,
+    stateTransitionSpeed: 2000,
+    states : {
+        "default-state": {
+            gradients: [
+                ['#9D50BB', '#6E48AA'],
+                ['#4776E6', '#8E54E9']
+            ],
+            transitionSpeed: 4000
+        },
+        "violet-state": {
+            gradients: [
+                ['#B3FFAB', '#12FFF7'],
+                ['#ADD100', '#7B920A'],
+                ['#1A2980', '#26D0CE']
+            ],
+            transitionSpeed: 40000
+        },
+        "orange-state": {
+            gradients: [ ['#FF4E50', '#F9D423'] ],
+            loop: false
+        }
+    }
+});
+
+// With jQuery
+$('#default-state-cta').on('click', function(event) {
+    event.preventDefault();
+    granimInstance.changeState('violet-state');
+    setClass('#violet-state-cta')
+});
+$('#violet-state-cta').on('click', function(event) {
+    event.preventDefault();
+    granimInstance.changeState('default-state');
+    setClass('#default-state-cta')
+});
+$('#orange-state-cta').on('click', function(event) {
+    event.preventDefault();
+    granimInstance.changeState('orange-state');
+    setClass('#orange-state-cta')
+});
+
+function setClass(element) {
+    $('.canvas-interactive-wrapper a').removeClass('active');
+    $(element).addClass('active');
+};
+
+
+
+var granimInstance = new Granim({
+    element: '#logo-canvas',
+    direction: 'left-right',
+    opacity: [1, 1],
+    states : {
+        "default-state": {
+            gradients: [
+                ['#EB3349', '#F45C43'],
+                ['#FF8008', '#FFC837'],
+                ['#4CB8C4', '#3CD3AD'],
+                ['#24C6DC', '#514A9D'],
+                ['#FF512F', '#DD2476'],
+                ['#DA22FF', '#9733EE']
+            ],
+            transitionSpeed: 2000
+        }
+    }
+});
+
+
+</script>
+
+</body>
+</html>
