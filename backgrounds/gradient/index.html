@@ -6,9 +6,19 @@
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Oswald:300" rel="stylesheet"> 
 	<style type="text/css">
 		
-body{color:#fff;font-family: 'Amatic SC', cursive;     
+@font-face {
+  font-family:neon;
+  src: local("Neon Pixel-7"),
+       url(./fonts/Lekton-Regular.ttf);
+  font-weight: bold;
+}
 
+
+
+body{color:#fff;     
     font-family: 'Oswald', sans-serif;
+    font-family: 'neon', monospace;
+	font-family: 'Amatic SC', cursive;
 font-size: 20px;
 
 }
@@ -19,13 +29,13 @@ a:hover{text-decoration:none;color:#fff;}
 .options_toggle{
 	position:fixed;
 	bottom: 56px;left: 50%;margin-left:-16px;
-	width:32px;height:32px;border-radius:64px;border:4px solid rgba(255,255,255,0.6);
+	width:32px;height:32px;border-radius:64px;border:4px solid rgba(255,255,255,0.25);
 	transition:all .4s;
 	background: rgba(255,255,255,0);
 	overflow: hidden;
-}.options_toggle:hover{/*cursor:pointer;*/background:rgba(255,255,255,0.18);border: 4px solid #fff;/*}
+}.options_toggle:hover{/*cursor:pointer;*/background:rgba(255,255,255,0.18);border: 4px solid rgba(255,255,255,0.76);/*}
 
-.options_opened{*/width: 256px;height:128px;border-radius:3px;margin-left:-128px;box-shadow:0 -2px 6px rgba(0,0,0,0.1);}
+.options_opened{*/width: 512px;height:128px;border-radius:3px;margin-left:-256px;box-shadow:0 -2px 6px rgba(0,0,0,0.1);}
 .options_toggle .options_options{opacity: 0;transition: all .1s;position:relative;top:10px;bottom:10px;left:10px;right:10px;}
 .options_toggle:hover .options_options{opacity: 1;transition: all .9s;}
 
@@ -48,12 +58,10 @@ a:hover{text-decoration:none;color:#fff;}
     bottom: 0;
     left: 0;
 }
-
-.canvas-interactive-wrapper .cta-wrapper {
-    margin-top: 130px;
+.cta-wrapper {
+    margin-top: 10px;
 }
-
-.canvas-interactive-wrapper .cta-wrapper a {
+.cta-wrapper a {
     position: relative;
     display: inline-block;
     padding: 3px 7px;
@@ -62,28 +70,39 @@ a:hover{text-decoration:none;color:#fff;}
     text-decoration: none;
     transition: border .3s;
 }
-
-.canvas-interactive-wrapper .cta-wrapper a.active {
+.cta-wrapper a.active {
     border-color: #fff;
 }
 
 iframe{}
 
-#musicbox{position: fixed;left: 0;right: 0;}
-
+#musicbox{
+	position: fixed;
+	width:600px;
+	height:400px;
+	top:50%;
+	left: 50%;
+	margin-left: -300px;
+	margin-top: -200px;
+}
+#clock{
+			color:rgba(255,255,255,0.15);
+			text-align: center;
+			position:fixed;
+			height:100px;
+			width:100%;
+			top:100px;
+			font-size:280px;
+			font-weight: 100; 
+			text-shadow:0 -2px 0 rgba(0,0,0,0.1),0 2px 0 rgba(255,255,255,0.1); 
+		}
 	</style>
 </head>
 <body>
 
 <div class="canvas-interactive-wrapper">
     <canvas id="canvas-interactive"></canvas>
-    <div class="cta-wrapper">
-        <a href="#default-state" id="default-state-cta">Default state</a>
-        <a href="#violet-state" id="violet-state-cta" class="active">Violet state</a>
-        <a href="#orange-state" id="orange-state-cta">Orange state</a>
-
-
-    </div>
+    
 
 
 </div>
@@ -94,22 +113,25 @@ iframe{}
     <a href="index.html" class="logo-mask">Granim.js</a>
 </div>
 
+<div id="clock"></div>
 
 <div id="options_toggle" class="options_toggle options_opened">
 	<div class="options_options">
 		Yesioohf
+		<div class="cta-wrapper">
+
+			<a href="#default-state" id="default-state-cta" class="active">Default state</a>
+			<a href="#violet-state" id="violet-state-cta">Violet state</a>
+			<a href="#orange-state" id="orange-state-cta">Orange state</a>
+
+    	</div>
 	</div>
 </div>
 
 
-
-
-
-<iframe id="musicbox" width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/9696979&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-
-
-
-
+<!--
+<iframe id="musicbox" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/139960673&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+-->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -124,26 +146,33 @@ var granimInstance = new Granim({
     direction: 'diagonal',
     opacity: [1, 1],
     isPausedWhenNotInView: true,
-    stateTransitionSpeed: 2000,
+    stateTransitionSpeed: 500,
     states : {
         "default-state": {
             gradients: [
                 ['#9D50BB', '#6E48AA'],
-                ['#4776E6', '#8E54E9']
+                ['#FF4E50', '#F9D423'],
+                ['#4776E6', '#8E54E9'],
+                ['#AA076B', '#61045F'],
+                ['#FF4E50', '#F9D423'],
+                ['#F9D423', '#FF4E50'],
+                ['#02AAB0', '#00CDAC'],
+                ['#DA22FF', '#9733EE'],
+                ['#F9D423', '#FF4E50']
             ],
-            transitionSpeed: 4000
+            transitionSpeed: 10000
         },
         "violet-state": {
             gradients: [
-                ['#B3FFAB', '#12FFF7'],
-                ['#ADD100', '#7B920A'],
-                ['#1A2980', '#26D0CE']
+                ['#9D50BB', '#6E48AA'],
+                ['#4776E6', '#8E54E9']
             ],
-            transitionSpeed: 40000
+            transitionSpeed: 2000
         },
         "orange-state": {
-            gradients: [ ['#FF4E50', '#F9D423'] ],
-            loop: false
+            gradients: [ ['#FF4E50', '#F9D423'],['#F9D423', '#FF4E50'] ],
+            loop: true,
+            transitionSpeed: 10000
         }
     }
 });
@@ -151,13 +180,13 @@ var granimInstance = new Granim({
 // With jQuery
 $('#default-state-cta').on('click', function(event) {
     event.preventDefault();
-    granimInstance.changeState('violet-state');
-    setClass('#violet-state-cta')
+    granimInstance.changeState('default-state');
+    setClass('#default-state-cta')
 });
 $('#violet-state-cta').on('click', function(event) {
     event.preventDefault();
-    granimInstance.changeState('default-state');
-    setClass('#default-state-cta')
+    granimInstance.changeState('violet-state');
+    setClass('#violet-state-cta')
 });
 $('#orange-state-cta').on('click', function(event) {
     event.preventDefault();
@@ -172,24 +201,21 @@ function setClass(element) {
 
 
 
-var granimInstance = new Granim({
-    element: '#logo-canvas',
-    direction: 'left-right',
-    opacity: [1, 1],
-    states : {
-        "default-state": {
-            gradients: [
-                ['#EB3349', '#F45C43'],
-                ['#FF8008', '#FFC837'],
-                ['#4CB8C4', '#3CD3AD'],
-                ['#24C6DC', '#514A9D'],
-                ['#FF512F', '#DD2476'],
-                ['#DA22FF', '#9733EE']
-            ],
-            transitionSpeed: 2000
-        }
-    }
-});
+startTime();
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('clock').innerHTML = h + ":" + m;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
 
 
 </script>
