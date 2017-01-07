@@ -324,3 +324,32 @@ a .post:hover{
     background-repeat: no-repeat;
 }
 }
+
+
+
+/* INTERESTING STUFF */
+
+#interesting-list a{
+	text-decoration:none;
+	color:#888;
+}
+#interesting-list a:visited{
+	text-decoration:none;
+}
+#interesting-list a:hover{
+	text-decoration:none;
+	color: #ddd;
+}
+#interesting-list a t{
+	line-height: 0;
+	letter-spacing:3px;
+}#interesting-list a:hover t{color:#38f;}
+#interesting-list p{
+}
+#interesting-list a span{
+	visibility:hidden;
+	font-size:12px;
+	padding-left: 10px;
+	color:#444;
+}
+#interesting-list a:hover span{visibility:visible;text-shadow: 0 0 0 #000;}
