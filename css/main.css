@@ -1,16 +1,8 @@
 html {}
 body {
 	width:100%;margin:0;padding:0;
-	/*
-font-family: 'Lato', sans-serif; //all - 100,300 anche italic
-font-family: 'Quicksand', sans-serif; //menu - 300,400
-font-family: 'Source Code Pro', sans-serif; //code - 200,300,400
-font-family: 'Raleway', sans-serif; // - 100,200
-	*/
 	background: #090909; 
 	font: 12px ;
-/*	font-family: 'profontwindowsregular';*/
-/*	font-family: Consolas,monaco,monospace;*/
 font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, monospace;
 	letter-spacing: 0px;
 color:#ccc;
@@ -50,9 +42,7 @@ h2{
 	position: absolute;
 	float: left;
 	left:160px;
-	width: 500px;/*
-	overflow-y:scroll;
-	overflow-x:hidden;*/
+	width: 500px;
 }
 #left h1{
 	text-shadow:1px 1px 0px #333;
@@ -68,7 +58,8 @@ h2{
 
 a{
 	text-decoration:none;
-color:#888;}
+	color:#888;
+}
 .links{
 	margin:10px;
 	float:right;
@@ -77,7 +68,7 @@ color:#888;}
 	color:#888;
 	font-size: 12px;
 	font-weight: 100;
-	/*letter-spacing:1px;*/
+	/*letter-spacing:3px;*/
 	text-decoration:none;
 }
 .links a t{
@@ -165,7 +156,38 @@ a .post:hover{
 	color: #38f;
 	text-decoration: underline;
 	text-shadow: 0 0 3px #04a;
+}#right a:hover .post{
+	text-shadow: 0 0 0 #000;
 }
+
+
+/* INTERESTING STUFF */
+
+#interesting-list a{
+	text-decoration:none;
+	color:#888;
+}
+#interesting-list a:visited{
+	text-decoration:none;
+}
+#interesting-list a:hover{
+	text-decoration:none;
+	color: #ddd;
+}
+#interesting-list a t{
+	line-height: 0;
+	letter-spacing:3px;
+}#interesting-list a:hover t{color:#38f;}
+#interesting-list p{
+}
+#interesting-list a span{
+	visibility:hidden;
+	font-size:12px;
+	padding-left: 10px;
+	color:#444;
+}
+#interesting-list a:hover span{visibility:visible;text-shadow: 0 0 0 #000;}
+
 
 
 @media only screen and ( max-width: 750px ) {
@@ -178,20 +200,16 @@ a .post:hover{
 		overflow-y:hidden;
 		overflow-x:hidden;
 		text-align: center;
-
 		padding-top:10px;
 		left:0;
 		right:0;
 		box-shadow:1px 0 0 #222, inset -1px 0 0 0 #000;
 	}
-	 #right{
+	#right{
 		padding:16px 0;
 		position: relative;
 		left:0;
-
-		width: 100%;/*
-		overflow-y:scroll;
-		overflow-x:hidden;*/
+		width: 100%;
 	}
 	#left h1{
 		text-shadow:1px 1px 0px #333;
@@ -204,10 +222,6 @@ a .post:hover{
 	}#left h1:hover{
 		text-shadow: 0 0 3px #66d;
 	}
-
-	a{
-		text-decoration:none;
-	color:#888;}
 	.links{
 		margin:0;
 		width: 100%;
@@ -253,103 +267,39 @@ a .post:hover{
 		padding:10px;
 		max-width:900px;
 		height:auto;
-		background:#111;
-		color:#999;
-		text-decoration:none;
-		border: 1px solid #222;
-		box-shadow: inset 0 0 0 1px #000;
-
-
-
 		float:left;
-		/*
-		margin:10px;
-		padding:10px;
-		max-width:300px;*/
 		width:92%;
 		margin:2%;
 		padding:2%;
-		
 		height:auto;
-		background:#eeeeee;
-		color:#666;
 		text-decoration:none;
-		/*dark below*/
-		background:#111;
+		background:#111111;
 		color:#999;
-		border: 1px solid #222;
-		box-shadow: inset 0 0 0 1px #000;
+		border: 1px solid #222222;
+		box-shadow: inset 0 0 0 1px #000000;
 	}
 	a .post:hover{
 		cursor:pointer;
 		background:#121212;
-		border-left: 1px solid #16a;
-		box-shadow: inset 0 0 0 1px #000;
-
-
-		cursor:pointer;
-		background:#f6f6f6;
-		/*dark below*/
-		background:#121212;
-		border: 1px solid #16a;
-		box-shadow: inset 0 0 0 1px #000;
+		border: 1px solid #1166aa;
+		box-shadow: inset 0 0 0 1px #000000;
 	}
-.icno {
-	margin:10px;
-	width:70px;
-	height:70px;
-	
-	position:relative;
-	left:50%;
-	margin-left:-35px;
-	-webkit-border-top-left-radius: 50px;
-	  -webkit-border-top-right-radius: 50px;
-	  -webkit-border-bottom-right-radius: 50px;
-	  -webkit-border-bottom-left-radius: 50px;
-
-	  -moz-border-radius-topleft: 10px;
-	  -moz-border-radius-topright: 10px;
-	  -moz-border-radius-bottomright: 10px;
-	  -moz-border-radius-bottomleft: 10px;
-
-	  border-top-left-radius: 50px;
-	  border-top-right-radius: 50px;
-	  border-bottom-right-radius: 50px;
-	  border-bottom-left-radius: 50px;
-
-	  -moz-background-size: cover;
-	  -webkit-background-size: cover;
-	  background-size: cover;
-	  
-    background-repeat: no-repeat;
-}
-}
+	.icno{
+		margin:10px;
+		width:70px;
+		height:70px;
+		position:relative;
+		left:50%;
+		margin-left:-35px;
+		border-radius: 50px;
+		background-size: cover;
+	    background-repeat: no-repeat;
+	}
 
 
+	#interesting-list{text-align: left;margin: 40px 20px; }
 
-/* INTERESTING STUFF */
+	#interesting-list a{margin-bottom: 40px !important; }
 
-#interesting-list a{
-	text-decoration:none;
-	color:#888;
 }
-#interesting-list a:visited{
-	text-decoration:none;
-}
-#interesting-list a:hover{
-	text-decoration:none;
-	color: #ddd;
-}
-#interesting-list a t{
-	line-height: 0;
-	letter-spacing:3px;
-}#interesting-list a:hover t{color:#38f;}
-#interesting-list p{
-}
-#interesting-list a span{
-	visibility:hidden;
-	font-size:12px;
-	padding-left: 10px;
-	color:#444;
-}
-#interesting-list a:hover span{visibility:visible;text-shadow: 0 0 0 #000;}
+
