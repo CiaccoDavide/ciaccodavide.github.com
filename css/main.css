@@ -43,6 +43,8 @@ h2{
 	float: left;
 	left:160px;
 	width: 500px;
+	background-attachment:fixed;
+	background-image:url('http://em.qbdp.me/logobackground.php');
 }
 #left h1{
 	text-shadow:1px 1px 0px #333;
