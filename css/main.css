@@ -188,7 +188,12 @@ a .post:hover{
 }
 #interesting-list a:hover span{visibility:visible;text-shadow: 0 0 0 #000;}
 
-
+/* NEW LOGO */
+#left a{
+	height:160px;
+	background: url('http://em.qbdp.me/logo.php');
+	box-shadow: inset 0 0 6px #111;
+} 
 
 @media only screen and ( max-width: 750px ) {
 	body{text-align: center;}
