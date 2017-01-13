@@ -201,6 +201,14 @@ a .post:hover{
 	background-position: 50% 50%;
 	text-align: center;
 } #left #logo h1{}
+#left #logo-canvas{
+	position:absolute;
+	z-index:-1;
+	left:0;
+	right:0;
+	top:0;
+	height:120px;
+}
 #left #logoside{
 	top: 270px;
 	bottom: 0;
