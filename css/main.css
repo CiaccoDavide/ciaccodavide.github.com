@@ -200,7 +200,22 @@ a .post:hover{
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	text-align: center;
-} #left #logo h1{}
+} #left #logo h1{
+	text-shadow:1px 1px 0px #333,
+ 0px  0px 3px #111,
+ 0px  2px 3px #111,
+ 2px  2px 3px #111,
+-2px  2px 3px #111,
+ 2px  0px 3px #111,
+ 2px  2px 3px #111,
+ 2px -2px 3px #111,
+ 0px -2px 3px #111,
+ 2px -2px 3px #111,
+-2px -2px 3px #111,
+-2px  0px 3px #111,
+-2px  2px 3px #111,
+-2px -1px 3px #111;
+}
 #left #logo-canvas{
 	position:absolute;
 	z-index:-1;
