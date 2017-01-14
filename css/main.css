@@ -202,6 +202,8 @@ a .post:hover{
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	text-align: center;
+	width: 120px;
+	margin-left: 20px;
 } #left #logo h1{
 	text-shadow:1px 1px 0px #333,
  0px  0px 3px #111,
