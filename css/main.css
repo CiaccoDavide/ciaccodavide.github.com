@@ -99,7 +99,7 @@ a{
 }
 a .post{
 	/*display:inline-table;*/
-	display:inline-block;
+	display:inline-table;
 	margin:10px;
 	padding:10px;
 	/*max-width:300px;*/
