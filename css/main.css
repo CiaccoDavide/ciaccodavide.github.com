@@ -42,7 +42,7 @@ h2{
 	position: absolute;
 	float: left;
 	left:160px;
-	width: 500px;
+	/*width: 500px;*/
 }
 #left h1{
 	text-shadow:1px 1px 0px #333;
