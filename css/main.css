@@ -164,6 +164,8 @@ a .post:hover{
 	color: #38f;
 	text-decoration: underline;
 	text-shadow: 0 0 3px #04a;
+}#right .ahome:hover{
+	text-decoration: none !important;
 }#right a:hover .post{
 	text-shadow: 0 0 0 #000;
 }
