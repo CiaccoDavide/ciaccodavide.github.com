@@ -318,7 +318,7 @@ a .post:hover{
 		color:#999;
 		border: 1px solid #222222;
 		box-shadow: inset 0 0 0 1px #000000;
-	}.fullwidth{width:92%;}.halfwidth{width:92%;}
+	}.fullwidth{width:92%;}.halfwidth{width:92% !important;}
 	a .post:hover{
 		cursor:pointer;
 		background:#121212;
