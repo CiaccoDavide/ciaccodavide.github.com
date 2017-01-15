@@ -127,6 +127,7 @@ a .post:hover{
 #abouticon{background: url(../imgs/icon_about.png);background-position: 50% 50%;}
 #gamesicon{background: url(../imgs/icon_games.png);background-position: 50% 50%;}
 #githubicon{background: url(../imgs/icon_github.png);background-position: 50% 50%;}
+#devlogicon{background: url(../imgs/icon_devlog.png);background-position: 50% 50%;}
 .icno {
 	margin:10px;
 	width:70px;
