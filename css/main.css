@@ -111,7 +111,7 @@ a .post{
 	text-decoration:none;
 	border: 1px solid #222;
 	box-shadow: inset 0 0 0 1px #000;
-}.fullwidth{width:calc(100% - 40px);}.halfwidth{width:calc(50% - 46px);}
+}.fullwidth{width:calc(100% - 40px)!important;}.halfwidth{width:calc(50% - 46px)!important;}
 a .post:hover{
 	cursor:pointer;
 	background:#121212;
@@ -317,7 +317,7 @@ a .post:hover{
 		color:#999;
 		border: 1px solid #222222;
 		box-shadow: inset 0 0 0 1px #000000;
-	}
+	}.fullwidth{width:92%;}.halfwidth{width:92%;}
 	a .post:hover{
 		cursor:pointer;
 		background:#121212;
