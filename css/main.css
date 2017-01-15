@@ -259,6 +259,7 @@ a .post:hover{
 		color:#eee;
 		font-size: 28px;
 		font-weight: 100;
+		padding-top: 41px;
 	}#left h1:hover{
 		text-shadow: 0 0 3px #66d;
 	}
@@ -341,7 +342,6 @@ a .post:hover{
 
 	#interesting-list a{margin-bottom: 40px !important; }
 
-	#left h1{padding-top:25px;}
 	#left #logo{width: 100%;margin-left: 0;}
 }
 
