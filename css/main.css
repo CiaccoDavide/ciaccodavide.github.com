@@ -111,7 +111,7 @@ a .post{
 	text-decoration:none;
 	border: 1px solid #222;
 	box-shadow: inset 0 0 0 1px #000;
-}
+}.fullwidth{width:calc(100% - 40px);}.halfwidth{width:calc(50% - 46px);}
 a .post:hover{
 	cursor:pointer;
 	background:#121212;
@@ -124,6 +124,9 @@ a .post:hover{
 #prog{background: url(../imgs/icon_prog2.png);background-position: 50% 50%;}
 #indexcrypted{background: url(../imgs/icon_indexcrypted.png);background-position: 50% 50%;}
 #crypt{background: url(../imgs/icon_crypt.png);background-position: 50% 50%;}
+#abouticon{background: url(../imgs/icon_about.png);background-position: 50% 50%;}
+#gamesicon{background: url(../imgs/icon_games.png);background-position: 50% 50%;}
+#githubicon{background: url(../imgs/icon_github.png);background-position: 50% 50%;}
 .icno {
 	margin:10px;
 	width:70px;
