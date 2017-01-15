@@ -97,6 +97,7 @@ a{
 }* a{
 	text-decoration:none;
 }
+#right a:hover {text-decoration:none;}
 a .post{
 	/*display:inline-table;*/
 	display:inline-table;
