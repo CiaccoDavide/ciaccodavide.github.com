@@ -66,6 +66,10 @@ h2{
 	color:#eee;
 	font-size: 28px;
 	font-weight: 100;
+	/* NEW LOGO */
+	text-align:center;
+	padding:0;
+	padding-top:26px;
 }#left h1:hover{
 	text-shadow: 0 0 3px #66d;
 }
