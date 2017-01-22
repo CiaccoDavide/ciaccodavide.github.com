@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Tutorial 002 - TITLEPLACEHOLDER</title>
@@ -7,7 +7,7 @@
 	<meta name="keywords" content="opengl,italian,tutorial">
 	<meta name="author" content="Davide Ciacco">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/css.css">
+	<link rel="stylesheet" href="../css/single.css">
 </head>
 <body>
 
@@ -17,8 +17,8 @@
 			<h1> Uniform Variables </h1>
 		</div>
 
-		<a id="logo" class="small" href="../../index.html" title="Homepage">
-			<img src="..//logo ldpi.png">
+		<a id="logo" class="small" href="../" title="Homepage">
+			<img src="../img/logo ldpi.png">
 		</a>
 	</header>
 
@@ -61,7 +61,7 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<code>glutIdleFunc(RenderSceneCB);</code>
+			<pre><code>glutIdleFunc(RenderSceneCB);</code></pre>
 			<p>Here we register the render callback as an idle function. Note that if
 			you decide to use a dedicated idle callback function then you will need
 			to add a call to glutPostRedisplay() at the end of it. Else the idle
@@ -69,8 +69,8 @@
 			not. glutPostRedisplay() marks the current window as needed to be
 			redisplayed and during the next round through GLUT's main loop the
 			render callback will be called.</p>
-			<code>gScaleLocation = glGetUniformLocation(ShaderProgram, "gScale");<br>
-			assert(gScaleLocation != 0xFFFFFFFF);</code>
+			<pre><code>gScaleLocation = glGetUniformLocation(ShaderProgram, "gScale");<br>
+			assert(gScaleLocation != 0xFFFFFFFF);</code></pre>
 			<p>After linking the program we query the program object for the location
 			of the uniform variable. This is another example of a case where the
 			application C/C++ execution environment needs to be mapped to the
@@ -89,9 +89,9 @@
 			optimized away by the compiler. If the GLSL compiler finds out that the
 			variable is not actually used in the shader it can simply drop it. In
 			that case glGetUniformLocation will fail. </p>
-			<code>static float Scale = 0.0f;<br>
+			<pre><code>static float Scale = 0.0f;<br>
 			Scale += 0.001f;<br>
-			glUniform1f(gScaleLocation, sinf(Scale));</code>
+			glUniform1f(gScaleLocation, sinf(Scale));</code></pre>
 			<p>We maintain a static floating point variable that we increment a bit in
 			every call to the render function (you may want to play with 0.001 if
 			it runs too slowly or too quickly on your machine). The actual value
@@ -108,9 +108,9 @@
 			special version for matrices. The first parameter to the function is
 			the index location that we have extracted using glGetUniformLocation().</p>
 			<p>We will now take a look at changes that were made in the VS (the FS remains unchanged).</p>
-			<code>uniform float gScale;</code>
+			<pre><code>uniform float gScale;</code></pre>
 			<p>Here we declare the uniform value in the shader.</p>
-			<code>gl_Position = vec4(gScale * Position.x, gScale * Position.y, Position.z, 1.0);</code>
+			<pre><code>gl_Position = vec4(gScale * Position.x, gScale * Position.y, Position.z, 1.0);</code></pre>
 			<p>We multiply the X and Y values of the position vector with the value
 			that is changed from the application every frame. Can you explain why
 			the triangle is upside down half of the loop?</p>

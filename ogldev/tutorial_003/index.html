@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Tutorial 002 - TITLEPLACEHOLDER</title>
@@ -7,7 +7,7 @@
 	<meta name="keywords" content="opengl,italian,tutorial">
 	<meta name="author" content="Davide Ciacco">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/css.css">
+	<link rel="stylesheet" href="../css/single.css">
 </head>
 <body>
 
@@ -17,8 +17,8 @@
 			<h1> First Triangle </h1>
 		</div>
 
-		<a id="logo" class="small" href="../../index.html" title="Homepage">
-			<img src="..//logo ldpi.png">
+		<a id="logo" class="small" href="../" title="Homepage">
+			<img src="../img/logo ldpi.png">
 		</a>
 	</header>
 
@@ -41,13 +41,13 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<code>Vector3f Vertices[3];<br>
+			<pre><code>Vector3f Vertices[3];<br>
 			Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);<br>
 			Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);<br>
 			Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);<br>
-			</code>
+			</code></pre>
 			<p>We extended the array to contain three vertices. </p>
-			<code>glDrawArrays(GL_TRIANGLES, 0, 3);</code>
+			<pre><code>glDrawArrays(GL_TRIANGLES, 0, 3);</code></pre>
 			<p>Two changes were made to the drawing function: we draw triangles instead of points and
 			we draw 3 vertices instead of 1.</p>
 		</section>
