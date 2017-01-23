@@ -11,6 +11,11 @@ body{
 	text-align: left;
 	padding: 20px;
 	font-size:13px;
+	max-width: 1024px;
+}
+
+@media only screen and (min-width: 1064px){
+	body{ width: 1024px; position: relative; left: 50%; margin-left: -532px;}
 }
 
 #header {
