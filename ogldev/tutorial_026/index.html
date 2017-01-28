@@ -196,69 +196,69 @@
 			<h3> Source walkthru </h3>
 
 			<p>(mesh.h:33)</p>
-			<code>
+			<pre><code>
 			struct Vertex<br>
 			{<br>
-			&nbsp; &nbsp;   Vector3f m_pos;<br>
-			&nbsp; &nbsp;   Vector2f m_tex;<br>
-			&nbsp; &nbsp;   Vector3f m_normal;<br>
-			&nbsp; &nbsp;   <b>Vector3f m_tangent;</b><br>
+			Vector3f m_pos;<br>
+			Vector2f m_tex;<br>
+			Vector3f m_normal;<br>
+			<b>Vector3f m_tangent;</b><br>
 			<br>
-			&nbsp; &nbsp;   Vertex() {}<br>
+			Vertex() {}<br>
 			<br>
-			&nbsp; &nbsp;   Vertex( const Vector3f&amp; pos, <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        const Vector2f&amp; tex, <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        const Vector3f&amp; normal, <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        <b>const Vector3f&amp; Tangent</b> )<br>
-			&nbsp; &nbsp;     {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;       m_pos    = pos;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_tex    = tex;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_normal = normal;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  <b>m_tangent = Tangent;</b><br>                
-			&nbsp; &nbsp;     }<br>
+			Vertex( const Vector3f&amp; pos, <br>
+					const Vector2f&amp; tex, <br>
+					const Vector3f&amp; normal, <br>
+					<b>const Vector3f&amp; Tangent</b> )<br>
+			{<br>
+				m_pos= pos;<br>
+					 m_tex= tex;<br>
+					 m_normal = normal;<br>
+					 <b>m_tangent = Tangent;</b><br>
+			}<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				This is our new Vertex structure with the new addition of the tangent vector. We will calculate the 
 				bitangent in the fragment shader. Note that the normal of the tangent space is identical to the
 				regular triangle normal (since the texture and triangle are parallel). Therefore, the vertex normals
 				in the two coordinate system are also identical.
 			</p>
-			<code>
+			<pre><code>
 			for (unsigned int i = 0 ; i &lt; Indices.size() ; i += 3) {<br>
-			&nbsp; &nbsp;    Vertex&amp; v0 = Vertices[Indices[i]];<br>
-			&nbsp; &nbsp;    Vertex&amp; v1 = Vertices[Indices[i+1]];<br>
-			&nbsp; &nbsp;    Vertex&amp; v2 = Vertices[Indices[i+2]];<br>
+				Vertex&amp; v0 = Vertices[Indices[i]];<br>
+				Vertex&amp; v1 = Vertices[Indices[i+1]];<br>
+				Vertex&amp; v2 = Vertices[Indices[i+2]];<br>
 			  <br>
-			&nbsp; &nbsp;    Vector3f Edge1 = v1.m_pos - v0.m_pos;<br>
-			&nbsp; &nbsp;    Vector3f Edge2 = v2.m_pos - v0.m_pos;<br>
+				Vector3f Edge1 = v1.m_pos - v0.m_pos;<br>
+				Vector3f Edge2 = v2.m_pos - v0.m_pos;<br>
 			  <br>
-			&nbsp; &nbsp;    float DeltaU1 = v1.m_tex.x - v0.m_tex.x;<br>
-			&nbsp; &nbsp;    float DeltaV1 = v1.m_tex.y - v0.m_tex.y;<br>
-			&nbsp; &nbsp;    float DeltaU2 = v2.m_tex.x - v0.m_tex.x;<br>
-			&nbsp; &nbsp;    float DeltaV2 = v2.m_tex.y - v0.m_tex.y;<br>
+				float DeltaU1 = v1.m_tex.x - v0.m_tex.x;<br>
+				float DeltaV1 = v1.m_tex.y - v0.m_tex.y;<br>
+				float DeltaU2 = v2.m_tex.x - v0.m_tex.x;<br>
+				float DeltaV2 = v2.m_tex.y - v0.m_tex.y;<br>
 			  <br>
-			&nbsp; &nbsp;    float f = 1.0f / (DeltaU1 * DeltaV2 - DeltaU2 * DeltaV1);<br>
+				float f = 1.0f / (DeltaU1 * DeltaV2 - DeltaU2 * DeltaV1);<br>
 			  <br>
-			&nbsp; &nbsp;    Vector3f Tangent, Bitangent;<br>
+				Vector3f Tangent, Bitangent;<br>
 			  <br>
-			&nbsp; &nbsp;    Tangent.x = f * (DeltaV2 * Edge1.x - DeltaV1 * Edge2.x);<br>
-			&nbsp; &nbsp;    Tangent.y = f * (DeltaV2 * Edge1.y - DeltaV1 * Edge2.y);<br>
-			&nbsp; &nbsp;    Tangent.z = f * (DeltaV2 * Edge1.z - DeltaV1 * Edge2.z);<br>
+				Tangent.x = f * (DeltaV2 * Edge1.x - DeltaV1 * Edge2.x);<br>
+				Tangent.y = f * (DeltaV2 * Edge1.y - DeltaV1 * Edge2.y);<br>
+				Tangent.z = f * (DeltaV2 * Edge1.z - DeltaV1 * Edge2.z);<br>
 			  <br>
-			&nbsp; &nbsp;    Bitangent.x = f * (-DeltaU2 * Edge1.x - DeltaU1 * Edge2.x);<br>
-			&nbsp; &nbsp;    Bitangent.y = f * (-DeltaU2 * Edge1.y - DeltaU1 * Edge2.y);<br>
-			&nbsp; &nbsp;    Bitangent.z = f * (-DeltaU2 * Edge1.z - DeltaU1 * Edge2.z);<br>
+				Bitangent.x = f * (-DeltaU2 * Edge1.x - DeltaU1 * Edge2.x);<br>
+				Bitangent.y = f * (-DeltaU2 * Edge1.y - DeltaU1 * Edge2.y);<br>
+				Bitangent.z = f * (-DeltaU2 * Edge1.z - DeltaU1 * Edge2.z);<br>
 			  <br>
-			&nbsp; &nbsp;    v0.m_tangent += Tangent;<br>
-			&nbsp; &nbsp;    v1.m_tangent += Tangent;<br>
-			&nbsp; &nbsp;    v2.m_tangent += Tangent;<br>
+				v0.m_tangent += Tangent;<br>
+				v1.m_tangent += Tangent;<br>
+				v2.m_tangent += Tangent;<br>
 			}<br>   
 			<br>
 			for (unsigned int i = 0 ; i &lt; Vertices.size() ; i++) {<br>
-				&nbsp; &nbsp;  Vertices[i].m_tangent.Normalize();<br> 
+					 Vertices[i].m_tangent.Normalize();<br> 
 			}
-			</code>
+			</code></pre>
 			<p>
 				This piece of code is an implementation of the algorithm that calculates the tangent vectors (described
 				in the background section). The Indices array is traversed and the triangle vectors are retrieved from
@@ -280,20 +280,20 @@
 				array in the aiMesh class and fetch the tangents from there. Check the code for more details.
 			</p>
 			<p>(mesh.cpp:195)</p>
-			<code>
+			<pre><code>
 			void Mesh::Render()<br>
 			{<br>
-			&nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp;   glEnableVertexAttribArray(3);<br>
-			    <br>
-			&nbsp; &nbsp;     for (unsigned int i = 0 ; i &lt; m_Entries.size() ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;   ...<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;             glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)32);<br>
-			&nbsp; &nbsp; 		}<br>
-			&nbsp; &nbsp;		...<br>
-			&nbsp; &nbsp; 		glDisableVertexAttribArray(3);<br>
+				...<br>
+			glEnableVertexAttribArray(3);<br>
+			<br>
+			for (unsigned int i = 0 ; i &lt; m_Entries.size() ; i++) {<br>
+				...<br>
+					glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)32);<br>
+						}<br>
+					...<br>
+						glDisableVertexAttribArray(3);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				Since the Vertex structure has grown we need to make a few modification to the render function
 				of the Mesh class. The fourth vertex attribute is enabled and we specify the location of the 
@@ -301,7 +301,7 @@
 				attribute is disabled.
 			</p>
 			<p>(lighting.vs)</p>
-			<code>
+			<pre><code>
 			layout (location = 0) in vec3 Position;<br>
 			layout (location = 1) in vec2 TexCoord;<br>
 			layout (location = 2) in vec3 Normal;<br>
@@ -310,7 +310,7 @@
 			uniform mat4 gWVP;<br>
 			uniform mat4 gLightWVP;<br>
 			uniform mat4 gWorld;<br>
-			                                                                                    <br>
+			<br>
 			out vec4 LightSpacePos;<br>
 			out vec2 TexCoord0;<br>
 			out vec3 Normal0;<br>
@@ -319,41 +319,41 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp; 	    gl_Position   = gWVP * vec4(Position, 1.0);<br>
-			&nbsp; &nbsp; 	    LightSpacePos = gLightWVP * vec4(Position, 1.0);<br>
-			&nbsp; &nbsp; 	    TexCoord0     = TexCoord;<br>
-			&nbsp; &nbsp; 	    Normal0       = (gWorld * vec4(Normal, 0.0)).xyz;<br>
-			&nbsp; &nbsp; 	<b>    Tangent0      = (gWorld * vec4(Tangent, 0.0)).xyz</b>;<br>
-			&nbsp; &nbsp; 	    WorldPos0     = (gWorld * vec4(Position, 1.0)).xyz;<br>
+					gl_Position   = gWVP * vec4(Position, 1.0);<br>
+					LightSpacePos = gLightWVP * vec4(Position, 1.0);<br>
+					TexCoord0 = TexCoord;<br>
+					Normal0   = (gWorld * vec4(Normal, 0.0)).xyz;<br>
+					<b>Tangent0  = (gWorld * vec4(Tangent, 0.0)).xyz</b>;<br>
+					WorldPos0 = (gWorld * vec4(Position, 1.0)).xyz;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is the updated vertex shader. There isn't a lot of new stuff here as most of the changes
 				are in the fragment shader. The new addition is the tangent which is passed as an input, transformed
 				to world space and passed on as an output.
 			</p>
 			<p>(lighting.fs:132)</p>
-			<code>
+			<pre><code>
 			vec3 CalcBumpedNormal()<br>
 			{<br>
-			&nbsp; &nbsp;     vec3 Normal = normalize(Normal0);<br>
-			&nbsp; &nbsp;     vec3 Tangent = normalize(Tangent0);<br>
-			&nbsp; &nbsp;     Tangent = normalize(Tangent - dot(Tangent, Normal) * Normal);<br>
-			&nbsp; &nbsp;     vec3 Bitangent = cross(Tangent, Normal);<br>
-			&nbsp; &nbsp;     vec3 BumpMapNormal = texture(gNormalMap, TexCoord0).xyz;<br>
-			&nbsp; &nbsp;     BumpMapNormal = 2.0 * BumpMapNormal - vec3(1.0, 1.0, 1.0);<br>
-			&nbsp; &nbsp;     vec3 NewNormal;<br>
-			&nbsp; &nbsp;     mat3 TBN = mat3(Tangent, Bitangent, Normal);<br>
-			&nbsp; &nbsp;     NewNormal = TBN * BumpMapNormal;<br>
-			&nbsp; &nbsp;     NewNormal = normalize(NewNormal);<br>
-			&nbsp; &nbsp;     return NewNormal;<br>
+			vec3 Normal = normalize(Normal0);<br>
+			vec3 Tangent = normalize(Tangent0);<br>
+			Tangent = normalize(Tangent - dot(Tangent, Normal) * Normal);<br>
+			vec3 Bitangent = cross(Tangent, Normal);<br>
+			vec3 BumpMapNormal = texture(gNormalMap, TexCoord0).xyz;<br>
+			BumpMapNormal = 2.0 * BumpMapNormal - vec3(1.0, 1.0, 1.0);<br>
+			vec3 NewNormal;<br>
+			mat3 TBN = mat3(Tangent, Bitangent, Normal);<br>
+			NewNormal = TBN * BumpMapNormal;<br>
+			NewNormal = normalize(NewNormal);<br>
+			return NewNormal;<br>
 			}<br>
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;     vec3 Normal = CalcBumpedNormal();<br>
-			&nbsp; &nbsp; ...		
-			</code>
+			vec3 Normal = CalcBumpedNormal();<br>
+				...		
+			</code></pre>
 			<p>
 				The code above contains most of the changes in the fragment shader. All handling of the normal
 				is encapsulated in the CalcBumpedNormal() function. We start by normalizing both the normal and the tangent

@@ -68,35 +68,35 @@
 			<h3> Source walkthru </h3>
 
 			<p>(lighting.fs:64)</p>
-			<code>
+			<pre><code>
 			uniform <b>sampler2DShadow</b> gShadowMap;<br>
 			<br>
 			#define EPSILON 0.00001<br>
 			<br>
 			float CalcShadowFactor(vec4 LightSpacePos)<br>
 			{<br>
-			&nbsp; &nbsp;   vec3 ProjCoords = LightSpacePos.xyz / LightSpacePos.w;<br>
-			 &nbsp; &nbsp;    vec2 UVCoords;<br>
-			 &nbsp; &nbsp;    UVCoords.x = 0.5 * ProjCoords.x + 0.5;<br>
-			 &nbsp; &nbsp;    UVCoords.y = 0.5 * ProjCoords.y + 0.5;<br>
-			 &nbsp; &nbsp;    float z = 0.5 * ProjCoords.z + 0.5;<br>
+			vec3 ProjCoords = LightSpacePos.xyz / LightSpacePos.w;<br>
+			 	vec2 UVCoords;<br>
+			 	UVCoords.x = 0.5 * ProjCoords.x + 0.5;<br>
+			 	UVCoords.y = 0.5 * ProjCoords.y + 0.5;<br>
+			 	float z = 0.5 * ProjCoords.z + 0.5;<br>
 			  <br>
-			 &nbsp; &nbsp;  <b>  float xOffset = 1.0/gMapSize.x;<br>
-			 &nbsp; &nbsp;    float yOffset = 1.0/gMapSize.y;<br>
+			 	 <b>  float xOffset = 1.0/gMapSize.x;<br>
+			 	float yOffset = 1.0/gMapSize.y;<br>
 			<br>
-			 &nbsp; &nbsp;    float Factor = 0.0;<br>
+			 	float Factor = 0.0;<br>
 			<br>
-			 &nbsp; &nbsp;    for (int y = -1 ; y &lt;= 1 ; y++) {<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;        for (int x = -1 ; x &lt;= 1 ; x++) {<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;            vec2 Offsets = vec2(x * xOffset, y * yOffset);<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;            vec3 UVC = vec3(UVCoords + Offsets, z + EPSILON);<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;            Factor += texture(gShadowMap, UVC);<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;        }<br>
-			 &nbsp; &nbsp;    }<br>
-			    <br>
-			 &nbsp; &nbsp;    return (0.5 + (Factor / 18.0));</b><br>
+			 	for (int y = -1 ; y &lt;= 1 ; y++) {<br>
+			 		for (int x = -1 ; x &lt;= 1 ; x++) {<br>
+			 		vec2 Offsets = vec2(x * xOffset, y * yOffset);<br>
+			 		vec3 UVC = vec3(UVCoords + Offsets, z + EPSILON);<br>
+			 		Factor += texture(gShadowMap, UVC);<br>
+			 		}<br>
+			 	}<br>
+			<br>
+			 	return (0.5 + (Factor / 18.0));</b><br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			This is the updated shadow factor calculation function. It starts out the same where we manually
 			perform perspective divide on clip space coordinates from the light source point of view, followed
@@ -124,42 +124,42 @@
 			we get a value between 0 and 0.5. We add it to a base of 0.5 and this is our shadow factor.
 			</p>
 			<p>(shadow_map_fbo.cpp:39)</p>
-			<code>
+			<pre><code>
 			bool ShadowMapFBO::Init(unsigned int WindowWidth, unsigned int WindowHeight)<br>
 			{<br>
-			&nbsp;  &nbsp;   // Create the FBO<br>
-			 &nbsp;  &nbsp;    glGenFramebuffers(1, &amp;m_fbo);<br>
+			&nbsp;  &nbsp;// Create the FBO<br>
+			 &nbsp;  &nbsp; glGenFramebuffers(1, &amp;m_fbo);<br>
 			<br>
-			 &nbsp;  &nbsp;    // Create the depth buffer<br>
-			 &nbsp;  &nbsp;    glGenTextures(1, &amp;m_shadowMap);<br>
-			 &nbsp;  &nbsp;    glBindTexture(GL_TEXTURE_2D, m_shadowMap);<br>
-			 &nbsp;  &nbsp;    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, WindowWidth, WindowHeight, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);<br>
-			 &nbsp;  &nbsp;    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);<br>
-			 &nbsp;  &nbsp;    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>
-			 &nbsp;  &nbsp;<b>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);<br>
-			 &nbsp;  &nbsp;    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);<br></b>
-			 &nbsp;  &nbsp;    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);<br>
-			 &nbsp;  &nbsp;    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<br>
+			 &nbsp;  &nbsp; // Create the depth buffer<br>
+			 &nbsp;  &nbsp; glGenTextures(1, &amp;m_shadowMap);<br>
+			 &nbsp;  &nbsp; glBindTexture(GL_TEXTURE_2D, m_shadowMap);<br>
+			 &nbsp;  &nbsp; glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, WindowWidth, WindowHeight, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);<br>
+			 &nbsp;  &nbsp; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);<br>
+			 &nbsp;  &nbsp; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>
+			 &nbsp;  &nbsp;<b>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);<br>
+			 &nbsp;  &nbsp; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);<br></b>
+			 &nbsp;  &nbsp; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);<br>
+			 &nbsp;  &nbsp; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<br>
 			<br>
-			 &nbsp;  &nbsp;    glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);<br>
-			 &nbsp;  &nbsp;    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_shadowMap, 0);<br>
+			 &nbsp;  &nbsp; glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);<br>
+			 &nbsp;  &nbsp; glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_shadowMap, 0);<br>
 			<br>
-			 &nbsp;  &nbsp;    // Disable writes to the color buffer<br>
-			 &nbsp;  &nbsp;    glDrawBuffer(GL_NONE);<br>
-			       <br>
-			 &nbsp;  &nbsp;    // Disable reads from the color buffer<br>
-			 &nbsp;  &nbsp;    glReadBuffer(GL_NONE);<br>
+			 &nbsp;  &nbsp; // Disable writes to the color buffer<br>
+			 &nbsp;  &nbsp; glDrawBuffer(GL_NONE);<br>
+			   <br>
+			 &nbsp;  &nbsp; // Disable reads from the color buffer<br>
+			 &nbsp;  &nbsp; glReadBuffer(GL_NONE);<br>
 			<br>
-			 &nbsp;  &nbsp;    GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);<br>
+			 &nbsp;  &nbsp; GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);<br>
 			<br>
-			 &nbsp;  &nbsp;    if (Status != GL_FRAMEBUFFER_COMPLETE) {<br>
-			 &nbsp;  &nbsp; &nbsp;  &nbsp;        printf("FB error, status: 0x%x\n", Status);<br>
-			 &nbsp;  &nbsp; &nbsp;  &nbsp;        return false;<br>
-			 &nbsp;  &nbsp;    }<br>
+			 &nbsp;  &nbsp; if (Status != GL_FRAMEBUFFER_COMPLETE) {<br>
+			 &nbsp;  	 &nbsp; printf("FB error, status: 0x%x\n", Status);<br>
+			 &nbsp;  	 &nbsp; return false;<br>
+			 &nbsp;  &nbsp; }<br>
 			<br>
-			 &nbsp;  &nbsp;    return true;<br>
+			 &nbsp;  &nbsp; return true;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			This is how we configure our shadow map texture to work with the shadow sampler in the shader 
 			instead of the regular sampler. There are two new lines here and they are marked in bold face.
@@ -171,7 +171,7 @@
 			You get the idea. There are also GL_ALWAYS which always return 1.0 and GL_NEVER which always return 0.0.
 			</p>
 			<p>(tutorial42.cpp:174)</p>
-			<code>
+			<pre><code>
 			void ShadowMapPass()<br>
 			{<br>
 			 &nbsp;  &nbsp; glCullFace(GL_FRONT);<br>
@@ -183,7 +183,7 @@
 			 &nbsp;  &nbsp; glCullFace(GL_BACK);<br>
 			 &nbsp;  &nbsp; ...<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			The last point that I want to discuss is a minor change intended to avoid self shadowing. Self shadowing
 			is a big problem when dealing with almost any shadowing technique and the reason is that the precision

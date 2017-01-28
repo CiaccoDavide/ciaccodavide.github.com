@@ -86,41 +86,41 @@
 			<h3> Source walkthru </h3>
 
 			<p>(picking_texture.h:23)</p>
-			<code>
+			<pre><code>
 			class PickingTexture<br>
 			{<br>
 			public:<br>
-			&nbsp; &nbsp;    PickingTexture();<br>
+				PickingTexture();<br>
 			<br>
-			&nbsp; &nbsp;     ~PickingTexture();<br>
+			~PickingTexture();<br>
 			<br>
-			&nbsp; &nbsp;     bool Init(unsigned int WindowWidth, unsigned int WindowHeight);<br>
+			bool Init(unsigned int WindowWidth, unsigned int WindowHeight);<br>
 			<br>
-			&nbsp; &nbsp;     void EnableWriting();<br>
-			    <br>
-			&nbsp; &nbsp;     void DisableWriting();<br>
-			    <br>
-			&nbsp; &nbsp;     struct PixelInfo {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         float ObjectID;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         float DrawID;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         float PrimID;<br>
-			        <br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         PixelInfo() 
-			&nbsp; &nbsp; {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             ObjectID = 0.0f;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             DrawID = 0.0f;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             PrimID = 0.0f;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         }<br>
-			&nbsp; &nbsp;     };<br>
+			void EnableWriting();<br>
 			<br>
-			&nbsp; &nbsp;     PixelInfo ReadPixel(unsigned int x, unsigned int y);<br>
+			void DisableWriting();<br>
+			<br>
+			struct PixelInfo {<br>
+					 float ObjectID;<br>
+					 float DrawID;<br>
+					 float PrimID;<br>
+			<br>
+					 PixelInfo() 
+				{<br>
+						ObjectID = 0.0f;<br>
+						DrawID = 0.0f;<br>
+						PrimID = 0.0f;<br>
+					 }<br>
+			};<br>
+			<br>
+			PixelInfo ReadPixel(unsigned int x, unsigned int y);<br>
 			<br>
 			private:<br>
-			&nbsp; &nbsp;     GLuint m_fbo;<br>
-			&nbsp; &nbsp;     GLuint m_pickingTexture;<br>
-			&nbsp; &nbsp;     GLuint m_depthTexture;<br>
+			GLuint m_fbo;<br>
+			GLuint m_pickingTexture;<br>
+			GLuint m_depthTexture;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The PickingTexture class represents the FBO which we will render the primitive indices into.
 				It encapsulates the framebuffer object handle, a texture object for the index info and a texture
@@ -133,47 +133,47 @@
 				field of the PixelInfo structure will contain 0xFFFFFFFF. 
 			</p>
 			<p>(picking_texture.cpp:48)</p>
-			<code>
+			<pre><code>
 			bool PickingTexture::Init(unsigned int WindowWidth, unsigned int WindowHeight)<br>
 			{<br>
-			&nbsp; &nbsp;     // Create the FBO<br>
-			&nbsp; &nbsp;     glGenFramebuffers(1, &amp;m_fbo);    <br>
-			&nbsp; &nbsp;     glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);<br>
+			// Create the FBO<br>
+			glGenFramebuffers(1, &amp;m_fbo);<br>
+			glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);<br>
 			<br>
-			&nbsp; &nbsp;     // Create the texture object for the primitive information buffer<br>
-			&nbsp; &nbsp;     glGenTextures(1, &amp;m_pickingTexture);<br>
-			&nbsp; &nbsp;     glBindTexture(GL_TEXTURE_2D, m_pickingTexture);<br>
-			&nbsp; &nbsp;     glTexImage2D(GL_TEXTURE_2D, 0, <b>GL_RGB32F</b>, WindowWidth, WindowHeight,<br> 
-			&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; 								0, <b>GL_RGB, GL_FLOAT</b>, NULL);<br>
-			&nbsp; &nbsp;     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m_pickingTexture, 0);    <br>
+			// Create the texture object for the primitive information buffer<br>
+			glGenTextures(1, &amp;m_pickingTexture);<br>
+			glBindTexture(GL_TEXTURE_2D, m_pickingTexture);<br>
+			glTexImage2D(GL_TEXTURE_2D, 0, <b>GL_RGB32F</b>, WindowWidth, WindowHeight,<br> 
+					 &nbsp;  &nbsp;  									0, <b>GL_RGB, GL_FLOAT</b>, NULL);<br>
+			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, <br>
+							m_pickingTexture, 0);<br>
 			<br>
-			&nbsp; &nbsp;     // Create the texture object for the depth buffer<br>
-			&nbsp; &nbsp;     glGenTextures(1, &amp;m_depthTexture);<br>
-			&nbsp; &nbsp;     glBindTexture(GL_TEXTURE_2D, m_depthTexture);<br>
-			&nbsp; &nbsp;     glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, WindowWidth, WindowHeight, <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);<br>
-			&nbsp; &nbsp;     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m_depthTexture, 0);    <br>
+			// Create the texture object for the depth buffer<br>
+			glGenTextures(1, &amp;m_depthTexture);<br>
+			glBindTexture(GL_TEXTURE_2D, m_depthTexture);<br>
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, WindowWidth, WindowHeight, <br>
+						0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);<br>
+			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, <br>
+							m_depthTexture, 0);<br>
 			<br>
-			&nbsp; &nbsp;     // Disable reading to avoid problems with older GPUs<br>
-			&nbsp; &nbsp;     glReadBuffer(GL_NONE);<br><br>
-			&nbsp; &nbsp;     glDrawBuffer(GL_COLOR_ATTACHMENT0);<br><br>
-			&nbsp; &nbsp;     // Verify that the FBO is correct<br>
-			&nbsp; &nbsp;     GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);<br>
+			// Disable reading to avoid problems with older GPUs<br>
+			glReadBuffer(GL_NONE);<br><br>
+			glDrawBuffer(GL_COLOR_ATTACHMENT0);<br><br>
+			// Verify that the FBO is correct<br>
+			GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);<br>
 			<br>
-			&nbsp; &nbsp;     if (Status != GL_FRAMEBUFFER_COMPLETE) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         printf("FB error, status: 0x%x\n", Status);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         return false;<br>
-			&nbsp; &nbsp;     }<br>
-			    <br>
-			&nbsp; &nbsp;     // Restore the default framebuffer<br>
-			&nbsp; &nbsp;     glBindTexture(GL_TEXTURE_2D, 0);<br>
-			&nbsp; &nbsp;     glBindFramebuffer(GL_FRAMEBUFFER, 0);<br>
+			if (Status != GL_FRAMEBUFFER_COMPLETE) {<br>
+					 printf("FB error, status: 0x%x\n", Status);<br>
+					 return false;<br>
+			}<br>
 			<br>
-			&nbsp; &nbsp;     return GLCheckError();<br>
+			// Restore the default framebuffer<br>
+			glBindTexture(GL_TEXTURE_2D, 0);<br>
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);<br>
+			<br>
+			return GLCheckError();<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				The above code initializes the PickingTexture class. We generate a FBO and bind it to the
 				GL_FRAMEBUFFER target. We then generate two texture
@@ -183,7 +183,7 @@
 				(last parameter of glTexImage2D is NULL) we still need to supply correct format and
 				type (7th and 8th params). The format and type that match GL_RGB32F are GL_RGB and GL_FLOAT, 
 				respectively. Finally we attach this texture to the GL_COLOR_ATTACHMENT0 target of the FBO. 
-			        This will make it the target of the output from the fragment shader.
+			This will make it the target of the output from the fragment shader.
 			</p>
 			<p>
 				The texture object of the depth buffer is created and attached in the exact same way as in the
@@ -191,42 +191,42 @@
 				the status of the FBO and restore the default object before returning.
 			</p>
 			<p>(picking_texture.cpp:82)</p>
-			<code>
+			<pre><code>
 			void PickingTexture::EnableWriting()<br>
 			{<br>
-			&nbsp; &nbsp;     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
+			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				Before we start rendering into the picking texture we need to enable it for writing. This means
 				binding the FBO to the GL_DRAW_FRAMEBUFFER.
 			</p>
 			<p>(picking_texture.cpp:88)</p>
-			<code>
+			<pre><code>
 			void PickingTexture::DisableWriting()<br>
 			{<br>
-			&nbsp; &nbsp;     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);<br>
+			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				After we finish rendering into the picking texture we tell OpenGL that from now on we want to
 				render into the default framebuffer by binding zero to the GL_DRAW_FRAMEBUFFER target.
 			</p>
-			<code>
+			<pre><code>
 			PickingTexture::PixelInfo PickingTexture::ReadPixel(unsigned int x, unsigned int y)<br>
 			{<br>
-			&nbsp; &nbsp;     glBindFramebuffer(GL_READ_FRAMEBUFFER, m_fbo);<br>
-			&nbsp; &nbsp;     glReadBuffer(GL_COLOR_ATTACHMENT0);<br>
+			glBindFramebuffer(GL_READ_FRAMEBUFFER, m_fbo);<br>
+			glReadBuffer(GL_COLOR_ATTACHMENT0);<br>
 			<br>
-			&nbsp; &nbsp;     PixelInfo Pixel;<br>
-			&nbsp; &nbsp;     glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &amp;Pixel);<br>
+			PixelInfo Pixel;<br>
+			glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &amp;Pixel);<br>
 			  <br>
-			&nbsp; &nbsp;     glReadBuffer(GL_NONE);<br>
-			&nbsp; &nbsp;     glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);<br>
-			    <br>
-			&nbsp; &nbsp;     return Pixel;<br>
+			glReadBuffer(GL_NONE);<br>
+			glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);<br>
+			<br>
+			return Pixel;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This function takes a coordinate on the screen and returns the corresponding texel from the picking
 				texture. This texel is 3-vector of floats which is exactly what the structure PixelInfo contains.
@@ -242,7 +242,7 @@
 				and GL_FLOAT as the type. After we finish we must reset the reading buffer and the framebuffer.
 			</p>
 			<p>(picking.vs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			layout (location = 0) in vec3 Position;<br>
@@ -251,16 +251,16 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;     gl_Position = gWVP * vec4(Position, 1.0);<br>
+			gl_Position = gWVP * vec4(Position, 1.0);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				This is the VS of the PickingTechnique class. This technique is responsible for rendering the pixel
 				info into the PickingTexture object. As you can see, the VS is very simple since we only need to 
 				transform the vertex position.
 			</p>
 			<p>(picking.fs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			uniform uint gDrawIndex; <br>
@@ -270,9 +270,9 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;     FragColor = vec3(float(gObjectIndex), float(gDrawIndex),float(gl_PrimitiveID + 1));<br>
+			FragColor = vec3(float(gObjectIndex), float(gDrawIndex),float(gl_PrimitiveID + 1));<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The FS of PickingTechnique writes the pixel information into the picking texture. The object index and draw index
 				are the same for all pixels (in the same draw call) so they come from uniform variables. In order to get the primitive
@@ -291,13 +291,13 @@
 				We will see later that we compensate this when we use the primitive ID to render the specific triangle.
 			</p>
 			<p>(render_callbacks.h:21)</p>
-			<code>
+			<pre><code>
 			class IRenderCallbacks<br>
 			{<br>
 			public:<br>
-			&nbsp; &nbsp;     virtual void DrawStartCB(unsigned int DrawIndex) = 0;<br>
+			virtual void DrawStartCB(unsigned int DrawIndex) = 0;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The picking technique requires the application to update the draw index before each draw call. This presents
 				a design problem because the current mesh class (in the case of a mesh with multiple VBs) 
@@ -310,37 +310,37 @@
 				before a draw is submitted.
 			</p>
 			<p>(mesh.cpp:201)</p>
-			<code>
+			<pre><code>
 			void Mesh::Render(<b>IRenderCallbacks* pRenderCallbacks</b>)<br>
 			{<br>
-			&nbsp; &nbsp; 		...<br>
-					    <br>
-			&nbsp; &nbsp;     for (unsigned int i = 0 ; i &lt; m_Entries.size() ; i++) {<br>
-			    <br>
-			&nbsp; &nbsp; &nbsp; &nbsp;     		...<br>
-			    <br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         <b>if (pRenderCallbacks) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             pRenderCallbacks->DrawStartCB(i);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         }</b><br>
-			        <br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         glDrawElements(GL_TRIANGLES, m_Entries[i].NumIndices, GL_UNSIGNED_INT, 0);<br>
-			&nbsp; &nbsp;     }<br>
+						...<br>
+					<br>
+			for (unsigned int i = 0 ; i &lt; m_Entries.size() ; i++) {<br>
 			<br>
-			&nbsp; &nbsp; 		...<br>
+						...<br>
+			<br>
+					 <b>if (pRenderCallbacks) {<br>
+						pRenderCallbacks->DrawStartCB(i);<br>
+					 }</b><br>
+			<br>
+					 glDrawElements(GL_TRIANGLES, m_Entries[i].NumIndices, GL_UNSIGNED_INT, 0);<br>
+			}<br>
+			<br>
+						...<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The code above shows part of the updated Mesh::Render() function with the new code marked in bold.
 				If the caller is not interested in getting a callback for each draw it can simply pass NULL as the function
 				argument.
 			</p>
 			<p>(picking_technique.cpp:93)</p>
-			<code>
+			<pre><code>
 			void PickingTechnique::DrawStartCB(unsigned int DrawIndex)<br>
 			{<br>
-			&nbsp; &nbsp;     glUniform1ui(m_drawIndexLocation, DrawIndex);<br>
+			glUniform1ui(m_drawIndexLocation, DrawIndex);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				This is the implementation of IRenderCallbacks::DrawStartCB() by the inheriting class PickingTechnique.
 				The function Mesh::Render() provides the draw index which is passed as a shader uniform variable.
@@ -349,47 +349,47 @@
 			</p>
 			<p>
 			<p>(tutorial29.cpp:108)</p>
-			<code>
+			<pre><code>
 			virtual void RenderSceneCB()<br>
 			{<br>
-			&nbsp; &nbsp;     m_pGameCamera->OnRender();        <br>
+			m_pGameCamera->OnRender();<br>
 			<br>
-			&nbsp; &nbsp;     PickingPhase();<br>
-			&nbsp; &nbsp;     RenderPhase();<br>
-			           <br>
-			&nbsp; &nbsp;     glutSwapBuffers();<br>
+			PickingPhase();<br>
+			RenderPhase();<br>
+			   <br>
+			glutSwapBuffers();<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is the main render function. The functionality has been split into two core phases,
 				one to draw the objects into the picking texture, and the other to render the objects and 
 				handle the mouse click.
 			</p>
 			<p>(tutorial29.cpp:119)</p>
-			<code>
+			<pre><code>
 			void PickingPhase()<br>
 			{<br>
-			&nbsp; &nbsp;     Pipeline p;<br>
-			&nbsp; &nbsp;     p.Scale(0.1f, 0.1f, 0.1f);<br>
-			&nbsp; &nbsp;     p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-			&nbsp; &nbsp;     p.SetPerspectiveProj(m_persProjInfo);<br>
+			Pipeline p;<br>
+			p.Scale(0.1f, 0.1f, 0.1f);<br>
+			p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+			p.SetPerspectiveProj(m_persProjInfo);<br>
 			<br>
-			&nbsp; &nbsp;     m_pickingTexture.EnableWriting();<br>
-			    <br>
-			&nbsp; &nbsp;     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
-			    <br>
-			&nbsp; &nbsp;     m_pickingEffect.Enable();<br>
-			    <br>
-			&nbsp; &nbsp;     for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_worldPos) ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         p.WorldPos(m_worldPos[i]);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_pickingEffect.SetObjectIndex(i);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_pickingEffect.SetWVP(p.GetWVPTrans());    <br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_pMesh->Render(&amp;m_pickingEffect);<br>
-			&nbsp; &nbsp;     }<br>
-			    <br>
-			&nbsp; &nbsp;     m_pickingTexture.DisableWriting();        <br>
+			m_pickingTexture.EnableWriting();<br>
+			<br>
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
+			<br>
+			m_pickingEffect.Enable();<br>
+			<br>
+			for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_worldPos) ; i++) {<br>
+					 p.WorldPos(m_worldPos[i]);<br>
+					 m_pickingEffect.SetObjectIndex(i);<br>
+					 m_pickingEffect.SetWVP(p.GetWVPTrans());<br>
+					 m_pMesh->Render(&amp;m_pickingEffect);<br>
+			}<br>
+			<br>
+			m_pickingTexture.DisableWriting();<br>
 			}
-			</code>	
+			</code></pre>	
 			<p>
 				The picking phase starts by setting up the Pipeline object in the usual way. We then enable the picking
 				texture for writing and clear the color and depth buffer. glClear() works on the currently bound framebuffer - 
@@ -402,44 +402,44 @@
 				default framebuffer.
 			</p>
 			<p>(tutorial29.cpp:144)</p>
-			<code>
+			<pre><code>
 			void RenderPhase()<br>
 			{<br>
-			&nbsp; &nbsp;     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
-			    <br>
-			&nbsp; &nbsp;     Pipeline p;<br>
-			&nbsp; &nbsp;     p.Scale(0.1f, 0.1f, 0.1f);<br>
-			&nbsp; &nbsp;     p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-			&nbsp; &nbsp;     p.SetPerspectiveProj(m_persProjInfo);<br>
-			    <br>
-			&nbsp; &nbsp;     // If the left mouse button is clicked check if it hit a triangle<br>
-			&nbsp; &nbsp;     // and color it red<br>
-			    
-			&nbsp; &nbsp;     if (m_leftMouseButton.IsPressed) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         <b>PickingTexture::PixelInfo Pixel = m_pickingTexture.ReadPixel(m_leftMouseButton.x, <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-			&nbsp; &nbsp; &nbsp; &nbsp; WINDOW_HEIGHT - m_leftMouseButton.y - 1);</b><br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         if (<b>Pixel.PrimID != 0</b>) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             m_simpleColorEffect.Enable();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             p.WorldPos(m_worldPos[(uint)Pixel.ObjectID]);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             m_simpleColorEffect.SetWVP(p.GetWVPTrans());<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             // Must compensate for the decrement in the FS!<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             m_pMesh->Render((uint)Pixel.DrawID, <b>(uint)Pixel.PrimID - 1</b>);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         }<br>
-			&nbsp; &nbsp;     }<br>
-			    <br>
-			&nbsp; &nbsp;  		// render the objects as usual<br>
-			&nbsp; &nbsp;     m_lightingEffect.Enable();<br>
-			&nbsp; &nbsp;     m_lightingEffect.SetEyeWorldPos(m_pGameCamera->GetPos());<br>
-			    <br>
-			&nbsp; &nbsp;     for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_worldPos) ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         p.WorldPos(m_worldPos[i]);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_lightingEffect.SetWVP(p.GetWVPTrans());<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_lightingEffect.SetWorldMatrix(p.GetWorldTrans());                <br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_pMesh->Render(NULL);<br>
-			&nbsp; &nbsp;     }        <br>
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
+			<br>
+			Pipeline p;<br>
+			p.Scale(0.1f, 0.1f, 0.1f);<br>
+			p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+			p.SetPerspectiveProj(m_persProjInfo);<br>
+			<br>
+			// If the left mouse button is clicked check if it hit a triangle<br>
+			// and color it red<br>
+			
+			if (m_leftMouseButton.IsPressed) {<br>
+					 <b>PickingTexture::PixelInfo Pixel = m_pickingTexture.ReadPixel(m_leftMouseButton.x, <br>
+													
+					WINDOW_HEIGHT - m_leftMouseButton.y - 1);</b><br>
+					 if (<b>Pixel.PrimID != 0</b>) {<br>
+						m_simpleColorEffect.Enable();<br>
+						p.WorldPos(m_worldPos[(uint)Pixel.ObjectID]);<br>
+						m_simpleColorEffect.SetWVP(p.GetWVPTrans());<br>
+						// Must compensate for the decrement in the FS!<br>
+						m_pMesh->Render((uint)Pixel.DrawID, <b>(uint)Pixel.PrimID - 1</b>);<br>
+					 }<br>
+			}<br>
+			<br>
+				 		// render the objects as usual<br>
+			m_lightingEffect.Enable();<br>
+			m_lightingEffect.SetEyeWorldPos(m_pGameCamera->GetPos());<br>
+			<br>
+			for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_worldPos) ; i++) {<br>
+					 p.WorldPos(m_worldPos[i]);<br>
+					 m_lightingEffect.SetWVP(p.GetWVPTrans());<br>
+					 m_lightingEffect.SetWorldMatrix(p.GetWorldTrans());<br>
+					 m_pMesh->Render(NULL);<br>
+			}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				After the picking phase comes the rendering phase. We setup the Pipeline same as before. We then check if the
 				left mouse button is pressed. If it is we use PickingTexture::ReadPixel() to fetch the pixel information.
@@ -452,41 +452,41 @@
 				count at zero). Finally, we render the primitives as usual.
 			</p>
 			<p>(glut_backend.cpp:60)</p>
-			<code>
+			<pre><code>
 			static void MouseCB(int Button, int State, int x, int y)<br>
 			{<br>
-			&nbsp; &nbsp;     s_pCallbacks->MouseCB(Button, State, x, y);<br>
+			s_pCallbacks->MouseCB(Button, State, x, y);<br>
 			}<br>
 			<br>
 			<br>
 			static void InitCallbacks()<br>
 			{<br>
-			&nbsp; &nbsp; 		...<br>
-			&nbsp; &nbsp;     glutMouseFunc(MouseCB);<br>
+						...<br>
+			glutMouseFunc(MouseCB);<br>
 			}
-			</code>	
+			</code></pre>	
 			<p>
 				This tutorial requires the application to trap mouse clicks. The function glutMouseFunc() does
 				exactly that. There is a new callback function for that in the ICallbacks interface (which the
 				main application class inherits from). You can use enums such as GLUT_LEFT_BUTTON, GLUT_MIDDLE_BUTTON,
 				and GLUT_RIGHT_BUTTON to identify the button which was pressed (first argument to MouseCB()). The 'State'
 				parameter tells us whether the button was pressed (GLUT_DOWN) or released (GLUT_UP).
-			</p>            
-            <h3>Reader comments:</h3>
-            <p>
-            <ol>
-            <li>This tutorial failed to work on some platforms without explicitly disabling blending (even
-                though blending is disabled by default). If you are encountering weird issues try 'glDisable(GL_BLEND)'. </li> 
-            <li>The macro WINDOW_HEIGHT which we use in RenderPhase() is obviously not updated when you change
-                the size of the window. To handle this correctly you need to implement a GLUT reshape callback
-                using glutReshapeFunc() which will report on any change to the window width or height.</li>
-            </ol>
-            </p>
+			</p>
+<h3>Reader comments:</h3>
+<p>
+<ol>
+<li>This tutorial failed to work on some platforms without explicitly disabling blending (even
+though blending is disabled by default). If you are encountering weird issues try 'glDisable(GL_BLEND)'. </li> 
+<li>The macro WINDOW_HEIGHT which we use in RenderPhase() is obviously not updated when you change
+the size of the window. To handle this correctly you need to implement a GLUT reshape callback
+using glutReshapeFunc() which will report on any change to the window width or height.</li>
+</ol>
+</p>
 		</section>
 
 		<a href="../tutorial_030/" class="next highlight"> Next tutorial </a>
 	</article>
 
-    
+
 </body>
 </html>

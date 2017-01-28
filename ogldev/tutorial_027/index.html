@@ -143,25 +143,25 @@
 			<h3> Source walkthru </h3>
 
 			<p>(billboard_list.h:27)</p>
-			<code>
+			<pre><code>
 			class BillboardList<br>
 			{<br>
 			public:<br>
-			&nbsp; &nbsp;   BillboardList();<br>
-			&nbsp; &nbsp;   ~BillboardList();<br>
-			<br>    
-			&nbsp; &nbsp;   bool Init(const std::string&amp; TexFilename);<br>
-			<br>    
-			&nbsp; &nbsp;   void Render(const Matrix4f&amp; VP, const Vector3f&amp; CameraPos);<br>
+			BillboardList();<br>
+			~BillboardList();<br>
+			<br>
+			bool Init(const std::string&amp; TexFilename);<br>
+			<br>
+			void Render(const Matrix4f&amp; VP, const Vector3f&amp; CameraPos);<br>
 			<br>
 			private:<br>
-			&nbsp; &nbsp;   void CreatePositionBuffer();<br>
-			<br>    
-			&nbsp; &nbsp;   GLuint m_VB;<br>
-			&nbsp; &nbsp;   Texture* m_pTexture;<br>
-			&nbsp; &nbsp;   BillboardTechnique m_technique;<br>
+			void CreatePositionBuffer();<br>
+			<br>
+			GLuint m_VB;<br>
+			Texture* m_pTexture;<br>
+			BillboardTechnique m_technique;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The BillboardList class encapsultes everything you need in order to generate billboards. The Init()
 				function of the class takes the filename that contains the image which will be texture mapped on the
@@ -173,25 +173,25 @@
 				to map on the billboard and the billboard technique that contains the relevant shaders.
 			</p>
 			<p>(billboard_list.cpp:80)</p>
-			<code>
+			<pre><code>
 			void BillboardList::Render(const Matrix4f&amp; VP, const Vector3f&amp; CameraPos)<br>
 			{<br>
-			&nbsp; &nbsp;     m_technique.Enable();<br>
-			&nbsp; &nbsp;     m_technique.SetVP(VP);<br>
-			&nbsp; &nbsp;     m_technique.SetCameraPosition(CameraPos);<br>
-			    <br>
-			&nbsp; &nbsp;     m_pTexture->Bind(COLOR_TEXTURE_UNIT);<br>
-			    <br>
-			&nbsp; &nbsp;     glEnableVertexAttribArray(0);<br>
-			    <br>
-			&nbsp; &nbsp;     glBindBuffer(GL_ARRAY_BUFFER, m_VB);<br>
-			&nbsp; &nbsp;     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3f), 0);   // position <br>
-			    <br>
-			&nbsp; &nbsp;     glDrawArrays(GL_POINTS, 0, NUM_ROWS * NUM_COLUMNS);<br>
-			    <br>
-			&nbsp; &nbsp;     glDisableVertexAttribArray(0);<br>
+			m_technique.Enable();<br>
+			m_technique.SetVP(VP);<br>
+			m_technique.SetCameraPosition(CameraPos);<br>
+			<br>
+			m_pTexture->Bind(COLOR_TEXTURE_UNIT);<br>
+			<br>
+			glEnableVertexAttribArray(0);<br>
+			<br>
+			glBindBuffer(GL_ARRAY_BUFFER, m_VB);<br>
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3f), 0);   // position <br>
+			<br>
+			glDrawArrays(GL_POINTS, 0, NUM_ROWS * NUM_COLUMNS);<br>
+			<br>
+			glDisableVertexAttribArray(0);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				This function enables the billboard technique, sets the required state into OpenGL and draws the
 				points that are turned into quads in the GS. In this demo the billboards are laid out in strict rows
@@ -199,42 +199,42 @@
 				are using point list as our input topology. The GS will need to match that.
 			</p>
 			<p>(billboard_technique.h:24)</p>
-			<code>
+			<pre><code>
 			class BillboardTechnique : public Technique<br>
 			{<br>
 			public:<br>
-			    <br>
-			&nbsp; &nbsp;     BillboardTechnique();<br>
+			<br>
+			BillboardTechnique();<br>
 			 <br>
-			&nbsp; &nbsp;     virtual bool Init();<br>
-			    <br>
-			&nbsp; &nbsp;     void SetVP(const Matrix4f&amp; VP);<br>
-			&nbsp; &nbsp;     void SetCameraPosition(const Vector3f&amp; Pos);<br>
-			&nbsp; &nbsp;     void SetColorTextureUnit(unsigned int TextureUnit);<br>
-			<br>    
+			virtual bool Init();<br>
+			<br>
+			void SetVP(const Matrix4f&amp; VP);<br>
+			void SetCameraPosition(const Vector3f&amp; Pos);<br>
+			void SetColorTextureUnit(unsigned int TextureUnit);<br>
+			<br>
 			private:<br>
 			<br>
-			&nbsp; &nbsp;     GLuint m_VPLocation;<br>
-			&nbsp; &nbsp;     GLuint m_cameraPosLocation;<br>
-			&nbsp; &nbsp;     GLuint m_colorMapLocation;<br>
+			GLuint m_VPLocation;<br>
+			GLuint m_cameraPosLocation;<br>
+			GLuint m_colorMapLocation;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				This is the interface of the billboard technique. It requires only three parameters in order to
 				do its job: the combined view/projection matrix, the position of the camera in world space and the
 				number of the texture unit where the billboard texture is bound.
 			</p>
 			<p>(billboard.vs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			layout (location = 0) in vec3 Position;<br>
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;     gl_Position = vec4(Position, 1.0);<br>
+			gl_Position = vec4(Position, 1.0);<br>
 			}<br>
-			</code>
+			</code></pre>
 			<p>
 				This is the VS of the billboard technique and with most of the action taking
 				place in the GS you cannot ask for a simpler VS. The vertex buffer contains only position vectors
@@ -242,13 +242,13 @@
 				That's it.
 			</p>
 			<p>(billboard.gs:1)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			layout (points) in;<br>
 			layout (triangle_strip) out;<br>
 			layout (max_vertices = 4) out;<br>
-			</code>
+			</code></pre>
 			<p>
 				The core of the billboard technique is located in the GS. Let's take a look at it piece 
 				by piece. We start by declaring some global stuff using the 'layout' keyword. We tell the pipeline
@@ -259,23 +259,23 @@
 				that we are going to emit a quad for each incoming vertex we declare the maximum as four vertices.
 			</p>
 			<p>(billboard.gs:7)</p>
-			<code>
+			<pre><code>
 			uniform mat4 gVP;<br>
 			uniform vec3 gCameraPos;<br>
 			<br>
 			out vec2 TexCoord;<br>
-			</code>
+			</code></pre>
 			<p>
 				The GS gets the position in world space so it only needs a view/projection matrix. It also needs the camera
 				location in order to calculate how to orient the billboard towards it. The GS generates texture coordinates
 				for the FS so we must declare them.
 			</p>
 			<p>(billboard.gs:12)</p>
-			<code>
+			<pre><code>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;  	vec3 Pos = gl_in[0].gl_Position.xyz;<br>
-			</code>
+				 	vec3 Pos = gl_in[0].gl_Position.xyz;<br>
+			</code></pre>
 			<p>
 				The line above is unique to the GS. Since it is executed on a complete primitive we actually have
 				access to each of the vertices that comprise it. This is done using the built-in variable 'gl_in'.
@@ -285,42 +285,42 @@
 				it using 'gl_in[0]'. If the input topology was a triangle we could also have written 'gl_in[1]' and 'gl_in[2]'.
 				We only need the first three components of the position vector and we extract them to a local variable using '.xyz'.
 			</p>
-			<code>
-			&nbsp; &nbsp;  	vec3 toCamera = normalize(gCameraPos - Pos);<br>
-			&nbsp; &nbsp;  	vec3 up = vec3(0.0, 1.0, 0.0);<br>
-			&nbsp; &nbsp;  	vec3 right = cross(toCamera, up);<br>
-			</code>
+			<pre><code>
+				 	vec3 toCamera = normalize(gCameraPos - Pos);<br>
+				 	vec3 up = vec3(0.0, 1.0, 0.0);<br>
+				 	vec3 right = cross(toCamera, up);<br>
+			</code></pre>
 			<p>
 				Here we make the billboard face the camera per the explanation at the end of the background section.
 				We do a cross product between the vector from the point to the camera and a vector that points straight
 				up. This provides the vector that points right when looking at the point from the camera point of view.
 				We will now use it to 'grow' a quad around the point.
 			</p>
-			<code>	
-			&nbsp; &nbsp;     Pos -= (right * 0.5);<br>
-			&nbsp; &nbsp;     gl_Position = gVP * vec4(Pos, 1.0);<br>
-			&nbsp; &nbsp;     TexCoord = vec2(0.0, 0.0);<br>
-			&nbsp; &nbsp;     EmitVertex();<br>
+			<pre><code>	
+			Pos -= (right * 0.5);<br>
+			gl_Position = gVP * vec4(Pos, 1.0);<br>
+			TexCoord = vec2(0.0, 0.0);<br>
+			EmitVertex();<br>
 			<br>
-			&nbsp; &nbsp;     Pos.y += 1.0;<br>
-			&nbsp; &nbsp;     gl_Position = gVP * vec4(Pos, 1.0);<br>
-			&nbsp; &nbsp;     TexCoord = vec2(0.0, 1.0);<br>
-			&nbsp; &nbsp;     EmitVertex();<br>
+			Pos.y += 1.0;<br>
+			gl_Position = gVP * vec4(Pos, 1.0);<br>
+			TexCoord = vec2(0.0, 1.0);<br>
+			EmitVertex();<br>
 			<br>
-			&nbsp; &nbsp;     Pos.y -= 1.0;<br>
-			&nbsp; &nbsp;     Pos += right;<br>
-			&nbsp; &nbsp;     gl_Position = gVP * vec4(Pos, 1.0);<br>
-			&nbsp; &nbsp;     TexCoord = vec2(1.0, 0.0);<br>
-			&nbsp; &nbsp;     EmitVertex();<br>
+			Pos.y -= 1.0;<br>
+			Pos += right;<br>
+			gl_Position = gVP * vec4(Pos, 1.0);<br>
+			TexCoord = vec2(1.0, 0.0);<br>
+			EmitVertex();<br>
 			<br>
-			&nbsp; &nbsp;     Pos.y += 1.0;<br>
-			&nbsp; &nbsp;     gl_Position = gVP * vec4(Pos, 1.0);<br>
-			&nbsp; &nbsp;     TexCoord = vec2(1.0, 1.0);<br>
-			&nbsp; &nbsp;     EmitVertex();<br>
+			Pos.y += 1.0;<br>
+			gl_Position = gVP * vec4(Pos, 1.0);<br>
+			TexCoord = vec2(1.0, 1.0);<br>
+			EmitVertex();<br>
 			<br>
-			&nbsp; &nbsp;     EndPrimitive();<br>
+			EndPrimitive();<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The point in the vertex buffer is considered to be at the center of the bottom of the quad. We
 				need to generate two front facing triangles from it. We start by going left to the bottom left corner of
@@ -336,7 +336,7 @@
 				right corner of the quad. To end the triangle strip we call the built-in function EndPrimitive().
 			</p>
 			<p>(billboard.fs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			uniform sampler2D gColorMap;<br>
@@ -346,13 +346,13 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;      FragColor = texture2D(gColorMap, TexCoord);<br>
+				FragColor = texture2D(gColorMap, TexCoord);<br>
 			<br>
-			&nbsp; &nbsp;      if (FragColor.r == 0 &amp;&amp; FragColor.g == 0 &amp;&amp; FragColor.b == 0) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          discard;<br>
-			&nbsp; &nbsp;      }<br>
+				if (FragColor.r == 0 &amp;&amp; FragColor.g == 0 &amp;&amp; FragColor.b == 0) {<br>
+				 discard;<br>
+				}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The FS is very simple - most of its work is to sample the texture using the texture coordinates
 				generated by the GS. There is a new feature here - the built-in keyword 'discard' is used in order

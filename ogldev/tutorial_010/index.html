@@ -57,13 +57,13 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<code>GLuint IBO;</code>
+			<pre><code>GLuint IBO;</code></pre>
 			<p>We added another buffer object handle for the index buffer.</p>
-			<code>
+			<pre><code>
 			Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);<br>
 			Vertices[1] = Vector3f(0.0f, -1.0f, 1.0f);<br>
 			Vertices[2] = Vector3f(1.0f, -1.0f, 0.0f);<br>
-			Vertices[3] = Vector3f(0.0f, 1.0f, 0.0f);</code>
+			Vertices[3] = Vector3f(0.0f, 1.0f, 0.0f);</code></pre>
 			<p>To demonstrate vertex sharing we need a mesh which is a bit more
 			complex. Many tutorials use the famous spinning cube for that. This
 			requires 8 vertices and 12 triangles. Since I'm lazy I use the spinning
@@ -72,31 +72,31 @@
 			<p>When looking at these vertices from the top (along the Y axis) we get
 			the following layout:</p>
 			<img class="center" src="pyramid.png"><br>
-			<code>unsigned int Indices[] = { 0, 3, 1,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<pre><code>unsigned int Indices[] = { 0, 3, 1,<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			1, 3, 2,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			2, 3, 0,<br>
-			&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			0, 1, 2 };</code>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			0, 1, 2 };</code></pre>
 			<p>The index buffer is populated using an array of indices. The indices
 			match the location of the vertices in the vertex buffer. When looking
 			at the array and the diagram above you can see that the last triangle
 			is the pyramid base while the other three make up its faces. The
 			pyramid is not symmetric but is very easy to specify.</p>
-			<code>
+			<pre><code>
 			glGenBuffers(1, &amp;IBO);<br>
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);<br>
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
-			</code>
+			</code></pre>
 			<p>We create and then populate the index buffer using the array of
 			indices. You can see that the only difference in creating vertex and
 			index buffers is that vertex buffers take GL_ARRAY_BUFFER as the buffer
 			type while index buffers take GL_ELEMENT_ARRAY_BUFFER. </p>
-			<code>glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);</code>
+			<pre><code>glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);</code></pre>
 			<p>In addition to binding the vertex buffer we must also bind the index
 			buffer prior to drawing. Again, we use the GL_ELEMENT_ARRAY_BUFFER as the buffer type.</p>
-			<code>glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);</code>
+			<pre><code>glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);</code></pre>
 			<p>
 			We use glDrawElements instead of glDrawArrays. The first parameter is
 			the primitive type to render (same as glDrawArrays). The second

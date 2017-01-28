@@ -84,12 +84,12 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<code>out vec4 Color;</code>
+			<pre><code>out vec4 Color;</code></pre>
 			<p>Parameters passed between pipeline stages must be declared using the
 			'out' reserved word and in the global scope of the shader. The color is
 			a 4-vector since the XYZ components carry the RGB values (respectively)
 			and W is the alpha value (pixel transparency).</p>
-			<code>Color = vec4(clamp(Position, 0.0, 1.0), 1.0);</code>
+			<pre><code>Color = vec4(clamp(Position, 0.0, 1.0), 1.0);</code></pre>
 			<p>Color in the graphics pipeline is usually represented using a floating
 			point value in the range [0.0, 1.0]. That value is later mapped to the
 			integer 0 to 255 for each color channel (totaling in 16M colors). We
@@ -113,11 +113,11 @@
 			which creates a 4-vector by concatenating a 3-vector with the supplied
 			W value. In our case we use 1.0 because this goes into the alpha part
 			of the color and we want the pixel to be completely opaque.</p>
-			<code>in vec4 Color;</code>
+			<pre><code>in vec4 Color;</code></pre>
 			<p>The opposite side of the output color in the VS is the input color in
 			the FS. This variable undergoes interpolation by the rasterizer so
 			every FS is (probably) executed with a different color. </p>
-			<code>FragColor = Color;</code>
+			<pre><code>FragColor = Color;</code></pre>
 			<p>We use the interpolated color as the fragment color with no further
 			changes and this completes this tutorial.</p>
 		</section>

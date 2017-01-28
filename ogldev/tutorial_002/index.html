@@ -64,39 +64,39 @@
 			<a href="http://glew.sourceforge.net/">http://glew.sourceforge.net/</a>. Most
 			Linux distributions provide prebuilt packages for it. On Ubuntu you can install
 			it by running the following from the command line: </p>
-			<pre><code> apt-get install libglew1.6 libglew1.6-dev </code></pre>
+			<pre><pre><code> apt-get install libglew1.6 libglew1.6-dev </code></pre></pre>
 		</section>
 
 		<section>
 			<h3> Source walkthru </h3>
 
-			<pre><code>#include &lt;GL/glew.h&gt;</code></pre>
+			<pre><pre><code>#include &lt;GL/glew.h&gt;</code></pre></pre>
 			<p>Here we include the single GLEW
 			header. If you include other OpenGL headers you must be careful to
 			include this file before the others else GLEW will complain that about
 			it. In order to link the program with GLEW you need to add '-lGLEW' to
 			the makefile.</p>
-			<pre><code>#include "math_3d.h"</code></pre>
+			<pre><pre><code>#include "math_3d.h"</code></pre></pre>
 			<p>In this tutorial we start using helper structures such as vector. We
 			will expand this header as we go along.</p>
-			<pre><code>GLenum res = glewInit();<br>
+			<pre><pre><code>GLenum res = glewInit();<br>
 			if (res != GLEW_OK)<br>
 			{<br>
 			&nbsp;&nbsp;&nbsp; fprintf(stderr, "Error: '%s'\n", glewGetErrorString(res));<br>
 			&nbsp;&nbsp;&nbsp; return 1;<br>
-			}</code></pre>
+			}</code></pre></pre>
 			<p>Here we initialize GLEW and check for any errors. This must be done
 			after GLUT has been initialized.</p>
-			<pre><code>Vector3f Vertices[1];<br>
-			Vertices[0] = Vector3f(0.0f, 0.0f, 0.0f);<br></code></pre>
+			<pre><pre><code>Vector3f Vertices[1];<br>
+			Vertices[0] = Vector3f(0.0f, 0.0f, 0.0f);<br></code></pre></pre>
 			<p>We create an array of one Vector3f structures (this type is defined in
 			math_3d.h) and initialize XYZ to be zero. This will make the dot appear
 			at the middle of the screen.</p>
-			<pre><code>GLuint VBO;</code></pre>
+			<pre><pre><code>GLuint VBO;</code></pre></pre>
 			<p>We allocate a GLuint in the global part of the program to store the
 			handle of the vertex buffer object. You will see later that most (if
 			not all) OpenGL objects are accessed via a variable of GLuint type.</p>
-			<pre><code>glGenBuffers(1, &amp;VBO);</code></pre>
+			<pre><pre><code>glGenBuffers(1, &amp;VBO);</code></pre></pre>
 			<p>OpenGL defines several glGen* functions for generating objects of
 			various types. They often take two parameters - the first one specifies
 			the number of objects you want to create and the second is the address
@@ -106,7 +106,7 @@
 			unless you delete them first with glDeleteBuffers. Note that at this
 			point you don't specify what you intend to do with the buffers so they
 			can be regarded as "generic". This is the job of the next function.</p>
-			<pre><code>glBindBuffer(GL_ARRAY_BUFFER, VBO);</code></pre>
+			<pre><pre><code>glBindBuffer(GL_ARRAY_BUFFER, VBO);</code></pre></pre>
 			<p>OpenGL has a rather unique way of using handles. In many APIs the
 			handle is simply passed to any relevant function and the action is
 			taken on that handle. In OpenGL we bind the handle to a target name and
@@ -117,7 +117,7 @@
 			GL_ELEMENT_ARRAY_BUFFER which means that the buffer contains the
 			indices of the vertices in another buffer. Other targets are also
 			available and we will see them in future tutorials.</p>
-			<pre><code>glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);</code></pre>
+			<pre><pre><code>glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);</code></pre></pre>
 			<p>After binding our object we fill it with data. The call above takes the
 			target name (same as what we used for binding), the size of the data in
 			bytes, address of the array of vertices and a flag that indicates the
@@ -127,7 +127,7 @@
 			to give some thought as to the proper flag to use. The driver can rely
 			on it for optimization heuristics (such as what is the best place in
 			memory to store the buffer). </p>
-			<pre><code>glEnableVertexAttribArray(0);</code></pre>
+			<pre><pre><code>glEnableVertexAttribArray(0);</code></pre></pre>
 			<p>In the shaders
 			tutorial you will see that vertex attributes used in the shader
 			(position, normal, etc) have an index mapped to them that enable you to
@@ -139,13 +139,13 @@
 			(which becomes active when there is no shader bound). You must enable
 			each vertex attribute or else the data will not be accessible by the
 			pipeline.</p>
-			<pre><code>glBindBuffer(GL_ARRAY_BUFFER, VBO);</code></pre>
+			<pre><pre><code>glBindBuffer(GL_ARRAY_BUFFER, VBO);</code></pre></pre>
 			<p>Here we bind our buffer again as we prepare for making the draw call.
 			In this small program we only have one vertex buffer so making this
 			call every frame is redundent but in more complex programs there are
 			multiple buffers to store your various models and you must update the
 			pipeline state with the buffer you intend to use. </p>
-			<pre><code>glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);</code></pre>
+			<pre><pre><code>glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);</code></pre></pre>
 			<p>This call tells the pipeline how to interpret the data inside the
 			buffer. The first parameter specifies the index of the attribute. In
 			our case we know that it is zero by default but when we start using
@@ -165,7 +165,7 @@
 			offset inside the structure where the pipeline will find our attribute.
 			In the case of the structure with the position and normal the offset of
 			the position is zero while the offset of the normal is 12.</p>
-			<pre><code>glDrawArrays(GL_POINTS, 0, 1);</code></pre>
+			<pre><pre><code>glDrawArrays(GL_POINTS, 0, 1);</code></pre></pre>
 			<p>Finally, we make the call to draw the geometry. All the commands that
 			we've seen so far are important but they only set the stage for the draw command.
 			This is where the GPU really starts to work. It will now
@@ -185,7 +185,7 @@
 			specify zero but this enables us to store multiple models in the same
 			buffer and then select the one to draw based on its offset in the
 			buffer. The last parameter is the number of vertices to draw.</p>
-			<pre><code>glDisableVertexAttribArray(0);</code></pre>
+			<pre><pre><code>glDisableVertexAttribArray(0);</code></pre></pre>
 			<p>It is good practice to disable each vertex attribute when it is not
 			immediately used. Leaving it enabled when a shader is not using it is a
 			sure way of asking for trouble.</p>

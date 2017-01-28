@@ -175,42 +175,42 @@
 			<h3> Source walkthru </h3>
 
 			<p>(tutorial37.cpp:149)</p>
-			<code>
+			<pre><code>
 			virtual void RenderSceneCB()<br>
 			{   <br>
-			&nbsp; &nbsp;    CalcFPS();<br>
-			        <br>
-			 &nbsp; &nbsp;    m_scale += 0.05f;<br>
+				CalcFPS();<br>
 			<br>
-			 &nbsp; &nbsp;    m_pGameCamera->OnRender();<br>
+			 	m_scale += 0.05f;<br>
 			<br>
-			 &nbsp; &nbsp; <b>   m_gbuffer.StartFrame();</b><br>
+			 	m_pGameCamera->OnRender();<br>
 			<br>
-			 &nbsp; &nbsp;    DSGeometryPass();<br>
+			 	<b>   m_gbuffer.StartFrame();</b><br>
 			<br>
-			 &nbsp; &nbsp;    // We need stencil to be enabled in the stencil pass to get the stencil buffer<br>
-			 &nbsp; &nbsp;    // updated and we also need it in the light pass because we render the light<br>
-			 &nbsp; &nbsp;    // only if the stencil passes.<br>
-			 &nbsp; &nbsp;   <b> glEnable(GL_STENCIL_TEST);<br>
+			 	DSGeometryPass();<br>
 			<br>
-			 &nbsp; &nbsp;    for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_pointLight); i++) {<br>
-				&nbsp; &nbsp; &nbsp; &nbsp; DSStencilPass(i);<br>
-				&nbsp; &nbsp; &nbsp; &nbsp; DSPointLightPass(i);<br>
-			&nbsp; &nbsp; }<br>
+			 	// We need stencil to be enabled in the stencil pass to get the stencil buffer<br>
+			 	// updated and we also need it in the light pass because we render the light<br>
+			 	// only if the stencil passes.<br>
+			 <b> glEnable(GL_STENCIL_TEST);<br>
 			<br>
-			&nbsp; &nbsp; // The directional light does not need a stencil test because its volume<br>
-				&nbsp; &nbsp; 	// is unlimited and the final pass simply copies the texture.<br>
-				&nbsp; &nbsp; 	glDisable(GL_STENCIL_TEST);</b><br>
+			 	for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_pointLight); i++) {<br>
+						DSStencilPass(i);<br>
+						DSPointLightPass(i);<br>
+				}<br>
 			<br>
-				&nbsp; &nbsp; 	DSDirectionalLightPass();<br>
+				// The directional light does not need a stencil test because its volume<br>
+						// is unlimited and the final pass simply copies the texture.<br>
+						glDisable(GL_STENCIL_TEST);</b><br>
 			<br>
-				&nbsp; &nbsp;<b> 	DSFinalPass();</b><br>
-			        <br>
-			 &nbsp; &nbsp;        RenderFPS();<br>
-			        <br>
-			 &nbsp; &nbsp;        glutSwapBuffers();<br>
-			    }<br>
-			</code>
+						DSDirectionalLightPass();<br>
+			<br>
+				<b> 	DSFinalPass();</b><br>
+			<br>
+			 	RenderFPS();<br>
+			<br>
+			 	glutSwapBuffers();<br>
+			}<br>
+			</code></pre>
 			<p>
 			The piece of code above is the main render function with changes from the previous
 			tutorial marked in bold. The first change is the call to the StartFrame() API of the 
@@ -231,37 +231,37 @@
 			which is also a new pass required due to the complexity of the GBuffer class.
 			</p>
 			<p>(tutorial37.cpp:185)</p>
-			<code>
-			    void DSGeometryPass()<br>
-			    {<br>
-				 &nbsp; &nbsp; 	m_DSGeomPassTech.Enable();<br>
+			<pre><code>
+			void DSGeometryPass()<br>
+			{<br>
+				 		m_DSGeomPassTech.Enable();<br>
 			<br>
-			  &nbsp; &nbsp;      <b>  m_gbuffer.BindForGeomPass();</b><br>
+			  	<b>  m_gbuffer.BindForGeomPass();</b><br>
 			<br>
-				 &nbsp; &nbsp; 	// Only the geometry pass updates the depth buffer<br>
-				 &nbsp; &nbsp; 	glDepthMask(GL_TRUE);<br>
+				 		// Only the geometry pass updates the depth buffer<br>
+				 		glDepthMask(GL_TRUE);<br>
 			<br>
-				 &nbsp; &nbsp; 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
+				 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
 			<br>
-				 &nbsp; &nbsp; 	glEnable(GL_DEPTH_TEST);<br>
+				 		glEnable(GL_DEPTH_TEST);<br>
 			<br>
-				 &nbsp; &nbsp; 	Pipeline p;<br>
-			  &nbsp; &nbsp;        p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-			  &nbsp; &nbsp;        p.SetPerspectiveProj(m_persProjInfo);        <br>
-			  &nbsp; &nbsp;        p.Rotate(0.0f, m_scale, 0.0f);<br>
-			        <br>
-			  &nbsp; &nbsp;        for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_boxPositions) ; i++) {<br>
-			  &nbsp; &nbsp;  &nbsp; &nbsp;            p.WorldPos(m_boxPositions[i]);<br>
-			  &nbsp; &nbsp;  &nbsp; &nbsp;            m_DSGeomPassTech.SetWVP(p.GetWVPTrans());<br>
-			  &nbsp; &nbsp;  &nbsp; &nbsp;        	m_DSGeomPassTech.SetWorldMatrix(p.GetWorldTrans());<br>
-			  &nbsp; &nbsp;  &nbsp; &nbsp;            m_box.Render();            <br>
-			  &nbsp; &nbsp;        }<br>
+				 		Pipeline p;<br>
+			  	p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+			  	p.SetPerspectiveProj(m_persProjInfo);<br>
+			  	p.Rotate(0.0f, m_scale, 0.0f);<br>
 			<br>
-				 &nbsp; &nbsp; 	// When we get here the depth buffer is already populated and the stencil pass<br>
-				 &nbsp; &nbsp; 	// depends on it, but it does not write to it.<br>
-				 &nbsp; &nbsp; 	glDepthMask(GL_FALSE);		<br>
-			    }
-			</code>
+			  	for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_boxPositions) ; i++) {<br>
+			  	 p.WorldPos(m_boxPositions[i]);<br>
+			  	 m_DSGeomPassTech.SetWVP(p.GetWVPTrans());<br>
+			  	 		m_DSGeomPassTech.SetWorldMatrix(p.GetWorldTrans());<br>
+			  	 m_box.Render();<br>
+			  	}<br>
+			<br>
+				 		// When we get here the depth buffer is already populated and the stencil pass<br>
+				 		// depends on it, but it does not write to it.<br>
+				 		glDepthMask(GL_FALSE);		<br>
+			}
+			</code></pre>
 			<p>
 			There are minor changes in the geometry pass. The function GBuffer::BindForWriting() has
 			been renamed GBuffer::BindForGeomPass(). In addition, those of you with a sharp eye will notice
@@ -269,38 +269,38 @@
 			elsewhere.
 			</p>
 			<p>(tutorial37.cpp:215)</p>
-			<code>
+			<pre><code>
 				void DSStencilPass(unsigned int PointLightIndex)<br>
 				{<br>
-					 &nbsp; &nbsp; 	m_nullTech.Enable();<br>
+					 		m_nullTech.Enable();<br>
 			<br>
-					 &nbsp; &nbsp; 	// Disable color/depth write and enable stencil<br>
-					 &nbsp; &nbsp; 	m_gbuffer.BindForStencilPass();<br>
-					 &nbsp; &nbsp; 	glEnable(GL_DEPTH_TEST);<br>
-			        <br>
-			 	 &nbsp; &nbsp;        glDisable(GL_CULL_FACE);<br>
+					 		// Disable color/depth write and enable stencil<br>
+					 		m_gbuffer.BindForStencilPass();<br>
+					 		glEnable(GL_DEPTH_TEST);<br>
+			<br>
+			 	 	glDisable(GL_CULL_FACE);<br>
 					<br>
-					 &nbsp; &nbsp; 	glClear(GL_STENCIL_BUFFER_BIT);<br>
+					 		glClear(GL_STENCIL_BUFFER_BIT);<br>
 			<br>
-					 &nbsp; &nbsp; 	// We need the stencil test to be enabled but we want it<br>
-					 &nbsp; &nbsp; 	// to succeed always. Only the depth test matters.<br>
-					 &nbsp; &nbsp; 	glStencilFunc(GL_ALWAYS, 0, 0);<br>
+					 		// We need the stencil test to be enabled but we want it<br>
+					 		// to succeed always. Only the depth test matters.<br>
+					 		glStencilFunc(GL_ALWAYS, 0, 0);<br>
 			<br>
-					 &nbsp; &nbsp; 	glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);<br>
-					 &nbsp; &nbsp; 	glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);<br>
+					 		glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);<br>
+					 		glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);<br>
 			<br>
-					 &nbsp; &nbsp; 	Pipeline p;<br>
-					 &nbsp; &nbsp; 	p.WorldPos(m_pointLight[PointLightIndex].Position);<br>
-			 	 &nbsp; &nbsp;        float BBoxScale = CalcPointLightBSphere(m_pointLight[PointLightIndex].Color, <br>
-			                       	 &nbsp; &nbsp; 	 &nbsp; &nbsp;                       m_pointLight[PointLightIndex].DiffuseIntensity);<br>
-					 &nbsp; &nbsp; 	p.Scale(BBoxScale, BBoxScale, BBoxScale);		<br>
-			 	 &nbsp; &nbsp;        p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-			 	 &nbsp; &nbsp;        p.SetPerspectiveProj(m_persProjInfo);<br>
+					 		Pipeline p;<br>
+					 		p.WorldPos(m_pointLight[PointLightIndex].Position);<br>
+			 	 	float BBoxScale = CalcPointLightBSphere(m_pointLight[PointLightIndex].Color, <br>
+			   	 		 	  m_pointLight[PointLightIndex].DiffuseIntensity);<br>
+					 		p.Scale(BBoxScale, BBoxScale, BBoxScale);		<br>
+			 	 	p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+			 	 	p.SetPerspectiveProj(m_persProjInfo);<br>
 			<br>
-					 &nbsp; &nbsp; 	m_nullTech.SetWVP(p.GetWVPTrans());<br>
-					 &nbsp; &nbsp; 	m_bsphere.Render();  <br>
+					 		m_nullTech.SetWVP(p.GetWVPTrans());<br>
+					 		m_bsphere.Render();  <br>
 				}
-			</code>
+			</code></pre>
 			<p>
 
 			Now comes the real meat - the stencil pass. Let's review it step by step. We start by enabling
@@ -317,39 +317,39 @@
 			the light volume. We can now do lighting calculations.
 			</p>
 			<p>(tutorial37.cpp:246)</p>
-			<code>
-			    void DSPointLightPass(unsigned int PointLightIndex)<br>
-			    {<br>
-				&nbsp; &nbsp; 	m_gbuffer.BindForLightPass();<br>
+			<pre><code>
+			void DSPointLightPass(unsigned int PointLightIndex)<br>
+			{<br>
+						m_gbuffer.BindForLightPass();<br>
 			<br>
-			 &nbsp; &nbsp;        m_DSPointLightPassTech.Enable();<br>
-			 &nbsp; &nbsp;        m_DSPointLightPassTech.SetEyeWorldPos(m_pGameCamera->GetPos());        <br>
+			 	m_DSPointLightPassTech.Enable();<br>
+			 	m_DSPointLightPassTech.SetEyeWorldPos(m_pGameCamera->GetPos());<br>
 			<br>
-				&nbsp; &nbsp; 	glStencilFunc(GL_NOTEQUAL, 0, 0xFF);<br>
-			      		<br>
-				&nbsp; &nbsp; 	glDisable(GL_DEPTH_TEST);<br>
-				&nbsp; &nbsp; 	glEnable(GL_BLEND);<br>
-				&nbsp; &nbsp; 	glBlendEquation(GL_FUNC_ADD);<br>
-				&nbsp; &nbsp; 	glBlendFunc(GL_ONE, GL_ONE);<br>
-			        <br>
-			 &nbsp; &nbsp;        glEnable(GL_CULL_FACE);<br>
-			 &nbsp; &nbsp;        glCullFace(GL_FRONT);<br>
+						glStencilFunc(GL_NOTEQUAL, 0, 0xFF);<br>
+			  		<br>
+						glDisable(GL_DEPTH_TEST);<br>
+						glEnable(GL_BLEND);<br>
+						glBlendEquation(GL_FUNC_ADD);<br>
+						glBlendFunc(GL_ONE, GL_ONE);<br>
 			<br>
-			 &nbsp; &nbsp;        Pipeline p;<br>
-			 &nbsp; &nbsp;        p.WorldPos(m_pointLight[PointLightIndex].Position);<br>
-			 &nbsp; &nbsp;        float BBoxScale = CalcPointLightBSphere(m_pointLight[PointLightIndex].Color, <br>
-			 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                                          m_pointLight[PointLightIndex].DiffuseIntensity);<br>
-				&nbsp; &nbsp; 	p.Scale(BBoxScale, BBoxScale, BBoxScale);		<br>
-			 &nbsp; &nbsp;        p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-			 &nbsp; &nbsp;        p.SetPerspectiveProj(m_persProjInfo);               <br>
-			 &nbsp; &nbsp;        m_DSPointLightPassTech.SetWVP(p.GetWVPTrans());<br>
-			 &nbsp; &nbsp;        m_DSPointLightPassTech.SetPointLight(m_pointLight[PointLightIndex]);<br>
-			 &nbsp; &nbsp;        m_bsphere.Render(); <br>
-			 &nbsp; &nbsp;        glCullFace(GL_BACK);<br>
-			       <br>
-				&nbsp; &nbsp; 	glDisable(GL_BLEND);<br>
-			    }
-			</code>
+			 	glEnable(GL_CULL_FACE);<br>
+			 	glCullFace(GL_FRONT);<br>
+			<br>
+			 	Pipeline p;<br>
+			 	p.WorldPos(m_pointLight[PointLightIndex].Position);<br>
+			 	float BBoxScale = CalcPointLightBSphere(m_pointLight[PointLightIndex].Color, <br>
+			 			 	 	 						 m_pointLight[PointLightIndex].DiffuseIntensity);<br>
+						p.Scale(BBoxScale, BBoxScale, BBoxScale);		<br>
+			 	p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+			 	p.SetPerspectiveProj(m_persProjInfo);   <br>
+			 	m_DSPointLightPassTech.SetWVP(p.GetWVPTrans());<br>
+			 	m_DSPointLightPassTech.SetPointLight(m_pointLight[PointLightIndex]);<br>
+			 	m_bsphere.Render(); <br>
+			 	glCullFace(GL_BACK);<br>
+			   <br>
+						glDisable(GL_BLEND);<br>
+			}
+			</code></pre>
 			<p>
 			Same as the other passes the point light pass starts by setting up the G buffer
 			for what it needs (by calling GBuffer::BindForLightPass()). It sets up the
@@ -365,14 +365,14 @@
 			The directional light pass is pretty much the same as before so we won't review it.
 			</p>
 			<p>(tutorial37.cpp:296)</p>
-			<code>
+			<pre><code>
 				void DSFinalPass()<br>
 				{<br>
-				 &nbsp; &nbsp; 	m_gbuffer.BindForFinalPass();<br>
-			  &nbsp; &nbsp;        glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, <br>
-			  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;                          0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);<br>
+				 		m_gbuffer.BindForFinalPass();<br>
+			  	glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, <br>
+			  	 	 	 	 	 &nbsp;  0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);<br>
 				}
-			</code>
+			</code></pre>
 			<p>
 			In the final pass we blit from the color buffer inside the G Buffer into the 
 			screen. This is a good place to discuss why we added an intermediate color
@@ -387,62 +387,62 @@
 			and in the final pass blit it to the default FBO color buffer. This is the final pass above.
 			</p>
 			<p>(gbuffer.h:23)</p>
-			<code>
+			<pre><code>
 			class GBuffer<br>
 			{<br>
 			public:<br>
 			<br>
-			 &nbsp; &nbsp;    enum GBUFFER_TEXTURE_TYPE {<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;            GBUFFER_TEXTURE_TYPE_POSITION,<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;            GBUFFER_TEXTURE_TYPE_DIFFUSE,<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;            GBUFFER_TEXTURE_TYPE_NORMAL,<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;            GBUFFER_NUM_TEXTURES<br>
-			 &nbsp; &nbsp;    };<br>
+			 	enum GBUFFER_TEXTURE_TYPE {<br>
+			 	GBUFFER_TEXTURE_TYPE_POSITION,<br>
+			 	GBUFFER_TEXTURE_TYPE_DIFFUSE,<br>
+			 	GBUFFER_TEXTURE_TYPE_NORMAL,<br>
+			 	GBUFFER_NUM_TEXTURES<br>
+			 	};<br>
 			<br>
-			 &nbsp; &nbsp;    GBuffer();<br>
+			 	GBuffer();<br>
 			<br>
-			 &nbsp; &nbsp;    ~GBuffer();<br>
+			 	~GBuffer();<br>
 			<br>
-			 &nbsp; &nbsp;    bool Init(unsigned int WindowWidth, unsigned int WindowHeight);<br>
+			 	bool Init(unsigned int WindowWidth, unsigned int WindowHeight);<br>
 			<br>
-			 &nbsp; &nbsp; <b>   void StartFrame();<br>
-			 &nbsp; &nbsp;    void BindForGeomPass();<br>
-			 &nbsp; &nbsp;    void BindForStencilPass();<br>
-			 &nbsp; &nbsp;    void BindForLightPass();<br>
-			 &nbsp; &nbsp;    void BindForFinalPass();</b><br>
+			 	<b>   void StartFrame();<br>
+			 	void BindForGeomPass();<br>
+			 	void BindForStencilPass();<br>
+			 	void BindForLightPass();<br>
+			 	void BindForFinalPass();</b><br>
 			<br>
 			private:<br>
 			<br>
-			 &nbsp; &nbsp;    GLuint m_fbo;<br>
-			 &nbsp; &nbsp;    GLuint m_textures[GBUFFER_NUM_TEXTURES];<br>
-			 &nbsp; &nbsp;    GLuint m_depthTexture;<br>
-			 &nbsp; &nbsp;  <b>  GLuint m_finalTexture;</b><br>
+			 	GLuint m_fbo;<br>
+			 	GLuint m_textures[GBUFFER_NUM_TEXTURES];<br>
+			 	GLuint m_depthTexture;<br>
+			 	 <b>  GLuint m_finalTexture;</b><br>
 			};
-			</code>
+			</code></pre>
 			<p>
 			We've added a final texture to the GBuffer class for the color and 
 			reshuffled the API quite a bit since the last tutorial. Let's review the changes.
 			</p>
 			<p>(gbuffer.cpp:52)</p>
-			<code>
+			<pre><code>
 			bool GBuffer::Init(unsigned int WindowWidth, unsigned int WindowHeight)<br>
 			{<br>
-			 &nbsp; &nbsp; ...<br><br>
-				 &nbsp; &nbsp; glGenTextures(1, &amp;m_finalTexture);<br><br>
-			 &nbsp; &nbsp; ...<br><br>
-				 &nbsp; &nbsp; // depth<br>
-				 &nbsp; &nbsp; glBindTexture(GL_TEXTURE_2D, m_depthTexture);<br>
-				 &nbsp; &nbsp; glTexImage2D(GL_TEXTURE_2D, 0, <b>GL_DEPTH32F_STENCIL8</b>, WindowWidth, WindowHeight, 0, GL_DEPTH_STENCIL, <br>
-				 &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GL_FLOAT_32_UNSIGNED_INT_24_8_REV, NULL);<br>
-				 &nbsp; &nbsp; glFramebufferTexture2D(GL_FRAMEBUFFER, <b>GL_DEPTH_STENCIL_ATTACHMENT</b>, GL_TEXTURE_2D, m_depthTexture, 0);<br><br>
+			 	...<br><br>
+				 	glGenTextures(1, &amp;m_finalTexture);<br><br>
+			 	...<br><br>
+				 	// depth<br>
+				 	glBindTexture(GL_TEXTURE_2D, m_depthTexture);<br>
+				 	glTexImage2D(GL_TEXTURE_2D, 0, <b>GL_DEPTH32F_STENCIL8</b>, WindowWidth, WindowHeight, 0, GL_DEPTH_STENCIL, <br>
+				 	 			&nbsp; GL_FLOAT_32_UNSIGNED_INT_24_8_REV, NULL);<br>
+				 	glFramebufferTexture2D(GL_FRAMEBUFFER, <b>GL_DEPTH_STENCIL_ATTACHMENT</b>, GL_TEXTURE_2D, m_depthTexture, 0);<br><br>
 
-				 &nbsp; &nbsp; // final<br>
-				 &nbsp; &nbsp; glBindTexture(GL_TEXTURE_2D, m_finalTexture);<br>
-				 &nbsp; &nbsp; glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, WindowWidth, WindowHeight, 0, GL_RGB, GL_FLOAT, NULL);<br>
-				 &nbsp; &nbsp; glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT4, GL_TEXTURE_2D, m_finalTexture, 0);	<br><br>
-			 &nbsp; &nbsp; ...<br>
+				 	// final<br>
+				 	glBindTexture(GL_TEXTURE_2D, m_finalTexture);<br>
+				 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, WindowWidth, WindowHeight, 0, GL_RGB, GL_FLOAT, NULL);<br>
+				 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT4, GL_TEXTURE_2D, m_finalTexture, 0);	<br><br>
+			 	...<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			When we initialize the G Buffer we need to allocate one more texture for the final
 			texture. The final texture is attached to attachment point number 4. The depth texture is 
@@ -451,44 +451,44 @@
 			to GL_DEPTH_STENCIL_ATTACHMENT instead of GL_DEPTH_COMPONENT.
 			</p>
 			<p>(gbuffer.cpp:97)</p>
-			<code>
+			<pre><code>
 			void GBuffer::StartFrame()<br>
 			{<br>
-				 &nbsp; &nbsp; 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
-				 &nbsp; &nbsp; 	glDrawBuffer(GL_COLOR_ATTACHMENT4);<br>
-				 &nbsp; &nbsp; 	glClear(GL_COLOR_BUFFER_BIT);<br>
+				 		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
+				 		glDrawBuffer(GL_COLOR_ATTACHMENT4);<br>
+				 		glClear(GL_COLOR_BUFFER_BIT);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			At the start of each frame we need to clear the final texture which is attached
 			to attachment point number 4.
 			</p>
 			<p>(gbuffer.cpp:105)</p>
-			<code>
+			<pre><code>
 			void GBuffer::BindForGeomPass()<br>
 			{<br>
-			 	 &nbsp; &nbsp;    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
+			 	 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
 			<br>
-					 &nbsp; &nbsp; <b>GLenum DrawBuffers[] = { GL_COLOR_ATTACHMENT0, <br>
-					 &nbsp; &nbsp; 	 &nbsp; &nbsp; 	 &nbsp; &nbsp; 	 &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  				     GL_COLOR_ATTACHMENT1,<br>
-					 &nbsp; &nbsp; 	 &nbsp; &nbsp; 	 &nbsp; &nbsp; 	 &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 				     GL_COLOR_ATTACHMENT2 };<br>
+					 	<b>GLenum DrawBuffers[] = { GL_COLOR_ATTACHMENT0, <br>
+					 		 		 		 					 				 GL_COLOR_ATTACHMENT1,<br>
+					 		 		 		 									 GL_COLOR_ATTACHMENT2 };<br>
 			<br>
-			 	 &nbsp; &nbsp;    glDrawBuffers(ARRAY_SIZE_IN_ELEMENTS(DrawBuffers), DrawBuffers);</b><br>
+			 	 	glDrawBuffers(ARRAY_SIZE_IN_ELEMENTS(DrawBuffers), DrawBuffers);</b><br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			Previously the FBO in the G Buffer was static (in terms of its configuration) 
 			and was set up in advance so we just had to bind it for writing when the geometry pass started.
 			Now we keep changing the FBO to we need to config the draw buffers for the attributes each time.
 			</p>
 			<p>(gbuffer.cpp:117)</p>
-			<code>
+			<pre><code>
 			void GBuffer::BindForStencilPass()<br>
 			{<br>
-			 &nbsp; &nbsp;    // must disable the draw buffers <br>
-				&nbsp; &nbsp; glDrawBuffer(GL_NONE);<br>
+			 	// must disable the draw buffers <br>
+					glDrawBuffer(GL_NONE);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			As mentioned earlier, in the stencil test we are not writing to the color buffer, only
 			the stencil buffer. Indeed, even our FS is empty. However, in that case the default output
@@ -496,30 +496,30 @@
 			of the bounding sphere we disable the draw buffers here.
 			</p>
 			<p>(gbuffer.cpp:125)</p>
-			<code>
+			<pre><code>
 			void GBuffer::BindForLightPass()<br>
 			{<br>
-				&nbsp; &nbsp; glDrawBuffer(GL_COLOR_ATTACHMENT4);<br>
+					glDrawBuffer(GL_COLOR_ATTACHMENT4);<br>
 			<br>
-				&nbsp; &nbsp; for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_textures); i++) {<br>
-				&nbsp; &nbsp; &nbsp; &nbsp; 	glActiveTexture(GL_TEXTURE0 + i);		<br>
-				&nbsp; &nbsp; &nbsp; &nbsp; 	glBindTexture(GL_TEXTURE_2D, m_textures[GBUFFER_TEXTURE_TYPE_POSITION + i]);<br>
-				&nbsp; &nbsp; }<br>
+					for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_textures); i++) {<br>
+							glActiveTexture(GL_TEXTURE0 + i);		<br>
+							glBindTexture(GL_TEXTURE_2D, m_textures[GBUFFER_TEXTURE_TYPE_POSITION + i]);<br>
+					}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			The light pass is straightforward. We set the target to be the final buffer and bind
 			the attribute buffers as a source.
 			</p>
 			<p>(gbuffer.cpp:136)</p>
-			<code>
+			<pre><code>
 			void GBuffer::BindForFinalPass()<br>
 			{<br>
-				&nbsp; &nbsp; glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);<br>
-			 &nbsp; &nbsp;    glBindFramebuffer(GL_READ_FRAMEBUFFER, m_fbo);<br>
-			 &nbsp; &nbsp;    glReadBuffer(GL_COLOR_ATTACHMENT4);<br>
+					glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);<br>
+			 	glBindFramebuffer(GL_READ_FRAMEBUFFER, m_fbo);<br>
+			 	glReadBuffer(GL_COLOR_ATTACHMENT4);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			When we get to the final pass our final buffer is populated with the final
 			image. Here we set things up for the blitting that takes place in the main

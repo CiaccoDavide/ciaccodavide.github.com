@@ -106,10 +106,10 @@
 			</p>
 				<img class="center" src="vertex_normals.png">
 			<p>
-			        You may find the pyramid model that we have been using in the last few tutorials a bit strange looking with
-			        those vertex normals and decide to stick with the original normals. This is OK. However, as models become more
-			        complex (and we will see that in the future) and their surfaces become smoother I think you will find the vertex
-			        normals more appropriate.
+			You may find the pyramid model that we have been using in the last few tutorials a bit strange looking with
+			those vertex normals and decide to stick with the original normals. This is OK. However, as models become more
+			complex (and we will see that in the future) and their surfaces become smoother I think you will find the vertex
+			normals more appropriate.
 			</p>
 			<p>
 				The only thing left to worry about is the coordinate space in which diffuse lighting calculations are going to take
@@ -126,22 +126,22 @@
 			<h3> Source walkthru </h3>
 
 			<p>(lighting_technique.h:25)</p>
-			<code>
+			<pre><code>
 			struct DirectionalLight<br>
 			{<br>
-			&nbsp; &nbsp;    Vector3f Color;<br>
-			&nbsp; &nbsp;    float AmbientIntensity;<br>
-			&nbsp; &nbsp;    Vector3f Direction;<br>
-			&nbsp; &nbsp;    float DiffuseIntensity;<br>
+				Vector3f Color;<br>
+				float AmbientIntensity;<br>
+				Vector3f Direction;<br>
+				float DiffuseIntensity;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				This is the new DirectionalLight structure. There are two new members here: the direction is a 3 dimensional vector
 				specified in world space and the intensity is a floating point number (will be used in the same way as the ambient
 				intensity).
 			</p>
 			<p>(lighting.vs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			layout (location = 0) in vec3 Position;<br>
@@ -156,11 +156,11 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;     gl_Position = gWVP * vec4(Position, 1.0);<br>
-			&nbsp; &nbsp;     TexCoord0 = TexCoord;<br>
-			&nbsp; &nbsp;     Normal0 = (gWorld * vec4(Normal, 0.0)).xyz;<br>
+			gl_Position = gWVP * vec4(Position, 1.0);<br>
+			TexCoord0 = TexCoord;<br>
+			Normal0 = (gWorld * vec4(Normal, 0.0)).xyz;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is the updated vertex shader. We have a new vertex attribute, the normal, that the application will need to
 				supply. In addition, the world transformation has its own uniform variable and we will need to supply it in addition
@@ -174,7 +174,7 @@
 				They can only be scaled or rotated. 
 			</p>
 			<p>(lighting.fs:1)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			in vec2 TexCoord0;<br>
@@ -184,30 +184,30 @@
 			<br>
 			struct DirectionalLight<br>
 			{<br>
-			&nbsp; &nbsp;      vec3 Color;<br>
-			&nbsp; &nbsp;      float AmbientIntensity;<br>
-			&nbsp; &nbsp;      float DiffuseIntensity;<br>
-			&nbsp; &nbsp;      vec3 Direction;<br>
+				vec3 Color;<br>
+				float AmbientIntensity;<br>
+				float DiffuseIntensity;<br>
+				vec3 Direction;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				Here is the beginning of the fragment shader. It now receives the interpolated vertex normal that was transformed
 				by the vertex shader to world space. The DirectionalLight structure was extended to match the one in the C++ code
 				and contains the new light attributes.
 			</p>
 			<p>(lighting.fs:19)</p>
-			<code>
+			<pre><code>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;  vec4 AmbientColor = vec4(gDirectionalLight.Color * gDirectionalLight.AmbientIntensity, 1.0f);<br>
-			</code>
+				 vec4 AmbientColor = vec4(gDirectionalLight.Color * gDirectionalLight.AmbientIntensity, 1.0f);<br>
+			</code></pre>
 			<p>
 				There is no change in the calculation of the ambient color factor. We calculate and store it here and use it in the
 				final formula below.
 			</p>
-			<code>
-			&nbsp; &nbsp;     float DiffuseFactor = dot(normalize(Normal0), -gDirectionalLight.Direction);<br>
-			</code>    
+			<pre><code>
+			float DiffuseFactor = dot(normalize(Normal0), -gDirectionalLight.Direction);<br>
+			</code></pre>
 			<p>
 				This is the core of the diffuse light calculation. We calculate the cosine of the angle between the light vector
 				and the normal by doing a dot product between them. There are three things to note here:
@@ -229,17 +229,17 @@
 				</li>		
 			</ol>
 			</p>
-			<code>
-			&nbsp; &nbsp;     vec4 DiffuseColor;<br>
+			<pre><code>
+			vec4 DiffuseColor;<br>
 			<br>
-			&nbsp; &nbsp;     if (DiffuseFactor > 0) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; DiffuseColor = vec4(gDirectionalLight.Color * gDirectionalLight.DiffuseIntensity * DiffuseFactor, 1.0f);<br>
-			&nbsp; &nbsp;     }<br>
-			&nbsp; &nbsp;     else {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  DiffuseColor = vec4(0, 0, 0, 0);<br>
-			&nbsp; &nbsp;     }<br>
+			if (DiffuseFactor > 0) {<br>
+					DiffuseColor = vec4(gDirectionalLight.Color * gDirectionalLight.DiffuseIntensity * DiffuseFactor, 1.0f);<br>
+			}<br>
+			else {<br>
+					 DiffuseColor = vec4(0, 0, 0, 0);<br>
+			}<br>
 			<br>
-			</code>
+			</code></pre>
 			<p>
 				Here we calculate the diffuse term which depends on the color of light, the diffuse intensity and the direction of
 				light. If the diffuse factor is negative or equals to zero it means that light strikes the surface at an obtuse angle 
@@ -248,27 +248,27 @@
 				constant diffuse intensity and then scaling the result by the diffuse factor. If the angle between the light and
 				the normal is 0 the diffuse factor will be 1 which will provide the maximum light strength.
 			</p>
-			<code>
-			&nbsp; &nbsp;     FragColor = texture2D(gSampler, TexCoord0.xy) * (AmbientColor + DiffuseColor);<br>
+			<pre><code>
+			FragColor = texture2D(gSampler, TexCoord0.xy) * (AmbientColor + DiffuseColor);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				This is the final lighting calculation. We add the ambient and diffuse terms and multiply the result by the color
 				which is sampled from the texture. Now you can see that even if diffuse light has no effect on the surface (due
 				to direction), the ambient light can still light it up, if it exists.
 			</p>
 			<p>(lighting_technique.cpp:144)</p>
-			<code>
+			<pre><code>
 			void LightingTechnique::SetDirectionalLight(const DirectionalLight& Light)<br>
 			{<br>
-			&nbsp; &nbsp;     glUniform3f(m_dirLightLocation.Color, Light.Color.x, Light.Color.y, Light.Color.z);<br>
-			&nbsp; &nbsp;     glUniform1f(m_dirLightLocation.AmbientIntensity, Light.AmbientIntensity);<br>
-			&nbsp; &nbsp;     Vector3f Direction = Light.Direction;<br>
-			&nbsp; &nbsp;     Direction.Normalize();<br>
-			&nbsp; &nbsp;     glUniform3f(m_dirLightLocation.Direction, Direction.x, Direction.y, Direction.z);<br>
-			&nbsp; &nbsp;     glUniform1f(m_dirLightLocation.DiffuseIntensity, Light.DiffuseIntensity);<br>
+			glUniform3f(m_dirLightLocation.Color, Light.Color.x, Light.Color.y, Light.Color.z);<br>
+			glUniform1f(m_dirLightLocation.AmbientIntensity, Light.AmbientIntensity);<br>
+			Vector3f Direction = Light.Direction;<br>
+			Direction.Normalize();<br>
+			glUniform3f(m_dirLightLocation.Direction, Direction.x, Direction.y, Direction.z);<br>
+			glUniform1f(m_dirLightLocation.DiffuseIntensity, Light.DiffuseIntensity);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				This function sets the parameters of the directional light into the shader. It was extended to cover the direction
 				vector and the diffuse intensity. Note that the direction vector is normalized before it is set. The LightingTechnique
@@ -277,50 +277,50 @@
 				by now and the code is not quoted here. Check the source for more details.
 			</p>
 			<p>(tutorial18.cpp:35)</p>
-			<code>
+			<pre><code>
 			struct Vertex<br>
 			{<br>
-			&nbsp; &nbsp; Vector3f m_pos;<br>
-			&nbsp; &nbsp; Vector2f m_tex;<br>
-			&nbsp; &nbsp; Vector3f m_normal;<br>
+				Vector3f m_pos;<br>
+				Vector2f m_tex;<br>
+				Vector3f m_normal;<br>
 			<br>
-			&nbsp; &nbsp; Vertex() {}<br>
+				Vertex() {}<br>
 			<br>
-			&nbsp; &nbsp; Vertex(Vector3f pos, Vector2f tex)<br>
-			&nbsp; &nbsp; {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; m_pos    = pos;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; m_tex    = tex;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; m_normal = Vector3f(0.0f, 0.0f, 0.0f);<br>
-			&nbsp; &nbsp; }<br>
+				Vertex(Vector3f pos, Vector2f tex)<br>
+				{<br>
+					m_pos= pos;<br>
+					m_tex= tex;<br>
+					m_normal = Vector3f(0.0f, 0.0f, 0.0f);<br>
+				}<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The updated Vertex structure now includes the normal. It is initialized automatically to zero by the constructor
 				and we have a dedicated function that scans all the vertices and calculates the normals.
 			</p>
 			<p>(tutorial18.cpp:197)</p>
-			<code>
+			<pre><code>
 			void CalcNormals(const unsigned int* pIndices, unsigned int IndexCount, Vertex* pVertices, unsigned int VertexCount)<br>
 			{<br>
-			&nbsp; &nbsp; for (unsigned int i = 0 ; i &lt; IndexCount ; i += 3) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; unsigned int Index0 = pIndices[i];<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; unsigned int Index1 = pIndices[i + 1];<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; unsigned int Index2 = pIndices[i + 2];<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; Vector3f v1 = pVertices[Index1].m_pos - pVertices[Index0].m_pos;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; Vector3f v2 = pVertices[Index2].m_pos - pVertices[Index0].m_pos;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; Vector3f Normal = v1.Cross(v2);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; Normal.Normalize();<br>
+				for (unsigned int i = 0 ; i &lt; IndexCount ; i += 3) {<br>
+					unsigned int Index0 = pIndices[i];<br>
+					unsigned int Index1 = pIndices[i + 1];<br>
+					unsigned int Index2 = pIndices[i + 2];<br>
+					Vector3f v1 = pVertices[Index1].m_pos - pVertices[Index0].m_pos;<br>
+					Vector3f v2 = pVertices[Index2].m_pos - pVertices[Index0].m_pos;<br>
+					Vector3f Normal = v1.Cross(v2);<br>
+					Normal.Normalize();<br>
 			<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; pVertices[Index0].m_normal += Normal;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; pVertices[Index1].m_normal += Normal;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; pVertices[Index2].m_normal += Normal;<br>
-			&nbsp; &nbsp;     }<br>
+					pVertices[Index0].m_normal += Normal;<br>
+					pVertices[Index1].m_normal += Normal;<br>
+					pVertices[Index2].m_normal += Normal;<br>
+			}<br>
 			<br>
-			&nbsp; &nbsp;     for (unsigned int i = 0 ; i &lt; VertexCount ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         pVertices[i].m_normal.Normalize();<br>
-			&nbsp; &nbsp;     }<br>
+			for (unsigned int i = 0 ; i &lt; VertexCount ; i++) {<br>
+					 pVertices[i].m_normal.Normalize();<br>
+			}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This function takes an array of vertices and indices, fetches the vertices of each triangle according to the indices
 				and calculates its normal. In the first loop we only accumulate the normals into each of the three triangle vertices.
@@ -332,16 +332,16 @@
 				before the vertex buffer is created	in order to get the calculated vertex normals into the buffer along with the other vertex attributes.
 			</p>
 			<p>(tutorial18.cpp:131)</p>
-			<code>
-			&nbsp; &nbsp; const Matrix4f&amp; WorldTransformation = p.GetWorldTrans();<br>
-			&nbsp; &nbsp; m_pEffect->SetWorldMatrix(WorldTransformation);<br>
-			&nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp; glEnableVertexAttribArray(2);<br>
-			&nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp; glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);<br>
-			&nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp; glDisableVertexAttribArray(2);<br>
-			</code>
+			<pre><code>
+				const Matrix4f&amp; WorldTransformation = p.GetWorldTrans();<br>
+				m_pEffect->SetWorldMatrix(WorldTransformation);<br>
+				...<br>
+				glEnableVertexAttribArray(2);<br>
+				...<br>
+				glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);<br>
+				...<br>
+				glDisableVertexAttribArray(2);<br>
+			</code></pre>
 			<p>
 				These are the main changes to the render loop. The pipeline class has a new function that provides the world
 				transformation matrix (in addition to the WVP matrix). The world matrix is calculated as the multiplication of the
@@ -357,7 +357,7 @@
 				'a' and 's' from the previous tutorial that governs ambient intensity).
 			</p>
 			<p>
-			    <b>Mathematical note</b><br>
+			<b>Mathematical note</b><br>
 			There are many sources online that tell you that you need the transpose of the inverse of the world matrix 
 			in order to transform the normal vector. This is correct, however, we usually don't need to go
 			that far. Our world matrices are always orthogonal (their vectors are always orthogonal). Since the inverse

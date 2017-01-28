@@ -80,19 +80,19 @@
 			<h3> Source walkthru </h3>
 
 			<p>(lighting_technique.h:68)</p>
-			<code>
+			<pre><code>
 			struct SpotLight : public PointLight<br>
 			{<br>
-			&nbsp; &nbsp;     Vector3f Direction;<br>
-			&nbsp; &nbsp;     float Cutoff;<br>
+			Vector3f Direction;<br>
+			float Cutoff;<br>
 			<br>
-			&nbsp; &nbsp;     SpotLight()<br>
-			&nbsp; &nbsp;     {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         Direction = Vector3f(0.0f, 0.0f, 0.0f);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         Cutoff = 0.0f;<br>
-			&nbsp; &nbsp;     }<br>
+			SpotLight()<br>
+			{<br>
+					 Direction = Vector3f(0.0f, 0.0f, 0.0f);<br>
+					 Cutoff = 0.0f;<br>
+			}<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The structure that defines the spot light is derived from PointLight and adds the two attributes that
 				differentiate it from the point light: a direction vector and cutoff value. The cutoff value
@@ -102,18 +102,18 @@
 				This array allows us to access the spot light array in the shader.
 			</p>
 			<p>(lighting.fs:39)</p>
-			<code>
+			<pre><code>
 			struct SpotLight<br>
 			{<br>
-			&nbsp; &nbsp;       struct PointLight Base;<br>
-			&nbsp; &nbsp;       vec3 Direction;<br>
-			&nbsp; &nbsp;       float Cutoff;<br>
+			struct PointLight Base;<br>
+			vec3 Direction;<br>
+			float Cutoff;<br>
 			};<br>
 			...<br>
 			uniform int gNumSpotLights;<br>
 			...<br>
 			uniform SpotLight gSpotLights[MAX_SPOT_LIGHTS];<br>
-			</code>
+			</code></pre>
 			<p>
 				There is a similar structure for the spot light type in GLSL. Since we cannot use inheritance here
 				as in the C++ code we use the PointLight structure as a member and add the new attributes next to it.
@@ -124,42 +124,42 @@
 				application to define the number of spot lights that are actually used.
 			</p>
 			<p>(lighting.fs:85)</p>
-			<code>
+			<pre><code>
 			vec4 CalcPointLight(struct PointLight l, vec3 Normal)<br>
 			{<br>
-			&nbsp; &nbsp;      vec3 LightDirection = WorldPos0 - l.Position;<br>
-			&nbsp; &nbsp;      float Distance = length(LightDirection);<br>
-			&nbsp; &nbsp;      LightDirection = normalize(LightDirection);<br>
+				vec3 LightDirection = WorldPos0 - l.Position;<br>
+				float Distance = length(LightDirection);<br>
+				LightDirection = normalize(LightDirection);<br>
 			<br>
-			&nbsp; &nbsp;      vec4 Color = CalcLightInternal(l.Base, LightDirection, Normal);<br>
-			&nbsp; &nbsp;      float Attenuation =  l.Atten.Constant +<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;                           l.Atten.Linear * Distance +<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;                           l.Atten.Exp * Distance * Distance;<br>
+				vec4 Color = CalcLightInternal(l.Base, LightDirection, Normal);<br>
+				float Attenuation =  l.Atten.Constant +<br>
+				 	  l.Atten.Linear * Distance +<br>
+				 	  l.Atten.Exp * Distance * Distance;<br>
 			<br>
-			&nbsp; &nbsp;      return Color / Attenuation;<br>
+				return Color / Attenuation;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The point light function has gone through a minor modification - it now takes a PointLight structure
 				as a parameter, rather than access the global array directly. This makes it simpler to share
 				it with spot lights. Other than that, there is no change here.
 			</p>
 			<p>(lighting.cpp:fs)</p>
-			<code>
+			<pre><code>
 			vec4 CalcSpotLight(struct SpotLight l, vec3 Normal)<br>
 			{<br>
-			&nbsp; &nbsp;       vec3 LightToPixel = normalize(WorldPos0 - l.Base.Position);<br>
-			&nbsp; &nbsp;       float SpotFactor = dot(LightToPixel, l.Direction);<br>
+			vec3 LightToPixel = normalize(WorldPos0 - l.Base.Position);<br>
+			float SpotFactor = dot(LightToPixel, l.Direction);<br>
 			<br>
-			&nbsp; &nbsp;       if (SpotFactor > l.Cutoff) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;      vec4 Color = CalcPointLight(l.Base, Normal);<br>
-			&nbsp; &nbsp;   &nbsp; &nbsp;           return Color * (1.0 - (1.0 - SpotFactor) * 1.0/(1.0 - l.Cutoff));<br>
-			&nbsp; &nbsp;       }<br>
-			&nbsp; &nbsp;       else {<br>
-			&nbsp; &nbsp;   &nbsp; &nbsp;           return vec4(0,0,0,0);<br>
-			&nbsp; &nbsp;       }<br>
+			if (SpotFactor > l.Cutoff) {<br>
+					vec4 Color = CalcPointLight(l.Base, Normal);<br>
+				return Color * (1.0 - (1.0 - SpotFactor) * 1.0/(1.0 - l.Cutoff));<br>
+			}<br>
+			else {<br>
+				return vec4(0,0,0,0);<br>
+			}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is where we calculate the spot light effect. We start by taking the vector from the light origin
 				to the pixel. As is often the case, we normalize it to get it ready for the dot product ahead. We do a
@@ -175,38 +175,38 @@
 				it by the point light color and receive the final spot light color.
 			</p>
 			<p>(lighting.fs:122)</p>
-			<code>	
+			<pre><code>	
 				...<br>
 			  for (int i = 0 ; i &lt; gNumSpotLights ; i++) {<br>
-			&nbsp; &nbsp;   TotalLight += CalcSpotLight(gSpotLights[i], Normal);<br>
+			TotalLight += CalcSpotLight(gSpotLights[i], Normal);<br>
 			  }<br>
 			  ...
-			</code>
+			</code></pre>
 			<p>
 				In a similar fashion to point lights we have a loop in the main function that accumulates the contribution
 				of all spot lights into the final pixel color.
 			</p>
 			<p>(lighting_technique.cpp:367)</p>
-			<code>	
+			<pre><code>	
 			void LightingTechnique::SetSpotLights(unsigned int NumLights, const SpotLight* pLights)<br>
 			{<br>
-			&nbsp; &nbsp;     glUniform1i(m_numSpotLightsLocation, NumLights);<br>
+			glUniform1i(m_numSpotLightsLocation, NumLights);<br>
 			<br>
-			&nbsp; &nbsp;     for (unsigned int i = 0 ; i &lt; NumLights ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform3f(m_spotLightsLocation[i].Color, pLights[i].Color.x, pLights[i].Color.y, pLights[i].Color.z);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform1f(m_spotLightsLocation[i].AmbientIntensity, pLights[i].AmbientIntensity);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform1f(m_spotLightsLocation[i].DiffuseIntensity, pLights[i].DiffuseIntensity);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform3f(m_spotLightsLocation[i].Position,  pLights[i].Position.x, pLights[i].Position.y, pLights[i].Position.z);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  Vector3f Direction = pLights[i].Direction;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  Direction.Normalize();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform3f(m_spotLightsLocation[i].Direction, Direction.x, Direction.y, Direction.z);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform1f(m_spotLightsLocation[i].Cutoff, cosf(ToRadian(pLights[i].Cutoff)));<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform1f(m_spotLightsLocation[i].Atten.Constant, pLights[i].Attenuation.Constant);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform1f(m_spotLightsLocation[i].Atten.Linear,   pLights[i].Attenuation.Linear);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  glUniform1f(m_spotLightsLocation[i].Atten.Exp,      pLights[i].Attenuation.Exp);<br>
-			&nbsp; &nbsp;     }<br>
+			for (unsigned int i = 0 ; i &lt; NumLights ; i++) {<br>
+					 glUniform3f(m_spotLightsLocation[i].Color, pLights[i].Color.x, pLights[i].Color.y, pLights[i].Color.z);<br>
+					 glUniform1f(m_spotLightsLocation[i].AmbientIntensity, pLights[i].AmbientIntensity);<br>
+					 glUniform1f(m_spotLightsLocation[i].DiffuseIntensity, pLights[i].DiffuseIntensity);<br>
+					 glUniform3f(m_spotLightsLocation[i].Position,  pLights[i].Position.x, pLights[i].Position.y, pLights[i].Position.z);<br>
+					 Vector3f Direction = pLights[i].Direction;<br>
+					 Direction.Normalize();<br>
+					 glUniform3f(m_spotLightsLocation[i].Direction, Direction.x, Direction.y, Direction.z);<br>
+					 glUniform1f(m_spotLightsLocation[i].Cutoff, cosf(ToRadian(pLights[i].Cutoff)));<br>
+					 glUniform1f(m_spotLightsLocation[i].Atten.Constant, pLights[i].Attenuation.Constant);<br>
+					 glUniform1f(m_spotLightsLocation[i].Atten.Linear,   pLights[i].Attenuation.Linear);<br>
+					 glUniform1f(m_spotLightsLocation[i].Atten.Exp,  pLights[i].Attenuation.Exp);<br>
+			}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This function updates the shader program with an array of SpotLight structures. This is the same as
 				the correspoding function for point lights, with two additions. The light direction vector is also applied

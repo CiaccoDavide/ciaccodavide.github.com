@@ -178,12 +178,12 @@
 			<h3> Source walkthru </h3>
 
 			<p>(tutorial30.cpp:80)</p>
-			<code>
+			<pre><code>
 			  GLint MaxPatchVertices = 0;<br>
 			  glGetIntegerv(GL_MAX_PATCH_VERTICES, &amp;MaxPatchVertices);<br>
 			  printf("Max supported patch vertices %d\n", MaxPatchVertices);	<br>
 				glPatchParameteri(GL_PATCH_VERTICES, 3);<br>
-			</code>
+			</code></pre>
 			<p>
 				When Tessellation is enabled (i.e. when we have either a TCS or a TES) the pipeline needs to know how 
 				many vertices comprise each input patch. 
@@ -193,7 +193,7 @@
 				This value can be different from one GPU/driver to another so we fetch it using glGetIntegerv() and print
 				it.
 			<p>(lighting.vs)</p>
-			<code>
+			<pre><code>
 			#version 410 core<br>
 			<br>
 			layout (location = 0) in vec3 Position_VS_in;<br>
@@ -208,11 +208,11 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;    WorldPos_CS_in = (gWorld * vec4(Position_VS_in, 1.0)).xyz;<br>
-			&nbsp; &nbsp;    TexCoord_CS_in = TexCoord_VS_in;<br>
-			&nbsp; &nbsp;    Normal_CS_in   = (gWorld * vec4(Normal_VS_in, 0.0)).xyz;<br>
+				WorldPos_CS_in = (gWorld * vec4(Position_VS_in, 1.0)).xyz;<br>
+				TexCoord_CS_in = TexCoord_VS_in;<br>
+				Normal_CS_in   = (gWorld * vec4(Normal_VS_in, 0.0)).xyz;<br>
 			}
-			</code>	
+			</code></pre>	
 			<p>
 				This is our VS and the only difference between it and the previous ones is that we are no
 				longer transforming the local space coordinates to clip space (by multiplying by the world-view-projection 
@@ -220,7 +220,7 @@
 				that will need that transformation anyway. Therefore, this action is postponed until we get to the TES.
 			</p>
 			<p>(lighting.cs)</p>
-			<code>
+			<pre><code>
 			#version 410 core<br>
 			<br>
 			// define the number of CPs in the output patch<br>
@@ -228,7 +228,7 @@
 			<br>
 			uniform vec3 gEyeWorldPos;<br>
 			<br>
-			// attributes of the input CPs<br>                                                           
+			// attributes of the input CPs<br>   
 			in vec3 WorldPos_CS_in[];<br>
 			in vec2 TexCoord_CS_in[];<br>
 			in vec3 Normal_CS_in[];<br>
@@ -237,7 +237,7 @@
 			out vec3 WorldPos_ES_in[];<br>
 			out vec2 TexCoord_ES_in[];<br>
 			out vec3 Normal_ES_in[];<br>
-			</code>
+			</code></pre>
 			<p>
 				This is the start of the TCS. 
 				It is executed once per CP in the <b>output</b> patch and we start by defining the number of CPs in the
@@ -249,14 +249,14 @@
 				index into any CP. 
 			</p>
 			<p>(lighting.cs:33)</p>
-			<code>
+			<pre><code>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;     // Set the control points of the output patch<br>
-			&nbsp; &nbsp;     TexCoord_ES_in[gl_InvocationID] = TexCoord_CS_in[gl_InvocationID];<br>
-			&nbsp; &nbsp;     Normal_ES_in[gl_InvocationID]   = Normal_CS_in[gl_InvocationID];<br>
-			&nbsp; &nbsp;     WorldPos_ES_in[gl_InvocationID] = WorldPos_CS_in[gl_InvocationID];<br>
-			</code>
+			// Set the control points of the output patch<br>
+			TexCoord_ES_in[gl_InvocationID] = TexCoord_CS_in[gl_InvocationID];<br>
+			Normal_ES_in[gl_InvocationID]   = Normal_CS_in[gl_InvocationID];<br>
+			WorldPos_ES_in[gl_InvocationID] = WorldPos_CS_in[gl_InvocationID];<br>
+			</code></pre>
 			<p>
 				We start the main function of the TCS by copying the input CP into the output CP. This function
 				is executed once per output CP and the builtin variable <i>gl_InvocationID</i> contains the index of the
@@ -265,19 +265,19 @@
 				an index into both the input and output patch.
 			</p>
 			<p>(lighting.cs:40)</p>
-			<code>
-			&nbsp; &nbsp;     // Calculate the distance from the camera to the three control points<br>
-			&nbsp; &nbsp;     float EyeToVertexDistance0 = distance(gEyeWorldPos, WorldPos_ES_in[0]);<br>
-			&nbsp; &nbsp;     float EyeToVertexDistance1 = distance(gEyeWorldPos, WorldPos_ES_in[1]);<br>
-			&nbsp; &nbsp;     float EyeToVertexDistance2 = distance(gEyeWorldPos, WorldPos_ES_in[2]);<br>
+			<pre><code>
+			// Calculate the distance from the camera to the three control points<br>
+			float EyeToVertexDistance0 = distance(gEyeWorldPos, WorldPos_ES_in[0]);<br>
+			float EyeToVertexDistance1 = distance(gEyeWorldPos, WorldPos_ES_in[1]);<br>
+			float EyeToVertexDistance2 = distance(gEyeWorldPos, WorldPos_ES_in[2]);<br>
 			<br>
-			&nbsp; &nbsp;     // Calculate the tessellation levels<br>
-			&nbsp; &nbsp;     gl_TessLevelOuter[0] = GetTessLevel(EyeToVertexDistance1, EyeToVertexDistance2);<br>
-			&nbsp; &nbsp;     gl_TessLevelOuter[1] = GetTessLevel(EyeToVertexDistance2, EyeToVertexDistance0);<br>
-			&nbsp; &nbsp;     gl_TessLevelOuter[2] = GetTessLevel(EyeToVertexDistance0, EyeToVertexDistance1);<br>
-			&nbsp; &nbsp;     gl_TessLevelInner[0] = gl_TessLevelOuter[2];<br>
+			// Calculate the tessellation levels<br>
+			gl_TessLevelOuter[0] = GetTessLevel(EyeToVertexDistance1, EyeToVertexDistance2);<br>
+			gl_TessLevelOuter[1] = GetTessLevel(EyeToVertexDistance2, EyeToVertexDistance0);<br>
+			gl_TessLevelOuter[2] = GetTessLevel(EyeToVertexDistance0, EyeToVertexDistance1);<br>
+			gl_TessLevelInner[0] = gl_TessLevelOuter[2];<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				After generating the output patch we calculate the TLs. The TLs can be set differently for each output patch.
 				OpenGL provides two builtin arrays of floating points for the TLs: gl_TessLevelOuter (size 4) 
@@ -303,33 +303,33 @@
 				becomes smaller than a given number of pixels.
 			</p>
 			<p>(lighting.cs:18)</p>
-			<code>
+			<pre><code>
 			float GetTessLevel(float Distance0, float Distance1)<br>
 			{<br>
-			&nbsp; &nbsp;     float AvgDistance = (Distance0 + Distance1) / 2.0;<br>
+			float AvgDistance = (Distance0 + Distance1) / 2.0;<br>
 			<br>
-			&nbsp; &nbsp;     if (AvgDistance &lt;= 2.0) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         return 10.0;<br>
-			&nbsp; &nbsp;     }<br>
-			&nbsp; &nbsp;     else if (AvgDistance &lt;= 5.0) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         return 7.0;<br>
-			&nbsp; &nbsp;     }<br>
-			&nbsp; &nbsp;     else {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         return 3.0;<br>
-			&nbsp; &nbsp;     }<br>
+			if (AvgDistance &lt;= 2.0) {<br>
+					 return 10.0;<br>
+			}<br>
+			else if (AvgDistance &lt;= 5.0) {<br>
+					 return 7.0;<br>
+			}<br>
+			else {<br>
+					 return 3.0;<br>
+			}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This function calculates the TL for an edge based on the distance from the camera to the two
 				vertices of the edge. We take the average distance and set the TL to 10 or 7 or 3. As the distance
 				grows we prefer a smaller TL so as not to waste GPU cycles.
 			</p>
 			<p>(lighting.es)</p>
-			<code>
+			<pre><code>
 			#version 410 core<br>
 			<br>
 			layout(triangles, equal_spacing, ccw) in;<br>
-			</code>
+			</code></pre>
 			<p>
 				This is the start of the TES. The 'layout' keyword defines three configuration items:
 				<ul>
@@ -354,7 +354,7 @@
 				saves some space.
 			</p>
 			<p>(lighting.es:5)</p>
-			<code>
+			<pre><code>
 			uniform mat4 gVP;<br>
 			uniform sampler2D gDisplacementMap;<br>
 			uniform float gDispFactor;<br>
@@ -366,7 +366,7 @@
 			out vec3 WorldPos_FS_in;<br>
 			out vec2 TexCoord_FS_in;<br>
 			out vec3 Normal_FS_in;<br>
-			</code>
+			</code></pre>
 			<p>
 				The TES can have uniform variables just like any other shader. The displacement map is basically
 				a height map which means that every texel represents the height at this location. We will use it
@@ -375,15 +375,15 @@
 				is not present here because the TES always outputs a single vertex.
 			</p>
 			<p>(lighting.es:27)</p>
-			<code>
+			<pre><code>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;		// Interpolate the attributes of the output vertex using the barycentric coordinates<br>
-			&nbsp; &nbsp;	    TexCoord_FS_in = interpolate2D(TexCoord_ES_in[0], TexCoord_ES_in[1], TexCoord_ES_in[2]);<br>
-			&nbsp; &nbsp;	    Normal_FS_in = interpolate3D(Normal_ES_in[0], Normal_ES_in[1], Normal_ES_in[2]);<br>
-			&nbsp; &nbsp;	    Normal_FS_in = normalize(Normal_FS_in);<br>
-			&nbsp; &nbsp;	    WorldPos_FS_in = interpolate3D(WorldPos_ES_in[0], WorldPos_ES_in[1], WorldPos_ES_in[2]);<br>
-			</code>
+					// Interpolate the attributes of the output vertex using the barycentric coordinates<br>
+				TexCoord_FS_in = interpolate2D(TexCoord_ES_in[0], TexCoord_ES_in[1], TexCoord_ES_in[2]);<br>
+				Normal_FS_in = interpolate3D(Normal_ES_in[0], Normal_ES_in[1], Normal_ES_in[2]);<br>
+				Normal_FS_in = normalize(Normal_FS_in);<br>
+				WorldPos_FS_in = interpolate3D(WorldPos_ES_in[0], WorldPos_ES_in[1], WorldPos_ES_in[2]);<br>
+			</code></pre>
 			<p>
 				This is the main function of the TES. Let's recap what we have when we get here. The mesh vertices
 				were processed by the VS and the world space position and normal were calculated. The TCS got each
@@ -396,13 +396,13 @@
 				it using gl_TessCoord. 
 			</p>
 			<p>(lighting.es:35)</p>
-			<code>
-			&nbsp; &nbsp;			// Displace the vertex along the normal<br>
-			&nbsp; &nbsp;	    float Displacement = texture(gDisplacementMap, TexCoord_FS_in.xy).x;<br>
-			&nbsp; &nbsp;	    WorldPos_FS_in += Normal_FS_in * Displacement * gDispFactor;<br>
-			&nbsp; &nbsp;	    gl_Position = gVP * vec4(WorldPos_FS_in, 1.0);<br>
+			<pre><code>
+						// Displace the vertex along the normal<br>
+				float Displacement = texture(gDisplacementMap, TexCoord_FS_in.xy).x;<br>
+				WorldPos_FS_in += Normal_FS_in * Displacement * gDispFactor;<br>
+				gl_Position = gVP * vec4(WorldPos_FS_in, 1.0);<br>
 			}
-			</code>	
+			</code></pre>	
 			<p>
 				Having each triangle of the original mesh subdivided into many smaller triangles doesn't really contribute
 				much to the general appearance of the mesh because the smaller triangles are all on the same plane of
@@ -418,45 +418,45 @@
 				Finally, we multiply the new world space position by the view-projection matrix and set it into 'gl_Position'.
 			</p>
 			<p>(lighting.es:17)</p>
-			<code>
+			<pre><code>
 			vec2 interpolate2D(vec2 v0, vec2 v1, vec2 v2)<br>
 			{<br>
-			&nbsp; &nbsp;	    return vec2(gl_TessCoord.x) * v0 + vec2(gl_TessCoord.y) * v1 + vec2(gl_TessCoord.z) * v2;<br>
+				return vec2(gl_TessCoord.x) * v0 + vec2(gl_TessCoord.y) * v1 + vec2(gl_TessCoord.z) * v2;<br>
 			}<br>
 			<br>
 			vec3 interpolate3D(vec3 v0, vec3 v1, vec3 v2)<br>
 			{<br>
-			&nbsp; &nbsp;	    return vec3(gl_TessCoord.x) * v0 + vec3(gl_TessCoord.y) * v1 + vec3(gl_TessCoord.z) * v2;<br>
+				return vec3(gl_TessCoord.x) * v0 + vec3(gl_TessCoord.y) * v1 + vec3(gl_TessCoord.z) * v2;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				These two function interpolate between a trio of 2D-vectors and 3D-vectors using 'gl_TessCoord' as a weight.
 			</p>
 			<p>(lighting_technique.cpp:277)</p>
-			<code>
+			<pre><code>
 			bool LightingTechnique::Init()<br>
 			{<br>
-			&nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp;     if (!AddShader(GL_TESS_CONTROL_SHADER, pTessCS)) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         return false;<br>
-			&nbsp; &nbsp;     }<br>
+				...<br>
+			if (!AddShader(GL_TESS_CONTROL_SHADER, pTessCS)) {<br>
+					 return false;<br>
+			}<br>
 			<br>
-			&nbsp; &nbsp;     if (!AddShader(GL_TESS_EVALUATION_SHADER, pTessES)) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         return false;<br>
-			&nbsp; &nbsp;     }<br>
-			    &nbsp; &nbsp; ...<br>
-			</code>
+			if (!AddShader(GL_TESS_EVALUATION_SHADER, pTessES)) {<br>
+					 return false;<br>
+			}<br>
+				...<br>
+			</code></pre>
 			<p>
 				We have two new shader stage so we must compile them.
 			</p>
-                        <p>(mesh.cpp:226)</p>
-                        <code>
-                            glDrawElements(<b>GL_PATCHES</b>, m_Entries[i].NumIndices, GL_UNSIGNED_INT, 0);
-                        </code>
-                        <p>
-                            Finally, we have to use GL_PATCHES as the primitive type instead of GL_TRIANGLES.
-                        </p>
-                       
+<p>(mesh.cpp:226)</p>
+<pre><code>
+glDrawElements(<b>GL_PATCHES</b>, m_Entries[i].NumIndices, GL_UNSIGNED_INT, 0);
+</code></pre>
+<p>
+Finally, we have to use GL_PATCHES as the primitive type instead of GL_TRIANGLES.
+</p>
+   
 			<p><b>The Demo</b></p>
 			<p>
 				The demo in this tutorial shows how to tessellate a quad terrain and displace vertices along the rocks

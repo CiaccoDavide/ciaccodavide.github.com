@@ -93,30 +93,30 @@
 			<h3> Source walkthru </h3>
 
 			<p>(tutorial36.cpp:142)</p>
-			<code>
+			<pre><code>
 			virtual void RenderSceneCB()<br>
 			{   <br>
-			&nbsp; &nbsp; CalcFPS();<br>
-			        <br>
-			&nbsp; &nbsp; m_scale += 0.05f;<br>
+				CalcFPS();<br>
 			<br>
-			&nbsp; &nbsp; m_pGameCamera->OnRender();<br>
+				m_scale += 0.05f;<br>
 			<br>
-			&nbsp; &nbsp; DSGeometryPass();<br>
+				m_pGameCamera->OnRender();<br>
+			<br>
+				DSGeometryPass();<br>
 			<br>
 			<b>
-			&nbsp; &nbsp; BeginLightPasses();<br>
+				BeginLightPasses();<br>
 			<br>
-			&nbsp; &nbsp; DSPointLightsPass();<br>
+				DSPointLightsPass();<br>
 			<br>
-			&nbsp; &nbsp; DSDirectionalLightPass();<br>
+				DSDirectionalLightPass();<br>
 			</b>
-			               <br>
-			&nbsp; &nbsp; RenderFPS();<br>
-			        <br>
-			&nbsp; &nbsp; glutSwapBuffers();<br>
+			   <br>
+				RenderFPS();<br>
+			<br>
+				glutSwapBuffers();<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			Let's explore the code changes top down. Not much has changed in the main render function
 			from the previous tutorial. We've added a function to set up common stuff for the light pass
@@ -124,41 +124,41 @@
 			and the other directional lights (spot lights are left as an exercise to the reader).
 			</p>
 			<p>(tutorial36.cpp:164)</p>
-			<code>
+			<pre><code>
 			void DSGeometryPass()<br>
 			{<br>
-			&nbsp; &nbsp; 	m_DSGeomPassTech.Enable();<br>
+					m_DSGeomPassTech.Enable();<br>
 			<br>
-			 &nbsp; &nbsp;        m_gbuffer.BindForWriting();<br>
+			 	m_gbuffer.BindForWriting();<br>
 			<br>
-				&nbsp; &nbsp; 	// Only the geometry pass updates the depth buffer<br>
-			<b>	&nbsp; &nbsp; 	glDepthMask(GL_TRUE);<br></b>
+						// Only the geometry pass updates the depth buffer<br>
+			<b>			glDepthMask(GL_TRUE);<br></b>
 			<br>
-				&nbsp; &nbsp; 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
+						glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
 			<br>
-			<b>	&nbsp; &nbsp; 	glEnable(GL_DEPTH_TEST);<br>
-			        <br>
-			 &nbsp; &nbsp;        glDisable(GL_BLEND);<br></b>
+			<b>			glEnable(GL_DEPTH_TEST);<br>
 			<br>
-				&nbsp; &nbsp; 	Pipeline p;<br>
-			 &nbsp; &nbsp;        p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-			 &nbsp; &nbsp;        p.SetPerspectiveProj(m_persProjInfo);        <br>
-			 &nbsp; &nbsp;        p.Rotate(0.0f, m_scale, 0.0f);<br>
-			        <br>
-			 &nbsp; &nbsp;        for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_boxPositions) ; i++) {<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;            p.WorldPos(m_boxPositions[i]);<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;            m_DSGeomPassTech.SetWVP(p.GetWVPTrans());<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;        	m_DSGeomPassTech.SetWorldMatrix(p.GetWorldTrans());<br>
-			 &nbsp; &nbsp; &nbsp; &nbsp;            m_box.Render();            <br>
-			 &nbsp; &nbsp;        }<br>
-			             <br>  
-				&nbsp; &nbsp; 	// When we get here the depth buffer is already populated and the stencil pass<br>
-				&nbsp; &nbsp; 	// depends on it, but it does not write to it.<br>
-				&nbsp; &nbsp; <b>	glDepthMask(GL_FALSE);</b><br>
+			 	glDisable(GL_BLEND);<br></b>
 			<br>
-				&nbsp; &nbsp;<b> 	glDisable(GL_DEPTH_TEST);</b><br>
-			    }
-			</code>
+						Pipeline p;<br>
+			 	p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+			 	p.SetPerspectiveProj(m_persProjInfo);<br>
+			 	p.Rotate(0.0f, m_scale, 0.0f);<br>
+			<br>
+			 	for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_boxPositions) ; i++) {<br>
+			 	p.WorldPos(m_boxPositions[i]);<br>
+			 	m_DSGeomPassTech.SetWVP(p.GetWVPTrans());<br>
+			 			m_DSGeomPassTech.SetWorldMatrix(p.GetWorldTrans());<br>
+			 	m_box.Render();<br>
+			 	}<br>
+			 <br>  
+						// When we get here the depth buffer is already populated and the stencil pass<br>
+						// depends on it, but it does not write to it.<br>
+					<b>	glDepthMask(GL_FALSE);</b><br>
+			<br>
+				<b> 	glDisable(GL_DEPTH_TEST);</b><br>
+			}
+			</code></pre>
 			<p>
 			There are three main changes in the geometry pass. The first one is that we use the function glDepthMask()
 			to prevent anything but this pass from writing into the depth buffer. The geometry pass needs the depth
@@ -173,18 +173,18 @@
 			multiple light sources together. In the geometry pass it is irrelevant.
 			</p>
 			<p>(tutorial36.cpp:199)</p>
-			<code>
+			<pre><code>
 			void BeginLightPasses()<br>
 			{<br>
-				&nbsp; &nbsp; glEnable(GL_BLEND);<br>
-				&nbsp; &nbsp;		glBlendEquation(GL_FUNC_ADD);<br>
-				&nbsp; &nbsp;		glBlendFunc(GL_ONE, GL_ONE);<br>
+					glEnable(GL_BLEND);<br>
+						glBlendEquation(GL_FUNC_ADD);<br>
+						glBlendFunc(GL_ONE, GL_ONE);<br>
 			<br>
-				&nbsp; &nbsp;        m_gbuffer.BindForReading();<br>
-				&nbsp; &nbsp;        glClear(GL_COLOR_BUFFER_BIT);<br>
-			    }<br>
-			    <br>
-			</code>
+					m_gbuffer.BindForReading();<br>
+					glClear(GL_COLOR_BUFFER_BIT);<br>
+			}<br>
+			<br>
+			</code></pre>
 			<p>
 			Before we start the actual light passes we have the function above to take care of some common 
 			stuff. As mentioned earlier, we need
@@ -204,60 +204,60 @@
 			ready for the light passes.
 			</p>
 			<p>(tutorial36.cpp:210)</p>
-			<code>
-			    void DSPointLightsPass()<br>
-			    {<br>
-				&nbsp; &nbsp;        m_DSPointLightPassTech.Enable();<br>
-				&nbsp; &nbsp;        m_DSPointLightPassTech.SetEyeWorldPos(m_pGameCamera->GetPos());        <br>
-			        <br>
-				&nbsp; &nbsp;        Pipeline p;<br>
-				&nbsp; &nbsp;        p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-				&nbsp; &nbsp;        p.SetPerspectiveProj(m_persProjInfo);<br>
-			           <br>
-				&nbsp; &nbsp;		for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_pointLight); i++) {<br>
-				&nbsp; &nbsp; 	&nbsp; &nbsp;           m_DSPointLightPassTech.SetPointLight(m_pointLight[i]);<br>
-				&nbsp; &nbsp;	&nbsp; &nbsp;            p.WorldPos(m_pointLight[i].Position);<br>
-				&nbsp; &nbsp;	&nbsp; &nbsp;             float BSphereScale = CalcPointLightBSphere(m_pointLight[i]);<br>
-				&nbsp; &nbsp;	&nbsp; &nbsp;  p.Scale(BSphereScale, BSphereScale, BSphereScale);		<br>
-				&nbsp; &nbsp;	&nbsp; &nbsp;            m_DSPointLightPassTech.SetWVP(p.GetWVPTrans());<br>
-				&nbsp; &nbsp;	&nbsp; &nbsp;            m_bsphere.Render();       <br>
-					&nbsp; &nbsp;	}       <br> 
-			    }
-			</code>
+			<pre><code>
+			void DSPointLightsPass()<br>
+			{<br>
+					m_DSPointLightPassTech.Enable();<br>
+					m_DSPointLightPassTech.SetEyeWorldPos(m_pGameCamera->GetPos());<br>
+			<br>
+					Pipeline p;<br>
+					p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+					p.SetPerspectiveProj(m_persProjInfo);<br>
+			   <br>
+						for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_pointLight); i++) {<br>
+							m_DSPointLightPassTech.SetPointLight(m_pointLight[i]);<br>
+					p.WorldPos(m_pointLight[i].Position);<br>
+						float BSphereScale = CalcPointLightBSphere(m_pointLight[i]);<br>
+						 p.Scale(BSphereScale, BSphereScale, BSphereScale);		<br>
+					m_DSPointLightPassTech.SetWVP(p.GetWVPTrans());<br>
+					m_bsphere.Render();   <br>
+						}   <br> 
+			}
+			</code></pre>
 			<p>
 			In the point light pass we simply render a bounding sphere for each point light. The bounding
 			sphere center is set at the location of the light source and the function CalcPointLightBSphere() 
 			calculates the size of the sphere according to the parameters of the light.
 			</p>
 			<p>(tutorial36.cpp:275)</p>
-			<code>
+			<pre><code>
 			float CalcPointLightBSphere(const PointLight& Light)<br>
 			{<br>
-			 &nbsp; &nbsp;	       float MaxChannel = fmax(fmax(Light.Color.x, Light.Color.y), Light.Color.z);<br>
-			        <br>
-			 &nbsp; &nbsp;	       float ret = (-Light.Attenuation.Linear + sqrtf(Light.Attenuation.Linear * Light.Attenuation.Linear -<br> 
-			 &nbsp; &nbsp; &nbsp; &nbsp;		4 * Light.Attenuation.Exp * (Light.Attenuation.Exp - 256 * MaxChannel * Light.DiffuseIntensity))) <br>
-			  &nbsp; &nbsp;	 &nbsp; &nbsp;	 &nbsp; &nbsp;	                   /<br>
-			  &nbsp; &nbsp;	 &nbsp; &nbsp;	                   (2 * Light.Attenuation.Exp);<br>
-			 &nbsp; &nbsp;	       return ret;<br>
-			}    
-			</code>
+			 	   float MaxChannel = fmax(fmax(Light.Color.x, Light.Color.y), Light.Color.z);<br>
+			<br>
+			 	   float ret = (-Light.Attenuation.Linear + sqrtf(Light.Attenuation.Linear * Light.Attenuation.Linear -<br> 
+			 			4 * Light.Attenuation.Exp * (Light.Attenuation.Exp - 256 * MaxChannel * Light.DiffuseIntensity))) <br>
+			  	 	 	   /<br>
+			  	 	   (2 * Light.Attenuation.Exp);<br>
+			 	   return ret;<br>
+			}
+			</code></pre>
 			<p>
 			This function calculates the size of the bounding box for the specified light source. This
 			is a direct implementation of the formula given in the background section.
 			</p>
 			<p>(tutorial36.cpp:230)</p>
-			<code>
-			void DSDirectionalLightPass()    <br>
+			<pre><code>
+			void DSDirectionalLightPass()<br>
 			{		<br>
-				&nbsp; &nbsp;	m_DSDirLightPassTech.Enable();<br>
-				&nbsp; &nbsp;	m_DSDirLightPassTech.SetEyeWorldPos(m_pGameCamera->GetPos());<br>
-				&nbsp; &nbsp;	Matrix4f WVP;<br>
-				&nbsp; &nbsp;	WVP.InitIdentity();        <br>
-				&nbsp; &nbsp;	m_DSDirLightPassTech.SetWVP(WVP);<br>
-				&nbsp; &nbsp;	m_quad.Render();  <br>
+					m_DSDirLightPassTech.Enable();<br>
+					m_DSDirLightPassTech.SetEyeWorldPos(m_pGameCamera->GetPos());<br>
+					Matrix4f WVP;<br>
+					WVP.InitIdentity();<br>
+					m_DSDirLightPassTech.SetWVP(WVP);<br>
+					m_quad.Render();  <br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			Handling directional light (we support only one such light source) is even simpler. We just need a
 			full screen quad to reach all the pixels. The quad model that we use go from (-1,-1) to (1,1) so we
@@ -265,49 +265,49 @@
 			perspective divide and screen space transform we will get a quad that goes from (0,0) to (SCREEN_WIDTH,SCREEN_HEIGHT).
 			</p>
 			<p>(light_pass.vs)</p>
-			<code>
-			    #version 330                                                                        <br>
+			<pre><code>
+			#version 330<br>
 			<br>
 			layout (location = 0) in vec3 Position; <br>
 			<br>
 			uniform mat4 gWVP;<br>
 			<br>
 			void main()<br>
-			{          <br>
-			    &nbsp; &nbsp;	gl_Position = gWVP * vec4(Position, 1.0);<br>
-			}    <br>
-			</code>
+			{  <br>
+				gl_Position = gWVP * vec4(Position, 1.0);<br>
+			}<br>
+			</code></pre>
 			<p>
 			The VS of the light passes is as simple as it gets. In the case of directional light the WVP matrix is the identity
 			matrix so the position is simply passed through. In the case of a point light we get the projection
 			of the bounding sphere on the screen. These are the pixels that we want to shade.
 			</p>
 			<p>(dir_light_pass.fs:108)</p>
-			<code>
+			<pre><code>
 			void main()<br>
 			{<br>
-			    &nbsp; &nbsp;	    vec2 TexCoord = CalcTexCoord();<br>
-			    &nbsp; &nbsp;		vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;<br>
-			    &nbsp; &nbsp;		vec3 Color = texture(gColorMap, TexCoord).xyz;<br>
-			    &nbsp; &nbsp;		vec3 Normal = texture(gNormalMap, TexCoord).xyz;<br>
-			    &nbsp; &nbsp;		Normal = normalize(Normal);<br>
+				vec2 TexCoord = CalcTexCoord();<br>
+					vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;<br>
+					vec3 Color = texture(gColorMap, TexCoord).xyz;<br>
+					vec3 Normal = texture(gNormalMap, TexCoord).xyz;<br>
+					Normal = normalize(Normal);<br>
 			<br>
-			    &nbsp; &nbsp;		FragColor = vec4(Color, 1.0) * CalcDirectionalLight(WorldPos, Normal);<br>
+					FragColor = vec4(Color, 1.0) * CalcDirectionalLight(WorldPos, Normal);<br>
 			}
-			</code>
+			</code></pre>
 			<p>(point_light_pass.fs:109)</p>
-			<code>
-			    void main()<br>
+			<pre><code>
+			void main()<br>
 			{<br>
-			    &nbsp; &nbsp;	    vec2 TexCoord = CalcTexCoord();<br>
-				    &nbsp; &nbsp;	vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;<br>
-			    &nbsp; &nbsp;		vec3 Color = texture(gColorMap, TexCoord).xyz;<br>
-			    &nbsp; &nbsp;		vec3 Normal = texture(gNormalMap, TexCoord).xyz;<br>
-			    &nbsp; &nbsp;		Normal = normalize(Normal);<br>
+				vec2 TexCoord = CalcTexCoord();<br>
+					vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;<br>
+					vec3 Color = texture(gColorMap, TexCoord).xyz;<br>
+					vec3 Normal = texture(gNormalMap, TexCoord).xyz;<br>
+					Normal = normalize(Normal);<br>
 			<br>
-			    &nbsp; &nbsp;	    FragColor = vec4(Color, 1.0) * CalcPointLight(WorldPos, Normal);<br>
-			}    
-			</code>
+				FragColor = vec4(Color, 1.0) * CalcPointLight(WorldPos, Normal);<br>
+			}
+			</code></pre>
 			<p>
 			These are the fragment shaders for the directional and point lights. We have separate functions
 			for them because internally they use different logic. In cases like that it is better from a performance
@@ -318,12 +318,12 @@
 			and calculate it on the fly. This is very easy and is done in the function below.
 			</p>
 			<p>(dir_light_pass.fs:101, point_light_pass.fs:101)</p>
-			<code>
+			<pre><code>
 			vec2 CalcTexCoord()<br>
 			{<br>
-			&nbsp; &nbsp;return gl_FragCoord.xy / gScreenSize;<br>
+			return gl_FragCoord.xy / gScreenSize;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			We need to sample from the G Buffer according to the location of the pixel on the screen.
 			GLSL provides a handy built-in variable called gl_FragCoord which is exactly what we need.
@@ -334,19 +334,19 @@
 			coordinate for accessing the entire range of the G Buffer.
 			</p>
 			<p>(gbuffer.cpp:49)</p>
-			<code>
+			<pre><code>
 			bool GBuffer::Init(unsigned int WindowWidth, unsigned int WindowHeight)<br>
 			{<br>
-			&nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp; for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_textures) ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; ...<br>
-			&nbsp; &nbsp; }<br>
-			&nbsp; &nbsp; ...<br>
+				...<br>
+				for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_textures) ; i++) {<br>
+					...<br>
+					glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);<br>
+					glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);<br>
+					...<br>
+				}<br>
+				...<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			We need to do a minor addition to the initialization of the G Buffer. In the previous tutorial
 			we rendered into it and then used a blit operation to copy it to the default framebuffer. Since
@@ -355,17 +355,17 @@
 			between the texels that might create some fine distortions.
 			</p>
 			<p>(gbuffer.cpp:98)</p>
-			<code>
+			<pre><code>
 			void GBuffer::BindForReading()<br>
 			{<br>
-			&nbsp; &nbsp; 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);<br>
+					glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);<br>
 			<br>
-			&nbsp; &nbsp; 	for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_textures); i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;  		glActiveTexture(GL_TEXTURE0 + i);		<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; 		glBindTexture(GL_TEXTURE_2D, m_textures[GBUFFER_TEXTURE_TYPE_POSITION + i]);<br>
-			&nbsp; &nbsp; 	}<br>
+					for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(m_textures); i++) {<br>
+					 		glActiveTexture(GL_TEXTURE0 + i);		<br>
+							glBindTexture(GL_TEXTURE_2D, m_textures[GBUFFER_TEXTURE_TYPE_POSITION + i]);<br>
+					}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			On the same note, we need to do some modifications to the way we bind the G Buffer for reading
 			before starting the light pass. Instead of binding it to the GL_READ_FRAMEBUFFER target we disconnect

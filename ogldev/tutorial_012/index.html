@@ -189,46 +189,46 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<code>
+			<pre><code>
 			void Pipeline::InitPerspectiveProj(Matrix4f&amp; m) const><br>
 			{<br>
-			&nbsp; &nbsp; const float ar = m_persProj.Width / m_persProj.Height;<br>
-			&nbsp; &nbsp; const float zNear = m_persProj.zNear;<br>
-			&nbsp; &nbsp; const float zFar = m_persProj.zFar;<br>
-			&nbsp; &nbsp; const float zRange = zNear - zFar;<br>
-			&nbsp; &nbsp; const float tanHalfFOV = tanf(ToRadian(m_persProj.FOV / 2.0));<br>
+				const float ar = m_persProj.Width / m_persProj.Height;<br>
+				const float zNear = m_persProj.zNear;<br>
+				const float zFar = m_persProj.zFar;<br>
+				const float zRange = zNear - zFar;<br>
+				const float tanHalfFOV = tanf(ToRadian(m_persProj.FOV / 2.0));<br>
 			 	<br>
-			&nbsp; &nbsp; m.m[0][0] = 1.0f / (tanHalfFOV * ar); <br>
-			&nbsp; &nbsp; m.m[0][1] = 0.0f;<br> 
-			&nbsp; &nbsp; m.m[0][2] = 0.0f;<br>
-			&nbsp; &nbsp; m.m[0][3] = 0.0f;<br>
+				m.m[0][0] = 1.0f / (tanHalfFOV * ar); <br>
+				m.m[0][1] = 0.0f;<br> 
+				m.m[0][2] = 0.0f;<br>
+				m.m[0][3] = 0.0f;<br>
 			<br>
-			&nbsp; &nbsp; m.m[1][0] = 0.0f;<br>      
-			&nbsp; &nbsp; m.m[1][1] = 1.0f / tanHalfFOV; <br>
-			&nbsp; &nbsp; m.m[1][2] = 0.0f; <br>
-			&nbsp; &nbsp; m.m[1][3] = 0.0f;<br>
+				m.m[1][0] = 0.0f;<br>  
+				m.m[1][1] = 1.0f / tanHalfFOV; <br>
+				m.m[1][2] = 0.0f; <br>
+				m.m[1][3] = 0.0f;<br>
 			<br>
-			&nbsp; &nbsp; m.m[2][0] = 0.0f; <br>      
-			&nbsp; &nbsp; m.m[2][1] = 0.0f; <br>
-			&nbsp; &nbsp; m.m[2][2] = (-zNear - zFar) / zRange; <br>
-			&nbsp; &nbsp; m.m[2][3] = 2.0f * zFar * zNear / zRange;<br>
+				m.m[2][0] = 0.0f; <br>  
+				m.m[2][1] = 0.0f; <br>
+				m.m[2][2] = (-zNear - zFar) / zRange; <br>
+				m.m[2][3] = 2.0f * zFar * zNear / zRange;<br>
 			<br>
-			&nbsp; &nbsp; m.m[3][0] = 0.0f;<br>        
-			&nbsp; &nbsp; m.m[3][1] = 0.0f; <br>
-			&nbsp; &nbsp; m.m[3][2] = 1.0f; <br>
-			&nbsp; &nbsp; m.m[3][3] = 0.0f;<br>
+				m.m[3][0] = 0.0f;<br>
+				m.m[3][1] = 0.0f; <br>
+				m.m[3][2] = 1.0f; <br>
+				m.m[3][3] = 0.0f;<br>
 			}
-			</code>
+			</code></pre>
 			<p>A structure called m_persProj was added to the Pipeline class
 			that holds the perspective projection configurations. The method above
 			generates the matrix that we have developed in the background section.</p>
-			<code>m_transformation = PersProjTrans * TranslationTrans * RotateTrans * ScaleTrans;</code>
+			<pre><code>m_transformation = PersProjTrans * TranslationTrans * RotateTrans * ScaleTrans;</code></pre>
 			<p>We add the perspective projection matrix as the first element in the
 			multiplication that generates the complete transformation. Remember
 			that since the position vector is multiplied on the right hand side
 			that matrix is actually the last. First we scale, then rotate,
 			translate and finally project.</p>
-			<code>p.SetPerspectiveProj(30.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 1000.0f);</code>
+			<pre><code>p.SetPerspectiveProj(30.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 1000.0f);</code></pre>
 			<p>In the render function we set the projection parameters. Play with
 			these and see their effect.</p>
 		</section>

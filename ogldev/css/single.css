@@ -18,6 +18,8 @@ body{
 	body{ width: 1024px; position: relative; left: 50%; margin-left: -532px;}
 }
 
+#content img{max-width: 100%;}
+
 #header {
     width: 100%;
     display: table;

@@ -100,25 +100,25 @@
 			<h3> Source walkthru </h3>
 
 			<p>(shadow_map_fbo.h:50)</p>
-			<code>
+			<pre><code>
 			class ShadowMapFBO<br>
 			{<br>
-			&nbsp; &nbsp; public:<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; ShadowMapFBO();<br>
+				public:<br>
+					ShadowMapFBO();<br>
 			<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; ~ShadowMapFBO();<br>
+					~ShadowMapFBO();<br>
 			<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; bool Init(unsigned int WindowWidth, unsigned int WindowHeight);<br>
+					bool Init(unsigned int WindowWidth, unsigned int WindowHeight);<br>
 			<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; void BindForWriting();<br>
+					void BindForWriting();<br>
 			<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; void BindForReading(GLenum TextureUnit);<br>
+					void BindForReading(GLenum TextureUnit);<br>
 			<br>
-			&nbsp; &nbsp; private:<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; GLuint m_fbo;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; GLuint m_shadowMap;<br>
+				private:<br>
+					GLuint m_fbo;<br>
+					GLuint m_shadowMap;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The results of the 3D pipeline in OpenGL end up in something which is called a 'framebuffer object' (a.k.a FBO). This 
 				concept wraps within it the color buffer (which is displayed on screen), the depth buffer as well
@@ -157,15 +157,15 @@
 				BindForWriting() before rendering into the shadow map and BindForReading() when starting the second rendering pass.
 			</p>
 			<p>(shadow_map_fbo.cpp:43)</p>
-			<code>
-			    glGenFramebuffers(1, &amp;m_fbo);    
-			  </code>
+			<pre><code>
+			glGenFramebuffers(1, &amp;m_fbo);
+			  </code></pre>
 			<p>
 				Here we create the FBO. Same as in textures and buffers, we specify the address of an 
 				array of GLuints and its size. The array is populated with the handles.
 			</p>
 			<p>(shadow_map_fbo.cpp:46)</p>
-			<code>
+			<pre><code>
 			glGenTextures(1, &amp;m_shadowMap);<br>
 			glBindTexture(GL_TEXTURE_2D, m_shadowMap);<br>
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, WindowWidth, WindowHeight, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);<br>
@@ -173,7 +173,7 @@
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);<br>
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<br>
-			</code>
+			</code></pre>
 			<p>
 				Next we create the texture that will serve as the shadow map. In general, this is a standard 2D texture with
 				some specific configuration to make it suitable for its purpose:
@@ -192,9 +192,9 @@
 				</ol>
 			</p>
 			<p>(shadow_map_fbo.cpp:54)</p>
-			<code>
+			<pre><code>
 			glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);
-			</code>
+			</code></pre>
 			<p>
 				We have generated the FBO, the texture object and also configured the texture object for shadow mapping.
 				Now we need to attach the texture object to the FBO. The first thing we need to do is to bind the 
@@ -202,13 +202,13 @@
 				takes the FBO handle and the desired target. The target can be GL_FRAMEBUFFER, GL_DRAW_FRAMEBUFFER or GL_READ_FRAMEBUFFER.
 				GL_READ_FRAMEBUFFER is used when we want to read from the FBO using glReadPixels (not in this
 				tutorial). GL_DRAW_FRAMEBUFFER is used when we want to render into the FBO. When we use GL_FRAMEBUFFER both
-			        the reading and writing state is updated and this is the recommended way for initializing the FBO. We will
+			the reading and writing state is updated and this is the recommended way for initializing the FBO. We will
 				use GL_DRAW_FRAMEBUFFER when we actually start to render.
 			</p>
 			<p>(shadow_map_fbo.cpp:55)</p>
-			<code>
+			<pre><code>
 			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_shadowMap, 0);
-			</code>
+			</code></pre>
 			<p>
 				Here we attach the shadow map texture to the depth attachment point of the FBO. The last parameter
 				to this function indicates the mipmap layer to use. Mipmapping is a texture mapping feature where
@@ -220,10 +220,10 @@
 				attachment point (depth in the case above).
 			</p>
 			<p>(shadow_map_fbo.cpp:58)</p>
-			<code>
+			<pre><code>
 			glDrawBuffer(GL_NONE);<br>
 			glReadBuffer(GL_NONE);
-			</code>
+			</code></pre>
 			<p>
 				Since we are not going to render into the color buffer (only into the depth) we explicitly specify
 				it using the above call. By default, the color buffer target is set to GL_COLOR_ATTACHMENT0, but our FBO
@@ -233,29 +233,29 @@
 				is used the valid parameters are GL_NONE, GL_FRONT_LEFT, GL_FRONT_RIGHT, GL_BACK_LEFT and GL_BACK_RIGHT. 
 				These allow you to render directly into the front or back buffers (where each one has a left and right buffer).
 				We also set the read buffer to GL_NONE (remember, we are not going to call one of the glReadPixel APIs).
-			        This is mainly to avoid problems with GPUs that support only OpenGL 3.x and not 4.x.
+			This is mainly to avoid problems with GPUs that support only OpenGL 3.x and not 4.x.
 			</p>
 			<p>(shadow_map_fbo.cpp:61)</p>
-			<code>
+			<pre><code>
 			GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);<br>
 			<br>
 			if (Status != GL_FRAMEBUFFER_COMPLETE) {<br>
-			&nbsp; &nbsp; printf("FB error, status: 0x%x\n", Status);<br>
-			&nbsp; &nbsp; return false;<br>
+				printf("FB error, status: 0x%x\n", Status);<br>
+				return false;<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				When the configuration of the FBO is finished it is very important to verify that its state is what the
 				OpenGL spec defines as "complete". This means that no error was detected and that the framebuffer
 				can now be used. The code above checks that.
 			</p>
 			<p>(shadow_map_fbo.cpp:72)</p>
-			<code>
+			<pre><code>
 			void ShadowMapFBO::BindForWriting()<br>
 			{<br>
-			&nbsp; &nbsp; glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
+				glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				We will need to toggle between rendering into the shadow map and rendering into the default framebuffer.
 				In the second pass we will also need to bind our shadow map for input. This function and the next
@@ -263,13 +263,13 @@
 				we did earlier. We will call it before the first render pass...
 			</p>
 			<p>(shadow_map_fbo.cpp:78)</p>
-			<code>
+			<pre><code>
 			void ShadowMapFBO::BindForReading(GLenum TextureUnit)<br>
 			{<br>
-			&nbsp; &nbsp; glActiveTexture(TextureUnit);<br>
-			&nbsp; &nbsp; glBindTexture(GL_TEXTURE_2D, m_shadowMap);<br>
+				glActiveTexture(TextureUnit);<br>
+				glBindTexture(GL_TEXTURE_2D, m_shadowMap);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				...and this function will be used before the second render pass to bind the shadow map for reading.
 				Note that we bind specifically the texture object, rather than the FBO itself. This function takes
@@ -279,7 +279,7 @@
 				the shader needs simply the index itself (0, 1, etc). This can be the source of many bugs (believe me, I know).
 			</p>
 			<p>(shadow_map.vs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			layout (location = 0) in vec3 Position;<br>
@@ -292,10 +292,10 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;     gl_Position = gWVP * vec4(Position, 1.0);<br>
-			&nbsp; &nbsp;     TexCoordOut = TexCoord;<br>
+			gl_Position = gWVP * vec4(Position, 1.0);<br>
+			TexCoordOut = TexCoord;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				We are going to use the same shader program for both render passes. The vertex shader will be used by
 				both passes while the fragment shader will be used only by the second pass. Since we are disabling
@@ -311,7 +311,7 @@
 				shader because we will sample from the shadow map (which is now input to the shader). 
 			</p>
 			<p>(shadow_map.fs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			in vec2 TexCoordOut;<br>
@@ -321,11 +321,11 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp; float Depth = texture(gShadowMap, TexCoordOut).x;<br>
-			&nbsp; &nbsp; Depth = 1.0 - (1.0 - Depth) * 25.0;<br>
-			&nbsp; &nbsp; FragColor = vec4(Depth);<br>
+				float Depth = texture(gShadowMap, TexCoordOut).x;<br>
+				Depth = 1.0 - (1.0 - Depth) * 25.0;<br>
+				FragColor = vec4(Depth);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is the fragment shader that is used to display the shadow map in the render pass. The 2D texture coordinates
 				are used to fetch the depth value from the shadow map. The shadow map texture was created with the type
@@ -345,18 +345,18 @@
 				Now let's see how to combine the pieces of code above and create the application.
 			</p>
 			<p>(tutorial23.cpp:106)</p>
-			<code>
+			<pre><code>
 			virtual void RenderSceneCB()<br>
 			{<br>
-			&nbsp; &nbsp; m_pGameCamera->OnRender();<br>
-			&nbsp; &nbsp; m_scale += 0.05f;<br>
+				m_pGameCamera->OnRender();<br>
+				m_scale += 0.05f;<br>
 			<br>
-			&nbsp; &nbsp; ShadowMapPass();<br>
-			&nbsp; &nbsp; RenderPass();<br>
+				ShadowMapPass();<br>
+				RenderPass();<br>
 			<br>
-			&nbsp; &nbsp; glutSwapBuffers();<br>
+				glutSwapBuffers();<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The main render function has become much simpler as most functionality moved to other functions. First we take
 				care of the "global" stuff like updating the position of the camera and the class member which is used to 
@@ -364,26 +364,26 @@
 				display the results. Finally, glutSwapBuffer() is called to display it to the screen.
 			</p>
 			<p>(tutorial23.cpp:117)</p>
-			<code>
+			<pre><code>
 			virtual void ShadowMapPass()<br>
 			{<br>
-			&nbsp; &nbsp; m_shadowMapFBO.BindForWriting();<br>
+				m_shadowMapFBO.BindForWriting();<br>
 			<br>
-			&nbsp; &nbsp; glClear(GL_DEPTH_BUFFER_BIT);<br>
+				glClear(GL_DEPTH_BUFFER_BIT);<br>
 			<br>
-			&nbsp; &nbsp; Pipeline p;<br>
-			&nbsp; &nbsp; p.Scale(0.1f, 0.1f, 0.1f);<br>
-			&nbsp; &nbsp; p.Rotate(0.0f, m_scale, 0.0f);<br>
-			&nbsp; &nbsp; p.WorldPos(0.0f, 0.0f, 5.0f);<br>
-			&nbsp; &nbsp; p.SetCamera(m_spotLight.Position, m_spotLight.Direction, Vector3f(0.0f, 1.0f, 0.0f));<br>
-			&nbsp; &nbsp; p.SetPerspectiveProj(20.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 50.0f);<br>
-			&nbsp; &nbsp; m_pShadowMapTech->SetWVP(p.GetWVPTrans());<br>
+				Pipeline p;<br>
+				p.Scale(0.1f, 0.1f, 0.1f);<br>
+				p.Rotate(0.0f, m_scale, 0.0f);<br>
+				p.WorldPos(0.0f, 0.0f, 5.0f);<br>
+				p.SetCamera(m_spotLight.Position, m_spotLight.Direction, Vector3f(0.0f, 1.0f, 0.0f));<br>
+				p.SetPerspectiveProj(20.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 50.0f);<br>
+				m_pShadowMapTech->SetWVP(p.GetWVPTrans());<br>
 			<br>
-			&nbsp; &nbsp; m_pMesh->Render();<br>
+				m_pMesh->Render();<br>
 			<br>
-			&nbsp; &nbsp; glBindFramebuffer(GL_FRAMEBUFFER, 0);<br>
+				glBindFramebuffer(GL_FRAMEBUFFER, 0);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				We start the shadow map pass by binding in the shadow map FBO. From now on all the depth values will go into
 				our shadow map texture and color writes will be discarded. We clear the depth buffer (only) before we start
@@ -393,23 +393,23 @@
 				and then switch back to the default framebuffer by binding FBO zero.
 			</p>
 			<p>(tutorial23.cpp:135)</p>
-			<code>
+			<pre><code>
 			virtual void RenderPass()<br>
 			{<br>
-			&nbsp; &nbsp; glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
+				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>
 			<br>
-			&nbsp; &nbsp; m_pShadowMapTech->SetTextureUnit(0);<br>
-			&nbsp; &nbsp; m_shadowMapFBO.BindForReading(GL_TEXTURE0);<br>
+				m_pShadowMapTech->SetTextureUnit(0);<br>
+				m_shadowMapFBO.BindForReading(GL_TEXTURE0);<br>
 			<br>
-			&nbsp; &nbsp; Pipeline p;<br>
-			&nbsp; &nbsp; p.Scale(5.0f, 5.0f, 5.0f);<br>
-			&nbsp; &nbsp; p.WorldPos(0.0f, 0.0f, 10.0f);<br>
-			&nbsp; &nbsp; p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
-			&nbsp; &nbsp; p.SetPerspectiveProj(30.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 50.0f);<br>
-			&nbsp; &nbsp; m_pShadowMapTech->SetWVP(p.GetWVPTrans());<br>
-			&nbsp; &nbsp; m_pQuad->Render();<br>
+				Pipeline p;<br>
+				p.Scale(5.0f, 5.0f, 5.0f);<br>
+				p.WorldPos(0.0f, 0.0f, 10.0f);<br>
+				p.SetCamera(m_pGameCamera->GetPos(), m_pGameCamera->GetTarget(), m_pGameCamera->GetUp());<br>
+				p.SetPerspectiveProj(30.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 50.0f);<br>
+				m_pShadowMapTech->SetWVP(p.GetWVPTrans());<br>
+				m_pQuad->Render();<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The render pass starts by clearing both color and depth buffers. These buffers belond to the default framebuffer.
 				We tell the shader to use texture unit 0 and bind the shadow map texture for reading on texture unit 0.

@@ -86,14 +86,14 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<code>#define ToRadian(x) ((x) * M_PI / 180.0f)<br>
+			<pre><code>#define ToRadian(x) ((x) * M_PI / 180.0f)<br>
 			#define ToDegree(x) ((x) * 180.0f / M_PI)
-			</code>
+			</code></pre>
 			<p>We are starting to use the actual values of angles in this tutorials.
 			As it happens, the trigonometric functions of the standard C library
 			take radian as a parameter. The above macros take the angle either in
 			radians or degrees and convert to the other notation.</p>
-			<code>
+			<pre><code>
 			inline Matrix4f operator*(const Matrix4f&amp; Right) const<br>
 			{<br>
 			&nbsp;&nbsp;&nbsp; Matrix4f Ret;<br>
@@ -107,13 +107,13 @@
 			&nbsp;&nbsp;&nbsp; }<br><br>
 			&nbsp;&nbsp;&nbsp; return Ret;<br>
 			}<br>
-			</code>
+			</code></pre>
 			<p>This handy operator of the matrix class handles matrix multiplication.
 			As you can see, each entry in the resulting matrix is defined as the
 			dot product of its line in the left matrix with the column in the right
 			matrix. This operator is key in the implementation of the pipeline
 			class.</p>
-			<code>
+			<pre><code>
 			class Pipeline<br>
 			{<br>
 			&nbsp;&nbsp;&nbsp; public:<br>
@@ -128,14 +128,14 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vector3f m_rotateInfo;<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Matrix4f m_transformation;<br>
 			};
-			</code>
+			</code></pre>
 			<p>The pipeline class abstracts the details of getting all the
 			transformation required for one single object combined. There are
 			currently 3 private member vectors that store the scaling, position in
 			world space and rotation for each axis. In addition there are APIs to
 			set them and a function to get the matrix that represent the sum of all
 			these transformations.</p>
-			<code>
+			<pre><code>
 			const Matrix4f* Pipeline::GetTrans()<br>
 			{<br>
 			&nbsp;&nbsp;&nbsp; Matrix4f ScaleTrans, RotateTrans, TranslationTrans;<br>
@@ -145,7 +145,7 @@
 			&nbsp;&nbsp;&nbsp; m_transformation = TranslationTrans * RotateTrans * ScaleTrans;<br>
 			&nbsp;&nbsp;&nbsp; return &amp;m_transformation;<br>
 			}
-			</code>
+			</code></pre>
 			<p>This function initializes three seperate matrices as the
 			transformations that match the current configuration. It multiplies
 			them one by one and returns the final product. Note that the order is
@@ -159,13 +159,13 @@
 			transformations according to what we've learned in the last few
 			tutorials. In the next tutorials this class will be extended to handle
 			camera control and perspective projection.</p>
-			<code>
+			<pre><code>
 			Pipeline p;<br>
 			p.Scale(sinf(Scale * 0.1f), sinf(Scale * 0.1f), sinf(Scale * 0.1f));<br>
 			p.WorldPos(sinf(Scale), 0.0f, 0.0f);<br>
 			p.Rotate(sinf(Scale) * 90.0f, sinf(Scale) * 90.0f, sinf(Scale) * 90.0f);<br>
 			glUniformMatrix4fv(gWorldLocation, 1, GL_TRUE, (const GLfloat*)p.GetTrans());
-			</code>
+			</code></pre>
 			<p>These are the changes to the render function. We allocate a pipeline
 			object, configure it and send the resulting transformation down to the
 			shader. Play with the parameters and see their effect on the final

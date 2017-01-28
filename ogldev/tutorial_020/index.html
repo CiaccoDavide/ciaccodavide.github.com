@@ -80,28 +80,28 @@
 			<h3> Source walkthru </h3>
 
 			<p>(lighting_technique.h:24)</p>
-			<code>
+			<pre><code>
 			struct BaseLight<br>
 			{<br>
-			&nbsp; &nbsp;   Vector3f Color;<br>
-			&nbsp; &nbsp;   float AmbientIntensity;<br>
-			&nbsp; &nbsp;   float DiffuseIntensity;<br>
+			Vector3f Color;<br>
+			float AmbientIntensity;<br>
+			float DiffuseIntensity;<br>
 			};<br>
 			.<br>
 			.<br>
 			.<br>
 			struct PointLight : public BaseLight<br>
 			{<br>
-			&nbsp; &nbsp;     Vector3f Position;<br>
+			Vector3f Position;<br>
 			<br>
-			&nbsp; &nbsp;     struct<br>
-			&nbsp; &nbsp;     {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         float Constant;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         float Linear;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         float Exp;<br>
-			&nbsp; &nbsp;     } Attenuation;<br>
+			struct<br>
+			{<br>
+					 float Constant;<br>
+					 float Linear;<br>
+					 float Exp;<br>
+			} Attenuation;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				Despite their differences, directional and point lights still have much in common. This common stuff 
 				has been moved to the BaseLight structure that both light types are now derived from. The directional light
@@ -109,9 +109,9 @@
 				three attenuation factors.
 			</p>
 			<p>(lighting_technique.h:81)</p>
-			<code>
+			<pre><code>
 				void SetPointLights(unsigned int NumLights, const PointLight* pLights);
-			</code>
+			</code></pre>
 			<p>
 				In addition to demonstrating how to implement a point light, this tutorial also shows how to use
 				multiple lights. The assumption is that there will usually be a single directional light (serving
@@ -120,20 +120,20 @@
 				their values. 
 			</p>
 			<p>(lighting_technique.h:103)</p>
-			<code>
+			<pre><code>
 			struct {<br>
-			&nbsp; &nbsp;     GLuint Color;<br>
-			&nbsp; &nbsp;     GLuint AmbientIntensity;<br>
-			&nbsp; &nbsp;     GLuint DiffuseIntensity;<br>
-			&nbsp; &nbsp;     GLuint Position;<br>
-			&nbsp; &nbsp;     struct<br>
-			&nbsp; &nbsp;     {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         GLuint Constant;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         GLuint Linear;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         GLuint Exp;<br>
-			&nbsp; &nbsp;     } Atten;<br>
+			GLuint Color;<br>
+			GLuint AmbientIntensity;<br>
+			GLuint DiffuseIntensity;<br>
+			GLuint Position;<br>
+			struct<br>
+			{<br>
+					 GLuint Constant;<br>
+					 GLuint Linear;<br>
+					 GLuint Exp;<br>
+			} Atten;<br>
 			} m_pointLightsLocation[MAX_POINT_LIGHTS];
-			</code>
+			</code></pre>
 			<p>
 				In order to support multiple point lights the shader contains an array of structures identical to struct
 				PointLight (only in GLSL). There are basically two methods to update an array of structures in shaders:
@@ -169,29 +169,29 @@
 				which will be explored in the future.
 			</p>
 			<p>(lighting.fs:46)</p>
-			<code>
+			<pre><code>
 			vec4 CalcLightInternal(BaseLight Light, vec3 LightDirection, vec3 Normal)<br>
 			{<br>
-			&nbsp; &nbsp;     vec4 AmbientColor = vec4(Light.Color, 1.0f) * Light.AmbientIntensity;<br>
-			&nbsp; &nbsp;     float DiffuseFactor = dot(Normal, -LightDirection);<br>
+			vec4 AmbientColor = vec4(Light.Color, 1.0f) * Light.AmbientIntensity;<br>
+			float DiffuseFactor = dot(Normal, -LightDirection);<br>
 			<br>
-			&nbsp; &nbsp;     vec4 DiffuseColor  = vec4(0, 0, 0, 0);<br>
-			&nbsp; &nbsp;     vec4 SpecularColor = vec4(0, 0, 0, 0);<br>
+			vec4 DiffuseColor  = vec4(0, 0, 0, 0);<br>
+			vec4 SpecularColor = vec4(0, 0, 0, 0);<br>
 			<br>
-			&nbsp; &nbsp;     if (DiffuseFactor > 0) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         DiffuseColor = vec4(Light.Color * Light.DiffuseIntensity * DiffuseFactor, 1.0f);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         vec3 VertexToEye = normalize(gEyeWorldPos - WorldPos0);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         vec3 LightReflect = normalize(reflect(LightDirection, Normal));<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         float SpecularFactor = dot(VertexToEye, LightReflect);<br>			
-			&nbsp; &nbsp; &nbsp; &nbsp;         if (SpecularFactor > 0) {<br>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;         SpecularFactor = pow(SpecularFactor, gSpecularPower);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;             SpecularColor = vec4(Light.Color * gMatSpecularIntensity * SpecularFactor, 1.0f);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         }<br>
-			&nbsp; &nbsp;     }<br>
+			if (DiffuseFactor > 0) {<br>
+					 DiffuseColor = vec4(Light.Color * Light.DiffuseIntensity * DiffuseFactor, 1.0f);<br>
+					 vec3 VertexToEye = normalize(gEyeWorldPos - WorldPos0);<br>
+					 vec3 LightReflect = normalize(reflect(LightDirection, Normal));<br>
+					 float SpecularFactor = dot(VertexToEye, LightReflect);<br>			
+					 if (SpecularFactor > 0) {<br>
+			 SpecularFactor = pow(SpecularFactor, gSpecularPower);<br>
+						SpecularColor = vec4(Light.Color * gMatSpecularIntensity * SpecularFactor, 1.0f);<br>
+					 }<br>
+			}<br>
 			<br>
-			&nbsp; &nbsp;     return (AmbientColor + DiffuseColor + SpecularColor);<br>
+			return (AmbientColor + DiffuseColor + SpecularColor);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				It should not come as a big surprise that we can share quite a lot of shader code between directional light and
 				point light. Most of the algorithm is the same. The difference is that we need to factor in the attenuation
@@ -205,32 +205,32 @@
 				multiple calls to this function.
 			</p>
 			<p>(lighting.fs:70)</p>
-			<code>
+			<pre><code>
 			vec4 CalcDirectionalLight(vec3 Normal)<br>
 			{<br>
-			&nbsp; &nbsp;      return CalcLightInternal(gDirectionalLight.Base, gDirectionalLight.Direction, Normal);<br>
+				return CalcLightInternal(gDirectionalLight.Base, gDirectionalLight.Direction, Normal);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				With the common function in place, the function to calculate the directional light simply becomes its wrapper,
 				taking most of its arguments from the global variables.
 			</p>
 			<p>(lighting.fs:75)</p>
-			<code>
+			<pre><code>
 			vec4 CalcPointLight(int Index, vec3 Normal)<br>
 			{<br>
-			&nbsp; &nbsp; vec3 LightDirection = WorldPos0 - gPointLights[Index].Position;<br>
-			&nbsp; &nbsp; float Distance = length(LightDirection);<br>
-			&nbsp; &nbsp; LightDirection = normalize(LightDirection);<br>
+				vec3 LightDirection = WorldPos0 - gPointLights[Index].Position;<br>
+				float Distance = length(LightDirection);<br>
+				LightDirection = normalize(LightDirection);<br>
 			<br>
-			&nbsp; &nbsp; vec4 Color = CalcLightInternal(gPointLights[Index].Base, LightDirection, Normal);<br>
-			&nbsp; &nbsp; float Attenuation =  gPointLights[Index].Atten.Constant +<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; gPointLights[Index].Atten.Linear * Distance +<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; gPointLights[Index].Atten.Exp * Distance * Distance;<br>
+				vec4 Color = CalcLightInternal(gPointLights[Index].Base, LightDirection, Normal);<br>
+				float Attenuation =  gPointLights[Index].Atten.Constant +<br>
+				 		 		 	gPointLights[Index].Atten.Linear * Distance +<br>
+				 		 		 	gPointLights[Index].Atten.Exp * Distance * Distance;<br>
 			<br>
-			&nbsp; &nbsp;     return Color / Attenuation;<br>
+			return Color / Attenuation;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				Calculating point light is just a bit more complex than directional light. This function will be called for 
 				every configured point light so it takes the light index as a parameter and uses it to index into the global
@@ -243,41 +243,41 @@
 				the attenuation.
 			</p>
 			<p>(lighting.fs:89)</p>
-			<code>
+			<pre><code>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;      vec3 Normal = normalize(Normal0);<br>
-			&nbsp; &nbsp;      vec4 TotalLight = CalcDirectionalLight(Normal);<br>
+				vec3 Normal = normalize(Normal0);<br>
+				vec4 TotalLight = CalcDirectionalLight(Normal);<br>
 			<br>
-			&nbsp; &nbsp;      for (int i = 0 ; i &lt; gNumPointLights ; i++) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          TotalLight += CalcPointLight(i, Normal);<br>
-			&nbsp; &nbsp;      }<br>
+				for (int i = 0 ; i &lt; gNumPointLights ; i++) {<br>
+				 TotalLight += CalcPointLight(i, Normal);<br>
+				}<br>
 			<br>
-			&nbsp; &nbsp;  FragColor = texture2D(gSampler, TexCoord0.xy) * TotalLight;<br>
+				 FragColor = texture2D(gSampler, TexCoord0.xy) * TotalLight;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				Once we get all the infrastructure in place the fragment shader becomes very simple. It simply 
 				normalizes the vertex normal and then accumulates the results of all light types together. The result
 				is multiplied by the sampled color and is used as the final pixel color.
 			</p>
 			<p>(lighting_technique.cpp:279)</p>
-			<code>
+			<pre><code>
 			void LightingTechnique::SetPointLights(unsigned int NumLights, const PointLight* pLights)<br>
 			{<br>
-			&nbsp; &nbsp;      glUniform1i(m_numPointLightsLocation, NumLights);<br>
-			<br>    
-			&nbsp; &nbsp;      for (unsigned int i = 0 ; i &lt; NumLights ; i++) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glUniform3f(m_pointLightsLocation[i].Color, pLights[i].Color.x, pLights[i].Color.y, pLights[i].Color.z);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glUniform1f(m_pointLightsLocation[i].AmbientIntensity, pLights[i].AmbientIntensity);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glUniform1f(m_pointLightsLocation[i].DiffuseIntensity, pLights[i].DiffuseIntensity);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glUniform3f(m_pointLightsLocation[i].Position, pLights[i].Position.x, pLights[i].Position.y, pLights[i].Position.z);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glUniform1f(m_pointLightsLocation[i].Atten.Constant, pLights[i].Attenuation.Constant);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glUniform1f(m_pointLightsLocation[i].Atten.Linear, pLights[i].Attenuation.Linear);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glUniform1f(m_pointLightsLocation[i].Atten.Exp, pLights[i].Attenuation.Exp);<br>
-			&nbsp; &nbsp;      }<br>
+				glUniform1i(m_numPointLightsLocation, NumLights);<br>
+			<br>
+				for (unsigned int i = 0 ; i &lt; NumLights ; i++) {<br>
+				 glUniform3f(m_pointLightsLocation[i].Color, pLights[i].Color.x, pLights[i].Color.y, pLights[i].Color.z);<br>
+				 glUniform1f(m_pointLightsLocation[i].AmbientIntensity, pLights[i].AmbientIntensity);<br>
+				 glUniform1f(m_pointLightsLocation[i].DiffuseIntensity, pLights[i].DiffuseIntensity);<br>
+				 glUniform3f(m_pointLightsLocation[i].Position, pLights[i].Position.x, pLights[i].Position.y, pLights[i].Position.z);<br>
+				 glUniform1f(m_pointLightsLocation[i].Atten.Constant, pLights[i].Attenuation.Constant);<br>
+				 glUniform1f(m_pointLightsLocation[i].Atten.Linear, pLights[i].Attenuation.Linear);<br>
+				 glUniform1f(m_pointLightsLocation[i].Atten.Exp, pLights[i].Attenuation.Exp);<br>
+				}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This function updates the shader with the point lights values by iterating over the array elements
 				and passing each element's attribute values one by one. This is the so called "method 1" that was described earlier.

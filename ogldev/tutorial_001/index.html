@@ -32,25 +32,25 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<pre><code> glutInit(&amp;argc, argv); </code></pre>
+			<pre><pre><code> glutInit(&amp;argc, argv); </code></pre></pre>
 			<p> This call initializes GLUT. The parameters can be provided directly from the command line and include useful options such as '-sync' and '-gldebug' which disable the asynchronous nature of X and automatically checks for GL errors and displays them (respectively). </p>
 
-			<pre><code> glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA); </code></pre>
+			<pre><pre><code> glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA); </code></pre></pre>
 			<p> Here we configure some GLUT options. GLUT_DOUBLE enables double buffering (drawing to a background buffer while another buffer is displayed) and the color buffer where most rendering ends up (i.e. the screen). We will usually want these two as well as other options which we will see later. </p>
 
-<pre><code> glutInitWindowSize(1024, 768); <br> glutInitWindowPosition(100, 100); <br> glutCreateWindow("Tutorial 01"); </code></pre>
+<pre><pre><code> glutInitWindowSize(1024, 768); <br> glutInitWindowPosition(100, 100); <br> glutCreateWindow("Tutorial 01"); </code></pre></pre>
 			<p> These calls specify the window parameters and create it. You also have the option to specify the window title. </p>
 
-			<pre><code> glutDisplayFunc(RenderSceneCB); </code></pre>
+			<pre><pre><code> glutDisplayFunc(RenderSceneCB); </code></pre></pre>
 			<p> Since we are working in a windowing system most of the interaction with the running program occurs via event callback functions. GLUT takes care of interacting with the underlying windowing system and provides us with a few callback options. Here we use just one - a "main" callback to do all the rendering of one frame. This function is continuously called by GLUT internal loop. </p>
 
-			<pre><code> glClearColor(0.0f, 0.0f, 0.0f, 0.0f); </code></pre>
+			<pre><pre><code> glClearColor(0.0f, 0.0f, 0.0f, 0.0f); </code></pre></pre>
 			<p> This is our first encounter with the concept of state in OpenGL. The idea behind state is that rendering is such a complex task that it cannot be treated as a function call that receives a few parameters (and correctly designed functions never receive a lot of parameters). You need to specify shaders, buffers and various flags that affect how rendering will take place. In addition, you would often want to keep the same piece of configuration across several rendering operations (e.g. if you never disable the depth test then there is no point in specifying it for every render call). That is why most of the configuration of rendering operations is done by setting flags and values in the OpenGL state machine and the rendering calls themselves are usually limited to the few parameters that revolve around the number of vertices to draw and their starting offset. After calling a state changing function that particular configuration remains intact until the next call to the same function with a different value. The call above sets the color that will be used when clearing the framebuffer (described later). The color has four channels (RGBA) and it is specified as a normalized value between 0.0 and 1.0. </p>
 
-			<pre><code> glutMainLoop(); </code></pre>
+			<pre><pre><code> glutMainLoop(); </code></pre></pre>
 			<p> This call passes control to GLUT which now begins its own internal loop. In this loop it listens to events from the windowing system and passes them via the callbacks that we configured. In our case GLUT will only call the function we registered as a display callback (RenderSceneCB) to give us a chace to render the frame. </p>
 
-			<pre><code> glClear(GL_COLOR_BUFFER_BIT); <br> glutSwapBuffers(); </code></pre>
+			<pre><pre><code> glClear(GL_COLOR_BUFFER_BIT); <br> glutSwapBuffers(); </code></pre></pre>
 			<p> The only thing we do in our render function is to clear the framebuffer (using the color specified above - try changing it). The second call tells GLUT to swap the roles of the backbuffer and the frontbuffer. In the next round through the render callback we will render into the current frames front buffer and the current backbuffer will be displayed. </p>
 		</section>
 

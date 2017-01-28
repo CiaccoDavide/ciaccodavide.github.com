@@ -110,32 +110,32 @@
 			<h3> Source walkthru </h3>
 
 			<p>(particle_system.h:29)</p>
-			<code>
+			<pre><code>
 			class ParticleSystem<br>
 			{<br>
 			public:<br>
-			&nbsp; &nbsp;    ParticleSystem();<br>
-			    <br>
-			&nbsp; &nbsp;     ~ParticleSystem();<br>
-			    <br>
-			&nbsp; &nbsp;     bool InitParticleSystem(const Vector3f&amp; Pos);<br>
-			    <br>
-			&nbsp; &nbsp;     void Render(int DeltaTimeMillis, const Matrix4f&amp; VP, const Vector3f&amp; CameraPos);<br>
-			    <br>
+				ParticleSystem();<br>
+			<br>
+			~ParticleSystem();<br>
+			<br>
+			bool InitParticleSystem(const Vector3f&amp; Pos);<br>
+			<br>
+			void Render(int DeltaTimeMillis, const Matrix4f&amp; VP, const Vector3f&amp; CameraPos);<br>
+			<br>
 			private:<br>
-			    <br>
-			&nbsp; &nbsp;     bool m_isFirst;<br>
-			&nbsp; &nbsp;     unsigned int m_currVB;<br>
-			&nbsp; &nbsp;     unsigned int m_currTFB;<br>
-			&nbsp; &nbsp;     GLuint m_particleBuffer[2];<br>
-			&nbsp; &nbsp;     GLuint m_transformFeedback[2];<br>
-			&nbsp; &nbsp;     PSUpdateTechnique m_updateTechnique;<br>
-			&nbsp; &nbsp;     BillboardTechnique m_billboardTechnique;<br>
-			&nbsp; &nbsp;     RandomTexture m_randomTexture;<br>
-			&nbsp; &nbsp;     Texture* m_pTexture;<br>
-			&nbsp; &nbsp;     int m_time;<br>
+			<br>
+			bool m_isFirst;<br>
+			unsigned int m_currVB;<br>
+			unsigned int m_currTFB;<br>
+			GLuint m_particleBuffer[2];<br>
+			GLuint m_transformFeedback[2];<br>
+			PSUpdateTechnique m_updateTechnique;<br>
+			BillboardTechnique m_billboardTechnique;<br>
+			RandomTexture m_randomTexture;<br>
+			Texture* m_pTexture;<br>
+			int m_time;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The ParticleSystem class encapsulates all the mechanics involved in managing the transform feedback buffer.
 				One instance of this class is created by the application and initialized with the world space position of the fireworks
@@ -148,15 +148,15 @@
 				and the current global time variable.
 			</p>
 			<p>(particle_system.cpp:31)</p>
-			<code>
+			<pre><code>
 			struct Particle<br>
 			{<br>
-			&nbsp; &nbsp;      float Type;    <br>
-			&nbsp; &nbsp;      Vector3f Pos;<br>
-			&nbsp; &nbsp;      Vector3f Vel;    <br>
-			&nbsp; &nbsp;      float LifetimeMillis;    <br>
+				float Type;<br>
+				Vector3f Pos;<br>
+				Vector3f Vel;<br>
+				float LifetimeMillis;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				Each particle has the above structure. A particle can be either a launcher, a shell or a secondary shell.
 				The launcher is static and is responsible for generating the other particles. It is unique in the system.
@@ -169,27 +169,27 @@
 				to render the particle.
 			</p>
 			<p>(particle_system.cpp:67)</p>
-			<code>
+			<pre><code>
 			bool ParticleSystem::InitParticleSystem(const Vector3f&amp; Pos)<br>
 			{   <br>
-			&nbsp; &nbsp;      Particle Particles[MAX_PARTICLES];<br>
-			&nbsp; &nbsp;      ZERO_MEM(Particles);<br>
+				Particle Particles[MAX_PARTICLES];<br>
+				ZERO_MEM(Particles);<br>
 			<br>
-			&nbsp; &nbsp;      Particles[0].Type = PARTICLE_TYPE_LAUNCHER;<br>
-			&nbsp; &nbsp;      Particles[0].Pos = Pos;<br>
-			&nbsp; &nbsp;      Particles[0].Vel = Vector3f(0.0f, 0.0001f, 0.0f);<br>
-			&nbsp; &nbsp;      Particles[0].LifetimeMillis = 0.0f;<br>
+				Particles[0].Type = PARTICLE_TYPE_LAUNCHER;<br>
+				Particles[0].Pos = Pos;<br>
+				Particles[0].Vel = Vector3f(0.0f, 0.0001f, 0.0f);<br>
+				Particles[0].LifetimeMillis = 0.0f;<br>
 			<br>
-			&nbsp; &nbsp;      glGenTransformFeedbacks(2, m_transformFeedback);    <br>
-			&nbsp; &nbsp;      glGenBuffers(2, m_particleBuffer);<br>
-			    <br>
-			&nbsp; &nbsp;      for (unsigned int i = 0; i &lt; 2 ; i++) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[i]);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[i]);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glBufferData(GL_ARRAY_BUFFER, sizeof(Particles), Particles, GL_DYNAMIC_DRAW);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, m_particleBuffer[i]);<br>
-			&nbsp; &nbsp;      }
-			</code>
+				glGenTransformFeedbacks(2, m_transformFeedback);<br>
+				glGenBuffers(2, m_particleBuffer);<br>
+			<br>
+				for (unsigned int i = 0; i &lt; 2 ; i++) {<br>
+				 glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[i]);<br>
+				 glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[i]);<br>
+				 glBufferData(GL_ARRAY_BUFFER, sizeof(Particles), Particles, GL_DYNAMIC_DRAW);<br>
+				 glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, m_particleBuffer[i]);<br>
+				}
+			</code></pre>
 			<p>
 				This is the first part of the initialization of the particle system. We set up storage for all the particles on the stack
 				and initialize just the first particle as a launcher (the remaining particles will be created at render time).
@@ -219,19 +219,19 @@
 				into them as well as load the texture that will be mapped on the particles. Check the code for more details.
 			</p>
 			<p>(particle_system.cpp:124)</p>
-			<code>
+			<pre><code>
 			void ParticleSystem::Render(int DeltaTimeMillis, const Matrix4f&amp; VP, const Vector3f&amp; CameraPos)<br>
 			{<br>
-			&nbsp; &nbsp;      m_time += DeltaTimeMillis;<br>
-			    <br>
-			&nbsp; &nbsp;      UpdateParticles(DeltaTimeMillis);<br>
+				m_time += DeltaTimeMillis;<br>
 			<br>
-			&nbsp; &nbsp;      RenderParticles(VP, CameraPos);<br>
+				UpdateParticles(DeltaTimeMillis);<br>
 			<br>
-			&nbsp; &nbsp;      m_currVB = m_currTFB;<br>
-			&nbsp; &nbsp;      m_currTFB = (m_currTFB + 1) &amp; 0x1;<br>
+				RenderParticles(VP, CameraPos);<br>
+			<br>
+				m_currVB = m_currTFB;<br>
+				m_currTFB = (m_currTFB + 1) &amp; 0x1;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is the main render function of the ParticleSystem class. It is responsible for updating the global time counter 
 				and toggling between the two buffer indices ('m_currVB' is the current vertex buffer and is initialized to 0
@@ -240,15 +240,15 @@
 				them. Let's take a look at how we update the particles.
 			</p>
 			<p>(particle_system.cpp:137)</p>
-			<code>
+			<pre><code>
 			void ParticleSystem::UpdateParticles(int DeltaTimeMillis)<br>
 			{<br>
-			&nbsp; &nbsp;     m_updateTechnique.Enable();<br>
-			&nbsp; &nbsp;     m_updateTechnique.SetTime(m_time);<br>
-			&nbsp; &nbsp;     m_updateTechnique.SetDeltaTimeMillis(DeltaTimeMillis);<br>
+			m_updateTechnique.Enable();<br>
+			m_updateTechnique.SetTime(m_time);<br>
+			m_updateTechnique.SetDeltaTimeMillis(DeltaTimeMillis);<br>
 			<br>
-			&nbsp; &nbsp;     m_randomTexture.Bind(RANDOM_TEXTURE_UNIT);
-			</code>
+			m_randomTexture.Bind(RANDOM_TEXTURE_UNIT);
+			</code></pre>
 			<p>
 				We start the particle update by enabling the corresponding technique and setting some dynamic
 				state into it. The technique will need to know the amount of time that has passed from the previous
@@ -257,9 +257,9 @@
 				binding random textures. The random texture is used to provide directions for the generated particles
 				(we will later see how this texture is created).
 			</p>
-			<code>
-			&nbsp; &nbsp;  		glEnable(GL_RASTERIZER_DISCARD);
-			</code>
+			<pre><code>
+				 		glEnable(GL_RASTERIZER_DISCARD);
+			</code></pre>
 			<p>
 				The next function call is something that we haven't seen before. Since the only purpose of the draw
 				call further down this function is to update the transform feedback buffer we prefer to cut the flow
@@ -268,10 +268,10 @@
 				pipeline to discard all primitives before they reach the rasterizer (but after the optional transform
 				feedback stage). 
 			</p>
-			<code>
-			&nbsp; &nbsp;     glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currVB]);    <br>
-			&nbsp; &nbsp;     glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[m_currTFB]);
-			</code>
+			<pre><code>
+			glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currVB]);<br>
+			glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[m_currTFB]);
+			</code></pre>
 			<p>
 				The next two calls handle the toggling between the roles of the two buffers that we have created. 
 				'm_currVB' is used as an index (either 0 or 1) into the array of VBs and we bind the buffer in that 
@@ -279,25 +279,25 @@
 				into the transform feedback object array and we bind the object in that slot as transform feedback (which
 				brings along with it the attached state - the actual buffer).
 			</p>
-			<code>
-			&nbsp; &nbsp;     glEnableVertexAttribArray(0);<br>
-			&nbsp; &nbsp;     glEnableVertexAttribArray(1);<br>
-			&nbsp; &nbsp;     glEnableVertexAttribArray(2);<br>
-			&nbsp; &nbsp;     glEnableVertexAttribArray(3);<br>
+			<pre><code>
+			glEnableVertexAttribArray(0);<br>
+			glEnableVertexAttribArray(1);<br>
+			glEnableVertexAttribArray(2);<br>
+			glEnableVertexAttribArray(3);<br>
 			<br>
-			&nbsp; &nbsp;     glVertexAttribPointer(0,1,GL_FLOAT,GL_FALSE,sizeof(Particle),0);                 // type<br>
-			&nbsp; &nbsp;     glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Particle),(const GLvoid*)4);  // position<br>
-			&nbsp; &nbsp;     glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,sizeof(Particle),(const GLvoid*)16); // velocity<br>
-			&nbsp; &nbsp;     glVertexAttribPointer(3,1,GL_FLOAT,GL_FALSE,sizeof(Particle),(const GLvoid*)28); // lifetime
-			</code>
+			glVertexAttribPointer(0,1,GL_FLOAT,GL_FALSE,sizeof(Particle),0); // type<br>
+			glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Particle),(const GLvoid*)4);  // position<br>
+			glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,sizeof(Particle),(const GLvoid*)16); // velocity<br>
+			glVertexAttribPointer(3,1,GL_FLOAT,GL_FALSE,sizeof(Particle),(const GLvoid*)28); // lifetime
+			</code></pre>
 			<p>
 				We already know the next few function calls. They simply set up the vertex attributes of the particles
 				in the vertex buffer. You will later see how we make sure that the input layout is the same as the
 				output layout.
 			</p>
-			<code>
-			&nbsp; &nbsp;     glBeginTransformFeedback(GL_POINTS);<br>
-			</code>
+			<pre><code>
+			glBeginTransformFeedback(GL_POINTS);<br>
+			</code></pre>
 			<p>
 				The real fun starts here. glBeginTransformFeedback() makes transform feedback active. All the draw calls after
 				that, and until glEndTransformFeedback() is called, redirect their output to the transform feedback 
@@ -312,16 +312,16 @@
 					<li>GL_TRIANGLES - the draw call topology must be GL_TRIANGLES, GL_TRIANGLE_STRIP or GL_TRIANGLE_FAN.</li>
 				</ul>
 			</p>
-			<code>
-			&nbsp; &nbsp;     if (m_isFirst) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         glDrawArrays(GL_POINTS, 0, 1);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         m_isFirst = false;<br>
-			&nbsp; &nbsp;     }<br>
-			&nbsp; &nbsp;     else {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currVB]);<br>
-			&nbsp; &nbsp;     }            <br>
+			<pre><code>
+			if (m_isFirst) {<br>
+					 glDrawArrays(GL_POINTS, 0, 1);<br>
+					 m_isFirst = false;<br>
+			}<br>
+			else {<br>
+					 glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currVB]);<br>
+			}<br>
 			<br>
-			</code>
+			</code></pre>
 			<p>
 				As described earlier, we have no way of knowing how many particles end up in the buffer and transform
 				feedback supports this. Since we generate and destroy particles based on the launcher frequency
@@ -347,62 +347,62 @@
 				simply remember that when we draw into transform feedback object #1 we want to take the number of vertices
 				to draw from transform feedback #0 and vice versa. Today's input is tomorrow's output.
 			</p>
-			<code>
-			&nbsp; &nbsp; glEndTransformFeedback();<br>
-			</code>
+			<pre><code>
+				glEndTransformFeedback();<br>
+			</code></pre>
 			<p>
 				Every call to glBeginTransformFeedback() must be paired with glEndTransformFeedback(). If you miss
 				that things will break pretty quick.
 			</p>
-			<code>
-			&nbsp; &nbsp;     glDisableVertexAttribArray(0);<br>
-			&nbsp; &nbsp;     glDisableVertexAttribArray(1);<br>
-			&nbsp; &nbsp;     glDisableVertexAttribArray(2);<br>
-			&nbsp; &nbsp;     glDisableVertexAttribArray(3);<br>
+			<pre><code>
+			glDisableVertexAttribArray(0);<br>
+			glDisableVertexAttribArray(1);<br>
+			glDisableVertexAttribArray(2);<br>
+			glDisableVertexAttribArray(3);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The end of the function is standard. When we get to this point all the particles have been updated.
 				Let's see how to render them in their new positions.
 			</p>	
 			<p>(particle_system.cpp:177)</p>
-			<code>
+			<pre><code>
 			void ParticleSystem::RenderParticles(const Matrix4f&amp; VP, const Vector3f&amp; CameraPos)<br>
 			{<br>
-			&nbsp; &nbsp;      m_billboardTechnique.Enable();<br>
-			&nbsp; &nbsp;      m_billboardTechnique.SetCameraPosition(CameraPos);<br>
-			&nbsp; &nbsp;      m_billboardTechnique.SetVP(VP);<br>
-			&nbsp; &nbsp;      m_pTexture->Bind(COLOR_TEXTURE_UNIT);<br>
-			</code>
+				m_billboardTechnique.Enable();<br>
+				m_billboardTechnique.SetCameraPosition(CameraPos);<br>
+				m_billboardTechnique.SetVP(VP);<br>
+				m_pTexture->Bind(COLOR_TEXTURE_UNIT);<br>
+			</code></pre>
 			<p>
 				We start the actual rendering by enabling the billboarding technique and setting some state into it.
 				Each particle will be extended into a quad and the texture that we bind here will be mapped on its face.
 			</p>
-			<code>    
-			&nbsp; &nbsp;      glDisable(GL_RASTERIZER_DISCARD);<br>
-			</code>
+			<pre><code>
+				glDisable(GL_RASTERIZER_DISCARD);<br>
+			</code></pre>
 			<p>
 				Rasterization was disabled while we were writing into the feedback buffer. We enable it by disabling the
 				GL_RASTERIZER_DISCARD feature.
 			</p>
-			<code>    
-			&nbsp; &nbsp;      glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currTFB]);<br>
-			</code>
+			<pre><code>
+				glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currTFB]);<br>
+			</code></pre>
 			<p>
 				When we wrote into the transform feedback buffer we bound m_transformFeedback[m_currTFB] as the transform
 				feedback object (the target). That object has m_particleBuffer[m_currTFB] as the attached vertex buffer.
 				We now bind this buffer to provide the input vertices for rendering.
 			</p>
-			<code>        
-			&nbsp; &nbsp;      glEnableVertexAttribArray(0);<br>
+			<pre><code>
+				glEnableVertexAttribArray(0);<br>
 			<br>
-			&nbsp; &nbsp;      glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Particle), (const GLvoid*)4);  // position<br>
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Particle), (const GLvoid*)4);  // position<br>
 			<br>
-			&nbsp; &nbsp;      glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currTFB]);<br>
+				glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currTFB]);<br>
 			<br>
-			&nbsp; &nbsp;      glDisableVertexAttribArray(0);<br>
+				glDisableVertexAttribArray(0);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The particle in the transform feedback buffer has four attributes. In order to render it we only need
 				position so only a single attribute is enabled. Make sure that the stride (distance between that attribute
@@ -414,52 +414,52 @@
 				that matches the input vertex buffer. This object "knows" how many vertices to draw.
 			</p>
 			<p>(ps_update_technique.cpp:151)</p>
-			<code>
+			<pre><code>
 			bool PSUpdateTechnique::Init()<br>
 			{<br>
-			&nbsp; &nbsp;      if (!Technique::Init()) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          return false;<br>
-			&nbsp; &nbsp;      }<br>
+				if (!Technique::Init()) {<br>
+				 return false;<br>
+				}<br>
 			<br>
-			&nbsp; &nbsp;      if (!AddShader(GL_VERTEX_SHADER, pVS)) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          return false;<br>
-			&nbsp; &nbsp;      }<br>
+				if (!AddShader(GL_VERTEX_SHADER, pVS)) {<br>
+				 return false;<br>
+				}<br>
 			<br>
-			&nbsp; &nbsp;      if (!AddShader(GL_GEOMETRY_SHADER, pGS)) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          return false;<br>
-			&nbsp; &nbsp;      }<br>
+				if (!AddShader(GL_GEOMETRY_SHADER, pGS)) {<br>
+				 return false;<br>
+				}<br>
 			<br>
-			&nbsp; &nbsp;  <b>    const GLchar* Varyings[4];    <br>
-			&nbsp; &nbsp;      Varyings[0] = "Type1";<br>
-			&nbsp; &nbsp;      Varyings[1] = "Position1";<br>
-			&nbsp; &nbsp;      Varyings[2] = "Velocity1";    <br>
-			&nbsp; &nbsp;      Varyings[3] = "Age1";<br>
-			    <br>
-			&nbsp; &nbsp;      glTransformFeedbackVaryings(m_shaderProg, 4, Varyings, GL_INTERLEAVED_ATTRIBS);</b> <br>
+				 <b>const GLchar* Varyings[4];<br>
+				Varyings[0] = "Type1";<br>
+				Varyings[1] = "Position1";<br>
+				Varyings[2] = "Velocity1";<br>
+				Varyings[3] = "Age1";<br>
 			<br>
-			&nbsp; &nbsp;      if (!Finalize()) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          return false;<br>
-			&nbsp; &nbsp;      }<br>
-			    <br>
-			&nbsp; &nbsp;      m_deltaTimeMillisLocation = GetUniformLocation("gDeltaTimeMillis");<br>
-			&nbsp; &nbsp;  		 m_randomTextureLocation = GetUniformLocation("gRandomTexture");<br>
-			&nbsp; &nbsp;      m_timeLocation = GetUniformLocation("gTime");<br>
-			&nbsp; &nbsp;      m_launcherLifetimeLocation = GetUniformLocation("gLauncherLifetime");<br>
-			&nbsp; &nbsp;      m_shellLifetimeLocation = GetUniformLocation("gShellLifetime");<br>
-			&nbsp; &nbsp;      m_secondaryShellLifetimeLocation = GetUniformLocation("gSecondaryShellLifetime");<br>
+				glTransformFeedbackVaryings(m_shaderProg, 4, Varyings, GL_INTERLEAVED_ATTRIBS);</b> <br>
 			<br>
-			&nbsp; &nbsp;      if (m_deltaTimeMillisLocation == INVALID_UNIFORM_LOCATION ||<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          m_timeLocation == INVALID_UNIFORM_LOCATION ||<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          m_randomTextureLocation == INVALID_UNIFORM_LOCATION) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          m_launcherLifetimeLocation == INVALID_UNIFORM_LOCATION ||<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          m_shellLifetimeLocation == INVALID_UNIFORM_LOCATION ||<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          m_secondaryShellLifetimeLocation == INVALID_UNIFORM_LOCATION) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          return false;<br>
-			&nbsp; &nbsp;      }<br>
-			    <br>
-			&nbsp; &nbsp;      return true;<br>
+				if (!Finalize()) {<br>
+				 return false;<br>
+				}<br>
+			<br>
+				m_deltaTimeMillisLocation = GetUniformLocation("gDeltaTimeMillis");<br>
+				 		 m_randomTextureLocation = GetUniformLocation("gRandomTexture");<br>
+				m_timeLocation = GetUniformLocation("gTime");<br>
+				m_launcherLifetimeLocation = GetUniformLocation("gLauncherLifetime");<br>
+				m_shellLifetimeLocation = GetUniformLocation("gShellLifetime");<br>
+				m_secondaryShellLifetimeLocation = GetUniformLocation("gSecondaryShellLifetime");<br>
+			<br>
+				if (m_deltaTimeMillisLocation == INVALID_UNIFORM_LOCATION ||<br>
+				 m_timeLocation == INVALID_UNIFORM_LOCATION ||<br>
+				 m_randomTextureLocation == INVALID_UNIFORM_LOCATION) {<br>
+				 m_launcherLifetimeLocation == INVALID_UNIFORM_LOCATION ||<br>
+				 m_shellLifetimeLocation == INVALID_UNIFORM_LOCATION ||<br>
+				 m_secondaryShellLifetimeLocation == INVALID_UNIFORM_LOCATION) {<br>
+				 return false;<br>
+				}<br>
+			<br>
+				return true;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				You now understand the mechanics of creating a transform feedback object, attaching a buffer
 				to it and rendering into it. But there is still the question of what exactly goes into the
@@ -486,7 +486,7 @@
 				FS is missing from it. If we disable rasterization when we update the particles we don't need a FS...
 			</p>
 			<p>(ps_update.vs)</p>
-			<code>
+			<pre><code>
 			#version 330<br> 
 			<br>
 			layout (location = 0) in float Type;<br>
@@ -501,18 +501,18 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;      Type0 = Type;<br>
-			&nbsp; &nbsp;      Position0 = Position;<br>
-			&nbsp; &nbsp;      Velocity0 = Velocity;<br>
-			&nbsp; &nbsp;      Age0 = Age;<br>
+				Type0 = Type;<br>
+				Position0 = Position;<br>
+				Velocity0 = Velocity;<br>
+				Age0 = Age;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is the VS of the particle update technique and as you can see - it is very simple. All it does is
 				pass through the vertices to the GS (where the real action takes place).
 			</p>
 			<p>(ps_update.gs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			layout(points) in;<br>
@@ -539,7 +539,7 @@
 			#define PARTICLE_TYPE_LAUNCHER 0.0f<br>
 			#define PARTICLE_TYPE_SHELL 1.0f<br>
 			#define PARTICLE_TYPE_SECONDARY_SHELL 2.0f<br>
-			</code>
+			</code></pre>
 			<p>
 				That's the start of the GS in the particle update technique with all the declarations and
 				definitions that we will need. We are going to get points as input and provide points as output.
@@ -549,14 +549,14 @@
 				secondary shell (the launcher generates one shell according to its frequency and the shell explodes to
 				secondary shells after its configured lifetime is expired).
 			</p>
-			<code>
+			<pre><code>
 			vec3 GetRandomDir(float TexCoord)<br>
 			{<br>
-			&nbsp; &nbsp;       vec3 Dir = texture(gRandomTexture, TexCoord).xyz;<br>
-			&nbsp; &nbsp;       Dir -= vec3(0.5, 0.5, 0.5);<br>
-			&nbsp; &nbsp;       return Dir;<br>
-			}                                                                                 
-			</code>
+			vec3 Dir = texture(gRandomTexture, TexCoord).xyz;<br>
+			Dir -= vec3(0.5, 0.5, 0.5);<br>
+			return Dir;<br>
+			} 
+			</code></pre>
 			<p>
 				This is a utility function that we will use to generate a random direction for the shells.
 				The directions are stored in a 1D texture whose elements are 3D vectors (floating point).
@@ -566,32 +566,32 @@
 				from the sampled result in order to move the values into the [-0.5 - 0.5] range. This allows the
 				particles to fly in all directions.
 			</p>
-			<code>
+			<pre><code>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp;      float Age = Age0[0] + gDeltaTimeMillis;<br>
+				float Age = Age0[0] + gDeltaTimeMillis;<br>
 			<br>
-			&nbsp; &nbsp;      if (Type0[0] == PARTICLE_TYPE_LAUNCHER) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          if (Age >= gLauncherLifetime) {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               Type1 = PARTICLE_TYPE_SHELL;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               Position1 = Position0[0];<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               vec3 Dir = GetRandomDir(gTime/1000.0);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               Dir.y = max(Dir.y, 0.5);<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               Velocity1 = normalize(Dir) / 20.0;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               Age1 = 0.0;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               EmitVertex();<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               EndPrimitive();<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;               Age = 0.0;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          }<br>
+				if (Type0[0] == PARTICLE_TYPE_LAUNCHER) {<br>
+				 if (Age >= gLauncherLifetime) {<br>
+				 	Type1 = PARTICLE_TYPE_SHELL;<br>
+				 	Position1 = Position0[0];<br>
+				 	vec3 Dir = GetRandomDir(gTime/1000.0);<br>
+				 	Dir.y = max(Dir.y, 0.5);<br>
+				 	Velocity1 = normalize(Dir) / 20.0;<br>
+				 	Age1 = 0.0;<br>
+				 	EmitVertex();<br>
+				 	EndPrimitive();<br>
+				 	Age = 0.0;<br>
+				 }<br>
 			<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          Type1 = PARTICLE_TYPE_LAUNCHER;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;  				Position1 = Position0[0];<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          Velocity1 = Velocity0[0];<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          Age1 = Age;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          EmitVertex();<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          EndPrimitive();<br>
-			&nbsp; &nbsp;      }
-			</code>
+				 Type1 = PARTICLE_TYPE_LAUNCHER;<br>
+				 	 				Position1 = Position0[0];<br>
+				 Velocity1 = Velocity0[0];<br>
+				 Age1 = Age;<br>
+				 EmitVertex();<br>
+				 EndPrimitive();<br>
+				}
+			</code></pre>
 			<p>
 				The main function of the GS contains the processing of the particles. We start by updating the 
 				age of the particle at hand and then we branch according to its type. The code above handles the
@@ -605,14 +605,14 @@
 				we also reset the age of the launcher to get that process started again. In addition, we always output
 				the launcher itself back into the buffer (else no more particles will be created).
 			</p>
-			<code>
-			&nbsp; &nbsp;  	    else {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;           float DeltaTimeSecs = gDeltaTimeMillis / 1000.0f;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;           float t1 = Age0[0] / 1000.0;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;           float t2 = Age / 1000.0;<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;           vec3 DeltaP = DeltaTimeSecs * Velocity0[0];<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;           vec3 DeltaV = vec3(DeltaTimeSecs) * (0.0, -9.81, 0.0);
-			</code>
+			<pre><code>
+				 	else {<br>
+				 	float DeltaTimeSecs = gDeltaTimeMillis / 1000.0f;<br>
+				 	float t1 = Age0[0] / 1000.0;<br>
+				 	float t2 = Age / 1000.0;<br>
+				 	vec3 DeltaP = DeltaTimeSecs * Velocity0[0];<br>
+				 	vec3 DeltaV = vec3(DeltaTimeSecs) * (0.0, -9.81, 0.0);
+			</code></pre>
 			<p>
 				Before we start handling the shell and the secondary shell we setup a few variables that are
 				common to both. The delta time is translated from milliseconds to seconds. We translate the old
@@ -624,29 +624,29 @@
 				direction is downwards we get a negative Y component and zero on the X and Z. We use a bit of a simplified
 				calculation here but it serves its purpose.
 			</p>
-			<code>
-			&nbsp; &nbsp;  &nbsp; &nbsp;           if (Type0[0] == PARTICLE_TYPE_SHELL)  {<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  	        if (Age &lt; gShellLifetime) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  	            Type1 = PARTICLE_TYPE_SHELL;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  		            Position1 = Position0[0] + DeltaP;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  		            Velocity1 = Velocity0[0] + DeltaV;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  		            Age1 = Age;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  		            EmitVertex();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  		            EndPrimitive();<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  		        }<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  	            else {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                  for (int i = 0 ; i &lt; 10 ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        Type1 = PARTICLE_TYPE_SECONDARY_SHELL;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        Position1 = Position0[0];<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        vec3 Dir = GetRandomDir((gTime + i)/1000.0);<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        Velocity1 = normalize(Dir) / 20.0;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        Age1 = 0.0f;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        EmitVertex();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                        EndPrimitive();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                   }<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;               }<br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          }<br>
-			</code>
+			<pre><code>
+				 	if (Type0[0] == PARTICLE_TYPE_SHELL)  {<br>
+				 		 	if (Age &lt; gShellLifetime) {<br>
+							 	Type1 = PARTICLE_TYPE_SHELL;<br>
+							 		Position1 = Position0[0] + DeltaP;<br>
+							 		Velocity1 = Velocity0[0] + DeltaV;<br>
+							 		Age1 = Age;<br>
+							 		EmitVertex();<br>
+							 		EndPrimitive();<br>
+				 		 		}<br>
+				 		 	else {<br>
+							for (int i = 0 ; i &lt; 10 ; i++) {<br>
+							Type1 = PARTICLE_TYPE_SECONDARY_SHELL;<br>
+							Position1 = Position0[0];<br>
+							vec3 Dir = GetRandomDir((gTime + i)/1000.0);<br>
+							Velocity1 = normalize(Dir) / 20.0;<br>
+							Age1 = 0.0f;<br>
+							EmitVertex();<br>
+							EndPrimitive();<br>
+							 }<br>
+					}<br>
+				 }<br>
+			</code></pre>
 			<p>
 				We now take care of the shell. As long as the age of this particle hasn't reached its configured
 				lifetime it remains in the system and we only update its position and velocity based on the deltas
@@ -655,48 +655,48 @@
 				but each gets its own random velocity vector. In the case of the secondary shell we don't limit the direction
 				so the explosion looks real. 
 			</p>
-			<code><br>
-			&nbsp; &nbsp;  &nbsp; &nbsp;          else {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;              if (Age &lt; gSecondaryShellLifetime) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                 Type1 = PARTICLE_TYPE_SECONDARY_SHELL;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                 Position1 = Position0[0] + DeltaP;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                 Velocity1 = Velocity0[0] + DeltaV;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                 Age1 = Age;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                 EmitVertex();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                 EndPrimitive();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;              }<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;        }<br>
-			&nbsp; &nbsp; }<br>
+			<pre><code><br>
+				 else {<br>
+						 if (Age &lt; gSecondaryShellLifetime) {<br>
+						Type1 = PARTICLE_TYPE_SECONDARY_SHELL;<br>
+						Position1 = Position0[0] + DeltaP;<br>
+						Velocity1 = Velocity0[0] + DeltaV;<br>
+						Age1 = Age;<br>
+						EmitVertex();<br>
+						EndPrimitive();<br>
+						 }<br>
+					}<br>
+				}<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				Handling of the secondary shell is similar to the shell, except that when it reaches the end of its
 				life it simply dies and no new particle is generated.
 			</p>
 			<p>(random_texture.cpp:37)</p>
-			<code>	
+			<pre><code>	
 			bool RandomTexture::InitRandomTexture(unsigned int Size)<br>
 			{<br>
-			&nbsp; &nbsp;     Vector3f* pRandomData = new Vector3f[Size];<br>
+			Vector3f* pRandomData = new Vector3f[Size];<br>
 			<br>
-			&nbsp; &nbsp;     for (unsigned int i = 0 ; i &lt; Size ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;          pRandomData[i].x = RandomFloat();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;          pRandomData[i].y = RandomFloat();<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;          pRandomData[i].z = RandomFloat();<br>
-			&nbsp; &nbsp;     }<br>
-			        <br>
-			&nbsp; &nbsp;     glGenTextures(1, &amp;m_textureObj);<br>
-			&nbsp; &nbsp;     glBindTexture(GL_TEXTURE_1D, m_textureObj);<br>
-			&nbsp; &nbsp;     glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, Size, 0.0f, GL_RGB, GL_FLOAT, pRandomData);<br>
-			&nbsp; &nbsp;     glTexParameterf(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);<br>
-			&nbsp; &nbsp; 		glTexParameterf(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>
-			&nbsp; &nbsp;     glTexParameterf(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_REPEAT);    <br>
-			        <br>
-			&nbsp; &nbsp;     delete [] pRandomData;<br>
-			    <br>
-			&nbsp; &nbsp;     return GLCheckError();<br>
+			for (unsigned int i = 0 ; i &lt; Size ; i++) {<br>
+				pRandomData[i].x = RandomFloat();<br>
+				pRandomData[i].y = RandomFloat();<br>
+				pRandomData[i].z = RandomFloat();<br>
+			}<br>
+			<br>
+			glGenTextures(1, &amp;m_textureObj);<br>
+			glBindTexture(GL_TEXTURE_1D, m_textureObj);<br>
+			glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, Size, 0.0f, GL_RGB, GL_FLOAT, pRandomData);<br>
+			glTexParameterf(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);<br>
+						glTexParameterf(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>
+			glTexParameterf(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_REPEAT);<br>
+			<br>
+			delete [] pRandomData;<br>
+			<br>
+			return GLCheckError();<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				The RandomTexture class is a useful tool that can provide random data from within the shaders. It is
 				a 1D texture with the GL_RGB internal format and floating point data type. This means that every element

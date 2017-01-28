@@ -165,19 +165,19 @@
 				are reviewed.
 			</p>
 			<p>(glut_backend.h:24)</p>
-			<code>
+			<pre><code>
 			void GLUTBackendInit(int argc, char** argv);<br>
 			<br>
 			bool GLUTBackendCreateWindow(unsigned int Width, unsigned int Height, unsigned int bpp, bool isFullScreen, const char* pTitle);<br>
-			</code>
+			</code></pre>
 			<p>
 				A lot of the GLUT specific code has been moved to a "GLUT backend" component which makes it easier to initialize GLUT
 				and create a window using the above simple functions.
 			<p>
 			<p>(glut_backend.h:28)</p>
-			<code>
+			<pre><code>
 			void GLUTBackendRun(ICallbacks* pCallbacks);
-			</code>
+			</code></pre>
 			<p>
 				After GLUT is initialized and a window is created the next step is to execute GLUT main loop 
 				using the above wrapper function. The new addition here is the ICallbacks interface which helps 
@@ -188,35 +188,35 @@
 				GLUTBackendRun. This approach was selected for this tutorial too.
 			</p>
 			<p>(technique.h:25)</p>
-			<code>
+			<pre><code>
 			class Technique<br>
 			{<br>
 			public:<br>
 			<br>
-			&nbsp;&nbsp;    Technique();<br>
+			&nbsp;&nbsp; Technique();<br>
 			<br>
-			 &nbsp;&nbsp;    ~Technique();<br>
+			 &nbsp;&nbsp; ~Technique();<br>
 			<br>
-			 &nbsp;&nbsp;    virtual bool Init();<br>
+			 &nbsp;&nbsp; virtual bool Init();<br>
 			<br>
-			 &nbsp;&nbsp;    void Enable();<br>
+			 &nbsp;&nbsp; void Enable();<br>
 			<br>
 			protected:<br>
 			<br>
-			 &nbsp;&nbsp;    bool AddShader(GLenum ShaderType, const char* pShaderText);<br>
+			 &nbsp;&nbsp; bool AddShader(GLenum ShaderType, const char* pShaderText);<br>
 			<br>
-			 &nbsp;&nbsp;    bool Finalize();<br>
+			 &nbsp;&nbsp; bool Finalize();<br>
 			<br>
-			 &nbsp;&nbsp;    GLint GetUniformLocation(const char* pUniformName);<br>
+			 &nbsp;&nbsp; GLint GetUniformLocation(const char* pUniformName);<br>
 			<br>
 			private:<br>
 			<br>
-			 &nbsp;&nbsp;    GLuint m_shaderProg;<br>
+			 &nbsp;&nbsp; GLuint m_shaderProg;<br>
 			<br>
-			 &nbsp;&nbsp;    typedef std::list&lt;GLuint&gt; ShaderObjList;<br>
-			 &nbsp;&nbsp;    ShaderObjList m_shaderObjList;<br>
+			 &nbsp;&nbsp; typedef std::list&lt;GLuint&gt; ShaderObjList;<br>
+			 &nbsp;&nbsp; ShaderObjList m_shaderObjList;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				In the previous tutorials all the grind work of compiling and linking the shaders was part of 
 				the application responsibility. The Technique class helps by wrapping the common functionality 
@@ -242,7 +242,7 @@
 				consumed by your app low. The program object itself is deleted in the destructor using glDeleteProgram().
 			</p>
 			<p>(tutorial17.cpp:49)</p>
-			<code>
+			<pre><code>
 			class Tutorial17 : public ICallbacks<br>
 			{<br>
 			public:<br>
@@ -250,69 +250,69 @@
 			 &nbsp;	&nbsp;	   Tutorial17()<br>
 			 &nbsp;	 &nbsp;	  {<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    ~Tutorial17()<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	~Tutorial17()<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    bool Init()<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	bool Init()<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    void Run()<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	void Run()<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;GLUTBackendRun(this);<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    virtual void RenderSceneCB()<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	virtual void RenderSceneCB()<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    virtual void IdleCB()<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	virtual void IdleCB()<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    virtual void SpecialKeyboardCB(int Key, int x, int y)<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	virtual void SpecialKeyboardCB(int Key, int x, int y)<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    virtual void KeyboardCB(unsigned char Key, int x, int y)<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	virtual void KeyboardCB(unsigned char Key, int x, int y)<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    virtual void PassiveMouseCB(int x, int y)<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	virtual void PassiveMouseCB(int x, int y)<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
 			private:<br>
 			<br>
-			  &nbsp;	 &nbsp;	    void CreateVertexBuffer()<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	void CreateVertexBuffer()<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 
-			  &nbsp;	 &nbsp;	    void CreateIndexBuffer()<br>
-			  &nbsp;	 &nbsp;	    {<br>
+			  &nbsp;	 &nbsp;	void CreateIndexBuffer()<br>
+			  &nbsp;	 &nbsp;	{<br>
 			&nbsp;	&nbsp;	&nbsp;	&nbsp;	...<br>
-			  &nbsp;	 &nbsp;	    }<br>
+			  &nbsp;	 &nbsp;	}<br>
 			<br>
-			  &nbsp;	 &nbsp;	    GLuint m_VBO;<br>
-			  &nbsp;	 &nbsp;	    GLuint m_IBO;<br>
-			  &nbsp;	 &nbsp;	    LightingTechnique* m_pEffect;<br>
-			  &nbsp;	 &nbsp;	    Texture* m_pTexture;<br>
-			  &nbsp;	 &nbsp;	    Camera* m_pGameCamera;<br>
-			  &nbsp;	 &nbsp;	    float m_scale;<br>
-			  &nbsp;	 &nbsp;	    DirectionalLight m_directionalLight;<br>
+			  &nbsp;	 &nbsp;	GLuint m_VBO;<br>
+			  &nbsp;	 &nbsp;	GLuint m_IBO;<br>
+			  &nbsp;	 &nbsp;	LightingTechnique* m_pEffect;<br>
+			  &nbsp;	 &nbsp;	Texture* m_pTexture;<br>
+			  &nbsp;	 &nbsp;	Camera* m_pGameCamera;<br>
+			  &nbsp;	 &nbsp;	float m_scale;<br>
+			  &nbsp;	 &nbsp;	DirectionalLight m_directionalLight;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				This is a skeleton of the main application class which encapsulates the remaining code we are 
 				already familiar with. Init() takes care of creating the effect, loading the texture and creating 
@@ -322,13 +322,13 @@
 				section of the file are now private attributes in the class.
 			</p>
 			<p>(lighting_technique.h:25)</p>
-			<code>
+			<pre><code>
 			struct DirectionalLight<br>
 			{<br>
 			   &nbsp;	 &nbsp;	   Vector3f Color;<br>
 			   &nbsp;	 &nbsp;	   float AmbientIntensity;<br>
 			};
-			</code>
+			</code></pre>
 			<p>This is the beginning of the defintion of the directional light. Right now, only the ambient part exists and the direction itself is still
 			absent. We will add the direction in the next tutorial when we review diffuse lighting. The structure contains two fields - a color and an
 			ambient intensity. The color determines what color channels of the objects can be reflected back and in what intensity. For example, if the
@@ -341,27 +341,27 @@
 				will be visible but appear very dim.
 			</p>
 			<p>(lighting_technique.h:31)</p>
-			<code>
+			<pre><code>
 			class LightingTechnique : public Technique<br>
 			{<br>
 			public:<br>
 			<br>
-			&nbsp; &nbsp;	   LightingTechnique();<br>
+				   LightingTechnique();<br>
 			<br>
-			 &nbsp; &nbsp;	   virtual bool Init();<br>
+			 	   virtual bool Init();<br>
 			<br>
-			 &nbsp; &nbsp;	   void SetWVP(const Matrix4f&amp; WVP);<br>
-			 &nbsp; &nbsp;	   void SetTextureUnit(unsigned int TextureUnit);<br>
-			 &nbsp; &nbsp;	   void SetDirectionalLight(const DirectionalLight&amp; Light);<br>
+			 	   void SetWVP(const Matrix4f&amp; WVP);<br>
+			 	   void SetTextureUnit(unsigned int TextureUnit);<br>
+			 	   void SetDirectionalLight(const DirectionalLight&amp; Light);<br>
 			<br>
 			private:<br>
 			<br>
-			 &nbsp; &nbsp;	   GLuint m_WVPLocation;<br>
-			 &nbsp; &nbsp;	   GLuint m_samplerLocation;<br>
-			 &nbsp; &nbsp;	   GLuint m_dirLightColorLocation;<br>
-			 &nbsp; &nbsp;	   GLuint m_dirLightAmbientIntensityLocation;<br>
+			 	   GLuint m_WVPLocation;<br>
+			 	   GLuint m_samplerLocation;<br>
+			 	   GLuint m_dirLightColorLocation;<br>
+			 	   GLuint m_dirLightAmbientIntensityLocation;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				Here is the first example of the usage of the Technique class. LightingTechnique is a derived 
 				class that implements lighting using the common functionality of compiling and linking provided 
@@ -369,7 +369,7 @@
 				calls Technique::AddShader() and Techique::Finalize() to generate the GLSL program.
 			</p> 
 			<p>(lighting.fs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			in vec2 TexCoord0;<br>
@@ -378,8 +378,8 @@
 			<br>
 			struct DirectionalLight<br>
 			{<br>
-			  &nbsp; &nbsp;	   vec3 Color;<br>
-			  &nbsp; &nbsp;	   float AmbientIntensity;<br>
+			  	   vec3 Color;<br>
+			  	   float AmbientIntensity;<br>
 			};<br>
 			<br>
 			uniform DirectionalLight gDirectionalLight;<br>
@@ -387,11 +387,11 @@
 			<br>
 			void main()<br>
 			{<br>
-			  &nbsp; &nbsp;	   FragColor = texture2D(gSampler, TexCoord0.xy) *<br>
-			  &nbsp; &nbsp;	 &nbsp; &nbsp;	      &nbsp; &nbsp;	           vec4(gDirectionalLight.Color, 1.0f) *<br>
-			  &nbsp; &nbsp;	 &nbsp; &nbsp;	   &nbsp; &nbsp;	              gDirectionalLight.AmbientIntensity;<br>
+			  	   FragColor = texture2D(gSampler, TexCoord0.xy) *<br>
+			  	 	  	   vec4(gDirectionalLight.Color, 1.0f) *<br>
+			  	 	   	  gDirectionalLight.AmbientIntensity;<br>
 			}
-			</code>
+			</code></pre>
 			<p>The vertex shader remains unchanged in this tutorial. It keeps passing the position (after having 
 				multiplied it by the WVP matrix) and the texture coordinates. All the new logic goes into the fragment
 				shader. The new addition here is the use of the 'struct' keyword to define the directional light. As
@@ -406,12 +406,12 @@
 				the calculation of the ambient light.
 			</p>
 			<p>(lighting_technique.cpp:44)</p>
-			<code>
+			<pre><code>
 				m_WVPLocation = GetUniformLocation("gWVP");<br>
 				m_samplerLocation = GetUniformLocation("gSampler");<br>
 				m_dirLightColorLocation = GetUniformLocation("gDirectionalLight.Color");<br>
 				m_dirLightAmbientIntensityLocation = GetUniformLocation("gDirectionalLight.AmbientIntensity");<br>
-			</code>
+			</code></pre>
 			<p>
 				In order to access the DirectionalLight uniform variable from the application you must get the location of both
 				of its fields independently. The LightingTechnique class has four GLuint location variables in order to access

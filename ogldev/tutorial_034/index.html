@@ -70,53 +70,53 @@
 			<p>
 			Add the following to get access to GLFX api:
 			</p>
-			<code>
+			<pre><code>
 			#include &amp;ltglfx.h&amp;gt
-			</code>
+			</code></pre>
 			<p>
 			Generate an effect handle:
 			</p>
-			<code>
+			<pre><code>
 			int effect = <b>glfxGenEffect</b>();
-			</code>
+			</code></pre>
 			<p>
 			Parse the effect file (we will take a look at its content momentarily):
 			</p>
-			<code>
+			<pre><code>
 			if (!<b>glfxParseEffectFromFile</b>(effect, "effect.glsl")) {<br>
 			#ifdef __cplusplus	// C++ error handling<br>
-			&nbsp; &nbsp;	std::string log = <b>glfxGetEffectLog</b>(effect);<br>
-			&nbsp; &nbsp;	std::cout &lt;&lt; "Error parsing effect: " &lt;&lt; log &lt;&lt; std::endl;<br>
+				std::string log = <b>glfxGetEffectLog</b>(effect);<br>
+				std::cout &lt;&lt; "Error parsing effect: " &lt;&lt; log &lt;&lt; std::endl;<br>
 			#else	// C error handling<br>
-			&nbsp; &nbsp;	char log[10000];<br>
-			&nbsp; &nbsp;	<b>glfxGetEffectLog</b>(effect, log, sizeof(log));<br>
-			&nbsp; &nbsp;	printf("Error parsing effect: %s:\n", log);<br>
+				char log[10000];<br>
+				<b>glfxGetEffectLog</b>(effect, log, sizeof(log));<br>
+				printf("Error parsing effect: %s:\n", log);<br>
 			#endif<br>
-			&nbsp; &nbsp;	return;<br>
+				return;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			Compile a program (combination of VS, FS, etc) defined in the effect file using the following:
 			</p>
-			<code>
+			<pre><code>
 			int shaderProg = <b>glfxCompileProgram</b>(effect, "ProgramName");<br>
-			    <br>
+			<br>
 			if (shaderProg &lt; 0) {<br>
-			&nbsp; &nbsp; // same error handling as above	<br>
+				// same error handling as above	<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			The program can now be used by OpenGL as usual:
 			</p>
-			<code>
+			<pre><code>
 			glUseProgram(shaderProg);
-			</code>
+			</code></pre>
 			<p>
 			After the effect is no longer needed release its resources using:
 			</p>
-			<code>
+			<pre><code>
 			<b>glfxDeleteEffect</b>(effect);
-			</code>
+			</code></pre>
 			<strong>Using GLFX</strong>
 			<p>
 			Now that we have the basic infrastructure in place let's dive into the effect files. 
@@ -124,13 +124,13 @@
 			shaders in pretty much the same way that you are used to. There are a few minor changes
 			and additions and we are going to focus on them.</p>
 			<p><b>Place a 'program' section to combine shader stages into a complete GLSL program</b></p>
-			<code>
+			<pre><code>
 			program Lighting<br>
 			{<br>
-			&nbsp; &nbsp;	vs(410)=VSmain();<br>
-			&nbsp; &nbsp;	fs(410)=FSmain();<br>
+				vs(410)=VSmain();<br>
+				fs(410)=FSmain();<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 			In the example above the effect file contains the definition of the functions VSmain() and FSmain()
 			somewhere else. The 'program' section defines an OpenGL 
@@ -142,17 +142,17 @@
 			<p><b>Use 'shader' instead of 'void' to declare main shader functions</b></p>
 			<p>The main entry points to shader stages must be declared as 'shader' instead of 'void'. 
 			Here's an example:</p>
-			<code>
+			<pre><code>
 			<b>void</b> calculate_something()<br>
 			{<br>
-				&nbsp; &nbsp;	...<br>
+					...<br>
 			}<br>
 			<br>
 			<b>shader</b> VSmain()<br>
 			{<br>
-				&nbsp; &nbsp;	calculate_something();<br>
+					calculate_something();<br>
 			}
-			</code>
+			</code></pre>
 			<p><b>Include multiple shaders and program in a single effect file</b></p>
 			<p>
 			You can place multiple occurrences of the 'program' section in a single effect file. 
@@ -163,27 +163,27 @@
 			Instead of defining the in/out variables in the global section of the shader we
 			can use GLSL structures and share them across multiple shader stages. Here's an example:
 			</p>
-			<code>
+			<pre><code>
 			struct VSoutput<br>
 			{<br>
-			 &nbsp; &nbsp;  vec2 TexCoord;                                             <br>
-			 &nbsp; &nbsp;  vec3 Normal;                                               <br>
+			 	 vec2 TexCoord; <br>
+			 	 vec3 Normal;   <br>
 			};<br>
 			<br>
 			shader VSmain(in vec3 Pos, in vec2 TexCoord, in vec3 Normal, out <b>VSOutput</b> VSout)<br>
-			{                                                       <br>                            
-			&nbsp; &nbsp; // do some transformations and update 'VSout'<br>
-			&nbsp; &nbsp; VSout.TexCoord = TexCoord;<br>
-			&nbsp; &nbsp; VSout.Normal = Normal;<br>
+			{   <br>
+				// do some transformations and update 'VSout'<br>
+				VSout.TexCoord = TexCoord;<br>
+				VSout.Normal = Normal;<br>
 			 
 			}<br>
 			<br>
 			shader FSmain(in <b>VSOutput</b> FSin, out vec4 FragColor)<br>
 			{<br>
-			&nbsp; &nbsp; // 'FSin' matches 'VSout' from the VS. Use it <br>
-			 &nbsp; &nbsp;   // to do lighting calculations and write the final output to 'FragColor'<br>
+				// 'FSin' matches 'VSout' from the VS. Use it <br>
+			 // to do lighting calculations and write the final output to 'FragColor'<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 			Unfortunately, using a structure will only work between shader stages. Input variables to 
 			the VS must be handled as separate attributes as we see in the above example. Well, I have
@@ -195,9 +195,9 @@
 			<p>
 			The keyword 'include' can be used to include one effect file in another:
 			</p>
-			<code>
+			<pre><code>
 			#include "another_effect.glsl"
-			</code>
+			</code></pre>
 			<p>
 			The caveat with include files is that they are not parsed by GLFX. They are simply
 			inserted as-is into the including file at the location of the 'include' keyword. This means
@@ -211,15 +211,15 @@
 			location of an input attribute of the VS. By placing a colon followed by a number after an
 			input VS parameter we can achieve the same goal. Here's an example:
 			</p>
-			<code>
+			<pre><code>
 			struct VSInput2 <br>
 			{<br>
-			 &nbsp; &nbsp;   vec3 Normal;                                               <br>
-			 &nbsp; &nbsp;   vec3 Tangent;                                               <br>
+			 vec3 Normal;   <br>
+			 vec3 Tangent;   <br>
 			};<br>
 			<br>
 			shader VSmain(in vec3 Pos : 5, in vec2 TexCoord : 6, in float colorScale : 10)<br>
-			</code>
+			</code></pre>
 			<p>
 			The VS above gets the position in attribute 5, the texture coordinate in 6 and the color
 			scale in 10. The idea is very simple - the number
@@ -235,38 +235,38 @@
 			stages. If you need to pass it as a whole to another function you will need to copy the
 			contents to a struct. For example:
 			</p>
-			<code>
+			<pre><code>
 			interface foo<br>
 			{<br>
-			&nbsp; &nbsp; <b>flat</b> int a;<br>
-			&nbsp; &nbsp; <b>noperspective</b> float b;<br>
+				<b>flat</b> int a;<br>
+				<b>noperspective</b> float b;<br>
 			};<br>
 			<br>
 			struct bar<br>
 			{<br>
-			&nbsp; &nbsp; int a;<br>
-			&nbsp; &nbsp; float b;<br>
+				int a;<br>
+				float b;<br>
 			}<br>
 			<br>
 			shader VSmain(out foo f)<br>
 			{<br>
-			&nbsp; &nbsp; // ...<br>
+				// ...<br>
 			}<br>
 			<br>
 			void Calc(bar c)<br>
 			{<br>
-			&nbsp; &nbsp; // ...<br>
+				// ...<br>
 			}<br>
 			<br>
 			shader FSmain(in foo f)<br>
 			{<br>
-			&nbsp; &nbsp; 	struct bar c;<br>
-			&nbsp; &nbsp; 	c.a = f.a;<br>
-			&nbsp; &nbsp; 	c.b = f.b;<br>
+					struct bar c;<br>
+					c.a = f.a;<br>
+					c.b = f.b;<br>
 			<br>
-			&nbsp; &nbsp; 	Calc(c);<br>
+					Calc(c);<br>
 			}<br>
-			</code>
+			</code></pre>
 			<p>
 			<b>Note:</b> 'interface' is a keyword reserved for future use (according to OpenGL 4.2).
 			Its usage in the future in GLFX will be based on changes to the official OpenGL spec.
@@ -278,9 +278,9 @@
 			'glfxc' is a utility which is part of GLFX. It parses effect files, compiles them
 			using the local OpenGL installation and reports any error it finds. Run it as follows: 
 			</p>
-			<code>
+			<pre><code>
 			glfxc &lt;effect file name&gt; &lt;program name&gt;
-			</code>
+			</code></pre>
 			<strong>The Demo</strong>
 			<p>
 			The code of this tutorial has been modified to work with GLFX. Since the changes are

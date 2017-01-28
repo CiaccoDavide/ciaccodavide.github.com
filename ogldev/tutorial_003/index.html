@@ -41,13 +41,13 @@
 		<section>
 			<h3> Source walkthru </h3>
 
-			<pre><code>Vector3f Vertices[3];<br>
+			<pre><pre><code>Vector3f Vertices[3];<br>
 			Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);<br>
 			Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);<br>
 			Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);<br>
-			</code></pre>
+			</code></pre></pre>
 			<p>We extended the array to contain three vertices. </p>
-			<pre><code>glDrawArrays(GL_TRIANGLES, 0, 3);</code></pre>
+			<pre><pre><code>glDrawArrays(GL_TRIANGLES, 0, 3);</code></pre></pre>
 			<p>Two changes were made to the drawing function: we draw triangles instead of points and
 			we draw 3 vertices instead of 1.</p>
 		</section>

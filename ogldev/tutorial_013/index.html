@@ -103,62 +103,62 @@
 			<p>In this tutorial I decided to make a small design change and moved the low level matrix manipulation code from the Pipeline class to the Matrix4f class. The Pipeline
 			class now tells Matrix4f to initialize itself in different ways and concatenates several matrices to create the final transformation.</p>
 			<p>(pipeline.h:85)</p>
-			<code>
+			<pre><code>
 			struct { <br>
 			&nbsp;&nbsp;&nbsp; Vector3f Pos; <br>
 			&nbsp;&nbsp;&nbsp; Vector3f Target;<br>
 			&nbsp;&nbsp;&nbsp; Vector3f Up;<br>
 			} m_camera;<br>
-			</code>
+			</code></pre>
 			<p>The Pipeline class has a few new members to store the parameters of the camera. Note that the axe that points from the camera to it's "right" is missing (the 'U' axe).
 			It is calculated on the fly using a cross product between the target and up axes. In addition there is a new function called SetCamera to pass these values.</p>
 			<p>(math3d.h:21)</p>
-			<code>
+			<pre><code>
 			Vector3f Vector3f::Cross(const Vector3f&amp; v) const <br>
 			{<br>
-			 &nbsp;&nbsp;&nbsp;    const float _x = y * v.z - z * v.y;<br>
-			 &nbsp;&nbsp;&nbsp;    const float _y = z * v.x - x * v.z;<br>
-			 &nbsp;&nbsp;&nbsp;    const float _z = x * v.y - y * v.x;<br><br>
-			 &nbsp;&nbsp;&nbsp;    return Vector3f(_x, _y, _z);<br>
+			 &nbsp;&nbsp;&nbsp; const float _x = y * v.z - z * v.y;<br>
+			 &nbsp;&nbsp;&nbsp; const float _y = z * v.x - x * v.z;<br>
+			 &nbsp;&nbsp;&nbsp; const float _z = x * v.y - y * v.x;<br><br>
+			 &nbsp;&nbsp;&nbsp; return Vector3f(_x, _y, _z);<br>
 			}
-			</code>
+			</code></pre>
 			<p>The Vector3f has a new method to calculate the cross product between two Vector3f objects. A cross product between two vectors produces a vector which is perpendicular 
 			to the plane defined by the vectors. This becomes more intuitive when you remember that vectors have a direction and magnitude but no position. All vectors with the same direction
 			and magnitude are considered equal, regardless where they "start". So you might as well make both vectors start at the origin. This means that you can create a triangle that
 			has one vertex at the origin and two vertices at the tip of the vectors. The triangle defines a plane and the cross product is a vector which is perpendicular to that plane.
 			Read more on the cross product in <a href="http://en.wikipedia.org/wiki/Cross_product" target="_blank" >Wikipedia</a>.</p>
 			<p>(math3d.h:30)</p>
-			<code>
+			<pre><code>
 			Vector3f&amp; Vector3f::Normalize()<br>
 			{<br>
-			  &nbsp;&nbsp;&nbsp;   const float Length = sqrtf(x * x + y * y + z * z);<br>
+			  &nbsp;&nbsp;&nbsp;const float Length = sqrtf(x * x + y * y + z * z);<br>
 			<br>
-			   &nbsp;&nbsp;&nbsp;   x /= Length;<br>
-			   &nbsp;&nbsp;&nbsp;   y /= Length;<br>
-			   &nbsp;&nbsp;&nbsp;   z /= Length;<br>
+			   &nbsp;&nbsp;&nbsp;x /= Length;<br>
+			   &nbsp;&nbsp;&nbsp;y /= Length;<br>
+			   &nbsp;&nbsp;&nbsp;z /= Length;<br>
 			<br>
-			  &nbsp;&nbsp;&nbsp;   return *this;<br>
+			  &nbsp;&nbsp;&nbsp;return *this;<br>
 			}<br>
-			</code>
+			</code></pre>
 			<p>To generate the UVN matrix we will need to make the vectors unit length. This operation is formally known as 'vector normalization' is executed by dividing each vector 
 			component by the vector length. More on this in <a href="http://mathworld.wolfram.com/NormalizedVector.html" target="_blank" >Mathworld</a>.</p>
 			<p>(math3d.cpp:84)</p>
-			<code>
+			<pre><code>
 			void Matrix4f::InitCameraTransform(const Vector3f&amp; Target, const Vector3f&amp; Up)<br>
 			{<br>
-			 &nbsp;&nbsp;&nbsp;     Vector3f N = Target;<br>
-			 &nbsp;&nbsp;&nbsp;     N.Normalize();<br>
-			 &nbsp;&nbsp;&nbsp;     Vector3f U = Up;<br>
-			 &nbsp;&nbsp;&nbsp;     U = U.Cross(Target);<br>
-             &nbsp;&nbsp;&nbsp;     U.Normalize();<br>
-			 &nbsp;&nbsp;&nbsp;     Vector3f V = N.Cross(U);<br>
+			 &nbsp;&nbsp;&nbsp;Vector3f N = Target;<br>
+			 &nbsp;&nbsp;&nbsp;N.Normalize();<br>
+			 &nbsp;&nbsp;&nbsp;Vector3f U = Up;<br>
+			 &nbsp;&nbsp;&nbsp;U = U.Cross(Target);<br>
+ &nbsp;&nbsp;&nbsp;U.Normalize();<br>
+			 &nbsp;&nbsp;&nbsp;Vector3f V = N.Cross(U);<br>
 			<br>
-			 &nbsp;&nbsp;&nbsp;    m[0][0] = U.x;   m[0][1] = U.y;   m[0][2] = U.z;   m[0][3] = 0.0f;<br>
-			 &nbsp;&nbsp;&nbsp;    m[1][0] = V.x;   m[1][1] = V.y;   m[1][2] = V.z;   m[1][3] = 0.0f;<br>
-			 &nbsp;&nbsp;&nbsp;    m[2][0] = N.x;   m[2][1] = N.y;   m[2][2] = N.z;   m[2][3] = 0.0f;<br>
-			 &nbsp;&nbsp;&nbsp;    m[3][0] = 0.0f;  m[3][1] = 0.0f;  m[3][2] = 0.0f;  m[3][3] = 1.0f;<br>
+			 &nbsp;&nbsp;&nbsp; m[0][0] = U.x;   m[0][1] = U.y;   m[0][2] = U.z;   m[0][3] = 0.0f;<br>
+			 &nbsp;&nbsp;&nbsp; m[1][0] = V.x;   m[1][1] = V.y;   m[1][2] = V.z;   m[1][3] = 0.0f;<br>
+			 &nbsp;&nbsp;&nbsp; m[2][0] = N.x;   m[2][1] = N.y;   m[2][2] = N.z;   m[2][3] = 0.0f;<br>
+			 &nbsp;&nbsp;&nbsp; m[3][0] = 0.0f;  m[3][1] = 0.0f;  m[3][2] = 0.0f;  m[3][3] = 1.0f;<br>
 			}<br>
-			</code>
+			</code></pre>
 			<p>This function generates the camera transformation matrix that will be used later by the pipeline class. The U,V and N vectors are calculated and set into the matrix
 			in rows. Since the vertex position is going to be multiplied on the right side (as a column vector) this means a dot product between U,V and N and the position. This generates
 			the 3 scalar projections magnitude values that become the XYZ values of the position in screen space.</p>
@@ -169,22 +169,22 @@
 			cross product of the target and the up vectors and then recalculating the up vector as a cross product between the target and the right we get a coordinate system with 
 			90 degrees between each pair of axes.</p>
 			<p>(pipeline.cpp:22)</p>
-			<code>
+			<pre><code>
 			const Matrix4f* Pipeline::GetTrans()<br>
 			{<br>
-			  &nbsp;&nbsp;&nbsp;   Matrix4f ScaleTrans, RotateTrans, TranslationTrans, CameraTranslationTrans, CameraRotateTrans, PersProjTrans;<br>
+			  &nbsp;&nbsp;&nbsp;Matrix4f ScaleTrans, RotateTrans, TranslationTrans, CameraTranslationTrans, CameraRotateTrans, PersProjTrans;<br>
 			<br>
-			  &nbsp;&nbsp;&nbsp;   ScaleTrans.InitScaleTransform(m_scale.x, m_scale.y, m_scale.z);<br>
-			  &nbsp;&nbsp;&nbsp;   RotateTrans.InitRotateTransform(m_rotateInfo.x, m_rotateInfo.y, m_rotateInfo.z);<br>
-			  &nbsp;&nbsp;&nbsp;   TranslationTrans.InitTranslationTransform(m_worldPos.x, m_worldPos.y, m_worldPos.z);<br>
-			  &nbsp;&nbsp;&nbsp;   CameraTranslationTrans.InitTranslationTransform(-m_camera.Pos.x, -m_camera.Pos.y, -m_camera.Pos.z);<br>
-			  &nbsp;&nbsp;&nbsp;   CameraRotateTrans.InitCameraTransform(m_camera.Target, m_camera.Up);<br>
-			  &nbsp;&nbsp;&nbsp;   PersProjTrans.InitPersProjTransform(m_persProj.FOV, m_persProj.Width, m_persProj.Height, m_persProj.zNear, m_persProj.zFar);<br>
+			  &nbsp;&nbsp;&nbsp;ScaleTrans.InitScaleTransform(m_scale.x, m_scale.y, m_scale.z);<br>
+			  &nbsp;&nbsp;&nbsp;RotateTrans.InitRotateTransform(m_rotateInfo.x, m_rotateInfo.y, m_rotateInfo.z);<br>
+			  &nbsp;&nbsp;&nbsp;TranslationTrans.InitTranslationTransform(m_worldPos.x, m_worldPos.y, m_worldPos.z);<br>
+			  &nbsp;&nbsp;&nbsp;CameraTranslationTrans.InitTranslationTransform(-m_camera.Pos.x, -m_camera.Pos.y, -m_camera.Pos.z);<br>
+			  &nbsp;&nbsp;&nbsp;CameraRotateTrans.InitCameraTransform(m_camera.Target, m_camera.Up);<br>
+			  &nbsp;&nbsp;&nbsp;PersProjTrans.InitPersProjTransform(m_persProj.FOV, m_persProj.Width, m_persProj.Height, m_persProj.zNear, m_persProj.zFar);<br>
 			<br>
-			  &nbsp;&nbsp;&nbsp;   m_transformation = PersProjTrans * CameraRotateTrans * CameraTranslationTrans * TranslationTrans * RotateTrans * ScaleTrans;<br>
-			  &nbsp;&nbsp;&nbsp;   return &amp;m_transformation;<br>
+			  &nbsp;&nbsp;&nbsp;m_transformation = PersProjTrans * CameraRotateTrans * CameraTranslationTrans * TranslationTrans * RotateTrans * ScaleTrans;<br>
+			  &nbsp;&nbsp;&nbsp;return &amp;m_transformation;<br>
 			}<br>
-			</code>
+			</code></pre>
 			<p>Let's update the function that generates the complete transformation matrix of an object. It is now becoming quite complex with two new matrices that provide the
 			camera part. After completing the world transformation (the combined scaling, rotation and translation of the object) we start the camera transformation by "moving" the
 			camera to the origin. This is done by a translation using the negative vector of the camera position. So if the camera is positioned at (1,2,3) we need to move the object
@@ -192,12 +192,12 @@
 			the camera part. Finally, we project the coordinates.
 			</p>
 			<p>(tutorial13.cpp:76)</p>
-			<code>
+			<pre><code>
 			Vector3f CameraPos(1.0f, 1.0f, -3.0f);<br>
 			Vector3f CameraTarget(0.45f, 0.0f, 1.0f);<br>
 			Vector3f CameraUp(0.0f, 1.0f, 0.0f);<br>
 			p.SetCamera(CameraPos, CameraTarget, CameraUp);<br>
-			</code>
+			</code></pre>
 			<p>We use the new capability in the main render loop. To place the camera we step back from the origin along the negative Z axe, then move to the right and straight up.
 			The camera is looking along the positive Z axe and a bit to the right from the origin. The up vector is simply the positive Y axe. We set all this into the Pipeline object
 			the Pipeline class takes care of the rest.</p>

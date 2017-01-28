@@ -77,31 +77,31 @@
 			<h3> Source walkthru </h3>
 
 			<p>(ogldev_cubemap_texture.h:28)</p>
-			<code>
+			<pre><code>
 			class CubemapTexture<br>
 			{<br>
 			public:<br>
-			    <br>
-			&nbsp; &nbsp; CubemapTexture(const string&amp; Directory,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; PosXFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; NegXFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; PosYFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; NegYFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; PosZFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; NegZFilename);<br>
 			<br>
-			&nbsp; &nbsp; ~CubemapTexture();<br>
-			    <br>
-			&nbsp; &nbsp; bool Load();<br>
+				CubemapTexture(const string&amp; Directory,<br>
+					const string&amp; PosXFilename,<br>
+					const string&amp; NegXFilename,<br>
+					const string&amp; PosYFilename,<br>
+					const string&amp; NegYFilename,<br>
+					const string&amp; PosZFilename,<br>
+					const string&amp; NegZFilename);<br>
 			<br>
-			&nbsp; &nbsp; void Bind(GLenum TextureUnit);<br>
+				~CubemapTexture();<br>
+			<br>
+				bool Load();<br>
+			<br>
+				void Bind(GLenum TextureUnit);<br>
 			<br>
 			private:<br>
 			   <br>
-			&nbsp; &nbsp; string m_fileNames[6];<br>
-			&nbsp; &nbsp; GLuint m_textureObj;<br>
+				string m_fileNames[6];<br>
+				GLuint m_textureObj;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				This class wraps the OpenGL implementation of the cubemap texture and provides a simple interface
 				to load and use the cubemap. 
@@ -115,41 +115,41 @@
 				order to make the cubemap available to the shader. 
 			</p>
 			<p>(cubemap_texture.cpp:60)</p>
-			<code>
+			<pre><code>
 			bool CubemapTexture::Load()<br>
 			{<br>
-			&nbsp; &nbsp; glGenTextures(1, &amp;m_textureObj);<br>
-			&nbsp; &nbsp; glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureObj);<br>
+				glGenTextures(1, &amp;m_textureObj);<br>
+				glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureObj);<br>
 			<br>
-			&nbsp; &nbsp; Magick::Image* pImage = NULL;<br>
-			&nbsp; &nbsp; Magick::Blob blob;<br>
+				Magick::Image* pImage = NULL;<br>
+				Magick::Blob blob;<br>
 			<br>
-			&nbsp; &nbsp; for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(types) ; i++) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; pImage = new Magick::Image(m_fileNames[i]);<br>
-			        <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; try {            <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pImage->write(&amp;blob, "RGBA");<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; }<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; catch (Magick::Error&amp; Error) {<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cout &lt;&lt; "Error loading texture '" &lt;&lt; m_fileNames[i] &lt;&lt; "': " &lt;&lt; Error.what() &lt;&lt; endl;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; delete pImage;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return false;<br>
-			&nbsp; &nbsp; &nbsp; &nbsp;         }<br>
+				for (unsigned int i = 0 ; i &lt; ARRAY_SIZE_IN_ELEMENTS(types) ; i++) {<br>
+					pImage = new Magick::Image(m_fileNames[i]);<br>
 			<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; glTexImage2D(types[i], 0, GL_RGB, pImage->columns(), pImage->rows(), 0, GL_RGBA,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GL_UNSIGNED_BYTE, blob.data());<br>
-			&nbsp; &nbsp; glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>
-			&nbsp; &nbsp; glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);<br>
-			&nbsp; &nbsp; glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);<br>
-			&nbsp; &nbsp; glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<br>
-			&nbsp; &nbsp; glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);<br>                               
-			        <br>
-			&nbsp; &nbsp; &nbsp; &nbsp; delete pImage;<br>
-			&nbsp; &nbsp;     }    <br>
-			    <br>
-			&nbsp; &nbsp; return true;<br>
+					try {<br>
+						pImage->write(&amp;blob, "RGBA");<br>
+					}<br>
+					catch (Magick::Error&amp; Error) {<br>
+						cout &lt;&lt; "Error loading texture '" &lt;&lt; m_fileNames[i] &lt;&lt; "': " &lt;&lt; Error.what() &lt;&lt; endl;<br>
+						delete pImage;<br>
+						return false;<br>
+					 }<br>
+			<br>
+					glTexImage2D(types[i], 0, GL_RGB, pImage->columns(), pImage->rows(), 0, GL_RGBA,<br>
+						GL_UNSIGNED_BYTE, blob.data());<br>
+				glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>
+				glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);<br>
+				glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);<br>
+				glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<br>
+				glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);<br>   
+			<br>
+					delete pImage;<br>
+			}<br>
+			<br>
+				return true;<br>
 			}
-			</code>	
+			</code></pre>	
 			<p>
 				The function that loads the cubemap texture starts by generating a texture object. This object is bound
 				to the special GL_TEXTURE_CUBE_MAP target. After that we loop over the 'types' array which contains
@@ -162,43 +162,43 @@
 				the third dimension of the texture coordinate. We set it to the same clamping mode as the other dimensions.
 			</p>
 			<p>(cubemap_texture.cpp:95)</p>
-			<code>
+			<pre><code>
 			void CubemapTexture::Bind(GLenum TextureUnit)<br>
 			{<br>
-			&nbsp; &nbsp; glActiveTexture(TextureUnit);<br>
-			&nbsp; &nbsp; glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureObj);<br>
+				glActiveTexture(TextureUnit);<br>
+				glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureObj);<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This function must be called before the texture can be used for drawing the skybox.
 				The target for the bind function is GL_TEXTURE_CUBE_MAP which is the same enum we
 				used in the Load() function.
 			</p>
 			<p>(skybox_technique.h:25)</p>
-			<code>
+			<pre><code>
 			class SkyboxTechnique : public Technique {<br>
 			public:<br>
 			<br>
-			&nbsp; &nbsp; SkyboxTechnique();<br>
+				SkyboxTechnique();<br>
 			<br>
-			&nbsp; &nbsp; virtual bool Init();<br>
+				virtual bool Init();<br>
 			<br>
-			&nbsp; &nbsp; void SetWVP(const Matrix4f&amp; WVP);<br>
-			&nbsp; &nbsp; void SetTextureUnit(unsigned int TextureUnit);<br>
+				void SetWVP(const Matrix4f&amp; WVP);<br>
+				void SetTextureUnit(unsigned int TextureUnit);<br>
 			<br>
 			private:<br>
 			<br>
-			&nbsp; &nbsp; GLuint m_WVPLocation;<br>
-			&nbsp; &nbsp; GLuint m_textureLocation;<br>
+				GLuint m_WVPLocation;<br>
+				GLuint m_textureLocation;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				The skybox is rendered using its own special technique. This technique has only a couple of attributes
 				that the caller must specify - a WVP matrix to transform the box or the sphere and a texture to map
 				on it. Let's see the internals of this class.
 			</p>
 			<p>(skybox.vs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			layout (location = 0) in vec3 Position;<br>
@@ -209,11 +209,11 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp; vec4 WVP_Pos = gWVP * vec4(Position, 1.0);<br>
-			&nbsp; &nbsp; gl_Position = WVP_Pos.<b>xyww</b>;<br>
-			&nbsp; &nbsp; TexCoord0 = Position;<br>
+				vec4 WVP_Pos = gWVP * vec4(Position, 1.0);<br>
+				gl_Position = WVP_Pos.<b>xyww</b>;<br>
+				TexCoord0 = Position;<br>
 			}
-			</code>
+			</code></pre>
 			<p>
 				This is the vertex shader of the skybox technique. It's actually quite simple but you must be
 				aware of a couple of tricks. The first trick is that we transform the incoming position vector
@@ -236,7 +236,7 @@
 				the pixel which we can use for sampling.
 			</p>
 			<p>(skybox.fs)</p>
-			<code>
+			<pre><code>
 			#version 330<br>
 			<br>
 			in vec3 TexCoord0;<br>
@@ -247,40 +247,40 @@
 			<br>
 			void main()<br>
 			{<br>
-			&nbsp; &nbsp; FragColor = texture(gCubemapTexture, TexCoord0);<br>
+				FragColor = texture(gCubemapTexture, TexCoord0);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				The fragment shader is extremely simple. The only thing worth noting here is that we use a 'samplerCube'
 				rather than a 'sampler2D' in order to access the cubemap.
 			</p>
 			<p>(skybox.h:27)</p>
-			<code>
+			<pre><code>
 			class SkyBox<br>
 			{<br>
 			public:<br>
-			&nbsp; &nbsp;     SkyBox(const Camera* pCamera, const PersProjInfo&amp; p);<br>
+			SkyBox(const Camera* pCamera, const PersProjInfo&amp; p);<br>
 			<br>
-			&nbsp; &nbsp;     ~SkyBox();<br>
-			    <br>
-			&nbsp; &nbsp;     bool Init(const string&amp; Directory,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; PosXFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; NegXFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; PosYFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; NegYFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; PosZFilename,<br>
-			&nbsp; &nbsp; &nbsp; &nbsp; const string&amp; NegZFilename);<br>
-			    <br>
-			&nbsp; &nbsp;     void Render();<br>
-			    <br>
-			private:    <br>
-			&nbsp; &nbsp;     SkyboxTechnique* m_pSkyboxTechnique;<br>
-			&nbsp; &nbsp;     const Camera* m_pCamera;<br>
-			&nbsp; &nbsp;     CubemapTexture* m_pCubemapTex;<br>
-			&nbsp; &nbsp;     Mesh* m_pMesh;<br>
-			&nbsp; &nbsp;     PersProjInfo m_persProjInfo;<br>
+			~SkyBox();<br>
+			<br>
+			bool Init(const string&amp; Directory,<br>
+					const string&amp; PosXFilename,<br>
+					const string&amp; NegXFilename,<br>
+					const string&amp; PosYFilename,<br>
+					const string&amp; NegYFilename,<br>
+					const string&amp; PosZFilename,<br>
+					const string&amp; NegZFilename);<br>
+			<br>
+			void Render();<br>
+			<br>
+			private:<br>
+			SkyboxTechnique* m_pSkyboxTechnique;<br>
+			const Camera* m_pCamera;<br>
+			CubemapTexture* m_pCubemapTex;<br>
+			Mesh* m_pMesh;<br>
+			PersProjInfo m_persProjInfo;<br>
 			};
-			</code>
+			</code></pre>
 			<p>
 				Rendering of the skybox involves several components - a technique, a cubemap texture and a box or sphere model.
 				To simplify its usage this class is suggested as a solution that brings all these components under the
@@ -289,33 +289,33 @@
 				that in addition to the above components the class also have access to the camera and the perspective projection
 				values (FOV, Z and screen dimensions). This is so that it can populate the Pipeline class properly.
 			</p>
-			<code>
+			<pre><code>
 			void SkyBox::Render()<br>
 			{<br>
-			&nbsp; &nbsp; m_pSkyboxTechnique->Enable();<br>
-			    <br>
-			&nbsp; &nbsp; GLint OldCullFaceMode;<br>
-			&nbsp; &nbsp; glGetIntegerv(GL_CULL_FACE_MODE, &amp;OldCullFaceMode);<br>
-			&nbsp; &nbsp; GLint OldDepthFuncMode;<br>
-			&nbsp; &nbsp; glGetIntegerv(GL_DEPTH_FUNC, &amp;OldDepthFuncMode);<br>
-			    <br>
-			&nbsp; &nbsp; glCullFace(GL_FRONT);<br>
-			&nbsp; &nbsp; glDepthFunc(GL_LEQUAL);<br>
+				m_pSkyboxTechnique->Enable();<br>
 			<br>
-			&nbsp; &nbsp; Pipeline p;    <br>
-			&nbsp; &nbsp; p.Scale(20.0f, 20.0f, 20.0f);<br>
-			&nbsp; &nbsp; p.Rotate(0.0f, 0.0f, 0.0f);<br>
-			&nbsp; &nbsp; p.WorldPos(m_pCamera->GetPos().x, m_pCamera->GetPos().y, m_pCamera->GetPos().z);<br>
-			&nbsp; &nbsp; p.SetCamera(m_pCamera->GetPos(), m_pCamera->GetTarget(), m_pCamera->GetUp());<br>
-			&nbsp; &nbsp; p.SetPerspectiveProj(m_persProjInfo);<br>
-			&nbsp; &nbsp; m_pSkyboxTechnique->SetWVP(p.GetWVPTrans());<br>
-			&nbsp; &nbsp; m_pCubemapTex->Bind(GL_TEXTURE0);<br>
-			&nbsp; &nbsp; m_pMesh->Render();  <br>
-			    <br>
-			&nbsp; &nbsp; glCullFace(OldCullFaceMode);        <br>
-			&nbsp; &nbsp; glDepthFunc(OldDepthFuncMode);<br>
+				GLint OldCullFaceMode;<br>
+				glGetIntegerv(GL_CULL_FACE_MODE, &amp;OldCullFaceMode);<br>
+				GLint OldDepthFuncMode;<br>
+				glGetIntegerv(GL_DEPTH_FUNC, &amp;OldDepthFuncMode);<br>
+			<br>
+				glCullFace(GL_FRONT);<br>
+				glDepthFunc(GL_LEQUAL);<br>
+			<br>
+				Pipeline p;<br>
+				p.Scale(20.0f, 20.0f, 20.0f);<br>
+				p.Rotate(0.0f, 0.0f, 0.0f);<br>
+				p.WorldPos(m_pCamera->GetPos().x, m_pCamera->GetPos().y, m_pCamera->GetPos().z);<br>
+				p.SetCamera(m_pCamera->GetPos(), m_pCamera->GetTarget(), m_pCamera->GetUp());<br>
+				p.SetPerspectiveProj(m_persProjInfo);<br>
+				m_pSkyboxTechnique->SetWVP(p.GetWVPTrans());<br>
+				m_pCubemapTex->Bind(GL_TEXTURE0);<br>
+				m_pMesh->Render();  <br>
+			<br>
+				glCullFace(OldCullFaceMode);<br>
+				glDepthFunc(OldDepthFuncMode);<br>
 			}	
-			</code>
+			</code></pre>
 			<p>
 				This function takes care of rendering the skybox. We start by enabling the skybox technique.
 				Then a new OpenGL API is introduced - glGetIntegerv(). This function returns the state of OpenGL
