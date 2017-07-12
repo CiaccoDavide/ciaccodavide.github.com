@@ -113,7 +113,8 @@ a .post{
 	display:inline-table;
 	margin:10px;
 	padding:10px;
-	max-width:300px;
+	/*max-width:300px;*/
+	width: calc(25% - 60px);
 	height:auto;
 	background:#111;
 	color:#999;
@@ -201,7 +202,11 @@ a .post:hover{
 }
 
 
-
+@media only screen and ( max-width: 1280px ) {
+	a .post{
+		width: calc(50% - 60px);
+	}
+}
 @media only screen and ( max-width: 750px ) {
 	body{text-align: center;}
 	 #left{
@@ -286,7 +291,7 @@ a .post:hover{
 		display:inline-table;
 		margin:10px;
 		padding:10px;
-		max-width:900px;
+		/*max-width:900px;*/
 		height:auto;
 		background:#111;
 		color:#999;
@@ -362,4 +367,7 @@ a .post:hover{
 	
 	#left h1{padding-top:25px;}
 	#left #logo{width: 100%;margin-left: 0;}
+}
+.post .desc{
+	min-height: 40px;
 }
