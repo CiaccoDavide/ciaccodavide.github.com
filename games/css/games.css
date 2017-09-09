@@ -371,3 +371,5 @@ a .post:hover{
 .post .desc{
 	min-height: 40px;
 }
+
+small{font-size:10px;color:#444;}
