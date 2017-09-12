@@ -1,0 +1,94 @@
+.gallery{
+  padding: 13px;
+}
+.picture{
+  overflow: hidden;
+  position: relative;
+  margin-top: -2px;
+  display: inline-block;
+}
+.picture,
+.picture img{
+  margin: 0px;
+  height: 100%;
+}
+.gallery img{
+  max-width: 100%;
+  max-height: 100%;
+  transition: opacity 250ms;
+}/*
+.js img{
+  max-height: 500px;
+  opacity: 1;
+}*/
+.picture:hover{
+  cursor: pointer;
+}
+.picture1{
+  width: 94px;
+  height: 70px;
+}
+.picture2{
+  width: 94px;
+  height: 70px;
+}
+.picture3{
+  width: 56px;
+  height: 85px;
+}
+.picture4{
+  width: 120px;
+  height: 80px;
+}
+.picture5{
+  width: 53px;
+  height: 80px;
+}
+.picture6{
+  width: 56px;
+  height: 85px;
+}
+.picture7{
+  width: 66px;
+  height: 85px;
+}
+.picture8{
+  width: 101px;
+  height: 75px;
+}
+.picture9{
+  width: 62px;
+  height: 80px;
+}
+.picture10{
+  width: 66px;
+  height: 85px;
+}
+.picture11{
+  width: 62px;
+  height: 80px;
+}
+.picture12{
+  width: 128px;
+  height: 85px;
+}
+.picture13{
+  width: 62px;
+  height: 80px;
+}
+.picture14{
+  width: 113px;
+  height: 75px;
+}
+.picture15{
+  width: 56px;
+  height: 85px;
+}
+.picture16{
+  width: 54px;
+  height: 70px;
+}
+.picture17{
+  width: 94px;
+  height: 70px;
+}

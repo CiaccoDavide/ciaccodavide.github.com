@@ -387,7 +387,7 @@ a .post:hover{
 .cd-gallery{
 
 }
-.cd-gallery a{
+/*.cd-gallery a{
 	height: 180px!important;
 	width: 180px!important;
 	overflow: hidden;
@@ -402,4 +402,4 @@ a .post:hover{
 	background-position: 50% 50%;
 	background-size: cover;
 	background-repeat: no-repeat;
-}
+}*/
