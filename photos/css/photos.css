@@ -202,12 +202,6 @@ a .post:hover{
 }
 
 
-.pswp{
-	width: auto!important;
-	left:160px!important;
-	right:0!important;
-}
-
 @media only screen and ( max-width: 1280px ) {
 	a .post{
 		width: calc(50% - 60px);
@@ -215,11 +209,6 @@ a .post:hover{
 }
 @media only screen and ( max-width: 750px ) {
 
-.pswp{
-	width: auto!important;
-	left:0px!important;
-	right:0!important;
-}
 	body{text-align: center;}
 	 #left{
 		position:relative;
@@ -385,7 +374,7 @@ a .post:hover{
 }
 
 .cd-gallery{
-
+	margin-left: 3px;
 }
 /*.cd-gallery a{
 	height: 180px!important;
