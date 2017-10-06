@@ -1,0 +1,224 @@
+::-moz-selection{background: #E4744F;}
+::selection{background: #E4744F;}
+html, body{
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+	color: #555555;
+}
+
+h3{
+	color: #7aa228;
+	font-style: italic;
+	font-size: 21px;
+	font-weight: 600;
+}
+
+h4{
+	font-size: 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #ffffff;
+}
+
+h5{
+	font-size: 20px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: #ffffff;
+}
+
+h6{
+	font-size: 20px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+a, a:visited{
+	color: #7aa228;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #ff9900;
+}
+
+b{color: #7aa228;}
+
+.sezione{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 60px;
+	min-height: 100%;
+	position: relative;
+	display: block;
+	clear:both;
+}
+
+.contenuti{/*
+	position: relative;
+	display: block;
+	width: 80%;
+	margin: 0 auto; */
+}
+
+#sezione_uno{
+	background-image: url('../img/hero.jpg');
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+#sezione_uno .logo{
+	position: relative;
+	margin: 60px auto;
+}
+
+#sezione_uno .logo img{
+	position: relative;
+	height: 116px;
+}
+
+#sezione_uno .form{
+	color: #ffffff;
+}
+
+#sezione_uno .form label{
+    font-size: 15px;
+}
+
+#sezione_uno .form .privacy{
+	display: block;
+	margin-bottom: 21px;
+}
+
+#sezione_uno .form input{
+	width: 100%;
+	position: relative;
+	border: 0 none;
+	border-radius: 3px;
+	display: inline-block;
+	letter-spacing: 1px;
+	line-height: 1.5;
+	text-decoration: none;
+	margin-bottom: 21px;
+	margin-right: 10px;
+	line-height: 1;
+	padding: 18px 20px 16px;
+	-webkit-transition: all 0.21s ease;
+	-moz-transition: all 0.21s ease;
+	-o-transition: all 0.21s ease;
+	transition: all 0.21s ease;
+	color: #555555;
+}
+#sezione_uno .form input[type="submit"]{
+	background-color: #ffc936;
+	border: 0 none;
+	border-radius: 3px;
+	color: #fff;
+	display: inline-block;
+	font-family: 'Poppins','Open Sans', Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	letter-spacing: 1px;
+	line-height: 1.5;
+	text-transform: uppercase;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+#sezione_due{
+	background: #ffffff;
+}
+
+#sezione_due .tre-icone{
+	width: 100%;
+	margin: 0 0;
+	padding-top: 80px;
+	background: #273c27;
+	color:#ffffff;
+}
+
+#sezione_due .tre-icone .icona{
+	margin-bottom: 80px;
+}
+
+#sezione_due .tre-icone .icona img{
+	margin-bottom: 20px;
+}
+
+#sezione_due .cards{
+	
+}
+
+#sezione_due .cards .card{
+	padding-bottom: 40px;
+}
+
+#sezione_due .cards .card img{
+	display: inline-block;
+	position: relative;
+	top: -10px;
+}
+
+#sezione_due .cards .card h3{
+	padding-left: 10px;
+	display: inline-block;
+}
+
+#sezione_due .cards .card .desc{
+	padding: 20px;
+	font-size: 15px;
+}
+
+
+
+
+
+
+
+
+#sezione_tre{
+	background: rgba(0, 0, 0, 0) url("../img/bg_slider.jpg") no-repeat scroll 50% -21.14px / cover;
+}
+
+#sezione_quattro{
+	background-color: #ffffff;
+	background-image: url("../img/img1.png");
+	background-size: 60%;
+	background-position: -40% 100%;
+	background-repeat: no-repeat;
+}
+
+#sezione_quattro .prenotazione h2{
+	font-size: 32px;
+	padding: 40px;
+	line-height: 1.4;
+}
+
+#sezione_quattro .prenotazione .prenotatore{
+	background: rgba(39,60,39,0.4);
+	color: #ffffff;
+	text-align: center;
+	min-height: 600px;
+	margin-top: 40px;
+	margin-bottom: 80px;
+}
+
+.footer{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 200px;
+	position: relative;
+	background: #273c27;
+	color: #ffffff;
+}
+
+.footer .logo{
+	padding: 40px 0;
+}
+
+.footer .condizioni a{
+	padding: 10px;
+}
