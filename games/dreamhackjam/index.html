@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>4 the APOCALYPSE! #dreamhackjam</title>
+        <script src="Build/4f4a801b6b63c0b659f1f3ab02f9dce0.js"></script>
+        <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/6f2c65dc5033c2a8360a3b860a9a6859.json");
+        </script>
+        <style type="text/css">
+            body{
+                background: #594e3c;padding-top: 60px;padding-bottom: 90px;
+font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, monospace;
+            }
+            #container{
+                position: relative;
+                display: block;
+                border:3px double #aaa;
+                background: #87765B;
+                margin:20px auto;
+                max-width: 960px;
+               /* box-shadow: #594e3c;*/
+
+                -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+                padding: 0;
+            }
+            #container:before, #container:after
+            {
+                position: absolute;
+                width: 40%;
+                height: 10px;
+                content: ' ';
+                left: 12px;
+                bottom: 12px;
+                background: transparent;
+                -webkit-transform: skew(-5deg) rotate(-5deg);
+                -moz-transform: skew(-5deg) rotate(-5deg);
+                -ms-transform: skew(-5deg) rotate(-5deg);
+                -o-transform: skew(-5deg) rotate(-5deg);
+                transform: skew(-5deg) rotate(-5deg);
+                -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+                -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+                z-index: -1;
+            } 
+
+            #container:after
+            {
+                left: auto;
+                right: 12px;
+                -webkit-transform: skew(5deg) rotate(5deg);
+                -moz-transform: skew(5deg) rotate(5deg);
+                -ms-transform: skew(5deg) rotate(5deg);
+                -o-transform: skew(5deg) rotate(5deg);
+                transform: skew(5deg) rotate(5deg);
+            }
+            #gameContainer{
+                width: 960px; height: auto; margin: 0;
+                background: #87765B!important;
+            }
+            @media screen and (max-width: 980px) {
+                #gameContainer{
+                    width: 100%;
+                }
+            }
+            #canvas{height: 100%!important;}
+            .credits,.description{
+                position: relative;
+                display: block;
+                text-align: center;
+                color:#bbb;
+                font-size: 14px;
+                margin:20px auto;
+                max-width: 860px;
+                margin-top: 50px;
+            }
+            .credits a{
+                text-decoration: none;
+                color:#999;
+                font-size: 13px;
+            }
+            .credits a:hover{
+                text-decoration: underline;
+                color:#9a9a9a;
+            }
+            .credits a:visited{
+                text-decoration: none;
+                color:#999;
+            }
+
+            .description{
+                text-align: justify;
+                text-justify: inter-word;
+            }
+            .separator{
+                width: 200px;
+                height: 1px;
+                background: #aaa;
+                position: absolute;
+                top: -26px;
+                padding: 0;
+                left: 50%;
+                margin-left: -100px;
+            }
+            .separator div{
+                position: relative;
+                margin:0 auto;
+                width: 10px;
+                height: 10px;
+                padding: 0;
+                top:-5.5px;
+                border:1px solid #aaa;
+                background: #87765B;
+                transform: rotate(45deg);
+            }
+            .plague{color: #739A4A; text-shadow: 0px 0px 6px #000,0px 0px 6px #000}
+            .war{color: #C92323; text-shadow: 0px 0px 6px #000,0px 0px 6px #000}
+            .famine{color: #E7C76B; text-shadow: 0px 0px 6px #000,0px 0px 6px #000}
+            .death{color: #5A4194; text-shadow: 0px 0px 6px #000,0px 0px 6px #000}
+            a.vote{font-size: 18px; font-weight: bold; text-transform: uppercase;text-align: center;color: #aaa;text-decoration: none;}
+            a.vote:visited{font-size: 18px; font-weight: bold; text-transform: uppercase;text-align: center;color: #aaa;text-decoration: none;}
+            a.vote:hover{font-size: 18px; font-weight: bold; text-transform: uppercase;text-align: center;color: #aaa;text-decoration: underline;}
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="gameContainer"></div>
+        </div>
+        <div class="credits">Artist: Nicolò Azzolini<br>Coder: Davide Ciacco<br><a href="http://jams.gamejolt.io/dreamhackjam/games/4theAPOCALYPSE/287488" target="_blank">#dreamhackjam</a><br></div></div>
+        <div class="credits"><div class="separator"><div></div></div><h1>4 the APOCALYPSE!</h1></div>
+        <div class="description"><div class="separator"><div></div></div><p>Four siblings. One goal: to annihilate everyone and destroy everything. They only ever get to do it once every 666 million years. And you know what? That time is now! The APOCALYPSE has started! Join them on their rampage and help them decide who's the best Soulstaker!</p>
+<p>"4 the APOCALYPSE!" is a 0 to 4 players couch game in which players take controls of one of the 4 Apocalypse siblings, each with a unique ability, and try to score the most points by collecting souls from innocent civilians.</p>
+<p>Are you ready 4 the APOCALYPSE?</p></div>
+        <div class="description"><div class="separator"><div></div></div><p><b class="plague">Plague</b>: First of four siblings, <b>Plague</b> is the oldest and wisest of them all. His stench is the first thing you'll notice about him. And probably the last, as by the time you see him yo'll be already on the floor covered in blisters bigger than you are.</p>
+<p>His tactic is to infect people who then go on their way spreading the disease even further.</p>
+<p><b class="war">War</b>: The second son of the Apocalypse is <b>War</b>, a big, tall and muscular guy covered from bottom to top with weapons seemingly growing out of his very own body. Despite his manacing look, nobody has ever seen him actually killing someone. He let the others do the job for him.</p>
+<p>He cannot kill civilians directly. Instead, on contact, he can turn them into murdering machines that kill mindlessy in his name.</p>
+<p><b class="famine">Famine</b>: Nobody knows if the big foul mouth on her belly is able to speak. It's too busy devouring everything that comes into range. She's so gluttonous that people start losing weight just by passing nearby.</p>
+<p>She is able to absorb the constitution of people who stand in her range, slowly devouring them until nothing but the soul is left.</p>
+<p><b class="death">Death</b>: Last of the 4 siblings, she sure is deadliest and misterious. Even her siblings are a bit scared and prefer not to bother her. The blades at the end of her four arms are so sharp they could cut a soul from its body without leaving a mark, leaving instead an empty husk of the former person.</p>
+<p><b>Death</b> can kill people by touching them. As easy as that.</p></div>
+    </body>
+</html>
