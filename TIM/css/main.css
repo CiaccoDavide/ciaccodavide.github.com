@@ -5,17 +5,28 @@ body{
 a,a:hover{text-decoration: none;}
 
 #search_bar{
+	border-radius: 6px;
 	position: fixed;
-	top: 0;
+	top: 6px;
 	padding-top: 10px;
-	padding-bottom: 10px;
-	background-color: #ddd;
+	padding-bottom: 14px;
+	background-color: #fff;
 }
-#search_bar input,
+#search_bar input{
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+	height: 40px;
+}
 #search_bar button{
 	height: 30px;
 	margin: 0;
-	float: left;
+	display: inline-block;
+	border: solid 1px #aaa;
+	color: #444;
+	width: 100px;
+	margin-right: 16px;
+	margin-top: 16px;
+	position: relative;
 }
 #footer{
 	position: fixed;
@@ -26,12 +37,21 @@ a,a:hover{text-decoration: none;}
 }
 .menu-link{
 	height: 30px;
-	margin: 0;
 	float: left;
+	width: 33%!important;
 }
-#movies,.contents{
+#movies{
 	position: fixed;
-	top: 50px;
+	top: 120px;
+	bottom: 50px;
+	width: 100%;
+	margin: 0;
+	padding: 10px;
+	overflow: auto;
+}
+.contents{
+	position: fixed;
+	top: 80px;
 	bottom: 50px;
 	width: 100%;
 	margin: 0;
@@ -41,14 +61,17 @@ a,a:hover{text-decoration: none;}
 .movie{
 	border-radius: 6px;
 	background-color: #fff;
-	min-height: 80px;
-	padding-top: 30px;
+	min-height: 100px;
+	padding-top: 10px;
 	padding-bottom: 30px;
 	margin-bottom: 10px;
 	box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+	background-size: cover;
+	background-position: 50% 20%; 
 }
 .movie h2{
-	font-weight: 600;
+	font-size: 28px;
+	font-weight: 800;
 	color: #fff;
 	text-shadow:
 		1px 1px 0 rgba(0,0,0,0.4),
@@ -64,7 +87,7 @@ a,a:hover{text-decoration: none;}
 
 .map-container{
 	position: fixed;
-	top: 50px;
+	top: 0;
 	bottom: 50px;
 	width: 100%;
 	margin: 0;
@@ -75,4 +98,12 @@ a,a:hover{text-decoration: none;}
 	right:0;
 	top: 0px;
 	bottom: 0px;
+}
+
+#loader{
+	width: 200px;
+	position: relative;
+	left: 50%;
+	top:50%;
+	margin-left: -100px;
 }

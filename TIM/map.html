@@ -5,59 +5,48 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
-	<div id="search_bar" class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<input type="text" name="search" class="form-control col-xs-9 col-sm-8 col-md-8 col-lg-10">
-		<button type="button" class="form-control btn btn-default btn-sm col-xs-3 col-sm-2 col-md-2 col-lg-1">Search</button>
-		<button type="button" class="form-control btn btn-default btn-sm col-xs-3 col-sm-2 col-md-2 col-lg-1">Filters</button>
-	</div>
-
 	<div class="map-container">
-		<div id="googleMap">map</div>
+		<div id="googleMap"><img id="loader" src="./img/loader.gif"></div>
 
 	</div>
 
 	<div id="footer" class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<button type="button" class="form-control btn btn-default btn-sm col-md-4 menu-link">Movies</button>
-		<button type="button" class="form-control btn btn-default btn-sm col-md-4 menu-link">Mappa</button>
-		<button type="button" class="form-control btn btn-default btn-sm col-md-4 menu-link">Settings</button>
+		<form action="./movies.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Movies</button>
+		</form>
+		<form action="./map.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Mappa</button>
+		</form>
+		<form action="./settings.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Profile</button>
+		</form>
 	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script-->
 	
 	<script type="text/javascript">
-
-/*$.ajax({
-    url: 'http://pp.api.helab.nuvolaitaliana.it/location/v1/333768854',
-    headers:{'KeyId':'70066b05-662b-4e89-bbdc-51ed53e645eb'},
-    complete: function(data,result) {
-        alert("Data: " + data + "\nStatus: " + status);
-    }
-});*/
-
 		var latitudine;
 		var longitudine;
 		function initMap() {
-			$.ajax({type:"GET",
+			$.ajax({
+				type:"GET",
+				url: 'https://pp.api.helab.nuvolaitaliana.it/location/v1/3337335904',
+				headers:{'KeyId':'70066b05-662b-4e89-bbdc-51ed53e645eb'},
+				success : function(text) {
+					latitudine=text.result.values.latitudine;
+					longitudine=text.result.values.longitudine;
 
-			    url: 'https://pp.api.helab.nuvolaitaliana.it/location/v1/3926788766',
-			    headers:{'KeyId':'70066b05-662b-4e89-bbdc-51ed53e645eb'},
-         		success : function(text)
-         {
-             latitudine=text.result.values.latitudine;
-             longitudine=text.result.values.longitudine;
-
-              var mapOptions = {
-			        center: new google.maps.LatLng(latitudine, longitudine),
-			        zoom: 15,
-			        mapTypeId: google.maps.MapTypeId.HYBRID
-			    
-			    }
-			var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions); 
-			 
-         }
+					var mapOptions = {
+						center: new google.maps.LatLng(latitudine, longitudine),
+						zoom: 15,
+						mapTypeId: google.maps.MapTypeId.HYBRID
+					}
+					var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions); 
+				}
 			});
 		}   
 	</script>

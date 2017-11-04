@@ -5,24 +5,40 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
-	<div id="search_bar" class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<input type="text" name="search" class="form-control col-xs-9 col-sm-8 col-md-8 col-lg-10">
-		<button type="button" class="form-control btn btn-default btn-sm col-xs-3 col-sm-2 col-md-2 col-lg-1">Search</button>
-		<button type="button" class="form-control btn btn-default btn-sm col-xs-3 col-sm-2 col-md-2 col-lg-1">Filters</button>
-	</div>
-
 	<div class="contents text-center">
+		<h2>Profile</h2><br>
+		<p>IMEI: <span id="imei"></span></p>
+		<p>IMSI: <span id="imsi"></span></p>
 		<a href="./">Logout</a>
 	</div>
 
 	<div id="footer" class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<button type="button" class="form-control btn btn-default btn-sm col-md-4 menu-link">Movies</button>
-		<button type="button" class="form-control btn btn-default btn-sm col-md-4 menu-link">Mappa</button>
-		<button type="button" class="form-control btn btn-default btn-sm col-md-4 menu-link">Settings</button>
+		<form action="./movies.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Movies</button>
+		</form>
+		<form action="./map.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Mappa</button>
+		</form>
+		<form action="./settings.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Profile</button>
+		</form>
 	</div>
 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+			$.ajax({
+				type:"GET",
+				url: 'https://pp.api.helab.nuvolaitaliana.it/infosim/v1/3337335904',
+				headers:{'KeyId':'70066b05-662b-4e89-bbdc-51ed53e645eb'},
+				success : function(text) {
+					$('#imei').html(text.values.imei.value);
+					$('#imsi').html(text.values.imsi.value);
+				}
+			});
+	</script>
 </body>
 </html>
