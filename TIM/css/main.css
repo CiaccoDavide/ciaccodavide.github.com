@@ -1,0 +1,78 @@
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+
+a,a:hover{text-decoration: none;}
+
+#search_bar{
+	position: fixed;
+	top: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #ddd;
+}
+#search_bar input,
+#search_bar button{
+	height: 30px;
+	margin: 0;
+	float: left;
+}
+#footer{
+	position: fixed;
+	bottom: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #ddd;
+}
+.menu-link{
+	height: 30px;
+	margin: 0;
+	float: left;
+}
+#movies,.contents{
+	position: fixed;
+	top: 50px;
+	bottom: 50px;
+	width: 100%;
+	margin: 0;
+	padding: 10px;
+	overflow: auto;
+}
+.movie{
+	border-radius: 6px;
+	background-color: #fff;
+	min-height: 80px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-bottom: 10px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.movie h2{
+	font-weight: 600;
+	color: #fff;
+	text-shadow:
+		1px 1px 0 rgba(0,0,0,0.4),
+		-1px 1px 0 rgba(0,0,0,0.4),
+		1px -1px 0 rgba(0,0,0,0.4),
+		-1px -1px 0 rgba(0,0,0,0.4),
+		
+		0 1px 0 rgba(0,0,0,0.4),
+		-1px 0 0 rgba(0,0,0,0.4),
+		1px 0 0 rgba(0,0,0,0.4),
+		0 -1px 0 rgba(0,0,0,0.4);
+}
+
+.map-container{
+	position: fixed;
+	top: 50px;
+	bottom: 50px;
+	width: 100%;
+	margin: 0;
+}
+#googleMap{
+	position: absolute;
+	left:0;
+	right:0;
+	top: 0px;
+	bottom: 0px;
+}
