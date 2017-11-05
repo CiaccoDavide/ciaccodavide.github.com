@@ -2,23 +2,78 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/font.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
-	<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h1>MyCinema for now</h1>
-		<form id="loginForm" action="./preferenze.html">
-			<input type="text" name="username" class="col-sm-12 col-md-6 col-lg-3" placeholder="Username"><br/>
-			<input type="password" name="username" class="col-sm-12 col-md-6 col-lg-3" 	placeholder="Password"><br>
-			<input type="submit" value="Login" class="col-sm-12 col-md-6 col-lg-3">
-		</form>
+	<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12 login-header">
+		<h1>OPEN PICTURE</h1>
+	</div>
+	<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12 login-contents">
+		<div id="otp_request">
+			<input type="text" name="username" class="col-sm-12 col-md-6 col-lg-3" placeholder="Num Telefono"><br/>
+			<button class="login-btn col-sm-12 col-md-6 col-lg-3">Request OTP</button>
+		</div>
+		<div id="otp_confirm">
+			<input type="password" name="password" class="hidden col-sm-12 col-md-6 col-lg-3" placeholder="OTPassword"><br>
+			<button class="login-btn col-sm-12 col-md-6 col-lg-3">Verify OTP</button>
+		</div>
+		<div id="login_status" class="text-center col-sm-12 col-md-6 col-lg-3"></div>
 
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script type="text/javascript">
+		var logged = false;
+
+		$('#otp_confirm').hide();
+		$('#otp_request button').click(function() {
+			$.ajax({
+				type:"POST",
+				url: 'https://pp.api.helab.nuvolaitaliana.it/otp/v1/' + $('#otp_request input').val(),
+				headers:{
+					'KeyId':'1ef4673c-32a5-4e8f-bdcf-a2c63028ebbb',
+	    			"content-type": "application/json",
+	    			"Access-Control-Allow-Origin":"*"
+				},
+				success : function(text) {
+					if(text.result.status == "OK") {
+						$('#login_status').html('<span class="success">'+text.result.description+'</span>');
+						$('#otp_request').hide('slow');
+						$('#otp_confirm').show('slow');
+					} else {
+						$('#login_status').html('<span class="error">'+text.result.description+'</span>');
+					}
+				},
+				error : function(textStatus, errorz) {
+					$('#login_status').html('<span class="error">'+textStatus.statusText+': '+errorz+'<br>'+textStatus.responseText+'</span>');
+				}
+			});
+		});
+		$('#otp_confirm button').click(function() {
+			$.ajax({
+				type:"GET",
+				url: 'https://pp.api.helab.nuvolaitaliana.it/otp/v1/'+ $('#otp_request input').val() +'/' + $('#otp_confirm input').val(),
+				headers:{
+					'KeyId':'1ef4673c-32a5-4e8f-bdcf-a2c63028ebbb',
+    				"content-type": "application/json",
+    				"Access-Control-Allow-Origin":"*"
+    			},
+				success : function(text) {
+					if(text.result.status == "OK") {
+						$('#login_status').html('<span class="success">'+text.result.description+'</span>');
+						window.location.href = "./preferenze.html";
+					} else {
+						$('#login_status').html('<span class="error">'+text.result.description+'</span>');
+					}
+				},
+				error : function(textStatus, errorz) {
+					$('#login_status').html('<span class="error">'+textStatus.statusText+': '+errorz+'<br>'+textStatus.responseText+'</span><br><a href="./preferenze.html">Skip auth</a>');
+				}
+			});
+		});
+	</script>
 </body>
 </html>

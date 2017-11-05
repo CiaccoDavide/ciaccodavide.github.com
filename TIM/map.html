@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title></title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link href="./css/font.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./css/main.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
@@ -25,12 +25,13 @@
 		</form>
 	</div>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="./js/jquery.min.js"></script>
 	<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script-->
 	
 	<script type="text/javascript">
 		var latitudine;
 		var longitudine;
+		var map;
 		function initMap() {
 			$.ajax({
 				type:"GET",
@@ -39,17 +40,53 @@
 				success : function(text) {
 					latitudine=text.result.values.latitudine;
 					longitudine=text.result.values.longitudine;
+					var pos={lat: parseFloat(latitudine), lng: parseFloat(longitudine)};
 
 					var mapOptions = {
 						center: new google.maps.LatLng(latitudine, longitudine),
 						zoom: 15,
 						mapTypeId: google.maps.MapTypeId.HYBRID
 					}
-					var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions); 
+
+					map = new google.maps.Map(document.getElementById("googleMap"), mapOptions); 
+					var marker = new google.maps.Marker({
+          				position: pos,
+         				map: map
+       				});
+
+					infowindow = new google.maps.InfoWindow();
+					var service = new google.maps.places.PlacesService(map);
+					service.nearbySearch({
+						location: pos,
+						radius: 1000,
+						type: ['movie_theater']
+					}, callback);
+
+					
 				}
 			});
-		}   
+			function callback(results, status) {
+				if (status === google.maps.places.PlacesServiceStatus.OK) {
+					for (var i = 0; i < results.length; i++) {
+						createMarker(results[i]);
+					}
+				}
+			}
+			function createMarker(place) {
+				var placeLoc = place.geometry.location;
+				var marker = new google.maps.Marker({
+					map: map,
+					position: place.geometry.location
+				});
+
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(place.name);
+					infowindow.open(map, this);
+				});
+			}
+		}
+
 	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoZysoM6w3GaVJ5L1-0FIv_JR4Zwdp7Fo&callback=initMap"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoZysoM6w3GaVJ5L1-0FIv_JR4Zwdp7Fo&callback=initMap&libraries=places"></script>
 </body>
 </html>

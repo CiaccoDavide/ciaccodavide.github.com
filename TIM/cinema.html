@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/font.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<style type="text/css">
+		#m000{background-image: url('./img/c000.jpg');background-position: 50% 15%; }
+		#m001{background-image: url('./img/c001.jpg');background-position: 50% 60%; }
+		#m002{background-image: url('./img/c002.jpg');background-position: 50% 0%; }
+	</style>
+</head>
+<body>
+	<div id="cinemas" class="contents">
+		<h2>Scegli il cinema</h2>
+		<div class="spacer10"></div>
+		<a href="#0">
+			<div class="movie col-md-12" id="m000">
+				<h2>Colosseo</h2>
+			</div>
+		</a>
+		<a href="#1">
+			<div class="movie col-md-12" id="m001">
+				<h2>Cinema Arcobaleno</h2>
+			</div>
+		</a>
+		<a href="#2">
+			<div class="movie col-md-12" id="m002">
+				<h2>Cinema Plinius</h2>
+			</div>
+		</a>
+	</div>
+
+	<div id="search_bar" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<input type="text" name="search" class="form-control col-xs-9 col-sm-8 col-md-8 col-lg-10" placeholder="Cerca un cinema">
+		<button type="button" class="form-control btn btn-default btn-sm col-xs-3 col-sm-2 col-md-2 col-lg-1">Search</button>
+		<button type="button" class="form-control btn btn-default btn-sm col-xs-3 col-sm-2 col-md-2 col-lg-1">Filters</button>
+	</div>
+
+	<div id="footer" class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<form action="./movies.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Movies</button>
+		</form>
+		<form action="./map.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Mappa</button>
+		</form>
+		<form action="./settings.html">
+		<button type="submit" class="form-control btn btn-default btn-sm col-md-4 menu-link">Profile</button>
+		</form>
+	</div>
+
+	<script src="./js/jquery.min.js"></script>
+</body>
+</html>
