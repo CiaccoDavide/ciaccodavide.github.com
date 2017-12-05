@@ -141,14 +141,19 @@
                 text-decoration: none;
                 color:#999;
             }
-
+.fullscreen{
+    width: 100px;display: inline;
+}
         </style>
     </head>
     <body>
         <div id="container">
             <div id="gameContainer"></div>
         </div>
-        <div class="credits">Author: Davide Ciacco<br><a href="https://ldjam.com/events/ludum-dare/40/phool" target="_blank">#LudumDare40</a><br></div></div>
+        <div class="credits" style="text-align: center; margin-top: 10px;">
+            <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"><img src="./fullscreen.png"></div>
+        </div>
+        <div class="credits" style="margin-top: 30px;">Author: Davide Ciacco<br><a href="https://ldjam.com/events/ludum-dare/40/phool" target="_blank">#LudumDare40</a><br></div></div>
         <div class="credits"><div class="separator"><div></div></div><h1>Phool</h1></div>
         <div class="description"><div class="separator"><div></div></div>
             <p>Controls: W A S D + Mouse, Left Click to shoot, hold TAB to see your level and upgrades progression</p>
